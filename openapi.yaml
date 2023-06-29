@@ -1,0 +1,813 @@
+openapi: 3.0.0
+info:
+  title: BankWiz API
+  version: 0.1.0
+  description: An API for accessing banking functionalities provided by BankWiz
+servers:
+  - url: 'http://localhost:8080/api'
+tags:
+  - name: Auth
+    description: API endpoints for user authentication
+  - name: User
+    description: API endpoints for managing user information
+  - name: Group
+    description: API endpoints for managing group information
+  - name: Bank Account
+    description: API endpoints for bank account information
+  - name: Bank Operation
+    description: API endpoints for bank operations
+paths:
+  /auth/signup:
+    post:
+      tags:
+        - Auth
+      summary: Create a new user account
+      operationId: createUserAccount
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserAccountRequest'
+      responses:
+        '201':
+          description: User account created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDTO'
+        '400':
+          description: Invalid request. Please check the provided data.
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: Login to an existing user account
+      operationId: loginUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLoginRequest'
+      responses:
+        '200':
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDTO'
+        '400':
+          description: Incorrect request
+        '401':
+          description: Unauthorized
+  /user:
+    get:
+      tags:
+        - User
+      summary: Get the current user information
+      operationId: getCurrentUserInfo
+      responses:
+        '200':
+          description: Successfully retrieved user information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDTO'
+        '400':
+          description: Invalid request. Please check the provided data.
+    put:
+      tags:
+        - User
+      summary: Update user information
+      operationId: updateUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdateRequest'
+      responses:
+        '200':
+          description: User information updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDTO'
+        '400':
+          description: Invalid request. Please check the provided data.
+  /user/users:
+    get:
+      tags:
+        - User
+      summary: Get a list of users
+      operationId: getUsers
+      responses:
+        '200':
+          description: Successfully retrieved the list of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserDTO'
+        '400':
+          description: Invalid request. Please check the provided data.
+  '/user/{userId}':
+    get:
+      tags:
+        - User
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      summary: Get user information
+      operationId: getUser
+      responses:
+        '200':
+          description: Successfully retrieved user information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDTO'
+        '400':
+          description: Invalid request. Please check the provided data.
+  /group:
+    post:
+      tags:
+        - Group
+      summary: Create a group
+      operationId: createGroup
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupCreationRequest'
+      responses:
+        '200':
+          description: Group created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupDTO'
+        '400':
+          description: Invalid request. Please check the provided data.
+  /group/groups:
+    get:
+      tags:
+        - Group
+      summary: Get my groups
+      operationId: getGroups
+      responses:
+        '200':
+          description: Successfully retrieved the list of groups
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GroupDTO'
+        '400':
+          description: Invalid request. Please check the provided data.
+  '/group/{groupId}':
+    get:
+      tags:
+        - Group
+      parameters:
+        - name: groupId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      summary: Get group information
+      operationId: getGroup
+      responses:
+        '200':
+          description: Successfully retrieved group information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupDTO'
+        '400':
+          description: Invalid request. Please check the provided data.
+    put:
+      tags:
+        - Group
+      parameters:
+        - name: groupId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      summary: Update group information
+      operationId: updateGroup
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupUpdateRequest'
+      responses:
+        '200':
+          description: Group information updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupDTO'
+        '400':
+          description: Invalid request. Please check the provided data.
+    delete:
+      tags:
+        - Group
+      parameters:
+        - name: groupId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      summary: Delete a group
+      operationId: deleteGroup
+      responses:
+        '200':
+          description: Group deleted successfully
+        '400':
+          description: Invalid request. Please check the provided data.
+  '/group/{groupId}/user':
+    post:
+      tags:
+        - Group
+      parameters:
+        - name: groupId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      summary: Add a user to the group
+      operationId: addUserToGroup
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddUserGroupRequest'
+      responses:
+        '200':
+          description: User added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupDTO'
+        '400':
+          description: Invalid request. Please check the provided data.
+  '/group/{groupId}/user/{userId}':
+    put:
+      tags:
+        - Group
+      parameters:
+        - name: groupId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      summary: Update user in a group
+      operationId: updateUserInGroup
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserGroupRequest'
+      responses:
+        '200':
+          description: User updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupDTO'
+        '400':
+          description: Invalid request. Please check the provided data.
+    delete:
+      tags:
+        - Group
+      parameters:
+        - name: groupId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      summary: Remove user from a group
+      operationId: removeUserFromGroup
+      responses:
+        '200':
+          description: User removed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupDTO'
+        '400':
+          description: Invalid request. Please check the provided data.
+  /bankAccount:
+    post:
+      tags:
+        - Bank account
+      summary: Add an account
+      operationId: addAccount
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BankAccountCreationRequest'
+      responses:
+        '200':
+          description: Account added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BankAccountDTO'
+        '400':
+          description: Invalid request. Please check the provided data.
+  /bankAccount/bankAccounts:
+    get:
+      tags:
+        - Bank account
+      summary: Get my bank accounts
+      operationId: getBankAccounts
+      responses:
+        '200':
+          description: Successfully retrieved the list of bank accounts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BankAccountGroupDTO'
+        '400':
+          description: Invalid request. Please check the provided data.
+  '/bankAccount/{bankAccountId}':
+    get:
+      tags:
+        - Bank account
+      parameters:
+        - name: bankAccountId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      summary: Get an account
+      operationId: getAccount
+      responses:
+        '200':
+          description: Successfully retrieved account information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BankAccountDTO'
+        '400':
+          description: Invalid request. Please check the provided data.
+    put:
+      tags:
+        - Bank account
+      parameters:
+        - name: bankAccountId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      summary: Update account information
+      operationId: updateAccount
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BankAccountUpdateRequest'
+      responses:
+        '200':
+          description: Bank account information updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BankAccountDTO'
+        '400':
+          description: Invalid request. Please check the provided data.
+    delete:
+      tags:
+        - Bank account
+      parameters:
+        - name: bankAccountId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      summary: Delete an account
+      operationId: deleteAccount
+      responses:
+        '200':
+          description: Bank account deleted successfully
+        '400':
+          description: Invalid request. Please check the provided data.
+  /bankOperation:
+    post:
+      tags:
+        - Bank operation
+      summary: Add an bank operation
+      operationId: addBankOperation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BankOperationCreationRequest'
+      responses:
+        '200':
+          description: Account line added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BankOperationDTO'
+        '400':
+          description: Invalid request. Please check the provided data.
+  '/bankOperation/{bankOperationId}':
+    get:
+      tags:
+        - Bank operation
+      parameters:
+        - name: bankOperationId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      summary: Get a bank operation
+      operationId: getBankOperation
+      responses:
+        '200':
+          description: Successfully retrieved bank operation information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BankOperationDTO'
+        '400':
+          description: Invalid request. Please check the provided data.
+    put:
+      tags:
+        - Bank operation
+      parameters:
+        - name: bankOperationId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      summary: Update the bank operation information
+      operationId: updateBankOperation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BankOperationUpdateRequest'
+      responses:
+        '200':
+          description: Bank operation information updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BankOperationDTO'
+        '400':
+          description: Invalid request. Please check the provided data.
+    delete:
+      tags:
+        - Bank operation
+      parameters:
+        - name: bankOperationId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            minimum: 1
+      summary: Delete a bank operation
+      operationId: deleteBankOperation
+      responses:
+        '200':
+          description: Bank operation deleted successfully
+        '400':
+          description: Invalid request. Please check the provided data.
+components:
+  schemas:
+    CreateUserAccountRequest:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          minLength: 8
+      required:
+        - firstName
+        - lastName
+        - email
+        - password
+    UserUpdateRequest:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+          format: email
+    UserLoginRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          minLength: 8
+      required:
+        - email
+        - password
+    GroupCreationRequest:
+      type: object
+      properties:
+        groupName:
+          type: string
+      required:
+        - groupName
+    GroupUpdateRequest:
+      type: object
+      properties:
+        groupName:
+          type: string
+    AddUserGroupRequest:
+      type: object
+      properties:
+        userId:
+          type: integer
+        authorization:
+          $ref: '#/components/schemas/GroupAuthorizationEnum'
+      required:
+        - userId
+        - authorization
+    UpdateUserGroupRequest:
+      type: object
+      properties:
+        authorization:
+          $ref: '#/components/schemas/GroupAuthorizationEnum'
+    BankAccountCreationRequest:
+      type: object
+      properties:
+        groupId:
+          type: integer
+        accountName:
+          type: string
+        baseAmountDecimal:
+          type: integer
+      required:
+        - groupId
+        - accountName
+        - baseAmountDecimal
+    BankAccountUpdateRequest:
+      type: object
+      properties:
+        accountName:
+          type: string
+        baseAmountDecimal:
+          type: integer
+    BankOperationCreationRequest:
+      type: object
+      properties:
+        accountId:
+          type: integer
+        lineAmountDecimal:
+          type: integer
+        dateAmount:
+          type: string
+          format: date
+      required:
+        - accountId
+        - lineAmountDecimal
+        - dateAmount
+    BankOperationUpdateRequest:
+      type: object
+      properties:
+        lineAmountDecimal:
+          type: integer
+        dateAmount:
+          type: string
+          format: date
+    FunctionalExceptionDTO:
+      type: object
+      properties:
+        status:
+          type: integer
+        details:
+          type: string
+        exception:
+          type: string
+        message:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+      required:
+        - status
+        - details
+        - exception
+        - message
+        - timestamp
+    MethodArgumentNotValidExceptionDTO:
+      type: object
+      properties:
+        status:
+          type: integer
+        details:
+          type: string
+        exception:
+          type: string
+        message:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        field:
+          type: string
+        objectName:
+          type: string
+      required:
+        - status
+        - details
+        - exception
+        - message
+        - timestamp
+        - field
+        - objectName
+    UserDTO:
+      type: object
+      properties:
+        userId:
+          type: integer
+        firstName:
+          type: string
+          example: John
+        lastName:
+          type: string
+          example: Doe
+        email:
+          type: string
+          format: email
+          example: johndoe@example.com
+      required:
+        - userId
+        - firstName
+        - lastName
+        - email
+    UserGroupDTO:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/UserDTO'
+        authorization:
+          $ref: '#/components/schemas/GroupAuthorizationEnum'
+      required:
+        - user
+        - authorization
+    GroupDTO:
+      type: object
+      properties:
+        groupId:
+          type: integer
+        groupName:
+          type: string
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserGroupDTO'
+      required:
+        - groupId
+        - groupName
+        - users
+    GroupIndexDTO:
+      type: object
+      properties:
+        groupId:
+          type: integer
+        groupName:
+          type: string
+      required:
+        - groupId
+        - groupName
+    BankAccountIndexDTO:
+      type: object
+      properties:
+        accountId:
+          type: integer
+        accountName:
+          type: string
+        baseAmountDecimal:
+          type: integer
+      required:
+        - accountId
+        - accountName
+        - baseAmountDecimal
+    BankAccountDTO:
+      type: object
+      properties:
+        groupIndexDTO:
+          $ref: '#/components/schemas/GroupIndexDTO'
+        accountIndexDTO:
+          $ref: '#/components/schemas/BankAccountIndexDTO'
+      required:
+        - groupIndexDTO
+        - accountIndexDTO
+    BankAccountGroupDTO:
+      type: object
+      properties:
+        groupIndexDTO:
+          $ref: '#/components/schemas/GroupIndexDTO'
+        accountIndexDTOs:
+          type: array
+          items:
+            $ref: '#/components/schemas/BankAccountIndexDTO'
+      required:
+        - groupIndexDTO
+        - accountIndexDTOs
+    BankOperationIndexDTO:
+      type: object
+      properties:
+        accountLineId:
+          type: integer
+        lineAmountDecimal:
+          type: integer
+        dateAmount:
+          type: string
+          format: date
+      required:
+        - accountLineId
+        - lineAmountDecimal
+        - dateAmount
+    BankOperationDTO:
+      type: object
+      properties:
+        accountIndexDTO:
+          $ref: '#/components/schemas/BankAccountIndexDTO'
+        accountLineIndexDTO:
+          $ref: '#/components/schemas/BankOperationIndexDTO'
+      required:
+        - accountIndexDTO
+        - accountLineIndexDTO
+    GroupAuthorizationEnum:
+      type: string
+      enum:
+        - READ
+        - WRITE
+        - ADMIN
