@@ -3,7 +3,6 @@
 .openapi-generator-ignore
 README.md
 api.ts
-api/auth-api.ts
 api/bank-account-api.ts
 api/bank-operation-api.ts
 api/group-api.ts

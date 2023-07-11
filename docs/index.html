@@ -1192,13 +1192,6 @@ ul.nav-tabs {
             -->
             <li class="nav-fixed nav-header active" data-group="_"><a href="#api-_">API Summary</a></li>
 
-                  <li class="nav-header" data-group="Auth"><a href="#api-Auth">API Methods - Auth</a></li>
-                    <li data-group="Auth" data-name="createUserAccount" class="">
-                      <a href="#api-Auth-createUserAccount">createUserAccount</a>
-                    </li>
-                    <li data-group="Auth" data-name="loginUser" class="">
-                      <a href="#api-Auth-loginUser">loginUser</a>
-                    </li>
                   <li class="nav-header" data-group="BankAccount"><a href="#api-BankAccount">API Methods - BankAccount</a></li>
                     <li data-group="BankAccount" data-name="addAccount" class="">
                       <a href="#api-BankAccount-addAccount">addAccount</a>
@@ -1254,6 +1247,9 @@ ul.nav-tabs {
                       <a href="#api-Group-updateUserInGroup">updateUserInGroup</a>
                     </li>
                   <li class="nav-header" data-group="User"><a href="#api-User">API Methods - User</a></li>
+                    <li data-group="User" data-name="checkRegistration" class="">
+                      <a href="#api-User-checkRegistration">checkRegistration</a>
+                    </li>
                     <li data-group="User" data-name="getCurrentUserInfo" class="">
                       <a href="#api-User-getCurrentUserInfo">getCurrentUserInfo</a>
                     </li>
@@ -1287,793 +1283,6 @@ ul.nav-tabs {
           </div>
         </div>
         <div id="sections">
-                <section id="api-Auth">
-                  <h1>Auth</h1>
-                    <div id="api-Auth-createUserAccount">
-                      <article id="api-Auth-createUserAccount-0" data-group="User" data-name="createUserAccount" data-version="0">
-                        <div class="pull-left">
-                          <h1>createUserAccount</h1>
-                          <p>Create a new user account</p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked"></p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/auth/signup</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Auth-createUserAccount-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Auth-createUserAccount-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Auth-createUserAccount-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Auth-createUserAccount-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Auth-createUserAccount-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Auth-createUserAccount-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Auth-createUserAccount-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Auth-createUserAccount-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Auth-createUserAccount-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Auth-createUserAccount-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Auth-createUserAccount-0-python">Python</a></li>
-                          <li class=""><a href="#examples-Auth-createUserAccount-0-rust">Rust</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Auth-createUserAccount-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST \
- -H "Accept: application/json" \
- -H "Content-Type: application/json" \
- "http://localhost:8080/api/auth/signup" \
- -d '{
-  &quot;firstName&quot; : &quot;firstName&quot;,
-  &quot;lastName&quot; : &quot;lastName&quot;,
-  &quot;password&quot; : &quot;password&quot;,
-  &quot;email&quot; : &quot;email&quot;
-}'
-</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-Auth-createUserAccount-0-java">
-                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.model.*;
-import org.openapitools.client.api.AuthApi;
-
-import java.io.File;
-import java.util.*;
-
-public class AuthApiExample {
-    public static void main(String[] args) {
-
-        // Create an instance of the API class
-        AuthApi apiInstance = new AuthApi();
-        CreateUserAccountRequest createUserAccountRequest = ; // CreateUserAccountRequest | 
-
-        try {
-            UserDTO result = apiInstance.createUserAccount(createUserAccountRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AuthApi#createUserAccount");
-            e.printStackTrace();
-        }
-    }
-}
-</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Auth-createUserAccount-0-android">
-                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.AuthApi;
-
-public class AuthApiExample {
-    public static void main(String[] args) {
-        AuthApi apiInstance = new AuthApi();
-        CreateUserAccountRequest createUserAccountRequest = ; // CreateUserAccountRequest | 
-
-        try {
-            UserDTO result = apiInstance.createUserAccount(createUserAccountRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AuthApi#createUserAccount");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-Auth-createUserAccount-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-Auth-createUserAccount-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
-
-// Create an instance of the API class
-AuthApi *apiInstance = [[AuthApi alloc] init];
-CreateUserAccountRequest *createUserAccountRequest = ; // 
-
-// Create a new user account
-[apiInstance createUserAccountWith:createUserAccountRequest
-              completionHandler: ^(UserDTO output, NSError* error) {
-    if (output) {
-        NSLog(@"%@", output);
-    }
-    if (error) {
-        NSLog(@"Error: %@", error);
-    }
-}];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Auth-createUserAccount-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
-
-// Create an instance of the API class
-var api = new BankWizApi.AuthApi()
-var createUserAccountRequest = ; // {CreateUserAccountRequest} 
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.createUserAccount(createUserAccountRequest, callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-Auth-createUserAccount-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-Auth-createUserAccount-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class createUserAccountExample
-    {
-        public void main()
-        {
-
-            // Create an instance of the API class
-            var apiInstance = new AuthApi();
-            var createUserAccountRequest = new CreateUserAccountRequest(); // CreateUserAccountRequest | 
-
-            try {
-                // Create a new user account
-                UserDTO result = apiInstance.createUserAccount(createUserAccountRequest);
-                Debug.WriteLine(result);
-            } catch (Exception e) {
-                Debug.Print("Exception when calling AuthApi.createUserAccount: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Auth-createUserAccount-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Create an instance of the API class
-$api_instance = new OpenAPITools\Client\Api\AuthApi();
-$createUserAccountRequest = ; // CreateUserAccountRequest | 
-
-try {
-    $result = $api_instance->createUserAccount($createUserAccountRequest);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AuthApi->createUserAccount: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Auth-createUserAccount-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::OPenAPIClient::Configuration;
-use WWW::OPenAPIClient::AuthApi;
-
-# Create an instance of the API class
-my $api_instance = WWW::OPenAPIClient::AuthApi->new();
-my $createUserAccountRequest = WWW::OPenAPIClient::Object::CreateUserAccountRequest->new(); # CreateUserAccountRequest | 
-
-eval {
-    my $result = $api_instance->createUserAccount(createUserAccountRequest => $createUserAccountRequest);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling AuthApi->createUserAccount: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Auth-createUserAccount-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import openapi_client
-from openapi_client.rest import ApiException
-from pprint import pprint
-
-# Create an instance of the API class
-api_instance = openapi_client.AuthApi()
-createUserAccountRequest =  # CreateUserAccountRequest | 
-
-try:
-    # Create a new user account
-    api_response = api_instance.create_user_account(createUserAccountRequest)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling AuthApi->createUserAccount: %s\n" % e)</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Auth-createUserAccount-0-rust">
-                              <pre class="prettyprint"><code class="language-rust">extern crate AuthApi;
-
-pub fn main() {
-    let createUserAccountRequest = ; // CreateUserAccountRequest
-
-    let mut context = AuthApi::Context::default();
-    let result = client.createUserAccount(createUserAccountRequest, &context).wait();
-
-    println!("{:?}", result);
-}
-</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Scopes</h2>
-                          <table>
-                            
-                          </table>
-
-                          <h2>Parameters</h2>
-
-
-
-                            <div class="methodsubtabletitle">Body parameters</div>
-                            <table id="methodsubtable">
-                              <tr>
-                                <th width="150px">Name</th>
-                                <th>Description</th>
-                              </tr>
-                                <tr><td style="width:150px;">createUserAccountRequest <span style="color:red;">*</span></td>
-<td>
-<p class="marked"></p>
-<script>
-$(document).ready(function() {
-  var schemaWrapper = {
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/CreateUserAccountRequest"
-      }
-    }
-  },
-  "required" : true
-};
-
-  var schema = findNode('schema',schemaWrapper).schema;
-  if (!schema) {
-    schema = schemaWrapper.schema;
-  }
-  if (schema.$ref != null) {
-    schema = defsParser.$refs.get(schema.$ref);
-  } else {
-    schemaWrapper.definitions = Object.assign({}, defs);
-    $RefParser.dereference(schemaWrapper).catch(function(err) {
-      console.log(err);
-    });
-  }
-
-  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
-  var result = $('#d2e199_createUserAccount_createUserAccountRequest');
-  result.empty();
-  result.append(view.render());
-});
-</script>
-<div id="d2e199_createUserAccount_createUserAccountRequest"></div>
-</td>
-</tr>
-
-                            </table>
-
-
-
-                          <h2>Responses</h2>
-                            <h3 id="examples-Auth-createUserAccount-title-201"></h3>
-                            <p id="examples-Auth-createUserAccount-description-201" class="marked"></p>
-                            <script>
-                              var responseAuth201_description = `User account created successfully`;
-                              var responseAuth201_description_break = responseAuth201_description.indexOf('\n');
-                              if (responseAuth201_description_break == -1) {
-                                $("#examples-Auth-createUserAccount-title-201").text("Status: 201 - " + responseAuth201_description);
-                              } else {
-                                $("#examples-Auth-createUserAccount-title-201").text("Status: 201 - " + responseAuth201_description.substring(0, responseAuth201_description_break));
-                                $("#examples-Auth-createUserAccount-description-201").html(responseAuth201_description.substring(responseAuth201_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-Auth-createUserAccount-201" class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-Auth-createUserAccount-201-schema">Schema</a>
-                                </li>
-
-
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-Auth-createUserAccount-201-wrapper" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-Auth-createUserAccount-201-schema">
-                                  <div id="responses-Auth-createUserAccount-schema-201" class="exampleStyle">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = ;
-                                        var schema = findNode('schema',schemaWrapper).schema;
-                                        if (!schema) {
-                                          schema = schemaWrapper.schema;
-                                        }
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                          Object.keys(schema.properties).forEach( (item) => {
-                                            if (schema.properties[item].$ref != null) {
-                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
-                                            }
-                                          });
-                                        } else if (schema.items != null && schema.items.$ref != null) {
-                                            schema.items = defsParser.$refs.get(schema.items.$ref);
-                                        } else {
-                                          schemaWrapper.definitions = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-Auth-createUserAccount-201-schema-data').val(JSON.stringify(schema));
-                                        var result = $('#responses-Auth-createUserAccount-schema-201');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-Auth-createUserAccount-201-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-                            <h3 id="examples-Auth-createUserAccount-title-400"></h3>
-                            <p id="examples-Auth-createUserAccount-description-400" class="marked"></p>
-                            <script>
-                              var responseAuth400_description = `Invalid request. Please check the provided data.`;
-                              var responseAuth400_description_break = responseAuth400_description.indexOf('\n');
-                              if (responseAuth400_description_break == -1) {
-                                $("#examples-Auth-createUserAccount-title-400").text("Status: 400 - " + responseAuth400_description);
-                              } else {
-                                $("#examples-Auth-createUserAccount-title-400").text("Status: 400 - " + responseAuth400_description.substring(0, responseAuth400_description_break));
-                                $("#examples-Auth-createUserAccount-description-400").html(responseAuth400_description.substring(responseAuth400_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-Auth-createUserAccount-400" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-Auth-createUserAccount-400-wrapper" style='margin-bottom: 10px;'>
-                            </div>
-                        </article>
-                      </div>
-                      <hr>
-                    <div id="api-Auth-loginUser">
-                      <article id="api-Auth-loginUser-0" data-group="User" data-name="loginUser" data-version="0">
-                        <div class="pull-left">
-                          <h1>loginUser</h1>
-                          <p>Login to an existing user account</p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked"></p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/auth/login</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Auth-loginUser-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Auth-loginUser-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Auth-loginUser-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Auth-loginUser-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Auth-loginUser-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Auth-loginUser-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Auth-loginUser-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Auth-loginUser-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Auth-loginUser-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Auth-loginUser-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Auth-loginUser-0-python">Python</a></li>
-                          <li class=""><a href="#examples-Auth-loginUser-0-rust">Rust</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Auth-loginUser-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST \
- -H "Accept: application/json" \
- -H "Content-Type: application/json" \
- "http://localhost:8080/api/auth/login" \
- -d '{
-  &quot;password&quot; : &quot;password&quot;,
-  &quot;email&quot; : &quot;email&quot;
-}'
-</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-Auth-loginUser-0-java">
-                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.model.*;
-import org.openapitools.client.api.AuthApi;
-
-import java.io.File;
-import java.util.*;
-
-public class AuthApiExample {
-    public static void main(String[] args) {
-
-        // Create an instance of the API class
-        AuthApi apiInstance = new AuthApi();
-        UserLoginRequest userLoginRequest = ; // UserLoginRequest | 
-
-        try {
-            UserDTO result = apiInstance.loginUser(userLoginRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AuthApi#loginUser");
-            e.printStackTrace();
-        }
-    }
-}
-</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Auth-loginUser-0-android">
-                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.AuthApi;
-
-public class AuthApiExample {
-    public static void main(String[] args) {
-        AuthApi apiInstance = new AuthApi();
-        UserLoginRequest userLoginRequest = ; // UserLoginRequest | 
-
-        try {
-            UserDTO result = apiInstance.loginUser(userLoginRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling AuthApi#loginUser");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-Auth-loginUser-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-Auth-loginUser-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
-
-// Create an instance of the API class
-AuthApi *apiInstance = [[AuthApi alloc] init];
-UserLoginRequest *userLoginRequest = ; // 
-
-// Login to an existing user account
-[apiInstance loginUserWith:userLoginRequest
-              completionHandler: ^(UserDTO output, NSError* error) {
-    if (output) {
-        NSLog(@"%@", output);
-    }
-    if (error) {
-        NSLog(@"Error: %@", error);
-    }
-}];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Auth-loginUser-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
-
-// Create an instance of the API class
-var api = new BankWizApi.AuthApi()
-var userLoginRequest = ; // {UserLoginRequest} 
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.loginUser(userLoginRequest, callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-Auth-loginUser-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-Auth-loginUser-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class loginUserExample
-    {
-        public void main()
-        {
-
-            // Create an instance of the API class
-            var apiInstance = new AuthApi();
-            var userLoginRequest = new UserLoginRequest(); // UserLoginRequest | 
-
-            try {
-                // Login to an existing user account
-                UserDTO result = apiInstance.loginUser(userLoginRequest);
-                Debug.WriteLine(result);
-            } catch (Exception e) {
-                Debug.Print("Exception when calling AuthApi.loginUser: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Auth-loginUser-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Create an instance of the API class
-$api_instance = new OpenAPITools\Client\Api\AuthApi();
-$userLoginRequest = ; // UserLoginRequest | 
-
-try {
-    $result = $api_instance->loginUser($userLoginRequest);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AuthApi->loginUser: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Auth-loginUser-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::OPenAPIClient::Configuration;
-use WWW::OPenAPIClient::AuthApi;
-
-# Create an instance of the API class
-my $api_instance = WWW::OPenAPIClient::AuthApi->new();
-my $userLoginRequest = WWW::OPenAPIClient::Object::UserLoginRequest->new(); # UserLoginRequest | 
-
-eval {
-    my $result = $api_instance->loginUser(userLoginRequest => $userLoginRequest);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling AuthApi->loginUser: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Auth-loginUser-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import openapi_client
-from openapi_client.rest import ApiException
-from pprint import pprint
-
-# Create an instance of the API class
-api_instance = openapi_client.AuthApi()
-userLoginRequest =  # UserLoginRequest | 
-
-try:
-    # Login to an existing user account
-    api_response = api_instance.login_user(userLoginRequest)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling AuthApi->loginUser: %s\n" % e)</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Auth-loginUser-0-rust">
-                              <pre class="prettyprint"><code class="language-rust">extern crate AuthApi;
-
-pub fn main() {
-    let userLoginRequest = ; // UserLoginRequest
-
-    let mut context = AuthApi::Context::default();
-    let result = client.loginUser(userLoginRequest, &context).wait();
-
-    println!("{:?}", result);
-}
-</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Scopes</h2>
-                          <table>
-                            
-                          </table>
-
-                          <h2>Parameters</h2>
-
-
-
-                            <div class="methodsubtabletitle">Body parameters</div>
-                            <table id="methodsubtable">
-                              <tr>
-                                <th width="150px">Name</th>
-                                <th>Description</th>
-                              </tr>
-                                <tr><td style="width:150px;">userLoginRequest <span style="color:red;">*</span></td>
-<td>
-<p class="marked"></p>
-<script>
-$(document).ready(function() {
-  var schemaWrapper = {
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/UserLoginRequest"
-      }
-    }
-  },
-  "required" : true
-};
-
-  var schema = findNode('schema',schemaWrapper).schema;
-  if (!schema) {
-    schema = schemaWrapper.schema;
-  }
-  if (schema.$ref != null) {
-    schema = defsParser.$refs.get(schema.$ref);
-  } else {
-    schemaWrapper.definitions = Object.assign({}, defs);
-    $RefParser.dereference(schemaWrapper).catch(function(err) {
-      console.log(err);
-    });
-  }
-
-  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
-  var result = $('#d2e199_loginUser_userLoginRequest');
-  result.empty();
-  result.append(view.render());
-});
-</script>
-<div id="d2e199_loginUser_userLoginRequest"></div>
-</td>
-</tr>
-
-                            </table>
-
-
-
-                          <h2>Responses</h2>
-                            <h3 id="examples-Auth-loginUser-title-200"></h3>
-                            <p id="examples-Auth-loginUser-description-200" class="marked"></p>
-                            <script>
-                              var responseAuth200_description = `Login successful`;
-                              var responseAuth200_description_break = responseAuth200_description.indexOf('\n');
-                              if (responseAuth200_description_break == -1) {
-                                $("#examples-Auth-loginUser-title-200").text("Status: 200 - " + responseAuth200_description);
-                              } else {
-                                $("#examples-Auth-loginUser-title-200").text("Status: 200 - " + responseAuth200_description.substring(0, responseAuth200_description_break));
-                                $("#examples-Auth-loginUser-description-200").html(responseAuth200_description.substring(responseAuth200_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-Auth-loginUser-200" class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-Auth-loginUser-200-schema">Schema</a>
-                                </li>
-
-
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-Auth-loginUser-200-wrapper" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-Auth-loginUser-200-schema">
-                                  <div id="responses-Auth-loginUser-schema-200" class="exampleStyle">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = ;
-                                        var schema = findNode('schema',schemaWrapper).schema;
-                                        if (!schema) {
-                                          schema = schemaWrapper.schema;
-                                        }
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                          Object.keys(schema.properties).forEach( (item) => {
-                                            if (schema.properties[item].$ref != null) {
-                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
-                                            }
-                                          });
-                                        } else if (schema.items != null && schema.items.$ref != null) {
-                                            schema.items = defsParser.$refs.get(schema.items.$ref);
-                                        } else {
-                                          schemaWrapper.definitions = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-Auth-loginUser-200-schema-data').val(JSON.stringify(schema));
-                                        var result = $('#responses-Auth-loginUser-schema-200');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-Auth-loginUser-200-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-                            <h3 id="examples-Auth-loginUser-title-400"></h3>
-                            <p id="examples-Auth-loginUser-description-400" class="marked"></p>
-                            <script>
-                              var responseAuth400_description = `Incorrect request`;
-                              var responseAuth400_description_break = responseAuth400_description.indexOf('\n');
-                              if (responseAuth400_description_break == -1) {
-                                $("#examples-Auth-loginUser-title-400").text("Status: 400 - " + responseAuth400_description);
-                              } else {
-                                $("#examples-Auth-loginUser-title-400").text("Status: 400 - " + responseAuth400_description.substring(0, responseAuth400_description_break));
-                                $("#examples-Auth-loginUser-description-400").html(responseAuth400_description.substring(responseAuth400_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-Auth-loginUser-400" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-Auth-loginUser-400-wrapper" style='margin-bottom: 10px;'>
-                            </div>
-                            <h3 id="examples-Auth-loginUser-title-401"></h3>
-                            <p id="examples-Auth-loginUser-description-401" class="marked"></p>
-                            <script>
-                              var responseAuth401_description = `Unauthorized`;
-                              var responseAuth401_description_break = responseAuth401_description.indexOf('\n');
-                              if (responseAuth401_description_break == -1) {
-                                $("#examples-Auth-loginUser-title-401").text("Status: 401 - " + responseAuth401_description);
-                              } else {
-                                $("#examples-Auth-loginUser-title-401").text("Status: 401 - " + responseAuth401_description.substring(0, responseAuth401_description_break));
-                                $("#examples-Auth-loginUser-description-401").html(responseAuth401_description.substring(responseAuth401_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-Auth-loginUser-401" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-Auth-loginUser-401-wrapper" style='margin-bottom: 10px;'>
-                            </div>
-                        </article>
-                      </div>
-                      <hr>
-                  </section>
                 <section id="api-BankAccount">
                   <h1>BankAccount</h1>
                     <div id="api-BankAccount-addAccount">
@@ -2110,6 +1319,7 @@ $(document).ready(function() {
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-BankAccount-addAccount-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X POST \
+ -H "Authorization: Bearer [[accessToken]]" \
  -H "Accept: application/json" \
  -H "Content-Type: application/json" \
  "http://localhost:8080/api/bankAccount" \
@@ -2131,6 +1341,11 @@ import java.util.*;
 
 public class BankAccountApiExample {
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure Bearer (JWT) access token for authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         // Create an instance of the API class
         BankAccountApi apiInstance = new BankAccountApi();
@@ -2171,7 +1386,10 @@ public class BankAccountApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-BankAccount-addAccount-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 // Create an instance of the API class
 BankAccountApi *apiInstance = [[BankAccountApi alloc] init];
@@ -2192,6 +1410,11 @@ BankAccountCreationRequest *bankAccountCreationRequest = ; //
 
                             <div class="tab-pane" id="examples-BankAccount-addAccount-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.BankAccountApi()
@@ -2224,6 +1447,8 @@ namespace Example
     {
         public void main()
         {
+            // Configure Bearer (JWT) access token for authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             // Create an instance of the API class
             var apiInstance = new BankAccountApi();
@@ -2246,6 +1471,9 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
+
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\BankAccountApi();
 $bankAccountCreationRequest = ; // BankAccountCreationRequest | 
@@ -2263,6 +1491,9 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::OPenAPIClient::Configuration;
 use WWW::OPenAPIClient::BankAccountApi;
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::BankAccountApi->new();
@@ -2283,6 +1514,9 @@ import time
 import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.BankAccountApi()
@@ -2491,6 +1725,7 @@ $(document).ready(function() {
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-BankAccount-deleteAccount-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X DELETE \
+ -H "Authorization: Bearer [[accessToken]]" \
  "http://localhost:8080/api/bankAccount/{bankAccountId}"
 </code></pre>
                           </div>
@@ -2505,6 +1740,11 @@ import java.util.*;
 
 public class BankAccountApiExample {
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure Bearer (JWT) access token for authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         // Create an instance of the API class
         BankAccountApi apiInstance = new BankAccountApi();
@@ -2543,7 +1783,10 @@ public class BankAccountApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-BankAccount-deleteAccount-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 // Create an instance of the API class
 BankAccountApi *apiInstance = [[BankAccountApi alloc] init];
@@ -2561,6 +1804,11 @@ Long *bankAccountId = 789; //  (default to null)
 
                             <div class="tab-pane" id="examples-BankAccount-deleteAccount-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.BankAccountApi()
@@ -2593,6 +1841,8 @@ namespace Example
     {
         public void main()
         {
+            // Configure Bearer (JWT) access token for authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             // Create an instance of the API class
             var apiInstance = new BankAccountApi();
@@ -2614,6 +1864,9 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
+
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\BankAccountApi();
 $bankAccountId = 789; // Long | 
@@ -2630,6 +1883,9 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::OPenAPIClient::Configuration;
 use WWW::OPenAPIClient::BankAccountApi;
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::BankAccountApi->new();
@@ -2649,6 +1905,9 @@ import time
 import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.BankAccountApi()
@@ -2800,6 +2059,7 @@ pub fn main() {
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-BankAccount-getAccount-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X GET \
+ -H "Authorization: Bearer [[accessToken]]" \
  -H "Accept: application/json" \
  "http://localhost:8080/api/bankAccount/{bankAccountId}"
 </code></pre>
@@ -2815,6 +2075,11 @@ import java.util.*;
 
 public class BankAccountApiExample {
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure Bearer (JWT) access token for authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         // Create an instance of the API class
         BankAccountApi apiInstance = new BankAccountApi();
@@ -2855,7 +2120,10 @@ public class BankAccountApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-BankAccount-getAccount-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 // Create an instance of the API class
 BankAccountApi *apiInstance = [[BankAccountApi alloc] init];
@@ -2876,6 +2144,11 @@ Long *bankAccountId = 789; //  (default to null)
 
                             <div class="tab-pane" id="examples-BankAccount-getAccount-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.BankAccountApi()
@@ -2908,6 +2181,8 @@ namespace Example
     {
         public void main()
         {
+            // Configure Bearer (JWT) access token for authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             // Create an instance of the API class
             var apiInstance = new BankAccountApi();
@@ -2930,6 +2205,9 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
+
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\BankAccountApi();
 $bankAccountId = 789; // Long | 
@@ -2947,6 +2225,9 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::OPenAPIClient::Configuration;
 use WWW::OPenAPIClient::BankAccountApi;
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::BankAccountApi->new();
@@ -2967,6 +2248,9 @@ import time
 import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.BankAccountApi()
@@ -3159,6 +2443,7 @@ pub fn main() {
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-BankAccount-getBankAccounts-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X GET \
+ -H "Authorization: Bearer [[accessToken]]" \
  -H "Accept: application/json" \
  "http://localhost:8080/api/bankAccount/bankAccounts"
 </code></pre>
@@ -3174,6 +2459,11 @@ import java.util.*;
 
 public class BankAccountApiExample {
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure Bearer (JWT) access token for authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         // Create an instance of the API class
         BankAccountApi apiInstance = new BankAccountApi();
@@ -3212,7 +2502,10 @@ public class BankAccountApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-BankAccount-getBankAccounts-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 // Create an instance of the API class
 BankAccountApi *apiInstance = [[BankAccountApi alloc] init];
@@ -3232,6 +2525,11 @@ BankAccountApi *apiInstance = [[BankAccountApi alloc] init];
 
                             <div class="tab-pane" id="examples-BankAccount-getBankAccounts-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.BankAccountApi()
@@ -3262,6 +2560,8 @@ namespace Example
     {
         public void main()
         {
+            // Configure Bearer (JWT) access token for authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             // Create an instance of the API class
             var apiInstance = new BankAccountApi();
@@ -3283,6 +2583,9 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
+
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\BankAccountApi();
 
@@ -3299,6 +2602,9 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::OPenAPIClient::Configuration;
 use WWW::OPenAPIClient::BankAccountApi;
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::BankAccountApi->new();
@@ -3318,6 +2624,9 @@ import time
 import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.BankAccountApi()
@@ -3478,6 +2787,7 @@ pub fn main() {
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-BankAccount-updateAccount-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X PUT \
+ -H "Authorization: Bearer [[accessToken]]" \
  -H "Accept: application/json" \
  -H "Content-Type: application/json" \
  "http://localhost:8080/api/bankAccount/{bankAccountId}" \
@@ -3498,6 +2808,11 @@ import java.util.*;
 
 public class BankAccountApiExample {
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure Bearer (JWT) access token for authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         // Create an instance of the API class
         BankAccountApi apiInstance = new BankAccountApi();
@@ -3540,7 +2855,10 @@ public class BankAccountApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-BankAccount-updateAccount-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 // Create an instance of the API class
 BankAccountApi *apiInstance = [[BankAccountApi alloc] init];
@@ -3563,6 +2881,11 @@ BankAccountUpdateRequest *bankAccountUpdateRequest = ; //
 
                             <div class="tab-pane" id="examples-BankAccount-updateAccount-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.BankAccountApi()
@@ -3596,6 +2919,8 @@ namespace Example
     {
         public void main()
         {
+            // Configure Bearer (JWT) access token for authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             // Create an instance of the API class
             var apiInstance = new BankAccountApi();
@@ -3619,6 +2944,9 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
+
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\BankAccountApi();
 $bankAccountId = 789; // Long | 
@@ -3637,6 +2965,9 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::OPenAPIClient::Configuration;
 use WWW::OPenAPIClient::BankAccountApi;
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::BankAccountApi->new();
@@ -3658,6 +2989,9 @@ import time
 import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.BankAccountApi()
@@ -3901,6 +3235,7 @@ $(document).ready(function() {
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-BankOperation-addBankOperation-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X POST \
+ -H "Authorization: Bearer [[accessToken]]" \
  -H "Accept: application/json" \
  -H "Content-Type: application/json" \
  "http://localhost:8080/api/bankOperation" \
@@ -3922,6 +3257,11 @@ import java.util.*;
 
 public class BankOperationApiExample {
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure Bearer (JWT) access token for authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         // Create an instance of the API class
         BankOperationApi apiInstance = new BankOperationApi();
@@ -3962,7 +3302,10 @@ public class BankOperationApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-BankOperation-addBankOperation-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 // Create an instance of the API class
 BankOperationApi *apiInstance = [[BankOperationApi alloc] init];
@@ -3983,6 +3326,11 @@ BankOperationCreationRequest *bankOperationCreationRequest = ; //
 
                             <div class="tab-pane" id="examples-BankOperation-addBankOperation-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.BankOperationApi()
@@ -4015,6 +3363,8 @@ namespace Example
     {
         public void main()
         {
+            // Configure Bearer (JWT) access token for authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             // Create an instance of the API class
             var apiInstance = new BankOperationApi();
@@ -4037,6 +3387,9 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
+
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\BankOperationApi();
 $bankOperationCreationRequest = ; // BankOperationCreationRequest | 
@@ -4054,6 +3407,9 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::OPenAPIClient::Configuration;
 use WWW::OPenAPIClient::BankOperationApi;
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::BankOperationApi->new();
@@ -4074,6 +3430,9 @@ import time
 import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.BankOperationApi()
@@ -4282,6 +3641,7 @@ $(document).ready(function() {
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-BankOperation-deleteBankOperation-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X DELETE \
+ -H "Authorization: Bearer [[accessToken]]" \
  "http://localhost:8080/api/bankOperation/{bankOperationId}"
 </code></pre>
                           </div>
@@ -4296,6 +3656,11 @@ import java.util.*;
 
 public class BankOperationApiExample {
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure Bearer (JWT) access token for authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         // Create an instance of the API class
         BankOperationApi apiInstance = new BankOperationApi();
@@ -4334,7 +3699,10 @@ public class BankOperationApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-BankOperation-deleteBankOperation-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 // Create an instance of the API class
 BankOperationApi *apiInstance = [[BankOperationApi alloc] init];
@@ -4352,6 +3720,11 @@ Long *bankOperationId = 789; //  (default to null)
 
                             <div class="tab-pane" id="examples-BankOperation-deleteBankOperation-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.BankOperationApi()
@@ -4384,6 +3757,8 @@ namespace Example
     {
         public void main()
         {
+            // Configure Bearer (JWT) access token for authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             // Create an instance of the API class
             var apiInstance = new BankOperationApi();
@@ -4405,6 +3780,9 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
+
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\BankOperationApi();
 $bankOperationId = 789; // Long | 
@@ -4421,6 +3799,9 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::OPenAPIClient::Configuration;
 use WWW::OPenAPIClient::BankOperationApi;
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::BankOperationApi->new();
@@ -4440,6 +3821,9 @@ import time
 import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.BankOperationApi()
@@ -4591,6 +3975,7 @@ pub fn main() {
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-BankOperation-getBankOperation-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X GET \
+ -H "Authorization: Bearer [[accessToken]]" \
  -H "Accept: application/json" \
  "http://localhost:8080/api/bankOperation/{bankOperationId}"
 </code></pre>
@@ -4606,6 +3991,11 @@ import java.util.*;
 
 public class BankOperationApiExample {
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure Bearer (JWT) access token for authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         // Create an instance of the API class
         BankOperationApi apiInstance = new BankOperationApi();
@@ -4646,7 +4036,10 @@ public class BankOperationApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-BankOperation-getBankOperation-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 // Create an instance of the API class
 BankOperationApi *apiInstance = [[BankOperationApi alloc] init];
@@ -4667,6 +4060,11 @@ Long *bankOperationId = 789; //  (default to null)
 
                             <div class="tab-pane" id="examples-BankOperation-getBankOperation-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.BankOperationApi()
@@ -4699,6 +4097,8 @@ namespace Example
     {
         public void main()
         {
+            // Configure Bearer (JWT) access token for authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             // Create an instance of the API class
             var apiInstance = new BankOperationApi();
@@ -4721,6 +4121,9 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
+
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\BankOperationApi();
 $bankOperationId = 789; // Long | 
@@ -4738,6 +4141,9 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::OPenAPIClient::Configuration;
 use WWW::OPenAPIClient::BankOperationApi;
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::BankOperationApi->new();
@@ -4758,6 +4164,9 @@ import time
 import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.BankOperationApi()
@@ -4950,6 +4359,7 @@ pub fn main() {
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-BankOperation-updateBankOperation-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X PUT \
+ -H "Authorization: Bearer [[accessToken]]" \
  -H "Accept: application/json" \
  -H "Content-Type: application/json" \
  "http://localhost:8080/api/bankOperation/{bankOperationId}" \
@@ -4970,6 +4380,11 @@ import java.util.*;
 
 public class BankOperationApiExample {
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure Bearer (JWT) access token for authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         // Create an instance of the API class
         BankOperationApi apiInstance = new BankOperationApi();
@@ -5012,7 +4427,10 @@ public class BankOperationApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-BankOperation-updateBankOperation-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 // Create an instance of the API class
 BankOperationApi *apiInstance = [[BankOperationApi alloc] init];
@@ -5035,6 +4453,11 @@ BankOperationUpdateRequest *bankOperationUpdateRequest = ; //
 
                             <div class="tab-pane" id="examples-BankOperation-updateBankOperation-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.BankOperationApi()
@@ -5068,6 +4491,8 @@ namespace Example
     {
         public void main()
         {
+            // Configure Bearer (JWT) access token for authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             // Create an instance of the API class
             var apiInstance = new BankOperationApi();
@@ -5091,6 +4516,9 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
+
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\BankOperationApi();
 $bankOperationId = 789; // Long | 
@@ -5109,6 +4537,9 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::OPenAPIClient::Configuration;
 use WWW::OPenAPIClient::BankOperationApi;
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::BankOperationApi->new();
@@ -5130,6 +4561,9 @@ import time
 import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.BankOperationApi()
@@ -5373,6 +4807,7 @@ $(document).ready(function() {
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Group-addUserToGroup-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X POST \
+ -H "Authorization: Bearer [[accessToken]]" \
  -H "Accept: application/json" \
  -H "Content-Type: application/json" \
  "http://localhost:8080/api/group/{groupId}/user" \
@@ -5392,6 +4827,11 @@ import java.util.*;
 
 public class GroupApiExample {
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure Bearer (JWT) access token for authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         // Create an instance of the API class
         GroupApi apiInstance = new GroupApi();
@@ -5434,7 +4874,10 @@ public class GroupApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Group-addUserToGroup-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 // Create an instance of the API class
 GroupApi *apiInstance = [[GroupApi alloc] init];
@@ -5457,6 +4900,11 @@ AddUserGroupRequest *addUserGroupRequest = ; //
 
                             <div class="tab-pane" id="examples-Group-addUserToGroup-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.GroupApi()
@@ -5490,6 +4938,8 @@ namespace Example
     {
         public void main()
         {
+            // Configure Bearer (JWT) access token for authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             // Create an instance of the API class
             var apiInstance = new GroupApi();
@@ -5513,6 +4963,9 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
+
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\GroupApi();
 $groupId = 789; // Long | 
@@ -5531,6 +4984,9 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::OPenAPIClient::Configuration;
 use WWW::OPenAPIClient::GroupApi;
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::GroupApi->new();
@@ -5552,6 +5008,9 @@ import time
 import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.GroupApi()
@@ -5792,6 +5251,7 @@ $(document).ready(function() {
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Group-createGroup-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X POST \
+ -H "Authorization: Bearer [[accessToken]]" \
  -H "Accept: application/json" \
  -H "Content-Type: application/json" \
  "http://localhost:8080/api/group" \
@@ -5811,6 +5271,11 @@ import java.util.*;
 
 public class GroupApiExample {
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure Bearer (JWT) access token for authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         // Create an instance of the API class
         GroupApi apiInstance = new GroupApi();
@@ -5851,7 +5316,10 @@ public class GroupApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Group-createGroup-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 // Create an instance of the API class
 GroupApi *apiInstance = [[GroupApi alloc] init];
@@ -5872,6 +5340,11 @@ GroupCreationRequest *groupCreationRequest = ; //
 
                             <div class="tab-pane" id="examples-Group-createGroup-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.GroupApi()
@@ -5904,6 +5377,8 @@ namespace Example
     {
         public void main()
         {
+            // Configure Bearer (JWT) access token for authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             // Create an instance of the API class
             var apiInstance = new GroupApi();
@@ -5926,6 +5401,9 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
+
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\GroupApi();
 $groupCreationRequest = ; // GroupCreationRequest | 
@@ -5943,6 +5421,9 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::OPenAPIClient::Configuration;
 use WWW::OPenAPIClient::GroupApi;
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::GroupApi->new();
@@ -5963,6 +5444,9 @@ import time
 import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.GroupApi()
@@ -6171,6 +5655,7 @@ $(document).ready(function() {
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Group-deleteGroup-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X DELETE \
+ -H "Authorization: Bearer [[accessToken]]" \
  "http://localhost:8080/api/group/{groupId}"
 </code></pre>
                           </div>
@@ -6185,6 +5670,11 @@ import java.util.*;
 
 public class GroupApiExample {
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure Bearer (JWT) access token for authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         // Create an instance of the API class
         GroupApi apiInstance = new GroupApi();
@@ -6223,7 +5713,10 @@ public class GroupApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Group-deleteGroup-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 // Create an instance of the API class
 GroupApi *apiInstance = [[GroupApi alloc] init];
@@ -6241,6 +5734,11 @@ Long *groupId = 789; //  (default to null)
 
                             <div class="tab-pane" id="examples-Group-deleteGroup-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.GroupApi()
@@ -6273,6 +5771,8 @@ namespace Example
     {
         public void main()
         {
+            // Configure Bearer (JWT) access token for authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             // Create an instance of the API class
             var apiInstance = new GroupApi();
@@ -6294,6 +5794,9 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
+
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\GroupApi();
 $groupId = 789; // Long | 
@@ -6310,6 +5813,9 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::OPenAPIClient::Configuration;
 use WWW::OPenAPIClient::GroupApi;
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::GroupApi->new();
@@ -6329,6 +5835,9 @@ import time
 import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.GroupApi()
@@ -6480,6 +5989,7 @@ pub fn main() {
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Group-getGroup-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X GET \
+ -H "Authorization: Bearer [[accessToken]]" \
  -H "Accept: application/json" \
  "http://localhost:8080/api/group/{groupId}"
 </code></pre>
@@ -6495,6 +6005,11 @@ import java.util.*;
 
 public class GroupApiExample {
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure Bearer (JWT) access token for authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         // Create an instance of the API class
         GroupApi apiInstance = new GroupApi();
@@ -6535,7 +6050,10 @@ public class GroupApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Group-getGroup-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 // Create an instance of the API class
 GroupApi *apiInstance = [[GroupApi alloc] init];
@@ -6556,6 +6074,11 @@ Long *groupId = 789; //  (default to null)
 
                             <div class="tab-pane" id="examples-Group-getGroup-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.GroupApi()
@@ -6588,6 +6111,8 @@ namespace Example
     {
         public void main()
         {
+            // Configure Bearer (JWT) access token for authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             // Create an instance of the API class
             var apiInstance = new GroupApi();
@@ -6610,6 +6135,9 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
+
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\GroupApi();
 $groupId = 789; // Long | 
@@ -6627,6 +6155,9 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::OPenAPIClient::Configuration;
 use WWW::OPenAPIClient::GroupApi;
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::GroupApi->new();
@@ -6647,6 +6178,9 @@ import time
 import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.GroupApi()
@@ -6839,6 +6373,7 @@ pub fn main() {
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Group-getGroups-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X GET \
+ -H "Authorization: Bearer [[accessToken]]" \
  -H "Accept: application/json" \
  "http://localhost:8080/api/group/groups"
 </code></pre>
@@ -6854,6 +6389,11 @@ import java.util.*;
 
 public class GroupApiExample {
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure Bearer (JWT) access token for authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         // Create an instance of the API class
         GroupApi apiInstance = new GroupApi();
@@ -6892,7 +6432,10 @@ public class GroupApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Group-getGroups-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 // Create an instance of the API class
 GroupApi *apiInstance = [[GroupApi alloc] init];
@@ -6912,6 +6455,11 @@ GroupApi *apiInstance = [[GroupApi alloc] init];
 
                             <div class="tab-pane" id="examples-Group-getGroups-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.GroupApi()
@@ -6942,6 +6490,8 @@ namespace Example
     {
         public void main()
         {
+            // Configure Bearer (JWT) access token for authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             // Create an instance of the API class
             var apiInstance = new GroupApi();
@@ -6963,6 +6513,9 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
+
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\GroupApi();
 
@@ -6979,6 +6532,9 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::OPenAPIClient::Configuration;
 use WWW::OPenAPIClient::GroupApi;
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::GroupApi->new();
@@ -6998,6 +6554,9 @@ import time
 import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.GroupApi()
@@ -7158,6 +6717,7 @@ pub fn main() {
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Group-removeUserFromGroup-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X DELETE \
+ -H "Authorization: Bearer [[accessToken]]" \
  -H "Accept: application/json" \
  "http://localhost:8080/api/group/{groupId}/user/{userId}"
 </code></pre>
@@ -7173,6 +6733,11 @@ import java.util.*;
 
 public class GroupApiExample {
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure Bearer (JWT) access token for authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         // Create an instance of the API class
         GroupApi apiInstance = new GroupApi();
@@ -7215,7 +6780,10 @@ public class GroupApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Group-removeUserFromGroup-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 // Create an instance of the API class
 GroupApi *apiInstance = [[GroupApi alloc] init];
@@ -7238,6 +6806,11 @@ Long *userId = 789; //  (default to null)
 
                             <div class="tab-pane" id="examples-Group-removeUserFromGroup-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.GroupApi()
@@ -7271,6 +6844,8 @@ namespace Example
     {
         public void main()
         {
+            // Configure Bearer (JWT) access token for authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             // Create an instance of the API class
             var apiInstance = new GroupApi();
@@ -7294,6 +6869,9 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
+
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\GroupApi();
 $groupId = 789; // Long | 
@@ -7312,6 +6890,9 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::OPenAPIClient::Configuration;
 use WWW::OPenAPIClient::GroupApi;
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::GroupApi->new();
@@ -7333,6 +6914,9 @@ import time
 import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.GroupApi()
@@ -7550,6 +7134,7 @@ pub fn main() {
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Group-updateGroup-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X PUT \
+ -H "Authorization: Bearer [[accessToken]]" \
  -H "Accept: application/json" \
  -H "Content-Type: application/json" \
  "http://localhost:8080/api/group/{groupId}" \
@@ -7569,6 +7154,11 @@ import java.util.*;
 
 public class GroupApiExample {
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure Bearer (JWT) access token for authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         // Create an instance of the API class
         GroupApi apiInstance = new GroupApi();
@@ -7611,7 +7201,10 @@ public class GroupApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Group-updateGroup-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 // Create an instance of the API class
 GroupApi *apiInstance = [[GroupApi alloc] init];
@@ -7634,6 +7227,11 @@ GroupUpdateRequest *groupUpdateRequest = ; //
 
                             <div class="tab-pane" id="examples-Group-updateGroup-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.GroupApi()
@@ -7667,6 +7265,8 @@ namespace Example
     {
         public void main()
         {
+            // Configure Bearer (JWT) access token for authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             // Create an instance of the API class
             var apiInstance = new GroupApi();
@@ -7690,6 +7290,9 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
+
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\GroupApi();
 $groupId = 789; // Long | 
@@ -7708,6 +7311,9 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::OPenAPIClient::Configuration;
 use WWW::OPenAPIClient::GroupApi;
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::GroupApi->new();
@@ -7729,6 +7335,9 @@ import time
 import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.GroupApi()
@@ -7969,6 +7578,7 @@ $(document).ready(function() {
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-Group-updateUserInGroup-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X PUT \
+ -H "Authorization: Bearer [[accessToken]]" \
  -H "Accept: application/json" \
  -H "Content-Type: application/json" \
  "http://localhost:8080/api/group/{groupId}/user/{userId}" \
@@ -7986,6 +7596,11 @@ import java.util.*;
 
 public class GroupApiExample {
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure Bearer (JWT) access token for authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         // Create an instance of the API class
         GroupApi apiInstance = new GroupApi();
@@ -8030,7 +7645,10 @@ public class GroupApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-Group-updateUserInGroup-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 // Create an instance of the API class
 GroupApi *apiInstance = [[GroupApi alloc] init];
@@ -8055,6 +7673,11 @@ UpdateUserGroupRequest *updateUserGroupRequest = ; //
 
                             <div class="tab-pane" id="examples-Group-updateUserInGroup-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.GroupApi()
@@ -8089,6 +7712,8 @@ namespace Example
     {
         public void main()
         {
+            // Configure Bearer (JWT) access token for authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             // Create an instance of the API class
             var apiInstance = new GroupApi();
@@ -8113,6 +7738,9 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
+
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\GroupApi();
 $groupId = 789; // Long | 
@@ -8132,6 +7760,9 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::OPenAPIClient::Configuration;
 use WWW::OPenAPIClient::GroupApi;
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::GroupApi->new();
@@ -8154,6 +7785,9 @@ import time
 import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.GroupApi()
@@ -8388,6 +8022,350 @@ $(document).ready(function() {
                   </section>
                 <section id="api-User">
                   <h1>User</h1>
+                    <div id="api-User-checkRegistration">
+                      <article id="api-User-checkRegistration-0" data-group="User" data-name="checkRegistration" data-version="0">
+                        <div class="pull-left">
+                          <h1>checkRegistration</h1>
+                          <p>Checks if the user is registered, and registers her if not.</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/user/checkregistration</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-User-checkRegistration-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-User-checkRegistration-0-java">Java</a></li>
+                          <li class=""><a href="#examples-User-checkRegistration-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-User-checkRegistration-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-User-checkRegistration-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-User-checkRegistration-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-User-checkRegistration-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-User-checkRegistration-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-User-checkRegistration-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-User-checkRegistration-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-User-checkRegistration-0-python">Python</a></li>
+                          <li class=""><a href="#examples-User-checkRegistration-0-rust">Rust</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-User-checkRegistration-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET \
+ -H "Authorization: Bearer [[accessToken]]" \
+ -H "Accept: application/json" \
+ "http://localhost:8080/api/user/checkregistration"
+</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-User-checkRegistration-0-java">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.model.*;
+import org.openapitools.client.api.UserApi;
+
+import java.io.File;
+import java.util.*;
+
+public class UserApiExample {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure Bearer (JWT) access token for authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
+
+        // Create an instance of the API class
+        UserApi apiInstance = new UserApi();
+
+        try {
+            UserDTO result = apiInstance.checkRegistration();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling UserApi#checkRegistration");
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-User-checkRegistration-0-android">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.UserApi;
+
+public class UserApiExample {
+    public static void main(String[] args) {
+        UserApi apiInstance = new UserApi();
+
+        try {
+            UserDTO result = apiInstance.checkRegistration();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling UserApi#checkRegistration");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-User-checkRegistration-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-User-checkRegistration-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+// Create an instance of the API class
+UserApi *apiInstance = [[UserApi alloc] init];
+
+// Checks if the user is registered, and registers her if not.
+[apiInstance checkRegistrationWithCompletionHandler: 
+              ^(UserDTO output, NSError* error) {
+    if (output) {
+        NSLog(@"%@", output);
+    }
+    if (error) {
+        NSLog(@"Error: %@", error);
+    }
+}];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-User-checkRegistration-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN";
+
+// Create an instance of the API class
+var api = new BankWizApi.UserApi()
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.checkRegistration(callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-User-checkRegistration-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-User-checkRegistration-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class checkRegistrationExample
+    {
+        public void main()
+        {
+            // Configure Bearer (JWT) access token for authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            // Create an instance of the API class
+            var apiInstance = new UserApi();
+
+            try {
+                // Checks if the user is registered, and registers her if not.
+                UserDTO result = apiInstance.checkRegistration();
+                Debug.WriteLine(result);
+            } catch (Exception e) {
+                Debug.Print("Exception when calling UserApi.checkRegistration: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-User-checkRegistration-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
+
+// Create an instance of the API class
+$api_instance = new OpenAPITools\Client\Api\UserApi();
+
+try {
+    $result = $api_instance->checkRegistration();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling UserApi->checkRegistration: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-User-checkRegistration-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::OPenAPIClient::Configuration;
+use WWW::OPenAPIClient::UserApi;
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+# Create an instance of the API class
+my $api_instance = WWW::OPenAPIClient::UserApi->new();
+
+eval {
+    my $result = $api_instance->checkRegistration();
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling UserApi->checkRegistration: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-User-checkRegistration-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import openapi_client
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Create an instance of the API class
+api_instance = openapi_client.UserApi()
+
+try:
+    # Checks if the user is registered, and registers her if not.
+    api_response = api_instance.check_registration()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling UserApi->checkRegistration: %s\n" % e)</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-User-checkRegistration-0-rust">
+                              <pre class="prettyprint"><code class="language-rust">extern crate UserApi;
+
+pub fn main() {
+
+    let mut context = UserApi::Context::default();
+    let result = client.checkRegistration(&context).wait();
+
+    println!("{:?}", result);
+}
+</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Scopes</h2>
+                          <table>
+                            
+                          </table>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3 id="examples-User-checkRegistration-title-200"></h3>
+                            <p id="examples-User-checkRegistration-description-200" class="marked"></p>
+                            <script>
+                              var responseUser200_description = `Successfully retrieved user information`;
+                              var responseUser200_description_break = responseUser200_description.indexOf('\n');
+                              if (responseUser200_description_break == -1) {
+                                $("#examples-User-checkRegistration-title-200").text("Status: 200 - " + responseUser200_description);
+                              } else {
+                                $("#examples-User-checkRegistration-title-200").text("Status: 200 - " + responseUser200_description.substring(0, responseUser200_description_break));
+                                $("#examples-User-checkRegistration-description-200").html(responseUser200_description.substring(responseUser200_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-User-checkRegistration-200" class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-User-checkRegistration-200-schema">Schema</a>
+                                </li>
+
+
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-User-checkRegistration-200-wrapper" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-User-checkRegistration-200-schema">
+                                  <div id="responses-User-checkRegistration-schema-200" class="exampleStyle">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = ;
+                                        var schema = findNode('schema',schemaWrapper).schema;
+                                        if (!schema) {
+                                          schema = schemaWrapper.schema;
+                                        }
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                          Object.keys(schema.properties).forEach( (item) => {
+                                            if (schema.properties[item].$ref != null) {
+                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
+                                            }
+                                          });
+                                        } else if (schema.items != null && schema.items.$ref != null) {
+                                            schema.items = defsParser.$refs.get(schema.items.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-User-checkRegistration-200-schema-data').val(JSON.stringify(schema));
+                                        var result = $('#responses-User-checkRegistration-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-User-checkRegistration-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+                            <h3 id="examples-User-checkRegistration-title-400"></h3>
+                            <p id="examples-User-checkRegistration-description-400" class="marked"></p>
+                            <script>
+                              var responseUser400_description = `Invalid request. Please check the provided data.`;
+                              var responseUser400_description_break = responseUser400_description.indexOf('\n');
+                              if (responseUser400_description_break == -1) {
+                                $("#examples-User-checkRegistration-title-400").text("Status: 400 - " + responseUser400_description);
+                              } else {
+                                $("#examples-User-checkRegistration-title-400").text("Status: 400 - " + responseUser400_description.substring(0, responseUser400_description_break));
+                                $("#examples-User-checkRegistration-description-400").html(responseUser400_description.substring(responseUser400_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-User-checkRegistration-400" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-User-checkRegistration-400-wrapper" style='margin-bottom: 10px;'>
+                            </div>
+                        </article>
+                      </div>
+                      <hr>
                     <div id="api-User-getCurrentUserInfo">
                       <article id="api-User-getCurrentUserInfo-0" data-group="User" data-name="getCurrentUserInfo" data-version="0">
                         <div class="pull-left">
@@ -8422,6 +8400,7 @@ $(document).ready(function() {
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-User-getCurrentUserInfo-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X GET \
+ -H "Authorization: Bearer [[accessToken]]" \
  -H "Accept: application/json" \
  "http://localhost:8080/api/user"
 </code></pre>
@@ -8437,6 +8416,11 @@ import java.util.*;
 
 public class UserApiExample {
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure Bearer (JWT) access token for authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         // Create an instance of the API class
         UserApi apiInstance = new UserApi();
@@ -8475,7 +8459,10 @@ public class UserApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-User-getCurrentUserInfo-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 // Create an instance of the API class
 UserApi *apiInstance = [[UserApi alloc] init];
@@ -8495,6 +8482,11 @@ UserApi *apiInstance = [[UserApi alloc] init];
 
                             <div class="tab-pane" id="examples-User-getCurrentUserInfo-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.UserApi()
@@ -8525,6 +8517,8 @@ namespace Example
     {
         public void main()
         {
+            // Configure Bearer (JWT) access token for authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             // Create an instance of the API class
             var apiInstance = new UserApi();
@@ -8546,6 +8540,9 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
+
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\UserApi();
 
@@ -8562,6 +8559,9 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::OPenAPIClient::Configuration;
 use WWW::OPenAPIClient::UserApi;
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::UserApi->new();
@@ -8581,6 +8581,9 @@ import time
 import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.UserApi()
@@ -8741,6 +8744,7 @@ pub fn main() {
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-User-getUser-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X GET \
+ -H "Authorization: Bearer [[accessToken]]" \
  -H "Accept: application/json" \
  "http://localhost:8080/api/user/{userId}"
 </code></pre>
@@ -8756,6 +8760,11 @@ import java.util.*;
 
 public class UserApiExample {
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure Bearer (JWT) access token for authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         // Create an instance of the API class
         UserApi apiInstance = new UserApi();
@@ -8796,7 +8805,10 @@ public class UserApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-User-getUser-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 // Create an instance of the API class
 UserApi *apiInstance = [[UserApi alloc] init];
@@ -8817,6 +8829,11 @@ Long *userId = 789; //  (default to null)
 
                             <div class="tab-pane" id="examples-User-getUser-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.UserApi()
@@ -8849,6 +8866,8 @@ namespace Example
     {
         public void main()
         {
+            // Configure Bearer (JWT) access token for authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             // Create an instance of the API class
             var apiInstance = new UserApi();
@@ -8871,6 +8890,9 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
+
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\UserApi();
 $userId = 789; // Long | 
@@ -8888,6 +8910,9 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::OPenAPIClient::Configuration;
 use WWW::OPenAPIClient::UserApi;
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::UserApi->new();
@@ -8908,6 +8933,9 @@ import time
 import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.UserApi()
@@ -9100,6 +9128,7 @@ pub fn main() {
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-User-getUsers-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X GET \
+ -H "Authorization: Bearer [[accessToken]]" \
  -H "Accept: application/json" \
  "http://localhost:8080/api/user/users"
 </code></pre>
@@ -9115,6 +9144,11 @@ import java.util.*;
 
 public class UserApiExample {
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure Bearer (JWT) access token for authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         // Create an instance of the API class
         UserApi apiInstance = new UserApi();
@@ -9153,7 +9187,10 @@ public class UserApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-User-getUsers-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 // Create an instance of the API class
 UserApi *apiInstance = [[UserApi alloc] init];
@@ -9173,6 +9210,11 @@ UserApi *apiInstance = [[UserApi alloc] init];
 
                             <div class="tab-pane" id="examples-User-getUsers-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.UserApi()
@@ -9203,6 +9245,8 @@ namespace Example
     {
         public void main()
         {
+            // Configure Bearer (JWT) access token for authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             // Create an instance of the API class
             var apiInstance = new UserApi();
@@ -9224,6 +9268,9 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
+
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\UserApi();
 
@@ -9240,6 +9287,9 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::OPenAPIClient::Configuration;
 use WWW::OPenAPIClient::UserApi;
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::UserApi->new();
@@ -9259,6 +9309,9 @@ import time
 import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.UserApi()
@@ -9419,6 +9472,7 @@ pub fn main() {
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-User-updateUser-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X PUT \
+ -H "Authorization: Bearer [[accessToken]]" \
  -H "Accept: application/json" \
  -H "Content-Type: application/json" \
  "http://localhost:8080/api/user" \
@@ -9440,6 +9494,11 @@ import java.util.*;
 
 public class UserApiExample {
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure Bearer (JWT) access token for authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         // Create an instance of the API class
         UserApi apiInstance = new UserApi();
@@ -9480,7 +9539,10 @@ public class UserApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-User-updateUser-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
 // Create an instance of the API class
 UserApi *apiInstance = [[UserApi alloc] init];
@@ -9501,6 +9563,11 @@ UserUpdateRequest *userUpdateRequest = ; //
 
                             <div class="tab-pane" id="examples-User-updateUser-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.UserApi()
@@ -9533,6 +9600,8 @@ namespace Example
     {
         public void main()
         {
+            // Configure Bearer (JWT) access token for authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             // Create an instance of the API class
             var apiInstance = new UserApi();
@@ -9555,6 +9624,9 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
+
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\UserApi();
 $userUpdateRequest = ; // UserUpdateRequest | 
@@ -9572,6 +9644,9 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::OPenAPIClient::Configuration;
 use WWW::OPenAPIClient::UserApi;
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::UserApi->new();
@@ -9592,6 +9667,9 @@ import time
 import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.UserApi()

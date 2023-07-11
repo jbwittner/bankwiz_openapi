@@ -60,6 +60,9 @@ public interface BankAccountApi {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = BankAccountDTO.class))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "bearerAuth")
         }
     )
     @RequestMapping(
@@ -99,6 +102,9 @@ public interface BankAccountApi {
         responses = {
             @ApiResponse(responseCode = "200", description = "Bank account deleted successfully"),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "bearerAuth")
         }
     )
     @RequestMapping(
@@ -129,6 +135,9 @@ public interface BankAccountApi {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = BankAccountDTO.class))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "bearerAuth")
         }
     )
     @RequestMapping(
@@ -168,6 +177,9 @@ public interface BankAccountApi {
                 @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = BankAccountGroupDTO.class)))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "bearerAuth")
         }
     )
     @RequestMapping(
@@ -209,6 +221,9 @@ public interface BankAccountApi {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = BankAccountDTO.class))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "bearerAuth")
         }
     )
     @RequestMapping(

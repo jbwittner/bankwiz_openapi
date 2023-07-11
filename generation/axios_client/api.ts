@@ -14,7 +14,6 @@
 
 
 
-export * from './api/auth-api';
 export * from './api/bank-account-api';
 export * from './api/bank-operation-api';
 export * from './api/group-api';
