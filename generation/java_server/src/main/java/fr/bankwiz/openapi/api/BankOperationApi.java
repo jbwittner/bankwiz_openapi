@@ -59,6 +59,9 @@ public interface BankOperationApi {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = BankOperationDTO.class))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "bearerAuth")
         }
     )
     @RequestMapping(
@@ -98,6 +101,9 @@ public interface BankOperationApi {
         responses = {
             @ApiResponse(responseCode = "200", description = "Bank operation deleted successfully"),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "bearerAuth")
         }
     )
     @RequestMapping(
@@ -128,6 +134,9 @@ public interface BankOperationApi {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = BankOperationDTO.class))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "bearerAuth")
         }
     )
     @RequestMapping(
@@ -169,6 +178,9 @@ public interface BankOperationApi {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = BankOperationDTO.class))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "bearerAuth")
         }
     )
     @RequestMapping(

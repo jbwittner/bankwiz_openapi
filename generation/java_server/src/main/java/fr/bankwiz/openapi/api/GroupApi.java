@@ -62,6 +62,9 @@ public interface GroupApi {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = GroupDTO.class))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "bearerAuth")
         }
     )
     @RequestMapping(
@@ -104,6 +107,9 @@ public interface GroupApi {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = GroupDTO.class))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "bearerAuth")
         }
     )
     @RequestMapping(
@@ -143,6 +149,9 @@ public interface GroupApi {
         responses = {
             @ApiResponse(responseCode = "200", description = "Group deleted successfully"),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "bearerAuth")
         }
     )
     @RequestMapping(
@@ -173,6 +182,9 @@ public interface GroupApi {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = GroupDTO.class))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "bearerAuth")
         }
     )
     @RequestMapping(
@@ -212,6 +224,9 @@ public interface GroupApi {
                 @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = GroupDTO.class)))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "bearerAuth")
         }
     )
     @RequestMapping(
@@ -253,6 +268,9 @@ public interface GroupApi {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = GroupDTO.class))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "bearerAuth")
         }
     )
     @RequestMapping(
@@ -295,6 +313,9 @@ public interface GroupApi {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = GroupDTO.class))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "bearerAuth")
         }
     )
     @RequestMapping(
@@ -339,6 +360,9 @@ public interface GroupApi {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = GroupDTO.class))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "bearerAuth")
         }
     )
     @RequestMapping(

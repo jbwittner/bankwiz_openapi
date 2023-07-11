@@ -43,6 +43,48 @@ public interface UserApi {
     }
 
     /**
+     * GET /user/checkregistration : Checks if the user is registered, and registers her if not.
+     *
+     * @return Successfully retrieved user information (status code 200)
+     *         or Invalid request. Please check the provided data. (status code 400)
+     */
+    @Operation(
+        operationId = "checkRegistration",
+        summary = "Checks if the user is registered, and registers her if not.",
+        tags = { "User" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Successfully retrieved user information", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = UserDTO.class))
+            }),
+            @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "bearerAuth")
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.GET,
+        value = "/user/checkregistration",
+        produces = { "application/json" }
+    )
+    default ResponseEntity<UserDTO> checkRegistration(
+        
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"firstName\" : \"John\", \"lastName\" : \"Doe\", \"userId\" : 0, \"email\" : \"johndoe@example.com\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    /**
      * GET /user : Get the current user information
      *
      * @return Successfully retrieved user information (status code 200)
@@ -57,6 +99,9 @@ public interface UserApi {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = UserDTO.class))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "bearerAuth")
         }
     )
     @RequestMapping(
@@ -97,6 +142,9 @@ public interface UserApi {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = UserDTO.class))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "bearerAuth")
         }
     )
     @RequestMapping(
@@ -136,6 +184,9 @@ public interface UserApi {
                 @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = UserDTO.class)))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "bearerAuth")
         }
     )
     @RequestMapping(
@@ -176,6 +227,9 @@ public interface UserApi {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = UserDTO.class))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "bearerAuth")
         }
     )
     @RequestMapping(

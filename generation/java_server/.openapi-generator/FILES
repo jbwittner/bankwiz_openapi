@@ -2,7 +2,6 @@
 README.md
 pom.xml
 src/main/java/fr/bankwiz/openapi/api/ApiUtil.java
-src/main/java/fr/bankwiz/openapi/api/AuthApi.java
 src/main/java/fr/bankwiz/openapi/api/BankAccountApi.java
 src/main/java/fr/bankwiz/openapi/api/BankOperationApi.java
 src/main/java/fr/bankwiz/openapi/api/GroupApi.java
