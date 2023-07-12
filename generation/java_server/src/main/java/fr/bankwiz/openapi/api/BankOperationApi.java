@@ -145,7 +145,7 @@ public interface BankOperationApi {
         produces = { "application/json" }
     )
     default ResponseEntity<BankOperationDTO> getBankOperation(
-        @Min(1L) @Parameter(name = "bankOperationId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("bankOperationId") Long bankOperationId
+        @Min(1) @Parameter(name = "bankOperationId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("bankOperationId") Integer bankOperationId
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -190,7 +190,7 @@ public interface BankOperationApi {
         consumes = { "application/json" }
     )
     default ResponseEntity<BankOperationDTO> updateBankOperation(
-        @Min(1L) @Parameter(name = "bankOperationId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("bankOperationId") Long bankOperationId,
+        @Min(1) @Parameter(name = "bankOperationId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("bankOperationId") Integer bankOperationId,
         @Parameter(name = "BankOperationUpdateRequest", description = "", required = true) @Valid @RequestBody BankOperationUpdateRequest bankOperationUpdateRequest
     ) {
         getRequest().ifPresent(request -> {

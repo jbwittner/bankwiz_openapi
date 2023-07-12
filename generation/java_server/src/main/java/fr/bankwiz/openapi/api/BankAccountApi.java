@@ -112,7 +112,7 @@ public interface BankAccountApi {
         value = "/bankAccount/{bankAccountId}"
     )
     default ResponseEntity<Void> deleteAccount(
-        @Min(1L) @Parameter(name = "bankAccountId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("bankAccountId") Long bankAccountId
+        @Min(1) @Parameter(name = "bankAccountId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("bankAccountId") Integer bankAccountId
     ) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
@@ -146,7 +146,7 @@ public interface BankAccountApi {
         produces = { "application/json" }
     )
     default ResponseEntity<BankAccountDTO> getAccount(
-        @Min(1L) @Parameter(name = "bankAccountId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("bankAccountId") Long bankAccountId
+        @Min(1) @Parameter(name = "bankAccountId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("bankAccountId") Integer bankAccountId
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -233,7 +233,7 @@ public interface BankAccountApi {
         consumes = { "application/json" }
     )
     default ResponseEntity<BankAccountDTO> updateAccount(
-        @Min(1L) @Parameter(name = "bankAccountId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("bankAccountId") Long bankAccountId,
+        @Min(1) @Parameter(name = "bankAccountId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("bankAccountId") Integer bankAccountId,
         @Parameter(name = "BankAccountUpdateRequest", description = "", required = true) @Valid @RequestBody BankAccountUpdateRequest bankAccountUpdateRequest
     ) {
         getRequest().ifPresent(request -> {

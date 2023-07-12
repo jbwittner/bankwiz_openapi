@@ -153,7 +153,7 @@ public interface UserApi {
         produces = { "application/json" }
     )
     default ResponseEntity<UserDTO> getUser(
-        @Min(1L) @Parameter(name = "userId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("userId") Long userId
+        @Min(1) @Parameter(name = "userId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("userId") Integer userId
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {

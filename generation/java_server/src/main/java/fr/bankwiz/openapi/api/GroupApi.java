@@ -74,7 +74,7 @@ public interface GroupApi {
         consumes = { "application/json" }
     )
     default ResponseEntity<GroupDTO> addUserToGroup(
-        @Min(1L) @Parameter(name = "groupId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("groupId") Long groupId,
+        @Min(1) @Parameter(name = "groupId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("groupId") Integer groupId,
         @Parameter(name = "AddUserGroupRequest", description = "", required = true) @Valid @RequestBody AddUserGroupRequest addUserGroupRequest
     ) {
         getRequest().ifPresent(request -> {
@@ -159,7 +159,7 @@ public interface GroupApi {
         value = "/group/{groupId}"
     )
     default ResponseEntity<Void> deleteGroup(
-        @Min(1L) @Parameter(name = "groupId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("groupId") Long groupId
+        @Min(1) @Parameter(name = "groupId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("groupId") Integer groupId
     ) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
@@ -193,7 +193,7 @@ public interface GroupApi {
         produces = { "application/json" }
     )
     default ResponseEntity<GroupDTO> getGroup(
-        @Min(1L) @Parameter(name = "groupId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("groupId") Long groupId
+        @Min(1) @Parameter(name = "groupId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("groupId") Integer groupId
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -279,8 +279,8 @@ public interface GroupApi {
         produces = { "application/json" }
     )
     default ResponseEntity<GroupDTO> removeUserFromGroup(
-        @Min(1L) @Parameter(name = "groupId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("groupId") Long groupId,
-        @Min(1L) @Parameter(name = "userId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("userId") Long userId
+        @Min(1) @Parameter(name = "groupId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("groupId") Integer groupId,
+        @Min(1) @Parameter(name = "userId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("userId") Integer userId
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -325,7 +325,7 @@ public interface GroupApi {
         consumes = { "application/json" }
     )
     default ResponseEntity<GroupDTO> updateGroup(
-        @Min(1L) @Parameter(name = "groupId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("groupId") Long groupId,
+        @Min(1) @Parameter(name = "groupId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("groupId") Integer groupId,
         @Parameter(name = "GroupUpdateRequest", description = "", required = true) @Valid @RequestBody GroupUpdateRequest groupUpdateRequest
     ) {
         getRequest().ifPresent(request -> {
@@ -372,8 +372,8 @@ public interface GroupApi {
         consumes = { "application/json" }
     )
     default ResponseEntity<GroupDTO> updateUserInGroup(
-        @Min(1L) @Parameter(name = "groupId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("groupId") Long groupId,
-        @Min(1L) @Parameter(name = "userId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("userId") Long userId,
+        @Min(1) @Parameter(name = "groupId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("groupId") Integer groupId,
+        @Min(1) @Parameter(name = "userId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("userId") Integer userId,
         @Parameter(name = "UpdateUserGroupRequest", description = "", required = true) @Valid @RequestBody UpdateUserGroupRequest updateUserGroupRequest
     ) {
         getRequest().ifPresent(request -> {
