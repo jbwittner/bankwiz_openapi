@@ -1275,7 +1275,7 @@ ul.nav-tabs {
         <div id="header">
           <div id="api-_">
             <h2 id="welcome-to-apidoc">API and SDK Documentation</h2>
-              <div class="app-desc">Version: 0.2.0</div>
+              <div class="app-desc">Version: 0.2.1</div>
             <hr>
             <div id="app-description" class="app-desc">
                 An API for accessing banking functionalities provided by BankWiz
@@ -1748,7 +1748,7 @@ public class BankAccountApiExample {
 
         // Create an instance of the API class
         BankAccountApi apiInstance = new BankAccountApi();
-        Long bankAccountId = 789; // Long | 
+        Integer bankAccountId = 56; // Integer | 
 
         try {
             apiInstance.deleteAccount(bankAccountId);
@@ -1767,7 +1767,7 @@ public class BankAccountApiExample {
 public class BankAccountApiExample {
     public static void main(String[] args) {
         BankAccountApi apiInstance = new BankAccountApi();
-        Long bankAccountId = 789; // Long | 
+        Integer bankAccountId = 56; // Integer | 
 
         try {
             apiInstance.deleteAccount(bankAccountId);
@@ -1790,7 +1790,7 @@ public class BankAccountApiExample {
 
 // Create an instance of the API class
 BankAccountApi *apiInstance = [[BankAccountApi alloc] init];
-Long *bankAccountId = 789; //  (default to null)
+Integer *bankAccountId = 56; //  (default to null)
 
 // Delete an account
 [apiInstance deleteAccountWith:bankAccountId
@@ -1812,7 +1812,7 @@ bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.BankAccountApi()
-var bankAccountId = 789; // {Long} 
+var bankAccountId = 56; // {Integer} 
 
 var callback = function(error, data, response) {
   if (error) {
@@ -1846,7 +1846,7 @@ namespace Example
 
             // Create an instance of the API class
             var apiInstance = new BankAccountApi();
-            var bankAccountId = 789;  // Long |  (default to null)
+            var bankAccountId = 56;  // Integer |  (default to null)
 
             try {
                 // Delete an account
@@ -1869,7 +1869,7 @@ OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('',
 
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\BankAccountApi();
-$bankAccountId = 789; // Long | 
+$bankAccountId = 56; // Integer | 
 
 try {
     $api_instance->deleteAccount($bankAccountId);
@@ -1889,7 +1889,7 @@ $WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::BankAccountApi->new();
-my $bankAccountId = 789; # Long | 
+my $bankAccountId = 56; # Integer | 
 
 eval {
     $api_instance->deleteAccount(bankAccountId => $bankAccountId);
@@ -1911,7 +1911,7 @@ openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.BankAccountApi()
-bankAccountId = 789 # Long |  (default to null)
+bankAccountId = 56 # Integer |  (default to null)
 
 try:
     # Delete an account
@@ -1924,7 +1924,7 @@ except ApiException as e:
                               <pre class="prettyprint"><code class="language-rust">extern crate BankAccountApi;
 
 pub fn main() {
-    let bankAccountId = 789; // Long
+    let bankAccountId = 56; // Integer
 
     let mut context = BankAccountApi::Context::default();
     let result = client.deleteAccount(bankAccountId, &context).wait();
@@ -1956,11 +1956,8 @@ pub fn main() {
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
-                    Long
+                    Integer
                 </span>
-                    <span class="format">
-                        (int64)
-                    </span>
 
             </div>
                 <div class="inner required">
@@ -2083,7 +2080,7 @@ public class BankAccountApiExample {
 
         // Create an instance of the API class
         BankAccountApi apiInstance = new BankAccountApi();
-        Long bankAccountId = 789; // Long | 
+        Integer bankAccountId = 56; // Integer | 
 
         try {
             BankAccountDTO result = apiInstance.getAccount(bankAccountId);
@@ -2103,7 +2100,7 @@ public class BankAccountApiExample {
 public class BankAccountApiExample {
     public static void main(String[] args) {
         BankAccountApi apiInstance = new BankAccountApi();
-        Long bankAccountId = 789; // Long | 
+        Integer bankAccountId = 56; // Integer | 
 
         try {
             BankAccountDTO result = apiInstance.getAccount(bankAccountId);
@@ -2127,7 +2124,7 @@ public class BankAccountApiExample {
 
 // Create an instance of the API class
 BankAccountApi *apiInstance = [[BankAccountApi alloc] init];
-Long *bankAccountId = 789; //  (default to null)
+Integer *bankAccountId = 56; //  (default to null)
 
 // Get an account
 [apiInstance getAccountWith:bankAccountId
@@ -2152,7 +2149,7 @@ bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.BankAccountApi()
-var bankAccountId = 789; // {Long} 
+var bankAccountId = 56; // {Integer} 
 
 var callback = function(error, data, response) {
   if (error) {
@@ -2186,7 +2183,7 @@ namespace Example
 
             // Create an instance of the API class
             var apiInstance = new BankAccountApi();
-            var bankAccountId = 789;  // Long |  (default to null)
+            var bankAccountId = 56;  // Integer |  (default to null)
 
             try {
                 // Get an account
@@ -2210,7 +2207,7 @@ OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('',
 
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\BankAccountApi();
-$bankAccountId = 789; // Long | 
+$bankAccountId = 56; // Integer | 
 
 try {
     $result = $api_instance->getAccount($bankAccountId);
@@ -2231,7 +2228,7 @@ $WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::BankAccountApi->new();
-my $bankAccountId = 789; # Long | 
+my $bankAccountId = 56; # Integer | 
 
 eval {
     my $result = $api_instance->getAccount(bankAccountId => $bankAccountId);
@@ -2254,7 +2251,7 @@ openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.BankAccountApi()
-bankAccountId = 789 # Long |  (default to null)
+bankAccountId = 56 # Integer |  (default to null)
 
 try:
     # Get an account
@@ -2268,7 +2265,7 @@ except ApiException as e:
                               <pre class="prettyprint"><code class="language-rust">extern crate BankAccountApi;
 
 pub fn main() {
-    let bankAccountId = 789; // Long
+    let bankAccountId = 56; // Integer
 
     let mut context = BankAccountApi::Context::default();
     let result = client.getAccount(bankAccountId, &context).wait();
@@ -2300,11 +2297,8 @@ pub fn main() {
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
-                    Long
+                    Integer
                 </span>
-                    <span class="format">
-                        (int64)
-                    </span>
 
             </div>
                 <div class="inner required">
@@ -2816,7 +2810,7 @@ public class BankAccountApiExample {
 
         // Create an instance of the API class
         BankAccountApi apiInstance = new BankAccountApi();
-        Long bankAccountId = 789; // Long | 
+        Integer bankAccountId = 56; // Integer | 
         BankAccountUpdateRequest bankAccountUpdateRequest = ; // BankAccountUpdateRequest | 
 
         try {
@@ -2837,7 +2831,7 @@ public class BankAccountApiExample {
 public class BankAccountApiExample {
     public static void main(String[] args) {
         BankAccountApi apiInstance = new BankAccountApi();
-        Long bankAccountId = 789; // Long | 
+        Integer bankAccountId = 56; // Integer | 
         BankAccountUpdateRequest bankAccountUpdateRequest = ; // BankAccountUpdateRequest | 
 
         try {
@@ -2862,7 +2856,7 @@ public class BankAccountApiExample {
 
 // Create an instance of the API class
 BankAccountApi *apiInstance = [[BankAccountApi alloc] init];
-Long *bankAccountId = 789; //  (default to null)
+Integer *bankAccountId = 56; //  (default to null)
 BankAccountUpdateRequest *bankAccountUpdateRequest = ; // 
 
 // Update account information
@@ -2889,7 +2883,7 @@ bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.BankAccountApi()
-var bankAccountId = 789; // {Long} 
+var bankAccountId = 56; // {Integer} 
 var bankAccountUpdateRequest = ; // {BankAccountUpdateRequest} 
 
 var callback = function(error, data, response) {
@@ -2924,7 +2918,7 @@ namespace Example
 
             // Create an instance of the API class
             var apiInstance = new BankAccountApi();
-            var bankAccountId = 789;  // Long |  (default to null)
+            var bankAccountId = 56;  // Integer |  (default to null)
             var bankAccountUpdateRequest = new BankAccountUpdateRequest(); // BankAccountUpdateRequest | 
 
             try {
@@ -2949,7 +2943,7 @@ OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('',
 
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\BankAccountApi();
-$bankAccountId = 789; // Long | 
+$bankAccountId = 56; // Integer | 
 $bankAccountUpdateRequest = ; // BankAccountUpdateRequest | 
 
 try {
@@ -2971,7 +2965,7 @@ $WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::BankAccountApi->new();
-my $bankAccountId = 789; # Long | 
+my $bankAccountId = 56; # Integer | 
 my $bankAccountUpdateRequest = WWW::OPenAPIClient::Object::BankAccountUpdateRequest->new(); # BankAccountUpdateRequest | 
 
 eval {
@@ -2995,7 +2989,7 @@ openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.BankAccountApi()
-bankAccountId = 789 # Long |  (default to null)
+bankAccountId = 56 # Integer |  (default to null)
 bankAccountUpdateRequest =  # BankAccountUpdateRequest | 
 
 try:
@@ -3010,7 +3004,7 @@ except ApiException as e:
                               <pre class="prettyprint"><code class="language-rust">extern crate BankAccountApi;
 
 pub fn main() {
-    let bankAccountId = 789; // Long
+    let bankAccountId = 56; // Integer
     let bankAccountUpdateRequest = ; // BankAccountUpdateRequest
 
     let mut context = BankAccountApi::Context::default();
@@ -3043,11 +3037,8 @@ pub fn main() {
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
-                    Long
+                    Integer
                 </span>
-                    <span class="format">
-                        (int64)
-                    </span>
 
             </div>
                 <div class="inner required">
@@ -3999,7 +3990,7 @@ public class BankOperationApiExample {
 
         // Create an instance of the API class
         BankOperationApi apiInstance = new BankOperationApi();
-        Long bankOperationId = 789; // Long | 
+        Integer bankOperationId = 56; // Integer | 
 
         try {
             BankOperationDTO result = apiInstance.getBankOperation(bankOperationId);
@@ -4019,7 +4010,7 @@ public class BankOperationApiExample {
 public class BankOperationApiExample {
     public static void main(String[] args) {
         BankOperationApi apiInstance = new BankOperationApi();
-        Long bankOperationId = 789; // Long | 
+        Integer bankOperationId = 56; // Integer | 
 
         try {
             BankOperationDTO result = apiInstance.getBankOperation(bankOperationId);
@@ -4043,7 +4034,7 @@ public class BankOperationApiExample {
 
 // Create an instance of the API class
 BankOperationApi *apiInstance = [[BankOperationApi alloc] init];
-Long *bankOperationId = 789; //  (default to null)
+Integer *bankOperationId = 56; //  (default to null)
 
 // Get a bank operation
 [apiInstance getBankOperationWith:bankOperationId
@@ -4068,7 +4059,7 @@ bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.BankOperationApi()
-var bankOperationId = 789; // {Long} 
+var bankOperationId = 56; // {Integer} 
 
 var callback = function(error, data, response) {
   if (error) {
@@ -4102,7 +4093,7 @@ namespace Example
 
             // Create an instance of the API class
             var apiInstance = new BankOperationApi();
-            var bankOperationId = 789;  // Long |  (default to null)
+            var bankOperationId = 56;  // Integer |  (default to null)
 
             try {
                 // Get a bank operation
@@ -4126,7 +4117,7 @@ OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('',
 
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\BankOperationApi();
-$bankOperationId = 789; // Long | 
+$bankOperationId = 56; // Integer | 
 
 try {
     $result = $api_instance->getBankOperation($bankOperationId);
@@ -4147,7 +4138,7 @@ $WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::BankOperationApi->new();
-my $bankOperationId = 789; # Long | 
+my $bankOperationId = 56; # Integer | 
 
 eval {
     my $result = $api_instance->getBankOperation(bankOperationId => $bankOperationId);
@@ -4170,7 +4161,7 @@ openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.BankOperationApi()
-bankOperationId = 789 # Long |  (default to null)
+bankOperationId = 56 # Integer |  (default to null)
 
 try:
     # Get a bank operation
@@ -4184,7 +4175,7 @@ except ApiException as e:
                               <pre class="prettyprint"><code class="language-rust">extern crate BankOperationApi;
 
 pub fn main() {
-    let bankOperationId = 789; // Long
+    let bankOperationId = 56; // Integer
 
     let mut context = BankOperationApi::Context::default();
     let result = client.getBankOperation(bankOperationId, &context).wait();
@@ -4216,11 +4207,8 @@ pub fn main() {
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
-                    Long
+                    Integer
                 </span>
-                    <span class="format">
-                        (int64)
-                    </span>
 
             </div>
                 <div class="inner required">
@@ -4388,7 +4376,7 @@ public class BankOperationApiExample {
 
         // Create an instance of the API class
         BankOperationApi apiInstance = new BankOperationApi();
-        Long bankOperationId = 789; // Long | 
+        Integer bankOperationId = 56; // Integer | 
         BankOperationUpdateRequest bankOperationUpdateRequest = ; // BankOperationUpdateRequest | 
 
         try {
@@ -4409,7 +4397,7 @@ public class BankOperationApiExample {
 public class BankOperationApiExample {
     public static void main(String[] args) {
         BankOperationApi apiInstance = new BankOperationApi();
-        Long bankOperationId = 789; // Long | 
+        Integer bankOperationId = 56; // Integer | 
         BankOperationUpdateRequest bankOperationUpdateRequest = ; // BankOperationUpdateRequest | 
 
         try {
@@ -4434,7 +4422,7 @@ public class BankOperationApiExample {
 
 // Create an instance of the API class
 BankOperationApi *apiInstance = [[BankOperationApi alloc] init];
-Long *bankOperationId = 789; //  (default to null)
+Integer *bankOperationId = 56; //  (default to null)
 BankOperationUpdateRequest *bankOperationUpdateRequest = ; // 
 
 // Update the bank operation information
@@ -4461,7 +4449,7 @@ bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.BankOperationApi()
-var bankOperationId = 789; // {Long} 
+var bankOperationId = 56; // {Integer} 
 var bankOperationUpdateRequest = ; // {BankOperationUpdateRequest} 
 
 var callback = function(error, data, response) {
@@ -4496,7 +4484,7 @@ namespace Example
 
             // Create an instance of the API class
             var apiInstance = new BankOperationApi();
-            var bankOperationId = 789;  // Long |  (default to null)
+            var bankOperationId = 56;  // Integer |  (default to null)
             var bankOperationUpdateRequest = new BankOperationUpdateRequest(); // BankOperationUpdateRequest | 
 
             try {
@@ -4521,7 +4509,7 @@ OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('',
 
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\BankOperationApi();
-$bankOperationId = 789; // Long | 
+$bankOperationId = 56; // Integer | 
 $bankOperationUpdateRequest = ; // BankOperationUpdateRequest | 
 
 try {
@@ -4543,7 +4531,7 @@ $WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::BankOperationApi->new();
-my $bankOperationId = 789; # Long | 
+my $bankOperationId = 56; # Integer | 
 my $bankOperationUpdateRequest = WWW::OPenAPIClient::Object::BankOperationUpdateRequest->new(); # BankOperationUpdateRequest | 
 
 eval {
@@ -4567,7 +4555,7 @@ openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.BankOperationApi()
-bankOperationId = 789 # Long |  (default to null)
+bankOperationId = 56 # Integer |  (default to null)
 bankOperationUpdateRequest =  # BankOperationUpdateRequest | 
 
 try:
@@ -4582,7 +4570,7 @@ except ApiException as e:
                               <pre class="prettyprint"><code class="language-rust">extern crate BankOperationApi;
 
 pub fn main() {
-    let bankOperationId = 789; // Long
+    let bankOperationId = 56; // Integer
     let bankOperationUpdateRequest = ; // BankOperationUpdateRequest
 
     let mut context = BankOperationApi::Context::default();
@@ -4615,11 +4603,8 @@ pub fn main() {
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
-                    Long
+                    Integer
                 </span>
-                    <span class="format">
-                        (int64)
-                    </span>
 
             </div>
                 <div class="inner required">
@@ -4835,7 +4820,7 @@ public class GroupApiExample {
 
         // Create an instance of the API class
         GroupApi apiInstance = new GroupApi();
-        Long groupId = 789; // Long | 
+        Integer groupId = 56; // Integer | 
         AddUserGroupRequest addUserGroupRequest = ; // AddUserGroupRequest | 
 
         try {
@@ -4856,7 +4841,7 @@ public class GroupApiExample {
 public class GroupApiExample {
     public static void main(String[] args) {
         GroupApi apiInstance = new GroupApi();
-        Long groupId = 789; // Long | 
+        Integer groupId = 56; // Integer | 
         AddUserGroupRequest addUserGroupRequest = ; // AddUserGroupRequest | 
 
         try {
@@ -4881,7 +4866,7 @@ public class GroupApiExample {
 
 // Create an instance of the API class
 GroupApi *apiInstance = [[GroupApi alloc] init];
-Long *groupId = 789; //  (default to null)
+Integer *groupId = 56; //  (default to null)
 AddUserGroupRequest *addUserGroupRequest = ; // 
 
 // Add a user to the group
@@ -4908,7 +4893,7 @@ bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.GroupApi()
-var groupId = 789; // {Long} 
+var groupId = 56; // {Integer} 
 var addUserGroupRequest = ; // {AddUserGroupRequest} 
 
 var callback = function(error, data, response) {
@@ -4943,7 +4928,7 @@ namespace Example
 
             // Create an instance of the API class
             var apiInstance = new GroupApi();
-            var groupId = 789;  // Long |  (default to null)
+            var groupId = 56;  // Integer |  (default to null)
             var addUserGroupRequest = new AddUserGroupRequest(); // AddUserGroupRequest | 
 
             try {
@@ -4968,7 +4953,7 @@ OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('',
 
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\GroupApi();
-$groupId = 789; // Long | 
+$groupId = 56; // Integer | 
 $addUserGroupRequest = ; // AddUserGroupRequest | 
 
 try {
@@ -4990,7 +4975,7 @@ $WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::GroupApi->new();
-my $groupId = 789; # Long | 
+my $groupId = 56; # Integer | 
 my $addUserGroupRequest = WWW::OPenAPIClient::Object::AddUserGroupRequest->new(); # AddUserGroupRequest | 
 
 eval {
@@ -5014,7 +4999,7 @@ openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.GroupApi()
-groupId = 789 # Long |  (default to null)
+groupId = 56 # Integer |  (default to null)
 addUserGroupRequest =  # AddUserGroupRequest | 
 
 try:
@@ -5029,7 +5014,7 @@ except ApiException as e:
                               <pre class="prettyprint"><code class="language-rust">extern crate GroupApi;
 
 pub fn main() {
-    let groupId = 789; // Long
+    let groupId = 56; // Integer
     let addUserGroupRequest = ; // AddUserGroupRequest
 
     let mut context = GroupApi::Context::default();
@@ -5062,11 +5047,8 @@ pub fn main() {
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
-                    Long
+                    Integer
                 </span>
-                    <span class="format">
-                        (int64)
-                    </span>
 
             </div>
                 <div class="inner required">
@@ -5678,7 +5660,7 @@ public class GroupApiExample {
 
         // Create an instance of the API class
         GroupApi apiInstance = new GroupApi();
-        Long groupId = 789; // Long | 
+        Integer groupId = 56; // Integer | 
 
         try {
             apiInstance.deleteGroup(groupId);
@@ -5697,7 +5679,7 @@ public class GroupApiExample {
 public class GroupApiExample {
     public static void main(String[] args) {
         GroupApi apiInstance = new GroupApi();
-        Long groupId = 789; // Long | 
+        Integer groupId = 56; // Integer | 
 
         try {
             apiInstance.deleteGroup(groupId);
@@ -5720,7 +5702,7 @@ public class GroupApiExample {
 
 // Create an instance of the API class
 GroupApi *apiInstance = [[GroupApi alloc] init];
-Long *groupId = 789; //  (default to null)
+Integer *groupId = 56; //  (default to null)
 
 // Delete a group
 [apiInstance deleteGroupWith:groupId
@@ -5742,7 +5724,7 @@ bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.GroupApi()
-var groupId = 789; // {Long} 
+var groupId = 56; // {Integer} 
 
 var callback = function(error, data, response) {
   if (error) {
@@ -5776,7 +5758,7 @@ namespace Example
 
             // Create an instance of the API class
             var apiInstance = new GroupApi();
-            var groupId = 789;  // Long |  (default to null)
+            var groupId = 56;  // Integer |  (default to null)
 
             try {
                 // Delete a group
@@ -5799,7 +5781,7 @@ OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('',
 
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\GroupApi();
-$groupId = 789; // Long | 
+$groupId = 56; // Integer | 
 
 try {
     $api_instance->deleteGroup($groupId);
@@ -5819,7 +5801,7 @@ $WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::GroupApi->new();
-my $groupId = 789; # Long | 
+my $groupId = 56; # Integer | 
 
 eval {
     $api_instance->deleteGroup(groupId => $groupId);
@@ -5841,7 +5823,7 @@ openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.GroupApi()
-groupId = 789 # Long |  (default to null)
+groupId = 56 # Integer |  (default to null)
 
 try:
     # Delete a group
@@ -5854,7 +5836,7 @@ except ApiException as e:
                               <pre class="prettyprint"><code class="language-rust">extern crate GroupApi;
 
 pub fn main() {
-    let groupId = 789; // Long
+    let groupId = 56; // Integer
 
     let mut context = GroupApi::Context::default();
     let result = client.deleteGroup(groupId, &context).wait();
@@ -5886,11 +5868,8 @@ pub fn main() {
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
-                    Long
+                    Integer
                 </span>
-                    <span class="format">
-                        (int64)
-                    </span>
 
             </div>
                 <div class="inner required">
@@ -6013,7 +5992,7 @@ public class GroupApiExample {
 
         // Create an instance of the API class
         GroupApi apiInstance = new GroupApi();
-        Long groupId = 789; // Long | 
+        Integer groupId = 56; // Integer | 
 
         try {
             GroupDTO result = apiInstance.getGroup(groupId);
@@ -6033,7 +6012,7 @@ public class GroupApiExample {
 public class GroupApiExample {
     public static void main(String[] args) {
         GroupApi apiInstance = new GroupApi();
-        Long groupId = 789; // Long | 
+        Integer groupId = 56; // Integer | 
 
         try {
             GroupDTO result = apiInstance.getGroup(groupId);
@@ -6057,7 +6036,7 @@ public class GroupApiExample {
 
 // Create an instance of the API class
 GroupApi *apiInstance = [[GroupApi alloc] init];
-Long *groupId = 789; //  (default to null)
+Integer *groupId = 56; //  (default to null)
 
 // Get group information
 [apiInstance getGroupWith:groupId
@@ -6082,7 +6061,7 @@ bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.GroupApi()
-var groupId = 789; // {Long} 
+var groupId = 56; // {Integer} 
 
 var callback = function(error, data, response) {
   if (error) {
@@ -6116,7 +6095,7 @@ namespace Example
 
             // Create an instance of the API class
             var apiInstance = new GroupApi();
-            var groupId = 789;  // Long |  (default to null)
+            var groupId = 56;  // Integer |  (default to null)
 
             try {
                 // Get group information
@@ -6140,7 +6119,7 @@ OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('',
 
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\GroupApi();
-$groupId = 789; // Long | 
+$groupId = 56; // Integer | 
 
 try {
     $result = $api_instance->getGroup($groupId);
@@ -6161,7 +6140,7 @@ $WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::GroupApi->new();
-my $groupId = 789; # Long | 
+my $groupId = 56; # Integer | 
 
 eval {
     my $result = $api_instance->getGroup(groupId => $groupId);
@@ -6184,7 +6163,7 @@ openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.GroupApi()
-groupId = 789 # Long |  (default to null)
+groupId = 56 # Integer |  (default to null)
 
 try:
     # Get group information
@@ -6198,7 +6177,7 @@ except ApiException as e:
                               <pre class="prettyprint"><code class="language-rust">extern crate GroupApi;
 
 pub fn main() {
-    let groupId = 789; // Long
+    let groupId = 56; // Integer
 
     let mut context = GroupApi::Context::default();
     let result = client.getGroup(groupId, &context).wait();
@@ -6230,11 +6209,8 @@ pub fn main() {
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
-                    Long
+                    Integer
                 </span>
-                    <span class="format">
-                        (int64)
-                    </span>
 
             </div>
                 <div class="inner required">
@@ -6741,8 +6717,8 @@ public class GroupApiExample {
 
         // Create an instance of the API class
         GroupApi apiInstance = new GroupApi();
-        Long groupId = 789; // Long | 
-        Long userId = 789; // Long | 
+        Integer groupId = 56; // Integer | 
+        Integer userId = 56; // Integer | 
 
         try {
             GroupDTO result = apiInstance.removeUserFromGroup(groupId, userId);
@@ -6762,8 +6738,8 @@ public class GroupApiExample {
 public class GroupApiExample {
     public static void main(String[] args) {
         GroupApi apiInstance = new GroupApi();
-        Long groupId = 789; // Long | 
-        Long userId = 789; // Long | 
+        Integer groupId = 56; // Integer | 
+        Integer userId = 56; // Integer | 
 
         try {
             GroupDTO result = apiInstance.removeUserFromGroup(groupId, userId);
@@ -6787,8 +6763,8 @@ public class GroupApiExample {
 
 // Create an instance of the API class
 GroupApi *apiInstance = [[GroupApi alloc] init];
-Long *groupId = 789; //  (default to null)
-Long *userId = 789; //  (default to null)
+Integer *groupId = 56; //  (default to null)
+Integer *userId = 56; //  (default to null)
 
 // Remove user from a group
 [apiInstance removeUserFromGroupWith:groupId
@@ -6814,8 +6790,8 @@ bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.GroupApi()
-var groupId = 789; // {Long} 
-var userId = 789; // {Long} 
+var groupId = 56; // {Integer} 
+var userId = 56; // {Integer} 
 
 var callback = function(error, data, response) {
   if (error) {
@@ -6849,8 +6825,8 @@ namespace Example
 
             // Create an instance of the API class
             var apiInstance = new GroupApi();
-            var groupId = 789;  // Long |  (default to null)
-            var userId = 789;  // Long |  (default to null)
+            var groupId = 56;  // Integer |  (default to null)
+            var userId = 56;  // Integer |  (default to null)
 
             try {
                 // Remove user from a group
@@ -6874,8 +6850,8 @@ OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('',
 
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\GroupApi();
-$groupId = 789; // Long | 
-$userId = 789; // Long | 
+$groupId = 56; // Integer | 
+$userId = 56; // Integer | 
 
 try {
     $result = $api_instance->removeUserFromGroup($groupId, $userId);
@@ -6896,8 +6872,8 @@ $WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::GroupApi->new();
-my $groupId = 789; # Long | 
-my $userId = 789; # Long | 
+my $groupId = 56; # Integer | 
+my $userId = 56; # Integer | 
 
 eval {
     my $result = $api_instance->removeUserFromGroup(groupId => $groupId, userId => $userId);
@@ -6920,8 +6896,8 @@ openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.GroupApi()
-groupId = 789 # Long |  (default to null)
-userId = 789 # Long |  (default to null)
+groupId = 56 # Integer |  (default to null)
+userId = 56 # Integer |  (default to null)
 
 try:
     # Remove user from a group
@@ -6935,8 +6911,8 @@ except ApiException as e:
                               <pre class="prettyprint"><code class="language-rust">extern crate GroupApi;
 
 pub fn main() {
-    let groupId = 789; // Long
-    let userId = 789; // Long
+    let groupId = 56; // Integer
+    let userId = 56; // Integer
 
     let mut context = GroupApi::Context::default();
     let result = client.removeUserFromGroup(groupId, userId, &context).wait();
@@ -6968,11 +6944,8 @@ pub fn main() {
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
-                    Long
+                    Integer
                 </span>
-                    <span class="format">
-                        (int64)
-                    </span>
 
             </div>
                 <div class="inner required">
@@ -6991,11 +6964,8 @@ pub fn main() {
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
-                    Long
+                    Integer
                 </span>
-                    <span class="format">
-                        (int64)
-                    </span>
 
             </div>
                 <div class="inner required">
@@ -7162,7 +7132,7 @@ public class GroupApiExample {
 
         // Create an instance of the API class
         GroupApi apiInstance = new GroupApi();
-        Long groupId = 789; // Long | 
+        Integer groupId = 56; // Integer | 
         GroupUpdateRequest groupUpdateRequest = ; // GroupUpdateRequest | 
 
         try {
@@ -7183,7 +7153,7 @@ public class GroupApiExample {
 public class GroupApiExample {
     public static void main(String[] args) {
         GroupApi apiInstance = new GroupApi();
-        Long groupId = 789; // Long | 
+        Integer groupId = 56; // Integer | 
         GroupUpdateRequest groupUpdateRequest = ; // GroupUpdateRequest | 
 
         try {
@@ -7208,7 +7178,7 @@ public class GroupApiExample {
 
 // Create an instance of the API class
 GroupApi *apiInstance = [[GroupApi alloc] init];
-Long *groupId = 789; //  (default to null)
+Integer *groupId = 56; //  (default to null)
 GroupUpdateRequest *groupUpdateRequest = ; // 
 
 // Update group information
@@ -7235,7 +7205,7 @@ bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.GroupApi()
-var groupId = 789; // {Long} 
+var groupId = 56; // {Integer} 
 var groupUpdateRequest = ; // {GroupUpdateRequest} 
 
 var callback = function(error, data, response) {
@@ -7270,7 +7240,7 @@ namespace Example
 
             // Create an instance of the API class
             var apiInstance = new GroupApi();
-            var groupId = 789;  // Long |  (default to null)
+            var groupId = 56;  // Integer |  (default to null)
             var groupUpdateRequest = new GroupUpdateRequest(); // GroupUpdateRequest | 
 
             try {
@@ -7295,7 +7265,7 @@ OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('',
 
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\GroupApi();
-$groupId = 789; // Long | 
+$groupId = 56; // Integer | 
 $groupUpdateRequest = ; // GroupUpdateRequest | 
 
 try {
@@ -7317,7 +7287,7 @@ $WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::GroupApi->new();
-my $groupId = 789; # Long | 
+my $groupId = 56; # Integer | 
 my $groupUpdateRequest = WWW::OPenAPIClient::Object::GroupUpdateRequest->new(); # GroupUpdateRequest | 
 
 eval {
@@ -7341,7 +7311,7 @@ openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.GroupApi()
-groupId = 789 # Long |  (default to null)
+groupId = 56 # Integer |  (default to null)
 groupUpdateRequest =  # GroupUpdateRequest | 
 
 try:
@@ -7356,7 +7326,7 @@ except ApiException as e:
                               <pre class="prettyprint"><code class="language-rust">extern crate GroupApi;
 
 pub fn main() {
-    let groupId = 789; // Long
+    let groupId = 56; // Integer
     let groupUpdateRequest = ; // GroupUpdateRequest
 
     let mut context = GroupApi::Context::default();
@@ -7389,11 +7359,8 @@ pub fn main() {
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
-                    Long
+                    Integer
                 </span>
-                    <span class="format">
-                        (int64)
-                    </span>
 
             </div>
                 <div class="inner required">
@@ -7604,8 +7571,8 @@ public class GroupApiExample {
 
         // Create an instance of the API class
         GroupApi apiInstance = new GroupApi();
-        Long groupId = 789; // Long | 
-        Long userId = 789; // Long | 
+        Integer groupId = 56; // Integer | 
+        Integer userId = 56; // Integer | 
         UpdateUserGroupRequest updateUserGroupRequest = ; // UpdateUserGroupRequest | 
 
         try {
@@ -7626,8 +7593,8 @@ public class GroupApiExample {
 public class GroupApiExample {
     public static void main(String[] args) {
         GroupApi apiInstance = new GroupApi();
-        Long groupId = 789; // Long | 
-        Long userId = 789; // Long | 
+        Integer groupId = 56; // Integer | 
+        Integer userId = 56; // Integer | 
         UpdateUserGroupRequest updateUserGroupRequest = ; // UpdateUserGroupRequest | 
 
         try {
@@ -7652,8 +7619,8 @@ public class GroupApiExample {
 
 // Create an instance of the API class
 GroupApi *apiInstance = [[GroupApi alloc] init];
-Long *groupId = 789; //  (default to null)
-Long *userId = 789; //  (default to null)
+Integer *groupId = 56; //  (default to null)
+Integer *userId = 56; //  (default to null)
 UpdateUserGroupRequest *updateUserGroupRequest = ; // 
 
 // Update user in a group
@@ -7681,8 +7648,8 @@ bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.GroupApi()
-var groupId = 789; // {Long} 
-var userId = 789; // {Long} 
+var groupId = 56; // {Integer} 
+var userId = 56; // {Integer} 
 var updateUserGroupRequest = ; // {UpdateUserGroupRequest} 
 
 var callback = function(error, data, response) {
@@ -7717,8 +7684,8 @@ namespace Example
 
             // Create an instance of the API class
             var apiInstance = new GroupApi();
-            var groupId = 789;  // Long |  (default to null)
-            var userId = 789;  // Long |  (default to null)
+            var groupId = 56;  // Integer |  (default to null)
+            var userId = 56;  // Integer |  (default to null)
             var updateUserGroupRequest = new UpdateUserGroupRequest(); // UpdateUserGroupRequest | 
 
             try {
@@ -7743,8 +7710,8 @@ OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('',
 
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\GroupApi();
-$groupId = 789; // Long | 
-$userId = 789; // Long | 
+$groupId = 56; // Integer | 
+$userId = 56; // Integer | 
 $updateUserGroupRequest = ; // UpdateUserGroupRequest | 
 
 try {
@@ -7766,8 +7733,8 @@ $WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::GroupApi->new();
-my $groupId = 789; # Long | 
-my $userId = 789; # Long | 
+my $groupId = 56; # Integer | 
+my $userId = 56; # Integer | 
 my $updateUserGroupRequest = WWW::OPenAPIClient::Object::UpdateUserGroupRequest->new(); # UpdateUserGroupRequest | 
 
 eval {
@@ -7791,8 +7758,8 @@ openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.GroupApi()
-groupId = 789 # Long |  (default to null)
-userId = 789 # Long |  (default to null)
+groupId = 56 # Integer |  (default to null)
+userId = 56 # Integer |  (default to null)
 updateUserGroupRequest =  # UpdateUserGroupRequest | 
 
 try:
@@ -7807,8 +7774,8 @@ except ApiException as e:
                               <pre class="prettyprint"><code class="language-rust">extern crate GroupApi;
 
 pub fn main() {
-    let groupId = 789; // Long
-    let userId = 789; // Long
+    let groupId = 56; // Integer
+    let userId = 56; // Integer
     let updateUserGroupRequest = ; // UpdateUserGroupRequest
 
     let mut context = GroupApi::Context::default();
@@ -7841,11 +7808,8 @@ pub fn main() {
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
-                    Long
+                    Integer
                 </span>
-                    <span class="format">
-                        (int64)
-                    </span>
 
             </div>
                 <div class="inner required">
@@ -7864,11 +7828,8 @@ pub fn main() {
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
-                    Long
+                    Integer
                 </span>
-                    <span class="format">
-                        (int64)
-                    </span>
 
             </div>
                 <div class="inner required">
@@ -8768,7 +8729,7 @@ public class UserApiExample {
 
         // Create an instance of the API class
         UserApi apiInstance = new UserApi();
-        Long userId = 789; // Long | 
+        Integer userId = 56; // Integer | 
 
         try {
             UserDTO result = apiInstance.getUser(userId);
@@ -8788,7 +8749,7 @@ public class UserApiExample {
 public class UserApiExample {
     public static void main(String[] args) {
         UserApi apiInstance = new UserApi();
-        Long userId = 789; // Long | 
+        Integer userId = 56; // Integer | 
 
         try {
             UserDTO result = apiInstance.getUser(userId);
@@ -8812,7 +8773,7 @@ public class UserApiExample {
 
 // Create an instance of the API class
 UserApi *apiInstance = [[UserApi alloc] init];
-Long *userId = 789; //  (default to null)
+Integer *userId = 56; //  (default to null)
 
 // Get user information
 [apiInstance getUserWith:userId
@@ -8837,7 +8798,7 @@ bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.UserApi()
-var userId = 789; // {Long} 
+var userId = 56; // {Integer} 
 
 var callback = function(error, data, response) {
   if (error) {
@@ -8871,7 +8832,7 @@ namespace Example
 
             // Create an instance of the API class
             var apiInstance = new UserApi();
-            var userId = 789;  // Long |  (default to null)
+            var userId = 56;  // Integer |  (default to null)
 
             try {
                 // Get user information
@@ -8895,7 +8856,7 @@ OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('',
 
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\UserApi();
-$userId = 789; // Long | 
+$userId = 56; // Integer | 
 
 try {
     $result = $api_instance->getUser($userId);
@@ -8916,7 +8877,7 @@ $WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::UserApi->new();
-my $userId = 789; # Long | 
+my $userId = 56; # Integer | 
 
 eval {
     my $result = $api_instance->getUser(userId => $userId);
@@ -8939,7 +8900,7 @@ openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.UserApi()
-userId = 789 # Long |  (default to null)
+userId = 56 # Integer |  (default to null)
 
 try:
     # Get user information
@@ -8953,7 +8914,7 @@ except ApiException as e:
                               <pre class="prettyprint"><code class="language-rust">extern crate UserApi;
 
 pub fn main() {
-    let userId = 789; // Long
+    let userId = 56; // Integer
 
     let mut context = UserApi::Context::default();
     let result = client.getUser(userId, &context).wait();
@@ -8985,11 +8946,8 @@ pub fn main() {
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
-                    Long
+                    Integer
                 </span>
-                    <span class="format">
-                        (int64)
-                    </span>
 
             </div>
                 <div class="inner required">

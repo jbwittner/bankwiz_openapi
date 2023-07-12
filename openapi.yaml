@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: BankWiz API
-  version: 0.2.0
+  version: 0.2.1
   description: An API for accessing banking functionalities provided by BankWiz
 servers:
   - url: 'http://localhost:8080/api'
@@ -94,7 +94,6 @@ paths:
           required: true
           schema:
             type: integer
-            format: int64
             minimum: 1
       summary: Get user information
       operationId: getUser
@@ -155,7 +154,6 @@ paths:
           required: true
           schema:
             type: integer
-            format: int64
             minimum: 1
       summary: Get group information
       operationId: getGroup
@@ -177,7 +175,6 @@ paths:
           required: true
           schema:
             type: integer
-            format: int64
             minimum: 1
       summary: Update group information
       operationId: updateGroup
@@ -205,7 +202,6 @@ paths:
           required: true
           schema:
             type: integer
-            format: int64
             minimum: 1
       summary: Delete a group
       operationId: deleteGroup
@@ -224,7 +220,6 @@ paths:
           required: true
           schema:
             type: integer
-            format: int64
             minimum: 1
       summary: Add a user to the group
       operationId: addUserToGroup
@@ -253,14 +248,12 @@ paths:
           required: true
           schema:
             type: integer
-            format: int64
             minimum: 1
         - name: userId
           in: path
           required: true
           schema:
             type: integer
-            format: int64
             minimum: 1
       summary: Update user in a group
       operationId: updateUserInGroup
@@ -288,14 +281,12 @@ paths:
           required: true
           schema:
             type: integer
-            format: int64
             minimum: 1
         - name: userId
           in: path
           required: true
           schema:
             type: integer
-            format: int64
             minimum: 1
       summary: Remove user from a group
       operationId: removeUserFromGroup
@@ -356,7 +347,6 @@ paths:
           required: true
           schema:
             type: integer
-            format: int64
             minimum: 1
       summary: Get an account
       operationId: getAccount
@@ -378,7 +368,6 @@ paths:
           required: true
           schema:
             type: integer
-            format: int64
             minimum: 1
       summary: Update account information
       operationId: updateAccount
@@ -406,7 +395,6 @@ paths:
           required: true
           schema:
             type: integer
-            format: int64
             minimum: 1
       summary: Delete an account
       operationId: deleteAccount
@@ -446,7 +434,6 @@ paths:
           required: true
           schema:
             type: integer
-            format: int64
             minimum: 1
       summary: Get a bank operation
       operationId: getBankOperation
@@ -468,7 +455,6 @@ paths:
           required: true
           schema:
             type: integer
-            format: int64
             minimum: 1
       summary: Update the bank operation information
       operationId: updateBankOperation
