@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: BankWiz API
-  version: 0.2.1
+  version: 0.2.2
   description: An API for accessing banking functionalities provided by BankWiz
 servers:
   - url: 'http://localhost:8080/api'
@@ -26,26 +26,6 @@ paths:
       responses:
         '200':
           description: Successfully retrieved user information
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UserDTO'
-        '400':
-          description: Invalid request. Please check the provided data.
-    put:
-      tags:
-        - User
-      summary: Update user information
-      operationId: updateUser
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UserUpdateRequest'
-      responses:
-        '200':
-          description: User information updated successfully
           content:
             application/json:
               schema:
@@ -498,46 +478,6 @@ components:
       scheme: bearer
       bearerFormat: JWT
   schemas:
-    CreateUserAccountRequest:
-      type: object
-      properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-        email:
-          type: string
-          format: email
-        password:
-          type: string
-          minLength: 8
-      required:
-        - firstName
-        - lastName
-        - email
-        - password
-    UserUpdateRequest:
-      type: object
-      properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-        email:
-          type: string
-          format: email
-    UserLoginRequest:
-      type: object
-      properties:
-        email:
-          type: string
-          format: email
-        password:
-          type: string
-          minLength: 8
-      required:
-        - email
-        - password
     GroupCreationRequest:
       type: object
       properties:
