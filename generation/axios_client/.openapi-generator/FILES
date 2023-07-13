@@ -22,7 +22,6 @@ model/bank-operation-creation-request.ts
 model/bank-operation-dto.ts
 model/bank-operation-index-dto.ts
 model/bank-operation-update-request.ts
-model/create-user-account-request.ts
 model/functional-exception-dto.ts
 model/group-authorization-enum.ts
 model/group-creation-request.ts
@@ -34,8 +33,6 @@ model/method-argument-not-valid-exception-dto.ts
 model/update-user-group-request.ts
 model/user-dto.ts
 model/user-group-dto.ts
-model/user-login-request.ts
-model/user-update-request.ts
 package.json
 tsconfig.esm.json
 tsconfig.json
