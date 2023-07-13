@@ -6,7 +6,6 @@
 package fr.bankwiz.openapi.api;
 
 import fr.bankwiz.openapi.model.UserDTO;
-import fr.bankwiz.openapi.model.UserUpdateRequest;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -201,50 +200,6 @@ public interface UserApi {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                     String exampleString = "[ { \"firstName\" : \"John\", \"lastName\" : \"Doe\", \"userId\" : 0, \"email\" : \"johndoe@example.com\" }, { \"firstName\" : \"John\", \"lastName\" : \"Doe\", \"userId\" : 0, \"email\" : \"johndoe@example.com\" } ]";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-            }
-        });
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
-
-    }
-
-
-    /**
-     * PUT /user : Update user information
-     *
-     * @param userUpdateRequest  (required)
-     * @return User information updated successfully (status code 200)
-     *         or Invalid request. Please check the provided data. (status code 400)
-     */
-    @Operation(
-        operationId = "updateUser",
-        summary = "Update user information",
-        tags = { "User" },
-        responses = {
-            @ApiResponse(responseCode = "200", description = "User information updated successfully", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = UserDTO.class))
-            }),
-            @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
-        },
-        security = {
-            @SecurityRequirement(name = "bearerAuth")
-        }
-    )
-    @RequestMapping(
-        method = RequestMethod.PUT,
-        value = "/user",
-        produces = { "application/json" },
-        consumes = { "application/json" }
-    )
-    default ResponseEntity<UserDTO> updateUser(
-        @Parameter(name = "UserUpdateRequest", description = "", required = true) @Valid @RequestBody UserUpdateRequest userUpdateRequest
-    ) {
-        getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"firstName\" : \"John\", \"lastName\" : \"Doe\", \"userId\" : 0, \"email\" : \"johndoe@example.com\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
