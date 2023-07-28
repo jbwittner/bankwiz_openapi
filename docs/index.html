@@ -1223,7 +1223,7 @@ ul.nav-tabs {
         <div id="header">
           <div id="api-_">
             <h2 id="welcome-to-apidoc">API and SDK Documentation</h2>
-              <div class="app-desc">Version: 0.2.2</div>
+              <div class="app-desc">Version: 0.2.3</div>
             <hr>
             <div id="app-description" class="app-desc">
                 An API for accessing banking functionalities provided by BankWiz
@@ -6642,7 +6642,6 @@ pub fn main() {
                           <div class="tab-pane active" id="examples-Group-removeUserFromGroup-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X DELETE \
  -H "Authorization: Bearer [[accessToken]]" \
- -H "Accept: application/json" \
  "http://localhost:8080/api/group/{groupId}/user/{userId}"
 </code></pre>
                           </div>
@@ -6669,8 +6668,7 @@ public class GroupApiExample {
         Integer userId = 56; // Integer | 
 
         try {
-            GroupDTO result = apiInstance.removeUserFromGroup(groupId, userId);
-            System.out.println(result);
+            apiInstance.removeUserFromGroup(groupId, userId);
         } catch (ApiException e) {
             System.err.println("Exception when calling GroupApi#removeUserFromGroup");
             e.printStackTrace();
@@ -6690,8 +6688,7 @@ public class GroupApiExample {
         Integer userId = 56; // Integer | 
 
         try {
-            GroupDTO result = apiInstance.removeUserFromGroup(groupId, userId);
-            System.out.println(result);
+            apiInstance.removeUserFromGroup(groupId, userId);
         } catch (ApiException e) {
             System.err.println("Exception when calling GroupApi#removeUserFromGroup");
             e.printStackTrace();
@@ -6717,10 +6714,7 @@ Integer *userId = 56; //  (default to null)
 // Remove user from a group
 [apiInstance removeUserFromGroupWith:groupId
     userId:userId
-              completionHandler: ^(GroupDTO output, NSError* error) {
-    if (output) {
-        NSLog(@"%@", output);
-    }
+              completionHandler: ^(NSError* error) {
     if (error) {
         NSLog(@"Error: %@", error);
     }
@@ -6745,7 +6739,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully. Returned data: ' + data);
+    console.log('API called successfully.');
   }
 };
 api.removeUserFromGroup(groupId, userId, callback);
@@ -6778,8 +6772,7 @@ namespace Example
 
             try {
                 // Remove user from a group
-                GroupDTO result = apiInstance.removeUserFromGroup(groupId, userId);
-                Debug.WriteLine(result);
+                apiInstance.removeUserFromGroup(groupId, userId);
             } catch (Exception e) {
                 Debug.Print("Exception when calling GroupApi.removeUserFromGroup: " + e.Message );
             }
@@ -6802,8 +6795,7 @@ $groupId = 56; // Integer |
 $userId = 56; // Integer | 
 
 try {
-    $result = $api_instance->removeUserFromGroup($groupId, $userId);
-    print_r($result);
+    $api_instance->removeUserFromGroup($groupId, $userId);
 } catch (Exception $e) {
     echo 'Exception when calling GroupApi->removeUserFromGroup: ', $e->getMessage(), PHP_EOL;
 }
@@ -6824,8 +6816,7 @@ my $groupId = 56; # Integer |
 my $userId = 56; # Integer | 
 
 eval {
-    my $result = $api_instance->removeUserFromGroup(groupId => $groupId, userId => $userId);
-    print Dumper($result);
+    $api_instance->removeUserFromGroup(groupId => $groupId, userId => $userId);
 };
 if ($@) {
     warn "Exception when calling GroupApi->removeUserFromGroup: $@\n";
@@ -6849,8 +6840,7 @@ userId = 56 # Integer |  (default to null)
 
 try:
     # Remove user from a group
-    api_response = api_instance.remove_user_from_group(groupId, userId)
-    pprint(api_response)
+    api_instance.remove_user_from_group(groupId, userId)
 except ApiException as e:
     print("Exception when calling GroupApi->removeUserFromGroup: %s\n" % e)</code></pre>
                             </div>
@@ -6946,52 +6936,12 @@ pub fn main() {
 
 
                             <ul id="responses-detail-Group-removeUserFromGroup-200" class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-Group-removeUserFromGroup-200-schema">Schema</a>
-                                </li>
-
-
 
 
                             </ul>
 
 
                             <div class="tab-content" id="responses-Group-removeUserFromGroup-200-wrapper" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-Group-removeUserFromGroup-200-schema">
-                                  <div id="responses-Group-removeUserFromGroup-schema-200" class="exampleStyle">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = ;
-                                        var schema = findNode('schema',schemaWrapper).schema;
-                                        if (!schema) {
-                                          schema = schemaWrapper.schema;
-                                        }
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                          Object.keys(schema.properties).forEach( (item) => {
-                                            if (schema.properties[item].$ref != null) {
-                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
-                                            }
-                                          });
-                                        } else if (schema.items != null && schema.items.$ref != null) {
-                                            schema.items = defsParser.$refs.get(schema.items.$ref);
-                                        } else {
-                                          schemaWrapper.definitions = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-Group-removeUserFromGroup-200-schema-data').val(JSON.stringify(schema));
-                                        var result = $('#responses-Group-removeUserFromGroup-schema-200');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-Group-removeUserFromGroup-200-schema-data' type='hidden' value=''></input>
-                                </div>
                             </div>
                             <h3 id="examples-Group-removeUserFromGroup-title-400"></h3>
                             <p id="examples-Group-removeUserFromGroup-description-400" class="marked"></p>

@@ -1,6 +1,6 @@
 {
   "name": "@jbwittner/bankwiz_openapi-client",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "OpenAPI client for @jbwittner/bankwiz_openapi-client",
   "author": "OpenAPI-Generator Contributors",
   "repository": {
