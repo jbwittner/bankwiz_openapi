@@ -264,9 +264,7 @@ public interface GroupApi {
         summary = "Remove user from a group",
         tags = { "Group" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "User removed successfully", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = GroupDTO.class))
-            }),
+            @ApiResponse(responseCode = "200", description = "User removed successfully"),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
         },
         security = {
@@ -275,22 +273,12 @@ public interface GroupApi {
     )
     @RequestMapping(
         method = RequestMethod.DELETE,
-        value = "/group/{groupId}/user/{userId}",
-        produces = { "application/json" }
+        value = "/group/{groupId}/user/{userId}"
     )
-    default ResponseEntity<GroupDTO> removeUserFromGroup(
+    default ResponseEntity<Void> removeUserFromGroup(
         @Min(1) @Parameter(name = "groupId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("groupId") Integer groupId,
         @Min(1) @Parameter(name = "userId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("userId") Integer userId
     ) {
-        getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"groupName\" : \"groupName\", \"groupId\" : 0, \"users\" : [ { \"user\" : { \"firstName\" : \"John\", \"lastName\" : \"Doe\", \"userId\" : 0, \"email\" : \"johndoe@example.com\" } }, { \"user\" : { \"firstName\" : \"John\", \"lastName\" : \"Doe\", \"userId\" : 0, \"email\" : \"johndoe@example.com\" } } ] }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-            }
-        });
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
