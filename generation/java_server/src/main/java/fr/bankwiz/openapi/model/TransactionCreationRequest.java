@@ -17,33 +17,33 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * BankOperationCreationRequest
+ * TransactionCreationRequest
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
-public class BankOperationCreationRequest {
+public class TransactionCreationRequest {
 
   private Integer accountId;
 
-  private Integer lineAmountDecimal;
+  private Integer amountInCents;
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-  private LocalDate dateAmount;
+  private LocalDate date;
 
-  public BankOperationCreationRequest() {
+  public TransactionCreationRequest() {
     super();
   }
 
   /**
    * Constructor with only required parameters
    */
-  public BankOperationCreationRequest(Integer accountId, Integer lineAmountDecimal, LocalDate dateAmount) {
+  public TransactionCreationRequest(Integer accountId, Integer amountInCents, LocalDate date) {
     this.accountId = accountId;
-    this.lineAmountDecimal = lineAmountDecimal;
-    this.dateAmount = dateAmount;
+    this.amountInCents = amountInCents;
+    this.date = date;
   }
 
-  public BankOperationCreationRequest accountId(Integer accountId) {
+  public TransactionCreationRequest accountId(Integer accountId) {
     this.accountId = accountId;
     return this;
   }
@@ -63,44 +63,44 @@ public class BankOperationCreationRequest {
     this.accountId = accountId;
   }
 
-  public BankOperationCreationRequest lineAmountDecimal(Integer lineAmountDecimal) {
-    this.lineAmountDecimal = lineAmountDecimal;
+  public TransactionCreationRequest amountInCents(Integer amountInCents) {
+    this.amountInCents = amountInCents;
     return this;
   }
 
   /**
-   * Get lineAmountDecimal
-   * @return lineAmountDecimal
+   * Get amountInCents
+   * @return amountInCents
   */
   @NotNull 
-  @Schema(name = "lineAmountDecimal", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("lineAmountDecimal")
-  public Integer getLineAmountDecimal() {
-    return lineAmountDecimal;
+  @Schema(name = "amountInCents", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("amountInCents")
+  public Integer getAmountInCents() {
+    return amountInCents;
   }
 
-  public void setLineAmountDecimal(Integer lineAmountDecimal) {
-    this.lineAmountDecimal = lineAmountDecimal;
+  public void setAmountInCents(Integer amountInCents) {
+    this.amountInCents = amountInCents;
   }
 
-  public BankOperationCreationRequest dateAmount(LocalDate dateAmount) {
-    this.dateAmount = dateAmount;
+  public TransactionCreationRequest date(LocalDate date) {
+    this.date = date;
     return this;
   }
 
   /**
-   * Get dateAmount
-   * @return dateAmount
+   * Get date
+   * @return date
   */
   @NotNull @Valid 
-  @Schema(name = "dateAmount", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("dateAmount")
-  public LocalDate getDateAmount() {
-    return dateAmount;
+  @Schema(name = "date", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("date")
+  public LocalDate getDate() {
+    return date;
   }
 
-  public void setDateAmount(LocalDate dateAmount) {
-    this.dateAmount = dateAmount;
+  public void setDate(LocalDate date) {
+    this.date = date;
   }
 
   @Override
@@ -111,24 +111,24 @@ public class BankOperationCreationRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    BankOperationCreationRequest bankOperationCreationRequest = (BankOperationCreationRequest) o;
-    return Objects.equals(this.accountId, bankOperationCreationRequest.accountId) &&
-        Objects.equals(this.lineAmountDecimal, bankOperationCreationRequest.lineAmountDecimal) &&
-        Objects.equals(this.dateAmount, bankOperationCreationRequest.dateAmount);
+    TransactionCreationRequest transactionCreationRequest = (TransactionCreationRequest) o;
+    return Objects.equals(this.accountId, transactionCreationRequest.accountId) &&
+        Objects.equals(this.amountInCents, transactionCreationRequest.amountInCents) &&
+        Objects.equals(this.date, transactionCreationRequest.date);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountId, lineAmountDecimal, dateAmount);
+    return Objects.hash(accountId, amountInCents, date);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class BankOperationCreationRequest {\n");
+    sb.append("class TransactionCreationRequest {\n");
     sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
-    sb.append("    lineAmountDecimal: ").append(toIndentedString(lineAmountDecimal)).append("\n");
-    sb.append("    dateAmount: ").append(toIndentedString(dateAmount)).append("\n");
+    sb.append("    amountInCents: ").append(toIndentedString(amountInCents)).append("\n");
+    sb.append("    date: ").append(toIndentedString(date)).append("\n");
     sb.append("}");
     return sb.toString();
   }

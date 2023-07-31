@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: BankWiz API
-  version: 0.2.3
+  version: 0.2.5
   description: An API for accessing banking functionalities provided by BankWiz
 servers:
   - url: 'http://localhost:8080/api'
@@ -12,8 +12,8 @@ tags:
     description: API endpoints for managing group information
   - name: Bank Account
     description: API endpoints for bank account information
-  - name: Bank Operation
-    description: API endpoints for bank operations
+  - name: Transaction
+    description: API endpoints for transactions
 security:
   - bearerAuth: []         # use the same name as above
 paths:
@@ -379,92 +379,92 @@ paths:
           description: Bank account deleted successfully
         '400':
           description: Invalid request. Please check the provided data.
-  /bankOperation:
+  /transaction:
     post:
       tags:
-        - Bank operation
-      summary: Add an bank operation
-      operationId: addBankOperation
+        - Transaction
+      summary: Add an transaction
+      operationId: addTransaction
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/BankOperationCreationRequest'
+              $ref: '#/components/schemas/TransactionCreationRequest'
       responses:
         '200':
-          description: Account line added successfully
+          description: Transaction added successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BankOperationDTO'
+                $ref: '#/components/schemas/TransactionDTO'
         '400':
           description: Invalid request. Please check the provided data.
-  '/bankOperation/{bankOperationId}':
+  '/transaction/{transactionId}':
     get:
       tags:
-        - Bank operation
+        - Transaction
       parameters:
-        - name: bankOperationId
+        - name: transactionId
           in: path
           required: true
           schema:
             type: integer
             minimum: 1
-      summary: Get a bank operation
-      operationId: getBankOperation
+      summary: Get a transaction
+      operationId: getTransaction
       responses:
         '200':
-          description: Successfully retrieved bank operation information
+          description: Successfully retrieved transaction information
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BankOperationDTO'
+                $ref: '#/components/schemas/TransactionDTO'
         '400':
           description: Invalid request. Please check the provided data.
     put:
       tags:
-        - Bank operation
+        - Transaction
       parameters:
-        - name: bankOperationId
+        - name: transactionId
           in: path
           required: true
           schema:
             type: integer
             minimum: 1
-      summary: Update the bank operation information
-      operationId: updateBankOperation
+      summary: Update the transaction information
+      operationId: updateTransaction
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/BankOperationUpdateRequest'
+              $ref: '#/components/schemas/TransactionUpdateRequest'
       responses:
         '200':
-          description: Bank operation information updated successfully
+          description: Transaction information updated successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BankOperationDTO'
+                $ref: '#/components/schemas/TransactionDTO'
         '400':
           description: Invalid request. Please check the provided data.
     delete:
       tags:
-        - Bank operation
+        - Transaction
       parameters:
-        - name: bankOperationId
+        - name: transactionId
           in: path
           required: true
           schema:
             type: integer
             format: int64
             minimum: 1
-      summary: Delete a bank operation
-      operationId: deleteBankOperation
+      summary: Delete a transaction
+      operationId: deleteTransaction
       responses:
         '200':
-          description: Bank operation deleted successfully
+          description: Transaction deleted successfully
         '400':
           description: Invalid request. Please check the provided data.
 components:
@@ -521,26 +521,26 @@ components:
           type: string
         baseAmountDecimal:
           type: integer
-    BankOperationCreationRequest:
+    TransactionCreationRequest:
       type: object
       properties:
         accountId:
           type: integer
-        lineAmountDecimal:
+        amountInCents:
           type: integer
-        dateAmount:
+        date:
           type: string
           format: date
       required:
         - accountId
-        - lineAmountDecimal
-        - dateAmount
-    BankOperationUpdateRequest:
+        - amountInCents
+        - date
+    TransactionUpdateRequest:
       type: object
       properties:
-        lineAmountDecimal:
+        amountInCents:
           type: integer
-        dateAmount:
+        date:
           type: string
           format: date
     FunctionalExceptionDTO:
@@ -679,30 +679,30 @@ components:
       required:
         - groupIndexDTO
         - accountIndexDTOs
-    BankOperationIndexDTO:
+    TransactionIndexDTO:
       type: object
       properties:
-        accountLineId:
+        transactionId:
           type: integer
-        lineAmountDecimal:
+        amountInCents:
           type: integer
-        dateAmount:
+        date:
           type: string
           format: date
       required:
-        - accountLineId
-        - lineAmountDecimal
-        - dateAmount
-    BankOperationDTO:
+        - transactionId
+        - amountInCents
+        - date
+    TransactionDTO:
       type: object
       properties:
         accountIndexDTO:
           $ref: '#/components/schemas/BankAccountIndexDTO'
-        accountLineIndexDTO:
-          $ref: '#/components/schemas/BankOperationIndexDTO'
+        transactionIndexDTO:
+          $ref: '#/components/schemas/TransactionIndexDTO'
       required:
         - accountIndexDTO
-        - accountLineIndexDTO
+        - transactionIndexDTO
     GroupAuthorizationEnum:
       type: string
       enum:

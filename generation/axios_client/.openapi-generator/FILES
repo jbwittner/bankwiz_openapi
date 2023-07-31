@@ -4,8 +4,8 @@
 README.md
 api.ts
 api/bank-account-api.ts
-api/bank-operation-api.ts
 api/group-api.ts
+api/transaction-api.ts
 api/user-api.ts
 base.ts
 common.ts
@@ -18,10 +18,6 @@ model/bank-account-dto.ts
 model/bank-account-group-dto.ts
 model/bank-account-index-dto.ts
 model/bank-account-update-request.ts
-model/bank-operation-creation-request.ts
-model/bank-operation-dto.ts
-model/bank-operation-index-dto.ts
-model/bank-operation-update-request.ts
 model/functional-exception-dto.ts
 model/group-authorization-enum.ts
 model/group-creation-request.ts
@@ -30,6 +26,10 @@ model/group-index-dto.ts
 model/group-update-request.ts
 model/index.ts
 model/method-argument-not-valid-exception-dto.ts
+model/transaction-creation-request.ts
+model/transaction-dto.ts
+model/transaction-index-dto.ts
+model/transaction-update-request.ts
 model/update-user-group-request.ts
 model/user-dto.ts
 model/user-group-dto.ts
