@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: BankWiz API
-  version: 0.2.5
+  version: 0.2.6
   description: An API for accessing banking functionalities provided by BankWiz
 servers:
   - url: 'http://localhost:8080/api'
@@ -458,7 +458,6 @@ paths:
           required: true
           schema:
             type: integer
-            format: int64
             minimum: 1
       summary: Delete a transaction
       operationId: deleteTransaction

@@ -111,7 +111,7 @@ public interface TransactionApi {
         value = "/transaction/{transactionId}"
     )
     default ResponseEntity<Void> deleteTransaction(
-        @Min(1L) @Parameter(name = "transactionId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("transactionId") Long transactionId
+        @Min(1) @Parameter(name = "transactionId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("transactionId") Integer transactionId
     ) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
