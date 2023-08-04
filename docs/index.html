@@ -1223,7 +1223,7 @@ ul.nav-tabs {
         <div id="header">
           <div id="api-_">
             <h2 id="welcome-to-apidoc">API and SDK Documentation</h2>
-              <div class="app-desc">Version: 0.2.5</div>
+              <div class="app-desc">Version: 0.2.6</div>
             <hr>
             <div id="app-description" class="app-desc">
                 An API for accessing banking functionalities provided by BankWiz
@@ -6778,7 +6778,7 @@ public class TransactionApiExample {
 
         // Create an instance of the API class
         TransactionApi apiInstance = new TransactionApi();
-        Long transactionId = 789; // Long | 
+        Integer transactionId = 56; // Integer | 
 
         try {
             apiInstance.deleteTransaction(transactionId);
@@ -6797,7 +6797,7 @@ public class TransactionApiExample {
 public class TransactionApiExample {
     public static void main(String[] args) {
         TransactionApi apiInstance = new TransactionApi();
-        Long transactionId = 789; // Long | 
+        Integer transactionId = 56; // Integer | 
 
         try {
             apiInstance.deleteTransaction(transactionId);
@@ -6820,7 +6820,7 @@ public class TransactionApiExample {
 
 // Create an instance of the API class
 TransactionApi *apiInstance = [[TransactionApi alloc] init];
-Long *transactionId = 789; //  (default to null)
+Integer *transactionId = 56; //  (default to null)
 
 // Delete a transaction
 [apiInstance deleteTransactionWith:transactionId
@@ -6842,7 +6842,7 @@ bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.TransactionApi()
-var transactionId = 789; // {Long} 
+var transactionId = 56; // {Integer} 
 
 var callback = function(error, data, response) {
   if (error) {
@@ -6876,7 +6876,7 @@ namespace Example
 
             // Create an instance of the API class
             var apiInstance = new TransactionApi();
-            var transactionId = 789;  // Long |  (default to null)
+            var transactionId = 56;  // Integer |  (default to null)
 
             try {
                 // Delete a transaction
@@ -6899,7 +6899,7 @@ OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('',
 
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\TransactionApi();
-$transactionId = 789; // Long | 
+$transactionId = 56; // Integer | 
 
 try {
     $api_instance->deleteTransaction($transactionId);
@@ -6919,7 +6919,7 @@ $WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::TransactionApi->new();
-my $transactionId = 789; # Long | 
+my $transactionId = 56; # Integer | 
 
 eval {
     $api_instance->deleteTransaction(transactionId => $transactionId);
@@ -6941,7 +6941,7 @@ openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.TransactionApi()
-transactionId = 789 # Long |  (default to null)
+transactionId = 56 # Integer |  (default to null)
 
 try:
     # Delete a transaction
@@ -6954,7 +6954,7 @@ except ApiException as e:
                               <pre class="prettyprint"><code class="language-rust">extern crate TransactionApi;
 
 pub fn main() {
-    let transactionId = 789; // Long
+    let transactionId = 56; // Integer
 
     let mut context = TransactionApi::Context::default();
     let result = client.deleteTransaction(transactionId, &context).wait();
@@ -6986,11 +6986,8 @@ pub fn main() {
         <div class="json-schema-view">
             <div class="primitive">
                 <span class="type">
-                    Long
+                    Integer
                 </span>
-                    <span class="format">
-                        (int64)
-                    </span>
 
             </div>
                 <div class="inner required">
