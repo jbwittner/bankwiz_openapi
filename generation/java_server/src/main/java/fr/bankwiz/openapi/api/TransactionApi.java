@@ -162,6 +162,92 @@ public interface TransactionApi {
 
 
     /**
+     * GET /transaction/findByBankAccount : Get all transactions for a bankAccount
+     *
+     * @param bankAccountId  (required)
+     * @return Successfully retrieved the list of transactions (status code 200)
+     *         or Invalid request. Please check the provided data. (status code 400)
+     */
+    @Operation(
+        operationId = "getTransactionsByBankAccount",
+        summary = "Get all transactions for a bankAccount",
+        tags = { "Transaction" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Successfully retrieved the list of transactions", content = {
+                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = TransactionDTO.class)))
+            }),
+            @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "bearerAuth")
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.GET,
+        value = "/transaction/findByBankAccount",
+        produces = { "application/json" }
+    )
+    default ResponseEntity<List<TransactionDTO>> getTransactionsByBankAccount(
+        @NotNull @Min(1) @Parameter(name = "bankAccountId", description = "", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "bankAccountId", required = true) Integer bankAccountId
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "[ { \"accountIndexDTO\" : { \"accountId\" : 6, \"accountName\" : \"accountName\", \"baseAmountDecimal\" : 1 }, \"transactionIndexDTO\" : { \"amountInCents\" : 6, \"date\" : \"2000-01-23\", \"transactionId\" : 0 } }, { \"accountIndexDTO\" : { \"accountId\" : 6, \"accountName\" : \"accountName\", \"baseAmountDecimal\" : 1 }, \"transactionIndexDTO\" : { \"amountInCents\" : 6, \"date\" : \"2000-01-23\", \"transactionId\" : 0 } } ]";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    /**
+     * GET /transaction/findByGroup : Get all transactions for a group
+     *
+     * @param groupId  (required)
+     * @return Successfully retrieved the list of transactions (status code 200)
+     *         or Invalid request. Please check the provided data. (status code 400)
+     */
+    @Operation(
+        operationId = "getTransactionsByGroup",
+        summary = "Get all transactions for a group",
+        tags = { "Transaction" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Successfully retrieved the list of transactions", content = {
+                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = TransactionDTO.class)))
+            }),
+            @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "bearerAuth")
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.GET,
+        value = "/transaction/findByGroup",
+        produces = { "application/json" }
+    )
+    default ResponseEntity<List<TransactionDTO>> getTransactionsByGroup(
+        @NotNull @Min(1) @Parameter(name = "groupId", description = "", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "groupId", required = true) Integer groupId
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "[ { \"accountIndexDTO\" : { \"accountId\" : 6, \"accountName\" : \"accountName\", \"baseAmountDecimal\" : 1 }, \"transactionIndexDTO\" : { \"amountInCents\" : 6, \"date\" : \"2000-01-23\", \"transactionId\" : 0 } }, { \"accountIndexDTO\" : { \"accountId\" : 6, \"accountName\" : \"accountName\", \"baseAmountDecimal\" : 1 }, \"transactionIndexDTO\" : { \"amountInCents\" : 6, \"date\" : \"2000-01-23\", \"transactionId\" : 0 } } ]";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    /**
      * PUT /transaction/{transactionId} : Update the transaction information
      *
      * @param transactionId  (required)
