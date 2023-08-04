@@ -5,9 +5,9 @@
  */
 package fr.bankwiz.openapi.api;
 
-import fr.bankwiz.openapi.model.BankOperationCreationRequest;
-import fr.bankwiz.openapi.model.BankOperationDTO;
-import fr.bankwiz.openapi.model.BankOperationUpdateRequest;
+import fr.bankwiz.openapi.model.TransactionCreationRequest;
+import fr.bankwiz.openapi.model.TransactionDTO;
+import fr.bankwiz.openapi.model.TransactionUpdateRequest;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -36,27 +36,27 @@ import jakarta.annotation.Generated;
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 @Validated
-@Tag(name = "Bank operation", description = "the Bank operation API")
-public interface BankOperationApi {
+@Tag(name = "Transaction", description = "API endpoints for transactions")
+public interface TransactionApi {
 
     default Optional<NativeWebRequest> getRequest() {
         return Optional.empty();
     }
 
     /**
-     * POST /bankOperation : Add an bank operation
+     * POST /transaction : Add an transaction
      *
-     * @param bankOperationCreationRequest  (required)
-     * @return Account line added successfully (status code 200)
+     * @param transactionCreationRequest  (required)
+     * @return Transaction added successfully (status code 200)
      *         or Invalid request. Please check the provided data. (status code 400)
      */
     @Operation(
-        operationId = "addBankOperation",
-        summary = "Add an bank operation",
-        tags = { "Bank operation" },
+        operationId = "addTransaction",
+        summary = "Add an transaction",
+        tags = { "Transaction" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "Account line added successfully", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = BankOperationDTO.class))
+            @ApiResponse(responseCode = "200", description = "Transaction added successfully", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = TransactionDTO.class))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
         },
@@ -66,17 +66,17 @@ public interface BankOperationApi {
     )
     @RequestMapping(
         method = RequestMethod.POST,
-        value = "/bankOperation",
+        value = "/transaction",
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    default ResponseEntity<BankOperationDTO> addBankOperation(
-        @Parameter(name = "BankOperationCreationRequest", description = "", required = true) @Valid @RequestBody BankOperationCreationRequest bankOperationCreationRequest
+    default ResponseEntity<TransactionDTO> addTransaction(
+        @Parameter(name = "TransactionCreationRequest", description = "", required = true) @Valid @RequestBody TransactionCreationRequest transactionCreationRequest
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"accountIndexDTO\" : { \"accountId\" : 6, \"accountName\" : \"accountName\", \"baseAmountDecimal\" : 1 }, \"accountLineIndexDTO\" : { \"lineAmountDecimal\" : 6, \"accountLineId\" : 0, \"dateAmount\" : \"2000-01-23\" } }";
+                    String exampleString = "{ \"accountIndexDTO\" : { \"accountId\" : 6, \"accountName\" : \"accountName\", \"baseAmountDecimal\" : 1 }, \"transactionIndexDTO\" : { \"amountInCents\" : 6, \"date\" : \"2000-01-23\", \"transactionId\" : 0 } }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -88,18 +88,18 @@ public interface BankOperationApi {
 
 
     /**
-     * DELETE /bankOperation/{bankOperationId} : Delete a bank operation
+     * DELETE /transaction/{transactionId} : Delete a transaction
      *
-     * @param bankOperationId  (required)
-     * @return Bank operation deleted successfully (status code 200)
+     * @param transactionId  (required)
+     * @return Transaction deleted successfully (status code 200)
      *         or Invalid request. Please check the provided data. (status code 400)
      */
     @Operation(
-        operationId = "deleteBankOperation",
-        summary = "Delete a bank operation",
-        tags = { "Bank operation" },
+        operationId = "deleteTransaction",
+        summary = "Delete a transaction",
+        tags = { "Transaction" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "Bank operation deleted successfully"),
+            @ApiResponse(responseCode = "200", description = "Transaction deleted successfully"),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
         },
         security = {
@@ -108,10 +108,10 @@ public interface BankOperationApi {
     )
     @RequestMapping(
         method = RequestMethod.DELETE,
-        value = "/bankOperation/{bankOperationId}"
+        value = "/transaction/{transactionId}"
     )
-    default ResponseEntity<Void> deleteBankOperation(
-        @Min(1L) @Parameter(name = "bankOperationId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("bankOperationId") Long bankOperationId
+    default ResponseEntity<Void> deleteTransaction(
+        @Min(1L) @Parameter(name = "transactionId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("transactionId") Long transactionId
     ) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
@@ -119,19 +119,19 @@ public interface BankOperationApi {
 
 
     /**
-     * GET /bankOperation/{bankOperationId} : Get a bank operation
+     * GET /transaction/{transactionId} : Get a transaction
      *
-     * @param bankOperationId  (required)
-     * @return Successfully retrieved bank operation information (status code 200)
+     * @param transactionId  (required)
+     * @return Successfully retrieved transaction information (status code 200)
      *         or Invalid request. Please check the provided data. (status code 400)
      */
     @Operation(
-        operationId = "getBankOperation",
-        summary = "Get a bank operation",
-        tags = { "Bank operation" },
+        operationId = "getTransaction",
+        summary = "Get a transaction",
+        tags = { "Transaction" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "Successfully retrieved bank operation information", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = BankOperationDTO.class))
+            @ApiResponse(responseCode = "200", description = "Successfully retrieved transaction information", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = TransactionDTO.class))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
         },
@@ -141,16 +141,16 @@ public interface BankOperationApi {
     )
     @RequestMapping(
         method = RequestMethod.GET,
-        value = "/bankOperation/{bankOperationId}",
+        value = "/transaction/{transactionId}",
         produces = { "application/json" }
     )
-    default ResponseEntity<BankOperationDTO> getBankOperation(
-        @Min(1) @Parameter(name = "bankOperationId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("bankOperationId") Integer bankOperationId
+    default ResponseEntity<TransactionDTO> getTransaction(
+        @Min(1) @Parameter(name = "transactionId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("transactionId") Integer transactionId
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"accountIndexDTO\" : { \"accountId\" : 6, \"accountName\" : \"accountName\", \"baseAmountDecimal\" : 1 }, \"accountLineIndexDTO\" : { \"lineAmountDecimal\" : 6, \"accountLineId\" : 0, \"dateAmount\" : \"2000-01-23\" } }";
+                    String exampleString = "{ \"accountIndexDTO\" : { \"accountId\" : 6, \"accountName\" : \"accountName\", \"baseAmountDecimal\" : 1 }, \"transactionIndexDTO\" : { \"amountInCents\" : 6, \"date\" : \"2000-01-23\", \"transactionId\" : 0 } }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -162,20 +162,20 @@ public interface BankOperationApi {
 
 
     /**
-     * PUT /bankOperation/{bankOperationId} : Update the bank operation information
+     * PUT /transaction/{transactionId} : Update the transaction information
      *
-     * @param bankOperationId  (required)
-     * @param bankOperationUpdateRequest  (required)
-     * @return Bank operation information updated successfully (status code 200)
+     * @param transactionId  (required)
+     * @param transactionUpdateRequest  (required)
+     * @return Transaction information updated successfully (status code 200)
      *         or Invalid request. Please check the provided data. (status code 400)
      */
     @Operation(
-        operationId = "updateBankOperation",
-        summary = "Update the bank operation information",
-        tags = { "Bank operation" },
+        operationId = "updateTransaction",
+        summary = "Update the transaction information",
+        tags = { "Transaction" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "Bank operation information updated successfully", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = BankOperationDTO.class))
+            @ApiResponse(responseCode = "200", description = "Transaction information updated successfully", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = TransactionDTO.class))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
         },
@@ -185,18 +185,18 @@ public interface BankOperationApi {
     )
     @RequestMapping(
         method = RequestMethod.PUT,
-        value = "/bankOperation/{bankOperationId}",
+        value = "/transaction/{transactionId}",
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    default ResponseEntity<BankOperationDTO> updateBankOperation(
-        @Min(1) @Parameter(name = "bankOperationId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("bankOperationId") Integer bankOperationId,
-        @Parameter(name = "BankOperationUpdateRequest", description = "", required = true) @Valid @RequestBody BankOperationUpdateRequest bankOperationUpdateRequest
+    default ResponseEntity<TransactionDTO> updateTransaction(
+        @Min(1) @Parameter(name = "transactionId", description = "", required = true, in = ParameterIn.PATH) @PathVariable("transactionId") Integer transactionId,
+        @Parameter(name = "TransactionUpdateRequest", description = "", required = true) @Valid @RequestBody TransactionUpdateRequest transactionUpdateRequest
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"accountIndexDTO\" : { \"accountId\" : 6, \"accountName\" : \"accountName\", \"baseAmountDecimal\" : 1 }, \"accountLineIndexDTO\" : { \"lineAmountDecimal\" : 6, \"accountLineId\" : 0, \"dateAmount\" : \"2000-01-23\" } }";
+                    String exampleString = "{ \"accountIndexDTO\" : { \"accountId\" : 6, \"accountName\" : \"accountName\", \"baseAmountDecimal\" : 1 }, \"transactionIndexDTO\" : { \"amountInCents\" : 6, \"date\" : \"2000-01-23\", \"transactionId\" : 0 } }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

@@ -5,7 +5,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import fr.bankwiz.openapi.model.BankAccountIndexDTO;
-import fr.bankwiz.openapi.model.BankOperationIndexDTO;
+import fr.bankwiz.openapi.model.TransactionIndexDTO;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import jakarta.validation.Valid;
@@ -17,29 +17,29 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * BankOperationDTO
+ * TransactionDTO
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
-public class BankOperationDTO {
+public class TransactionDTO {
 
   private BankAccountIndexDTO accountIndexDTO;
 
-  private BankOperationIndexDTO accountLineIndexDTO;
+  private TransactionIndexDTO transactionIndexDTO;
 
-  public BankOperationDTO() {
+  public TransactionDTO() {
     super();
   }
 
   /**
    * Constructor with only required parameters
    */
-  public BankOperationDTO(BankAccountIndexDTO accountIndexDTO, BankOperationIndexDTO accountLineIndexDTO) {
+  public TransactionDTO(BankAccountIndexDTO accountIndexDTO, TransactionIndexDTO transactionIndexDTO) {
     this.accountIndexDTO = accountIndexDTO;
-    this.accountLineIndexDTO = accountLineIndexDTO;
+    this.transactionIndexDTO = transactionIndexDTO;
   }
 
-  public BankOperationDTO accountIndexDTO(BankAccountIndexDTO accountIndexDTO) {
+  public TransactionDTO accountIndexDTO(BankAccountIndexDTO accountIndexDTO) {
     this.accountIndexDTO = accountIndexDTO;
     return this;
   }
@@ -59,24 +59,24 @@ public class BankOperationDTO {
     this.accountIndexDTO = accountIndexDTO;
   }
 
-  public BankOperationDTO accountLineIndexDTO(BankOperationIndexDTO accountLineIndexDTO) {
-    this.accountLineIndexDTO = accountLineIndexDTO;
+  public TransactionDTO transactionIndexDTO(TransactionIndexDTO transactionIndexDTO) {
+    this.transactionIndexDTO = transactionIndexDTO;
     return this;
   }
 
   /**
-   * Get accountLineIndexDTO
-   * @return accountLineIndexDTO
+   * Get transactionIndexDTO
+   * @return transactionIndexDTO
   */
   @NotNull @Valid 
-  @Schema(name = "accountLineIndexDTO", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("accountLineIndexDTO")
-  public BankOperationIndexDTO getAccountLineIndexDTO() {
-    return accountLineIndexDTO;
+  @Schema(name = "transactionIndexDTO", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("transactionIndexDTO")
+  public TransactionIndexDTO getTransactionIndexDTO() {
+    return transactionIndexDTO;
   }
 
-  public void setAccountLineIndexDTO(BankOperationIndexDTO accountLineIndexDTO) {
-    this.accountLineIndexDTO = accountLineIndexDTO;
+  public void setTransactionIndexDTO(TransactionIndexDTO transactionIndexDTO) {
+    this.transactionIndexDTO = transactionIndexDTO;
   }
 
   @Override
@@ -87,22 +87,22 @@ public class BankOperationDTO {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    BankOperationDTO bankOperationDTO = (BankOperationDTO) o;
-    return Objects.equals(this.accountIndexDTO, bankOperationDTO.accountIndexDTO) &&
-        Objects.equals(this.accountLineIndexDTO, bankOperationDTO.accountLineIndexDTO);
+    TransactionDTO transactionDTO = (TransactionDTO) o;
+    return Objects.equals(this.accountIndexDTO, transactionDTO.accountIndexDTO) &&
+        Objects.equals(this.transactionIndexDTO, transactionDTO.transactionIndexDTO);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountIndexDTO, accountLineIndexDTO);
+    return Objects.hash(accountIndexDTO, transactionIndexDTO);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class BankOperationDTO {\n");
+    sb.append("class TransactionDTO {\n");
     sb.append("    accountIndexDTO: ").append(toIndentedString(accountIndexDTO)).append("\n");
-    sb.append("    accountLineIndexDTO: ").append(toIndentedString(accountLineIndexDTO)).append("\n");
+    sb.append("    transactionIndexDTO: ").append(toIndentedString(transactionIndexDTO)).append("\n");
     sb.append("}");
     return sb.toString();
   }

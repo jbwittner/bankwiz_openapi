@@ -926,62 +926,6 @@ ul.nav-tabs {
     }
   }
 };
-    defs["BankOperationCreationRequest"] = {
-  "required" : [ "accountId", "dateAmount", "lineAmountDecimal" ],
-  "type" : "object",
-  "properties" : {
-    "accountId" : {
-      "type" : "integer"
-    },
-    "lineAmountDecimal" : {
-      "type" : "integer"
-    },
-    "dateAmount" : {
-      "type" : "string",
-      "format" : "date"
-    }
-  }
-};
-    defs["BankOperationDTO"] = {
-  "required" : [ "accountIndexDTO", "accountLineIndexDTO" ],
-  "type" : "object",
-  "properties" : {
-    "accountIndexDTO" : {
-      "$ref" : "#/components/schemas/BankAccountIndexDTO"
-    },
-    "accountLineIndexDTO" : {
-      "$ref" : "#/components/schemas/BankOperationIndexDTO"
-    }
-  }
-};
-    defs["BankOperationIndexDTO"] = {
-  "required" : [ "accountLineId", "dateAmount", "lineAmountDecimal" ],
-  "type" : "object",
-  "properties" : {
-    "accountLineId" : {
-      "type" : "integer"
-    },
-    "lineAmountDecimal" : {
-      "type" : "integer"
-    },
-    "dateAmount" : {
-      "type" : "string",
-      "format" : "date"
-    }
-  }
-};
-    defs["BankOperationUpdateRequest"] = {
-  "type" : "object",
-  "properties" : {
-    "lineAmountDecimal" : {
-      "type" : "integer"
-    },
-    "dateAmount" : {
-      "type" : "string",
-      "format" : "date"
-    }
-  }
-};
     defs["FunctionalExceptionDTO"] = {
   "required" : [ "details", "exception", "message", "status", "timestamp" ],
   "type" : "object",
@@ -1083,6 +1027,62 @@ ul.nav-tabs {
     }
   }
 };
+    defs["TransactionCreationRequest"] = {
+  "required" : [ "accountId", "amountInCents", "date" ],
+  "type" : "object",
+  "properties" : {
+    "accountId" : {
+      "type" : "integer"
+    },
+    "amountInCents" : {
+      "type" : "integer"
+    },
+    "date" : {
+      "type" : "string",
+      "format" : "date"
+    }
+  }
+};
+    defs["TransactionDTO"] = {
+  "required" : [ "accountIndexDTO", "transactionIndexDTO" ],
+  "type" : "object",
+  "properties" : {
+    "accountIndexDTO" : {
+      "$ref" : "#/components/schemas/BankAccountIndexDTO"
+    },
+    "transactionIndexDTO" : {
+      "$ref" : "#/components/schemas/TransactionIndexDTO"
+    }
+  }
+};
+    defs["TransactionIndexDTO"] = {
+  "required" : [ "amountInCents", "date", "transactionId" ],
+  "type" : "object",
+  "properties" : {
+    "transactionId" : {
+      "type" : "integer"
+    },
+    "amountInCents" : {
+      "type" : "integer"
+    },
+    "date" : {
+      "type" : "string",
+      "format" : "date"
+    }
+  }
+};
+    defs["TransactionUpdateRequest"] = {
+  "type" : "object",
+  "properties" : {
+    "amountInCents" : {
+      "type" : "integer"
+    },
+    "date" : {
+      "type" : "string",
+      "format" : "date"
+    }
+  }
+};
     defs["UpdateUserGroupRequest"] = {
   "type" : "object",
   "properties" : {
@@ -1159,19 +1159,6 @@ ul.nav-tabs {
                     <li data-group="BankAccount" data-name="updateAccount" class="">
                       <a href="#api-BankAccount-updateAccount">updateAccount</a>
                     </li>
-                  <li class="nav-header" data-group="BankOperation"><a href="#api-BankOperation">API Methods - BankOperation</a></li>
-                    <li data-group="BankOperation" data-name="addBankOperation" class="">
-                      <a href="#api-BankOperation-addBankOperation">addBankOperation</a>
-                    </li>
-                    <li data-group="BankOperation" data-name="deleteBankOperation" class="">
-                      <a href="#api-BankOperation-deleteBankOperation">deleteBankOperation</a>
-                    </li>
-                    <li data-group="BankOperation" data-name="getBankOperation" class="">
-                      <a href="#api-BankOperation-getBankOperation">getBankOperation</a>
-                    </li>
-                    <li data-group="BankOperation" data-name="updateBankOperation" class="">
-                      <a href="#api-BankOperation-updateBankOperation">updateBankOperation</a>
-                    </li>
                   <li class="nav-header" data-group="Group"><a href="#api-Group">API Methods - Group</a></li>
                     <li data-group="Group" data-name="addUserToGroup" class="">
                       <a href="#api-Group-addUserToGroup">addUserToGroup</a>
@@ -1196,6 +1183,19 @@ ul.nav-tabs {
                     </li>
                     <li data-group="Group" data-name="updateUserInGroup" class="">
                       <a href="#api-Group-updateUserInGroup">updateUserInGroup</a>
+                    </li>
+                  <li class="nav-header" data-group="Transaction"><a href="#api-Transaction">API Methods - Transaction</a></li>
+                    <li data-group="Transaction" data-name="addTransaction" class="">
+                      <a href="#api-Transaction-addTransaction">addTransaction</a>
+                    </li>
+                    <li data-group="Transaction" data-name="deleteTransaction" class="">
+                      <a href="#api-Transaction-deleteTransaction">deleteTransaction</a>
+                    </li>
+                    <li data-group="Transaction" data-name="getTransaction" class="">
+                      <a href="#api-Transaction-getTransaction">getTransaction</a>
+                    </li>
+                    <li data-group="Transaction" data-name="updateTransaction" class="">
+                      <a href="#api-Transaction-updateTransaction">updateTransaction</a>
                     </li>
                   <li class="nav-header" data-group="User"><a href="#api-User">API Methods - User</a></li>
                     <li data-group="User" data-name="checkRegistration" class="">
@@ -1223,7 +1223,7 @@ ul.nav-tabs {
         <div id="header">
           <div id="api-_">
             <h2 id="welcome-to-apidoc">API and SDK Documentation</h2>
-              <div class="app-desc">Version: 0.2.3</div>
+              <div class="app-desc">Version: 0.2.5</div>
             <hr>
             <div id="app-description" class="app-desc">
                 An API for accessing banking functionalities provided by BankWiz
@@ -3133,1572 +3133,6 @@ $(document).ready(function() {
 
 
                             <div class="tab-content" id="responses-BankAccount-updateAccount-400-wrapper" style='margin-bottom: 10px;'>
-                            </div>
-                        </article>
-                      </div>
-                      <hr>
-                  </section>
-                <section id="api-BankOperation">
-                  <h1>BankOperation</h1>
-                    <div id="api-BankOperation-addBankOperation">
-                      <article id="api-BankOperation-addBankOperation-0" data-group="User" data-name="addBankOperation" data-version="0">
-                        <div class="pull-left">
-                          <h1>addBankOperation</h1>
-                          <p>Add an bank operation</p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked"></p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/bankOperation</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-BankOperation-addBankOperation-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-BankOperation-addBankOperation-0-java">Java</a></li>
-                          <li class=""><a href="#examples-BankOperation-addBankOperation-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-BankOperation-addBankOperation-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-BankOperation-addBankOperation-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-BankOperation-addBankOperation-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-BankOperation-addBankOperation-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-BankOperation-addBankOperation-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-BankOperation-addBankOperation-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-BankOperation-addBankOperation-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-BankOperation-addBankOperation-0-python">Python</a></li>
-                          <li class=""><a href="#examples-BankOperation-addBankOperation-0-rust">Rust</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-BankOperation-addBankOperation-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST \
- -H "Authorization: Bearer [[accessToken]]" \
- -H "Accept: application/json" \
- -H "Content-Type: application/json" \
- "http://localhost:8080/api/bankOperation" \
- -d '{
-  &quot;accountId&quot; : 0,
-  &quot;lineAmountDecimal&quot; : 6,
-  &quot;dateAmount&quot; : &quot;2000-01-23&quot;
-}'
-</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-BankOperation-addBankOperation-0-java">
-                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.model.*;
-import org.openapitools.client.api.BankOperationApi;
-
-import java.io.File;
-import java.util.*;
-
-public class BankOperationApiExample {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-        // Configure Bearer (JWT) access token for authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
-
-        // Create an instance of the API class
-        BankOperationApi apiInstance = new BankOperationApi();
-        BankOperationCreationRequest bankOperationCreationRequest = ; // BankOperationCreationRequest | 
-
-        try {
-            BankOperationDTO result = apiInstance.addBankOperation(bankOperationCreationRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling BankOperationApi#addBankOperation");
-            e.printStackTrace();
-        }
-    }
-}
-</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-BankOperation-addBankOperation-0-android">
-                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.BankOperationApi;
-
-public class BankOperationApiExample {
-    public static void main(String[] args) {
-        BankOperationApi apiInstance = new BankOperationApi();
-        BankOperationCreationRequest bankOperationCreationRequest = ; // BankOperationCreationRequest | 
-
-        try {
-            BankOperationDTO result = apiInstance.addBankOperation(bankOperationCreationRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling BankOperationApi#addBankOperation");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-BankOperation-addBankOperation-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-BankOperation-addBankOperation-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-
-// Configure Bearer (JWT) access token for authorization: bearerAuth
-[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
-
-// Create an instance of the API class
-BankOperationApi *apiInstance = [[BankOperationApi alloc] init];
-BankOperationCreationRequest *bankOperationCreationRequest = ; // 
-
-// Add an bank operation
-[apiInstance addBankOperationWith:bankOperationCreationRequest
-              completionHandler: ^(BankOperationDTO output, NSError* error) {
-    if (output) {
-        NSLog(@"%@", output);
-    }
-    if (error) {
-        NSLog(@"Error: %@", error);
-    }
-}];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-BankOperation-addBankOperation-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
-var defaultClient = BankWizApi.ApiClient.instance;
-
-// Configure Bearer (JWT) access token for authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
-bearerAuth.accessToken = "YOUR ACCESS TOKEN";
-
-// Create an instance of the API class
-var api = new BankWizApi.BankOperationApi()
-var bankOperationCreationRequest = ; // {BankOperationCreationRequest} 
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.addBankOperation(bankOperationCreationRequest, callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-BankOperation-addBankOperation-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-BankOperation-addBankOperation-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class addBankOperationExample
-    {
-        public void main()
-        {
-            // Configure Bearer (JWT) access token for authorization: bearerAuth
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            // Create an instance of the API class
-            var apiInstance = new BankOperationApi();
-            var bankOperationCreationRequest = new BankOperationCreationRequest(); // BankOperationCreationRequest | 
-
-            try {
-                // Add an bank operation
-                BankOperationDTO result = apiInstance.addBankOperation(bankOperationCreationRequest);
-                Debug.WriteLine(result);
-            } catch (Exception e) {
-                Debug.Print("Exception when calling BankOperationApi.addBankOperation: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-BankOperation-addBankOperation-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure Bearer (JWT) access token for authorization: bearerAuth
-OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
-
-// Create an instance of the API class
-$api_instance = new OpenAPITools\Client\Api\BankOperationApi();
-$bankOperationCreationRequest = ; // BankOperationCreationRequest | 
-
-try {
-    $result = $api_instance->addBankOperation($bankOperationCreationRequest);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling BankOperationApi->addBankOperation: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-BankOperation-addBankOperation-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::OPenAPIClient::Configuration;
-use WWW::OPenAPIClient::BankOperationApi;
-
-# Configure Bearer (JWT) access token for authorization: bearerAuth
-$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
-
-# Create an instance of the API class
-my $api_instance = WWW::OPenAPIClient::BankOperationApi->new();
-my $bankOperationCreationRequest = WWW::OPenAPIClient::Object::BankOperationCreationRequest->new(); # BankOperationCreationRequest | 
-
-eval {
-    my $result = $api_instance->addBankOperation(bankOperationCreationRequest => $bankOperationCreationRequest);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling BankOperationApi->addBankOperation: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-BankOperation-addBankOperation-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import openapi_client
-from openapi_client.rest import ApiException
-from pprint import pprint
-
-# Configure Bearer (JWT) access token for authorization: bearerAuth
-openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Create an instance of the API class
-api_instance = openapi_client.BankOperationApi()
-bankOperationCreationRequest =  # BankOperationCreationRequest | 
-
-try:
-    # Add an bank operation
-    api_response = api_instance.add_bank_operation(bankOperationCreationRequest)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling BankOperationApi->addBankOperation: %s\n" % e)</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-BankOperation-addBankOperation-0-rust">
-                              <pre class="prettyprint"><code class="language-rust">extern crate BankOperationApi;
-
-pub fn main() {
-    let bankOperationCreationRequest = ; // BankOperationCreationRequest
-
-    let mut context = BankOperationApi::Context::default();
-    let result = client.addBankOperation(bankOperationCreationRequest, &context).wait();
-
-    println!("{:?}", result);
-}
-</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Scopes</h2>
-                          <table>
-                            
-                          </table>
-
-                          <h2>Parameters</h2>
-
-
-
-                            <div class="methodsubtabletitle">Body parameters</div>
-                            <table id="methodsubtable">
-                              <tr>
-                                <th width="150px">Name</th>
-                                <th>Description</th>
-                              </tr>
-                                <tr><td style="width:150px;">bankOperationCreationRequest <span style="color:red;">*</span></td>
-<td>
-<p class="marked"></p>
-<script>
-$(document).ready(function() {
-  var schemaWrapper = {
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/BankOperationCreationRequest"
-      }
-    }
-  },
-  "required" : true
-};
-
-  var schema = findNode('schema',schemaWrapper).schema;
-  if (!schema) {
-    schema = schemaWrapper.schema;
-  }
-  if (schema.$ref != null) {
-    schema = defsParser.$refs.get(schema.$ref);
-  } else {
-    schemaWrapper.definitions = Object.assign({}, defs);
-    $RefParser.dereference(schemaWrapper).catch(function(err) {
-      console.log(err);
-    });
-  }
-
-  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
-  var result = $('#d2e199_addBankOperation_bankOperationCreationRequest');
-  result.empty();
-  result.append(view.render());
-});
-</script>
-<div id="d2e199_addBankOperation_bankOperationCreationRequest"></div>
-</td>
-</tr>
-
-                            </table>
-
-
-
-                          <h2>Responses</h2>
-                            <h3 id="examples-BankOperation-addBankOperation-title-200"></h3>
-                            <p id="examples-BankOperation-addBankOperation-description-200" class="marked"></p>
-                            <script>
-                              var responseBankOperation200_description = `Account line added successfully`;
-                              var responseBankOperation200_description_break = responseBankOperation200_description.indexOf('\n');
-                              if (responseBankOperation200_description_break == -1) {
-                                $("#examples-BankOperation-addBankOperation-title-200").text("Status: 200 - " + responseBankOperation200_description);
-                              } else {
-                                $("#examples-BankOperation-addBankOperation-title-200").text("Status: 200 - " + responseBankOperation200_description.substring(0, responseBankOperation200_description_break));
-                                $("#examples-BankOperation-addBankOperation-description-200").html(responseBankOperation200_description.substring(responseBankOperation200_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-BankOperation-addBankOperation-200" class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-BankOperation-addBankOperation-200-schema">Schema</a>
-                                </li>
-
-
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-BankOperation-addBankOperation-200-wrapper" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-BankOperation-addBankOperation-200-schema">
-                                  <div id="responses-BankOperation-addBankOperation-schema-200" class="exampleStyle">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = ;
-                                        var schema = findNode('schema',schemaWrapper).schema;
-                                        if (!schema) {
-                                          schema = schemaWrapper.schema;
-                                        }
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                          Object.keys(schema.properties).forEach( (item) => {
-                                            if (schema.properties[item].$ref != null) {
-                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
-                                            }
-                                          });
-                                        } else if (schema.items != null && schema.items.$ref != null) {
-                                            schema.items = defsParser.$refs.get(schema.items.$ref);
-                                        } else {
-                                          schemaWrapper.definitions = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-BankOperation-addBankOperation-200-schema-data').val(JSON.stringify(schema));
-                                        var result = $('#responses-BankOperation-addBankOperation-schema-200');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-BankOperation-addBankOperation-200-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-                            <h3 id="examples-BankOperation-addBankOperation-title-400"></h3>
-                            <p id="examples-BankOperation-addBankOperation-description-400" class="marked"></p>
-                            <script>
-                              var responseBankOperation400_description = `Invalid request. Please check the provided data.`;
-                              var responseBankOperation400_description_break = responseBankOperation400_description.indexOf('\n');
-                              if (responseBankOperation400_description_break == -1) {
-                                $("#examples-BankOperation-addBankOperation-title-400").text("Status: 400 - " + responseBankOperation400_description);
-                              } else {
-                                $("#examples-BankOperation-addBankOperation-title-400").text("Status: 400 - " + responseBankOperation400_description.substring(0, responseBankOperation400_description_break));
-                                $("#examples-BankOperation-addBankOperation-description-400").html(responseBankOperation400_description.substring(responseBankOperation400_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-BankOperation-addBankOperation-400" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-BankOperation-addBankOperation-400-wrapper" style='margin-bottom: 10px;'>
-                            </div>
-                        </article>
-                      </div>
-                      <hr>
-                    <div id="api-BankOperation-deleteBankOperation">
-                      <article id="api-BankOperation-deleteBankOperation-0" data-group="User" data-name="deleteBankOperation" data-version="0">
-                        <div class="pull-left">
-                          <h1>deleteBankOperation</h1>
-                          <p>Delete a bank operation</p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked"></p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/bankOperation/{bankOperationId}</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-BankOperation-deleteBankOperation-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-BankOperation-deleteBankOperation-0-java">Java</a></li>
-                          <li class=""><a href="#examples-BankOperation-deleteBankOperation-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-BankOperation-deleteBankOperation-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-BankOperation-deleteBankOperation-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-BankOperation-deleteBankOperation-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-BankOperation-deleteBankOperation-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-BankOperation-deleteBankOperation-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-BankOperation-deleteBankOperation-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-BankOperation-deleteBankOperation-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-BankOperation-deleteBankOperation-0-python">Python</a></li>
-                          <li class=""><a href="#examples-BankOperation-deleteBankOperation-0-rust">Rust</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-BankOperation-deleteBankOperation-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE \
- -H "Authorization: Bearer [[accessToken]]" \
- "http://localhost:8080/api/bankOperation/{bankOperationId}"
-</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-BankOperation-deleteBankOperation-0-java">
-                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.model.*;
-import org.openapitools.client.api.BankOperationApi;
-
-import java.io.File;
-import java.util.*;
-
-public class BankOperationApiExample {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-        // Configure Bearer (JWT) access token for authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
-
-        // Create an instance of the API class
-        BankOperationApi apiInstance = new BankOperationApi();
-        Long bankOperationId = 789; // Long | 
-
-        try {
-            apiInstance.deleteBankOperation(bankOperationId);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling BankOperationApi#deleteBankOperation");
-            e.printStackTrace();
-        }
-    }
-}
-</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-BankOperation-deleteBankOperation-0-android">
-                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.BankOperationApi;
-
-public class BankOperationApiExample {
-    public static void main(String[] args) {
-        BankOperationApi apiInstance = new BankOperationApi();
-        Long bankOperationId = 789; // Long | 
-
-        try {
-            apiInstance.deleteBankOperation(bankOperationId);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling BankOperationApi#deleteBankOperation");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-BankOperation-deleteBankOperation-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-BankOperation-deleteBankOperation-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-
-// Configure Bearer (JWT) access token for authorization: bearerAuth
-[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
-
-// Create an instance of the API class
-BankOperationApi *apiInstance = [[BankOperationApi alloc] init];
-Long *bankOperationId = 789; //  (default to null)
-
-// Delete a bank operation
-[apiInstance deleteBankOperationWith:bankOperationId
-              completionHandler: ^(NSError* error) {
-    if (error) {
-        NSLog(@"Error: %@", error);
-    }
-}];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-BankOperation-deleteBankOperation-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
-var defaultClient = BankWizApi.ApiClient.instance;
-
-// Configure Bearer (JWT) access token for authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
-bearerAuth.accessToken = "YOUR ACCESS TOKEN";
-
-// Create an instance of the API class
-var api = new BankWizApi.BankOperationApi()
-var bankOperationId = 789; // {Long} 
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-  }
-};
-api.deleteBankOperation(bankOperationId, callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-BankOperation-deleteBankOperation-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-BankOperation-deleteBankOperation-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class deleteBankOperationExample
-    {
-        public void main()
-        {
-            // Configure Bearer (JWT) access token for authorization: bearerAuth
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            // Create an instance of the API class
-            var apiInstance = new BankOperationApi();
-            var bankOperationId = 789;  // Long |  (default to null)
-
-            try {
-                // Delete a bank operation
-                apiInstance.deleteBankOperation(bankOperationId);
-            } catch (Exception e) {
-                Debug.Print("Exception when calling BankOperationApi.deleteBankOperation: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-BankOperation-deleteBankOperation-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure Bearer (JWT) access token for authorization: bearerAuth
-OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
-
-// Create an instance of the API class
-$api_instance = new OpenAPITools\Client\Api\BankOperationApi();
-$bankOperationId = 789; // Long | 
-
-try {
-    $api_instance->deleteBankOperation($bankOperationId);
-} catch (Exception $e) {
-    echo 'Exception when calling BankOperationApi->deleteBankOperation: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-BankOperation-deleteBankOperation-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::OPenAPIClient::Configuration;
-use WWW::OPenAPIClient::BankOperationApi;
-
-# Configure Bearer (JWT) access token for authorization: bearerAuth
-$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
-
-# Create an instance of the API class
-my $api_instance = WWW::OPenAPIClient::BankOperationApi->new();
-my $bankOperationId = 789; # Long | 
-
-eval {
-    $api_instance->deleteBankOperation(bankOperationId => $bankOperationId);
-};
-if ($@) {
-    warn "Exception when calling BankOperationApi->deleteBankOperation: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-BankOperation-deleteBankOperation-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import openapi_client
-from openapi_client.rest import ApiException
-from pprint import pprint
-
-# Configure Bearer (JWT) access token for authorization: bearerAuth
-openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Create an instance of the API class
-api_instance = openapi_client.BankOperationApi()
-bankOperationId = 789 # Long |  (default to null)
-
-try:
-    # Delete a bank operation
-    api_instance.delete_bank_operation(bankOperationId)
-except ApiException as e:
-    print("Exception when calling BankOperationApi->deleteBankOperation: %s\n" % e)</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-BankOperation-deleteBankOperation-0-rust">
-                              <pre class="prettyprint"><code class="language-rust">extern crate BankOperationApi;
-
-pub fn main() {
-    let bankOperationId = 789; // Long
-
-    let mut context = BankOperationApi::Context::default();
-    let result = client.deleteBankOperation(bankOperationId, &context).wait();
-
-    println!("{:?}", result);
-}
-</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Scopes</h2>
-                          <table>
-                            
-                          </table>
-
-                          <h2>Parameters</h2>
-
-                            <div class="methodsubtabletitle">Path parameters</div>
-                            <table id="methodsubtable">
-                                <tr>
-                                  <th width="150px">Name</th>
-                                  <th>Description</th>
-                                </tr>
-                                  <tr><td style="width:150px;">bankOperationId*</td>
-<td>
-
-
-    <div id="d2e199_deleteBankOperation_bankOperationId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Long
-                </span>
-                    <span class="format">
-                        (int64)
-                    </span>
-
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                            </table>
-
-
-
-
-
-                          <h2>Responses</h2>
-                            <h3 id="examples-BankOperation-deleteBankOperation-title-200"></h3>
-                            <p id="examples-BankOperation-deleteBankOperation-description-200" class="marked"></p>
-                            <script>
-                              var responseBankOperation200_description = `Bank operation deleted successfully`;
-                              var responseBankOperation200_description_break = responseBankOperation200_description.indexOf('\n');
-                              if (responseBankOperation200_description_break == -1) {
-                                $("#examples-BankOperation-deleteBankOperation-title-200").text("Status: 200 - " + responseBankOperation200_description);
-                              } else {
-                                $("#examples-BankOperation-deleteBankOperation-title-200").text("Status: 200 - " + responseBankOperation200_description.substring(0, responseBankOperation200_description_break));
-                                $("#examples-BankOperation-deleteBankOperation-description-200").html(responseBankOperation200_description.substring(responseBankOperation200_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-BankOperation-deleteBankOperation-200" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-BankOperation-deleteBankOperation-200-wrapper" style='margin-bottom: 10px;'>
-                            </div>
-                            <h3 id="examples-BankOperation-deleteBankOperation-title-400"></h3>
-                            <p id="examples-BankOperation-deleteBankOperation-description-400" class="marked"></p>
-                            <script>
-                              var responseBankOperation400_description = `Invalid request. Please check the provided data.`;
-                              var responseBankOperation400_description_break = responseBankOperation400_description.indexOf('\n');
-                              if (responseBankOperation400_description_break == -1) {
-                                $("#examples-BankOperation-deleteBankOperation-title-400").text("Status: 400 - " + responseBankOperation400_description);
-                              } else {
-                                $("#examples-BankOperation-deleteBankOperation-title-400").text("Status: 400 - " + responseBankOperation400_description.substring(0, responseBankOperation400_description_break));
-                                $("#examples-BankOperation-deleteBankOperation-description-400").html(responseBankOperation400_description.substring(responseBankOperation400_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-BankOperation-deleteBankOperation-400" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-BankOperation-deleteBankOperation-400-wrapper" style='margin-bottom: 10px;'>
-                            </div>
-                        </article>
-                      </div>
-                      <hr>
-                    <div id="api-BankOperation-getBankOperation">
-                      <article id="api-BankOperation-getBankOperation-0" data-group="User" data-name="getBankOperation" data-version="0">
-                        <div class="pull-left">
-                          <h1>getBankOperation</h1>
-                          <p>Get a bank operation</p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked"></p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/bankOperation/{bankOperationId}</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-BankOperation-getBankOperation-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-BankOperation-getBankOperation-0-java">Java</a></li>
-                          <li class=""><a href="#examples-BankOperation-getBankOperation-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-BankOperation-getBankOperation-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-BankOperation-getBankOperation-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-BankOperation-getBankOperation-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-BankOperation-getBankOperation-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-BankOperation-getBankOperation-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-BankOperation-getBankOperation-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-BankOperation-getBankOperation-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-BankOperation-getBankOperation-0-python">Python</a></li>
-                          <li class=""><a href="#examples-BankOperation-getBankOperation-0-rust">Rust</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-BankOperation-getBankOperation-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X GET \
- -H "Authorization: Bearer [[accessToken]]" \
- -H "Accept: application/json" \
- "http://localhost:8080/api/bankOperation/{bankOperationId}"
-</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-BankOperation-getBankOperation-0-java">
-                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.model.*;
-import org.openapitools.client.api.BankOperationApi;
-
-import java.io.File;
-import java.util.*;
-
-public class BankOperationApiExample {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-        // Configure Bearer (JWT) access token for authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
-
-        // Create an instance of the API class
-        BankOperationApi apiInstance = new BankOperationApi();
-        Integer bankOperationId = 56; // Integer | 
-
-        try {
-            BankOperationDTO result = apiInstance.getBankOperation(bankOperationId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling BankOperationApi#getBankOperation");
-            e.printStackTrace();
-        }
-    }
-}
-</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-BankOperation-getBankOperation-0-android">
-                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.BankOperationApi;
-
-public class BankOperationApiExample {
-    public static void main(String[] args) {
-        BankOperationApi apiInstance = new BankOperationApi();
-        Integer bankOperationId = 56; // Integer | 
-
-        try {
-            BankOperationDTO result = apiInstance.getBankOperation(bankOperationId);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling BankOperationApi#getBankOperation");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-BankOperation-getBankOperation-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-BankOperation-getBankOperation-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-
-// Configure Bearer (JWT) access token for authorization: bearerAuth
-[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
-
-// Create an instance of the API class
-BankOperationApi *apiInstance = [[BankOperationApi alloc] init];
-Integer *bankOperationId = 56; //  (default to null)
-
-// Get a bank operation
-[apiInstance getBankOperationWith:bankOperationId
-              completionHandler: ^(BankOperationDTO output, NSError* error) {
-    if (output) {
-        NSLog(@"%@", output);
-    }
-    if (error) {
-        NSLog(@"Error: %@", error);
-    }
-}];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-BankOperation-getBankOperation-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
-var defaultClient = BankWizApi.ApiClient.instance;
-
-// Configure Bearer (JWT) access token for authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
-bearerAuth.accessToken = "YOUR ACCESS TOKEN";
-
-// Create an instance of the API class
-var api = new BankWizApi.BankOperationApi()
-var bankOperationId = 56; // {Integer} 
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.getBankOperation(bankOperationId, callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-BankOperation-getBankOperation-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-BankOperation-getBankOperation-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class getBankOperationExample
-    {
-        public void main()
-        {
-            // Configure Bearer (JWT) access token for authorization: bearerAuth
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            // Create an instance of the API class
-            var apiInstance = new BankOperationApi();
-            var bankOperationId = 56;  // Integer |  (default to null)
-
-            try {
-                // Get a bank operation
-                BankOperationDTO result = apiInstance.getBankOperation(bankOperationId);
-                Debug.WriteLine(result);
-            } catch (Exception e) {
-                Debug.Print("Exception when calling BankOperationApi.getBankOperation: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-BankOperation-getBankOperation-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure Bearer (JWT) access token for authorization: bearerAuth
-OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
-
-// Create an instance of the API class
-$api_instance = new OpenAPITools\Client\Api\BankOperationApi();
-$bankOperationId = 56; // Integer | 
-
-try {
-    $result = $api_instance->getBankOperation($bankOperationId);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling BankOperationApi->getBankOperation: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-BankOperation-getBankOperation-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::OPenAPIClient::Configuration;
-use WWW::OPenAPIClient::BankOperationApi;
-
-# Configure Bearer (JWT) access token for authorization: bearerAuth
-$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
-
-# Create an instance of the API class
-my $api_instance = WWW::OPenAPIClient::BankOperationApi->new();
-my $bankOperationId = 56; # Integer | 
-
-eval {
-    my $result = $api_instance->getBankOperation(bankOperationId => $bankOperationId);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling BankOperationApi->getBankOperation: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-BankOperation-getBankOperation-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import openapi_client
-from openapi_client.rest import ApiException
-from pprint import pprint
-
-# Configure Bearer (JWT) access token for authorization: bearerAuth
-openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Create an instance of the API class
-api_instance = openapi_client.BankOperationApi()
-bankOperationId = 56 # Integer |  (default to null)
-
-try:
-    # Get a bank operation
-    api_response = api_instance.get_bank_operation(bankOperationId)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling BankOperationApi->getBankOperation: %s\n" % e)</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-BankOperation-getBankOperation-0-rust">
-                              <pre class="prettyprint"><code class="language-rust">extern crate BankOperationApi;
-
-pub fn main() {
-    let bankOperationId = 56; // Integer
-
-    let mut context = BankOperationApi::Context::default();
-    let result = client.getBankOperation(bankOperationId, &context).wait();
-
-    println!("{:?}", result);
-}
-</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Scopes</h2>
-                          <table>
-                            
-                          </table>
-
-                          <h2>Parameters</h2>
-
-                            <div class="methodsubtabletitle">Path parameters</div>
-                            <table id="methodsubtable">
-                                <tr>
-                                  <th width="150px">Name</th>
-                                  <th>Description</th>
-                                </tr>
-                                  <tr><td style="width:150px;">bankOperationId*</td>
-<td>
-
-
-    <div id="d2e199_getBankOperation_bankOperationId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Integer
-                </span>
-
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                            </table>
-
-
-
-
-
-                          <h2>Responses</h2>
-                            <h3 id="examples-BankOperation-getBankOperation-title-200"></h3>
-                            <p id="examples-BankOperation-getBankOperation-description-200" class="marked"></p>
-                            <script>
-                              var responseBankOperation200_description = `Successfully retrieved bank operation information`;
-                              var responseBankOperation200_description_break = responseBankOperation200_description.indexOf('\n');
-                              if (responseBankOperation200_description_break == -1) {
-                                $("#examples-BankOperation-getBankOperation-title-200").text("Status: 200 - " + responseBankOperation200_description);
-                              } else {
-                                $("#examples-BankOperation-getBankOperation-title-200").text("Status: 200 - " + responseBankOperation200_description.substring(0, responseBankOperation200_description_break));
-                                $("#examples-BankOperation-getBankOperation-description-200").html(responseBankOperation200_description.substring(responseBankOperation200_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-BankOperation-getBankOperation-200" class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-BankOperation-getBankOperation-200-schema">Schema</a>
-                                </li>
-
-
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-BankOperation-getBankOperation-200-wrapper" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-BankOperation-getBankOperation-200-schema">
-                                  <div id="responses-BankOperation-getBankOperation-schema-200" class="exampleStyle">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = ;
-                                        var schema = findNode('schema',schemaWrapper).schema;
-                                        if (!schema) {
-                                          schema = schemaWrapper.schema;
-                                        }
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                          Object.keys(schema.properties).forEach( (item) => {
-                                            if (schema.properties[item].$ref != null) {
-                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
-                                            }
-                                          });
-                                        } else if (schema.items != null && schema.items.$ref != null) {
-                                            schema.items = defsParser.$refs.get(schema.items.$ref);
-                                        } else {
-                                          schemaWrapper.definitions = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-BankOperation-getBankOperation-200-schema-data').val(JSON.stringify(schema));
-                                        var result = $('#responses-BankOperation-getBankOperation-schema-200');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-BankOperation-getBankOperation-200-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-                            <h3 id="examples-BankOperation-getBankOperation-title-400"></h3>
-                            <p id="examples-BankOperation-getBankOperation-description-400" class="marked"></p>
-                            <script>
-                              var responseBankOperation400_description = `Invalid request. Please check the provided data.`;
-                              var responseBankOperation400_description_break = responseBankOperation400_description.indexOf('\n');
-                              if (responseBankOperation400_description_break == -1) {
-                                $("#examples-BankOperation-getBankOperation-title-400").text("Status: 400 - " + responseBankOperation400_description);
-                              } else {
-                                $("#examples-BankOperation-getBankOperation-title-400").text("Status: 400 - " + responseBankOperation400_description.substring(0, responseBankOperation400_description_break));
-                                $("#examples-BankOperation-getBankOperation-description-400").html(responseBankOperation400_description.substring(responseBankOperation400_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-BankOperation-getBankOperation-400" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-BankOperation-getBankOperation-400-wrapper" style='margin-bottom: 10px;'>
-                            </div>
-                        </article>
-                      </div>
-                      <hr>
-                    <div id="api-BankOperation-updateBankOperation">
-                      <article id="api-BankOperation-updateBankOperation-0" data-group="User" data-name="updateBankOperation" data-version="0">
-                        <div class="pull-left">
-                          <h1>updateBankOperation</h1>
-                          <p>Update the bank operation information</p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked"></p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="put"><code><span class="pln">/bankOperation/{bankOperationId}</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-BankOperation-updateBankOperation-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-BankOperation-updateBankOperation-0-java">Java</a></li>
-                          <li class=""><a href="#examples-BankOperation-updateBankOperation-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-BankOperation-updateBankOperation-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-BankOperation-updateBankOperation-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-BankOperation-updateBankOperation-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-BankOperation-updateBankOperation-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-BankOperation-updateBankOperation-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-BankOperation-updateBankOperation-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-BankOperation-updateBankOperation-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-BankOperation-updateBankOperation-0-python">Python</a></li>
-                          <li class=""><a href="#examples-BankOperation-updateBankOperation-0-rust">Rust</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-BankOperation-updateBankOperation-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X PUT \
- -H "Authorization: Bearer [[accessToken]]" \
- -H "Accept: application/json" \
- -H "Content-Type: application/json" \
- "http://localhost:8080/api/bankOperation/{bankOperationId}" \
- -d '{
-  &quot;lineAmountDecimal&quot; : 0,
-  &quot;dateAmount&quot; : &quot;2000-01-23&quot;
-}'
-</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-BankOperation-updateBankOperation-0-java">
-                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
-import org.openapitools.client.auth.*;
-import org.openapitools.client.model.*;
-import org.openapitools.client.api.BankOperationApi;
-
-import java.io.File;
-import java.util.*;
-
-public class BankOperationApiExample {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-        // Configure Bearer (JWT) access token for authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
-
-        // Create an instance of the API class
-        BankOperationApi apiInstance = new BankOperationApi();
-        Integer bankOperationId = 56; // Integer | 
-        BankOperationUpdateRequest bankOperationUpdateRequest = ; // BankOperationUpdateRequest | 
-
-        try {
-            BankOperationDTO result = apiInstance.updateBankOperation(bankOperationId, bankOperationUpdateRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling BankOperationApi#updateBankOperation");
-            e.printStackTrace();
-        }
-    }
-}
-</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-BankOperation-updateBankOperation-0-android">
-                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.BankOperationApi;
-
-public class BankOperationApiExample {
-    public static void main(String[] args) {
-        BankOperationApi apiInstance = new BankOperationApi();
-        Integer bankOperationId = 56; // Integer | 
-        BankOperationUpdateRequest bankOperationUpdateRequest = ; // BankOperationUpdateRequest | 
-
-        try {
-            BankOperationDTO result = apiInstance.updateBankOperation(bankOperationId, bankOperationUpdateRequest);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling BankOperationApi#updateBankOperation");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-BankOperation-updateBankOperation-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-BankOperation-updateBankOperation-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-
-// Configure Bearer (JWT) access token for authorization: bearerAuth
-[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
-
-// Create an instance of the API class
-BankOperationApi *apiInstance = [[BankOperationApi alloc] init];
-Integer *bankOperationId = 56; //  (default to null)
-BankOperationUpdateRequest *bankOperationUpdateRequest = ; // 
-
-// Update the bank operation information
-[apiInstance updateBankOperationWith:bankOperationId
-    bankOperationUpdateRequest:bankOperationUpdateRequest
-              completionHandler: ^(BankOperationDTO output, NSError* error) {
-    if (output) {
-        NSLog(@"%@", output);
-    }
-    if (error) {
-        NSLog(@"Error: %@", error);
-    }
-}];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-BankOperation-updateBankOperation-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
-var defaultClient = BankWizApi.ApiClient.instance;
-
-// Configure Bearer (JWT) access token for authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
-bearerAuth.accessToken = "YOUR ACCESS TOKEN";
-
-// Create an instance of the API class
-var api = new BankWizApi.BankOperationApi()
-var bankOperationId = 56; // {Integer} 
-var bankOperationUpdateRequest = ; // {BankOperationUpdateRequest} 
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.updateBankOperation(bankOperationId, bankOperationUpdateRequest, callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-BankOperation-updateBankOperation-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-BankOperation-updateBankOperation-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using Org.OpenAPITools.Api;
-using Org.OpenAPITools.Client;
-using Org.OpenAPITools.Model;
-
-namespace Example
-{
-    public class updateBankOperationExample
-    {
-        public void main()
-        {
-            // Configure Bearer (JWT) access token for authorization: bearerAuth
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            // Create an instance of the API class
-            var apiInstance = new BankOperationApi();
-            var bankOperationId = 56;  // Integer |  (default to null)
-            var bankOperationUpdateRequest = new BankOperationUpdateRequest(); // BankOperationUpdateRequest | 
-
-            try {
-                // Update the bank operation information
-                BankOperationDTO result = apiInstance.updateBankOperation(bankOperationId, bankOperationUpdateRequest);
-                Debug.WriteLine(result);
-            } catch (Exception e) {
-                Debug.Print("Exception when calling BankOperationApi.updateBankOperation: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-BankOperation-updateBankOperation-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure Bearer (JWT) access token for authorization: bearerAuth
-OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
-
-// Create an instance of the API class
-$api_instance = new OpenAPITools\Client\Api\BankOperationApi();
-$bankOperationId = 56; // Integer | 
-$bankOperationUpdateRequest = ; // BankOperationUpdateRequest | 
-
-try {
-    $result = $api_instance->updateBankOperation($bankOperationId, $bankOperationUpdateRequest);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling BankOperationApi->updateBankOperation: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-BankOperation-updateBankOperation-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::OPenAPIClient::Configuration;
-use WWW::OPenAPIClient::BankOperationApi;
-
-# Configure Bearer (JWT) access token for authorization: bearerAuth
-$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
-
-# Create an instance of the API class
-my $api_instance = WWW::OPenAPIClient::BankOperationApi->new();
-my $bankOperationId = 56; # Integer | 
-my $bankOperationUpdateRequest = WWW::OPenAPIClient::Object::BankOperationUpdateRequest->new(); # BankOperationUpdateRequest | 
-
-eval {
-    my $result = $api_instance->updateBankOperation(bankOperationId => $bankOperationId, bankOperationUpdateRequest => $bankOperationUpdateRequest);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling BankOperationApi->updateBankOperation: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-BankOperation-updateBankOperation-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import openapi_client
-from openapi_client.rest import ApiException
-from pprint import pprint
-
-# Configure Bearer (JWT) access token for authorization: bearerAuth
-openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
-
-# Create an instance of the API class
-api_instance = openapi_client.BankOperationApi()
-bankOperationId = 56 # Integer |  (default to null)
-bankOperationUpdateRequest =  # BankOperationUpdateRequest | 
-
-try:
-    # Update the bank operation information
-    api_response = api_instance.update_bank_operation(bankOperationId, bankOperationUpdateRequest)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling BankOperationApi->updateBankOperation: %s\n" % e)</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-BankOperation-updateBankOperation-0-rust">
-                              <pre class="prettyprint"><code class="language-rust">extern crate BankOperationApi;
-
-pub fn main() {
-    let bankOperationId = 56; // Integer
-    let bankOperationUpdateRequest = ; // BankOperationUpdateRequest
-
-    let mut context = BankOperationApi::Context::default();
-    let result = client.updateBankOperation(bankOperationId, bankOperationUpdateRequest, &context).wait();
-
-    println!("{:?}", result);
-}
-</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Scopes</h2>
-                          <table>
-                            
-                          </table>
-
-                          <h2>Parameters</h2>
-
-                            <div class="methodsubtabletitle">Path parameters</div>
-                            <table id="methodsubtable">
-                                <tr>
-                                  <th width="150px">Name</th>
-                                  <th>Description</th>
-                                </tr>
-                                  <tr><td style="width:150px;">bankOperationId*</td>
-<td>
-
-
-    <div id="d2e199_updateBankOperation_bankOperationId">
-        <div class="json-schema-view">
-            <div class="primitive">
-                <span class="type">
-                    Integer
-                </span>
-
-            </div>
-                <div class="inner required">
-                    Required
-                </div>
-        </div>
-    </div>
-</td>
-</tr>
-
-                            </table>
-
-
-                            <div class="methodsubtabletitle">Body parameters</div>
-                            <table id="methodsubtable">
-                              <tr>
-                                <th width="150px">Name</th>
-                                <th>Description</th>
-                              </tr>
-                                <tr><td style="width:150px;">bankOperationUpdateRequest <span style="color:red;">*</span></td>
-<td>
-<p class="marked"></p>
-<script>
-$(document).ready(function() {
-  var schemaWrapper = {
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/BankOperationUpdateRequest"
-      }
-    }
-  },
-  "required" : true
-};
-
-  var schema = findNode('schema',schemaWrapper).schema;
-  if (!schema) {
-    schema = schemaWrapper.schema;
-  }
-  if (schema.$ref != null) {
-    schema = defsParser.$refs.get(schema.$ref);
-  } else {
-    schemaWrapper.definitions = Object.assign({}, defs);
-    $RefParser.dereference(schemaWrapper).catch(function(err) {
-      console.log(err);
-    });
-  }
-
-  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
-  var result = $('#d2e199_updateBankOperation_bankOperationUpdateRequest');
-  result.empty();
-  result.append(view.render());
-});
-</script>
-<div id="d2e199_updateBankOperation_bankOperationUpdateRequest"></div>
-</td>
-</tr>
-
-                            </table>
-
-
-
-                          <h2>Responses</h2>
-                            <h3 id="examples-BankOperation-updateBankOperation-title-200"></h3>
-                            <p id="examples-BankOperation-updateBankOperation-description-200" class="marked"></p>
-                            <script>
-                              var responseBankOperation200_description = `Bank operation information updated successfully`;
-                              var responseBankOperation200_description_break = responseBankOperation200_description.indexOf('\n');
-                              if (responseBankOperation200_description_break == -1) {
-                                $("#examples-BankOperation-updateBankOperation-title-200").text("Status: 200 - " + responseBankOperation200_description);
-                              } else {
-                                $("#examples-BankOperation-updateBankOperation-title-200").text("Status: 200 - " + responseBankOperation200_description.substring(0, responseBankOperation200_description_break));
-                                $("#examples-BankOperation-updateBankOperation-description-200").html(responseBankOperation200_description.substring(responseBankOperation200_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-BankOperation-updateBankOperation-200" class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-BankOperation-updateBankOperation-200-schema">Schema</a>
-                                </li>
-
-
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-BankOperation-updateBankOperation-200-wrapper" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-BankOperation-updateBankOperation-200-schema">
-                                  <div id="responses-BankOperation-updateBankOperation-schema-200" class="exampleStyle">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = ;
-                                        var schema = findNode('schema',schemaWrapper).schema;
-                                        if (!schema) {
-                                          schema = schemaWrapper.schema;
-                                        }
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                          Object.keys(schema.properties).forEach( (item) => {
-                                            if (schema.properties[item].$ref != null) {
-                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
-                                            }
-                                          });
-                                        } else if (schema.items != null && schema.items.$ref != null) {
-                                            schema.items = defsParser.$refs.get(schema.items.$ref);
-                                        } else {
-                                          schemaWrapper.definitions = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-BankOperation-updateBankOperation-200-schema-data').val(JSON.stringify(schema));
-                                        var result = $('#responses-BankOperation-updateBankOperation-schema-200');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-BankOperation-updateBankOperation-200-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-                            <h3 id="examples-BankOperation-updateBankOperation-title-400"></h3>
-                            <p id="examples-BankOperation-updateBankOperation-description-400" class="marked"></p>
-                            <script>
-                              var responseBankOperation400_description = `Invalid request. Please check the provided data.`;
-                              var responseBankOperation400_description_break = responseBankOperation400_description.indexOf('\n');
-                              if (responseBankOperation400_description_break == -1) {
-                                $("#examples-BankOperation-updateBankOperation-title-400").text("Status: 400 - " + responseBankOperation400_description);
-                              } else {
-                                $("#examples-BankOperation-updateBankOperation-title-400").text("Status: 400 - " + responseBankOperation400_description.substring(0, responseBankOperation400_description_break));
-                                $("#examples-BankOperation-updateBankOperation-description-400").html(responseBankOperation400_description.substring(responseBankOperation400_description_break));
-                              }
-                            </script>
-
-
-                            <ul id="responses-detail-BankOperation-updateBankOperation-400" class="nav nav-tabs nav-tabs-examples" >
-
-
-                            </ul>
-
-
-                            <div class="tab-content" id="responses-BankOperation-updateBankOperation-400-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
@@ -7874,6 +6308,1572 @@ $(document).ready(function() {
 
 
                             <div class="tab-content" id="responses-Group-updateUserInGroup-400-wrapper" style='margin-bottom: 10px;'>
+                            </div>
+                        </article>
+                      </div>
+                      <hr>
+                  </section>
+                <section id="api-Transaction">
+                  <h1>Transaction</h1>
+                    <div id="api-Transaction-addTransaction">
+                      <article id="api-Transaction-addTransaction-0" data-group="User" data-name="addTransaction" data-version="0">
+                        <div class="pull-left">
+                          <h1>addTransaction</h1>
+                          <p>Add an transaction</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/transaction</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Transaction-addTransaction-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Transaction-addTransaction-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Transaction-addTransaction-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Transaction-addTransaction-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Transaction-addTransaction-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Transaction-addTransaction-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Transaction-addTransaction-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Transaction-addTransaction-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Transaction-addTransaction-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Transaction-addTransaction-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Transaction-addTransaction-0-python">Python</a></li>
+                          <li class=""><a href="#examples-Transaction-addTransaction-0-rust">Rust</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Transaction-addTransaction-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST \
+ -H "Authorization: Bearer [[accessToken]]" \
+ -H "Accept: application/json" \
+ -H "Content-Type: application/json" \
+ "http://localhost:8080/api/transaction" \
+ -d '{
+  &quot;amountInCents&quot; : 6,
+  &quot;date&quot; : &quot;2000-01-23&quot;,
+  &quot;accountId&quot; : 0
+}'
+</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Transaction-addTransaction-0-java">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.model.*;
+import org.openapitools.client.api.TransactionApi;
+
+import java.io.File;
+import java.util.*;
+
+public class TransactionApiExample {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure Bearer (JWT) access token for authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
+
+        // Create an instance of the API class
+        TransactionApi apiInstance = new TransactionApi();
+        TransactionCreationRequest transactionCreationRequest = ; // TransactionCreationRequest | 
+
+        try {
+            TransactionDTO result = apiInstance.addTransaction(transactionCreationRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TransactionApi#addTransaction");
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Transaction-addTransaction-0-android">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.TransactionApi;
+
+public class TransactionApiExample {
+    public static void main(String[] args) {
+        TransactionApi apiInstance = new TransactionApi();
+        TransactionCreationRequest transactionCreationRequest = ; // TransactionCreationRequest | 
+
+        try {
+            TransactionDTO result = apiInstance.addTransaction(transactionCreationRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TransactionApi#addTransaction");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Transaction-addTransaction-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Transaction-addTransaction-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+// Create an instance of the API class
+TransactionApi *apiInstance = [[TransactionApi alloc] init];
+TransactionCreationRequest *transactionCreationRequest = ; // 
+
+// Add an transaction
+[apiInstance addTransactionWith:transactionCreationRequest
+              completionHandler: ^(TransactionDTO output, NSError* error) {
+    if (output) {
+        NSLog(@"%@", output);
+    }
+    if (error) {
+        NSLog(@"Error: %@", error);
+    }
+}];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Transaction-addTransaction-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN";
+
+// Create an instance of the API class
+var api = new BankWizApi.TransactionApi()
+var transactionCreationRequest = ; // {TransactionCreationRequest} 
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.addTransaction(transactionCreationRequest, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Transaction-addTransaction-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Transaction-addTransaction-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class addTransactionExample
+    {
+        public void main()
+        {
+            // Configure Bearer (JWT) access token for authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            // Create an instance of the API class
+            var apiInstance = new TransactionApi();
+            var transactionCreationRequest = new TransactionCreationRequest(); // TransactionCreationRequest | 
+
+            try {
+                // Add an transaction
+                TransactionDTO result = apiInstance.addTransaction(transactionCreationRequest);
+                Debug.WriteLine(result);
+            } catch (Exception e) {
+                Debug.Print("Exception when calling TransactionApi.addTransaction: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Transaction-addTransaction-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
+
+// Create an instance of the API class
+$api_instance = new OpenAPITools\Client\Api\TransactionApi();
+$transactionCreationRequest = ; // TransactionCreationRequest | 
+
+try {
+    $result = $api_instance->addTransaction($transactionCreationRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TransactionApi->addTransaction: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Transaction-addTransaction-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::OPenAPIClient::Configuration;
+use WWW::OPenAPIClient::TransactionApi;
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+# Create an instance of the API class
+my $api_instance = WWW::OPenAPIClient::TransactionApi->new();
+my $transactionCreationRequest = WWW::OPenAPIClient::Object::TransactionCreationRequest->new(); # TransactionCreationRequest | 
+
+eval {
+    my $result = $api_instance->addTransaction(transactionCreationRequest => $transactionCreationRequest);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling TransactionApi->addTransaction: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Transaction-addTransaction-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import openapi_client
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Create an instance of the API class
+api_instance = openapi_client.TransactionApi()
+transactionCreationRequest =  # TransactionCreationRequest | 
+
+try:
+    # Add an transaction
+    api_response = api_instance.add_transaction(transactionCreationRequest)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TransactionApi->addTransaction: %s\n" % e)</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Transaction-addTransaction-0-rust">
+                              <pre class="prettyprint"><code class="language-rust">extern crate TransactionApi;
+
+pub fn main() {
+    let transactionCreationRequest = ; // TransactionCreationRequest
+
+    let mut context = TransactionApi::Context::default();
+    let result = client.addTransaction(transactionCreationRequest, &context).wait();
+
+    println!("{:?}", result);
+}
+</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Scopes</h2>
+                          <table>
+                            
+                          </table>
+
+                          <h2>Parameters</h2>
+
+
+
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">transactionCreationRequest <span style="color:red;">*</span></td>
+<td>
+<p class="marked"></p>
+<script>
+$(document).ready(function() {
+  var schemaWrapper = {
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/TransactionCreationRequest"
+      }
+    }
+  },
+  "required" : true
+};
+
+  var schema = findNode('schema',schemaWrapper).schema;
+  if (!schema) {
+    schema = schemaWrapper.schema;
+  }
+  if (schema.$ref != null) {
+    schema = defsParser.$refs.get(schema.$ref);
+  } else {
+    schemaWrapper.definitions = Object.assign({}, defs);
+    $RefParser.dereference(schemaWrapper).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+  var result = $('#d2e199_addTransaction_transactionCreationRequest');
+  result.empty();
+  result.append(view.render());
+});
+</script>
+<div id="d2e199_addTransaction_transactionCreationRequest"></div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+                          <h2>Responses</h2>
+                            <h3 id="examples-Transaction-addTransaction-title-200"></h3>
+                            <p id="examples-Transaction-addTransaction-description-200" class="marked"></p>
+                            <script>
+                              var responseTransaction200_description = `Transaction added successfully`;
+                              var responseTransaction200_description_break = responseTransaction200_description.indexOf('\n');
+                              if (responseTransaction200_description_break == -1) {
+                                $("#examples-Transaction-addTransaction-title-200").text("Status: 200 - " + responseTransaction200_description);
+                              } else {
+                                $("#examples-Transaction-addTransaction-title-200").text("Status: 200 - " + responseTransaction200_description.substring(0, responseTransaction200_description_break));
+                                $("#examples-Transaction-addTransaction-description-200").html(responseTransaction200_description.substring(responseTransaction200_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-Transaction-addTransaction-200" class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-Transaction-addTransaction-200-schema">Schema</a>
+                                </li>
+
+
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-Transaction-addTransaction-200-wrapper" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-Transaction-addTransaction-200-schema">
+                                  <div id="responses-Transaction-addTransaction-schema-200" class="exampleStyle">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = ;
+                                        var schema = findNode('schema',schemaWrapper).schema;
+                                        if (!schema) {
+                                          schema = schemaWrapper.schema;
+                                        }
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                          Object.keys(schema.properties).forEach( (item) => {
+                                            if (schema.properties[item].$ref != null) {
+                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
+                                            }
+                                          });
+                                        } else if (schema.items != null && schema.items.$ref != null) {
+                                            schema.items = defsParser.$refs.get(schema.items.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-Transaction-addTransaction-200-schema-data').val(JSON.stringify(schema));
+                                        var result = $('#responses-Transaction-addTransaction-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-Transaction-addTransaction-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+                            <h3 id="examples-Transaction-addTransaction-title-400"></h3>
+                            <p id="examples-Transaction-addTransaction-description-400" class="marked"></p>
+                            <script>
+                              var responseTransaction400_description = `Invalid request. Please check the provided data.`;
+                              var responseTransaction400_description_break = responseTransaction400_description.indexOf('\n');
+                              if (responseTransaction400_description_break == -1) {
+                                $("#examples-Transaction-addTransaction-title-400").text("Status: 400 - " + responseTransaction400_description);
+                              } else {
+                                $("#examples-Transaction-addTransaction-title-400").text("Status: 400 - " + responseTransaction400_description.substring(0, responseTransaction400_description_break));
+                                $("#examples-Transaction-addTransaction-description-400").html(responseTransaction400_description.substring(responseTransaction400_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-Transaction-addTransaction-400" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-Transaction-addTransaction-400-wrapper" style='margin-bottom: 10px;'>
+                            </div>
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Transaction-deleteTransaction">
+                      <article id="api-Transaction-deleteTransaction-0" data-group="User" data-name="deleteTransaction" data-version="0">
+                        <div class="pull-left">
+                          <h1>deleteTransaction</h1>
+                          <p>Delete a transaction</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="delete"><code><span class="pln">/transaction/{transactionId}</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Transaction-deleteTransaction-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Transaction-deleteTransaction-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Transaction-deleteTransaction-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Transaction-deleteTransaction-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Transaction-deleteTransaction-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Transaction-deleteTransaction-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Transaction-deleteTransaction-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Transaction-deleteTransaction-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Transaction-deleteTransaction-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Transaction-deleteTransaction-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Transaction-deleteTransaction-0-python">Python</a></li>
+                          <li class=""><a href="#examples-Transaction-deleteTransaction-0-rust">Rust</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Transaction-deleteTransaction-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X DELETE \
+ -H "Authorization: Bearer [[accessToken]]" \
+ "http://localhost:8080/api/transaction/{transactionId}"
+</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Transaction-deleteTransaction-0-java">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.model.*;
+import org.openapitools.client.api.TransactionApi;
+
+import java.io.File;
+import java.util.*;
+
+public class TransactionApiExample {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure Bearer (JWT) access token for authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
+
+        // Create an instance of the API class
+        TransactionApi apiInstance = new TransactionApi();
+        Long transactionId = 789; // Long | 
+
+        try {
+            apiInstance.deleteTransaction(transactionId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TransactionApi#deleteTransaction");
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Transaction-deleteTransaction-0-android">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.TransactionApi;
+
+public class TransactionApiExample {
+    public static void main(String[] args) {
+        TransactionApi apiInstance = new TransactionApi();
+        Long transactionId = 789; // Long | 
+
+        try {
+            apiInstance.deleteTransaction(transactionId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TransactionApi#deleteTransaction");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Transaction-deleteTransaction-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Transaction-deleteTransaction-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+// Create an instance of the API class
+TransactionApi *apiInstance = [[TransactionApi alloc] init];
+Long *transactionId = 789; //  (default to null)
+
+// Delete a transaction
+[apiInstance deleteTransactionWith:transactionId
+              completionHandler: ^(NSError* error) {
+    if (error) {
+        NSLog(@"Error: %@", error);
+    }
+}];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Transaction-deleteTransaction-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN";
+
+// Create an instance of the API class
+var api = new BankWizApi.TransactionApi()
+var transactionId = 789; // {Long} 
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+api.deleteTransaction(transactionId, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Transaction-deleteTransaction-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Transaction-deleteTransaction-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class deleteTransactionExample
+    {
+        public void main()
+        {
+            // Configure Bearer (JWT) access token for authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            // Create an instance of the API class
+            var apiInstance = new TransactionApi();
+            var transactionId = 789;  // Long |  (default to null)
+
+            try {
+                // Delete a transaction
+                apiInstance.deleteTransaction(transactionId);
+            } catch (Exception e) {
+                Debug.Print("Exception when calling TransactionApi.deleteTransaction: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Transaction-deleteTransaction-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
+
+// Create an instance of the API class
+$api_instance = new OpenAPITools\Client\Api\TransactionApi();
+$transactionId = 789; // Long | 
+
+try {
+    $api_instance->deleteTransaction($transactionId);
+} catch (Exception $e) {
+    echo 'Exception when calling TransactionApi->deleteTransaction: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Transaction-deleteTransaction-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::OPenAPIClient::Configuration;
+use WWW::OPenAPIClient::TransactionApi;
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+# Create an instance of the API class
+my $api_instance = WWW::OPenAPIClient::TransactionApi->new();
+my $transactionId = 789; # Long | 
+
+eval {
+    $api_instance->deleteTransaction(transactionId => $transactionId);
+};
+if ($@) {
+    warn "Exception when calling TransactionApi->deleteTransaction: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Transaction-deleteTransaction-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import openapi_client
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Create an instance of the API class
+api_instance = openapi_client.TransactionApi()
+transactionId = 789 # Long |  (default to null)
+
+try:
+    # Delete a transaction
+    api_instance.delete_transaction(transactionId)
+except ApiException as e:
+    print("Exception when calling TransactionApi->deleteTransaction: %s\n" % e)</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Transaction-deleteTransaction-0-rust">
+                              <pre class="prettyprint"><code class="language-rust">extern crate TransactionApi;
+
+pub fn main() {
+    let transactionId = 789; // Long
+
+    let mut context = TransactionApi::Context::default();
+    let result = client.deleteTransaction(transactionId, &context).wait();
+
+    println!("{:?}", result);
+}
+</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Scopes</h2>
+                          <table>
+                            
+                          </table>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">transactionId*</td>
+<td>
+
+
+    <div id="d2e199_deleteTransaction_transactionId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Long
+                </span>
+                    <span class="format">
+                        (int64)
+                    </span>
+
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3 id="examples-Transaction-deleteTransaction-title-200"></h3>
+                            <p id="examples-Transaction-deleteTransaction-description-200" class="marked"></p>
+                            <script>
+                              var responseTransaction200_description = `Transaction deleted successfully`;
+                              var responseTransaction200_description_break = responseTransaction200_description.indexOf('\n');
+                              if (responseTransaction200_description_break == -1) {
+                                $("#examples-Transaction-deleteTransaction-title-200").text("Status: 200 - " + responseTransaction200_description);
+                              } else {
+                                $("#examples-Transaction-deleteTransaction-title-200").text("Status: 200 - " + responseTransaction200_description.substring(0, responseTransaction200_description_break));
+                                $("#examples-Transaction-deleteTransaction-description-200").html(responseTransaction200_description.substring(responseTransaction200_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-Transaction-deleteTransaction-200" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-Transaction-deleteTransaction-200-wrapper" style='margin-bottom: 10px;'>
+                            </div>
+                            <h3 id="examples-Transaction-deleteTransaction-title-400"></h3>
+                            <p id="examples-Transaction-deleteTransaction-description-400" class="marked"></p>
+                            <script>
+                              var responseTransaction400_description = `Invalid request. Please check the provided data.`;
+                              var responseTransaction400_description_break = responseTransaction400_description.indexOf('\n');
+                              if (responseTransaction400_description_break == -1) {
+                                $("#examples-Transaction-deleteTransaction-title-400").text("Status: 400 - " + responseTransaction400_description);
+                              } else {
+                                $("#examples-Transaction-deleteTransaction-title-400").text("Status: 400 - " + responseTransaction400_description.substring(0, responseTransaction400_description_break));
+                                $("#examples-Transaction-deleteTransaction-description-400").html(responseTransaction400_description.substring(responseTransaction400_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-Transaction-deleteTransaction-400" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-Transaction-deleteTransaction-400-wrapper" style='margin-bottom: 10px;'>
+                            </div>
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Transaction-getTransaction">
+                      <article id="api-Transaction-getTransaction-0" data-group="User" data-name="getTransaction" data-version="0">
+                        <div class="pull-left">
+                          <h1>getTransaction</h1>
+                          <p>Get a transaction</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/transaction/{transactionId}</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Transaction-getTransaction-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Transaction-getTransaction-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Transaction-getTransaction-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Transaction-getTransaction-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Transaction-getTransaction-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Transaction-getTransaction-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Transaction-getTransaction-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Transaction-getTransaction-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Transaction-getTransaction-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Transaction-getTransaction-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Transaction-getTransaction-0-python">Python</a></li>
+                          <li class=""><a href="#examples-Transaction-getTransaction-0-rust">Rust</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Transaction-getTransaction-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET \
+ -H "Authorization: Bearer [[accessToken]]" \
+ -H "Accept: application/json" \
+ "http://localhost:8080/api/transaction/{transactionId}"
+</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Transaction-getTransaction-0-java">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.model.*;
+import org.openapitools.client.api.TransactionApi;
+
+import java.io.File;
+import java.util.*;
+
+public class TransactionApiExample {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure Bearer (JWT) access token for authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
+
+        // Create an instance of the API class
+        TransactionApi apiInstance = new TransactionApi();
+        Integer transactionId = 56; // Integer | 
+
+        try {
+            TransactionDTO result = apiInstance.getTransaction(transactionId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TransactionApi#getTransaction");
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Transaction-getTransaction-0-android">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.TransactionApi;
+
+public class TransactionApiExample {
+    public static void main(String[] args) {
+        TransactionApi apiInstance = new TransactionApi();
+        Integer transactionId = 56; // Integer | 
+
+        try {
+            TransactionDTO result = apiInstance.getTransaction(transactionId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TransactionApi#getTransaction");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Transaction-getTransaction-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Transaction-getTransaction-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+// Create an instance of the API class
+TransactionApi *apiInstance = [[TransactionApi alloc] init];
+Integer *transactionId = 56; //  (default to null)
+
+// Get a transaction
+[apiInstance getTransactionWith:transactionId
+              completionHandler: ^(TransactionDTO output, NSError* error) {
+    if (output) {
+        NSLog(@"%@", output);
+    }
+    if (error) {
+        NSLog(@"Error: %@", error);
+    }
+}];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Transaction-getTransaction-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN";
+
+// Create an instance of the API class
+var api = new BankWizApi.TransactionApi()
+var transactionId = 56; // {Integer} 
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.getTransaction(transactionId, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Transaction-getTransaction-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Transaction-getTransaction-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class getTransactionExample
+    {
+        public void main()
+        {
+            // Configure Bearer (JWT) access token for authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            // Create an instance of the API class
+            var apiInstance = new TransactionApi();
+            var transactionId = 56;  // Integer |  (default to null)
+
+            try {
+                // Get a transaction
+                TransactionDTO result = apiInstance.getTransaction(transactionId);
+                Debug.WriteLine(result);
+            } catch (Exception e) {
+                Debug.Print("Exception when calling TransactionApi.getTransaction: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Transaction-getTransaction-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
+
+// Create an instance of the API class
+$api_instance = new OpenAPITools\Client\Api\TransactionApi();
+$transactionId = 56; // Integer | 
+
+try {
+    $result = $api_instance->getTransaction($transactionId);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TransactionApi->getTransaction: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Transaction-getTransaction-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::OPenAPIClient::Configuration;
+use WWW::OPenAPIClient::TransactionApi;
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+# Create an instance of the API class
+my $api_instance = WWW::OPenAPIClient::TransactionApi->new();
+my $transactionId = 56; # Integer | 
+
+eval {
+    my $result = $api_instance->getTransaction(transactionId => $transactionId);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling TransactionApi->getTransaction: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Transaction-getTransaction-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import openapi_client
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Create an instance of the API class
+api_instance = openapi_client.TransactionApi()
+transactionId = 56 # Integer |  (default to null)
+
+try:
+    # Get a transaction
+    api_response = api_instance.get_transaction(transactionId)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TransactionApi->getTransaction: %s\n" % e)</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Transaction-getTransaction-0-rust">
+                              <pre class="prettyprint"><code class="language-rust">extern crate TransactionApi;
+
+pub fn main() {
+    let transactionId = 56; // Integer
+
+    let mut context = TransactionApi::Context::default();
+    let result = client.getTransaction(transactionId, &context).wait();
+
+    println!("{:?}", result);
+}
+</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Scopes</h2>
+                          <table>
+                            
+                          </table>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">transactionId*</td>
+<td>
+
+
+    <div id="d2e199_getTransaction_transactionId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3 id="examples-Transaction-getTransaction-title-200"></h3>
+                            <p id="examples-Transaction-getTransaction-description-200" class="marked"></p>
+                            <script>
+                              var responseTransaction200_description = `Successfully retrieved transaction information`;
+                              var responseTransaction200_description_break = responseTransaction200_description.indexOf('\n');
+                              if (responseTransaction200_description_break == -1) {
+                                $("#examples-Transaction-getTransaction-title-200").text("Status: 200 - " + responseTransaction200_description);
+                              } else {
+                                $("#examples-Transaction-getTransaction-title-200").text("Status: 200 - " + responseTransaction200_description.substring(0, responseTransaction200_description_break));
+                                $("#examples-Transaction-getTransaction-description-200").html(responseTransaction200_description.substring(responseTransaction200_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-Transaction-getTransaction-200" class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-Transaction-getTransaction-200-schema">Schema</a>
+                                </li>
+
+
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-Transaction-getTransaction-200-wrapper" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-Transaction-getTransaction-200-schema">
+                                  <div id="responses-Transaction-getTransaction-schema-200" class="exampleStyle">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = ;
+                                        var schema = findNode('schema',schemaWrapper).schema;
+                                        if (!schema) {
+                                          schema = schemaWrapper.schema;
+                                        }
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                          Object.keys(schema.properties).forEach( (item) => {
+                                            if (schema.properties[item].$ref != null) {
+                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
+                                            }
+                                          });
+                                        } else if (schema.items != null && schema.items.$ref != null) {
+                                            schema.items = defsParser.$refs.get(schema.items.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-Transaction-getTransaction-200-schema-data').val(JSON.stringify(schema));
+                                        var result = $('#responses-Transaction-getTransaction-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-Transaction-getTransaction-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+                            <h3 id="examples-Transaction-getTransaction-title-400"></h3>
+                            <p id="examples-Transaction-getTransaction-description-400" class="marked"></p>
+                            <script>
+                              var responseTransaction400_description = `Invalid request. Please check the provided data.`;
+                              var responseTransaction400_description_break = responseTransaction400_description.indexOf('\n');
+                              if (responseTransaction400_description_break == -1) {
+                                $("#examples-Transaction-getTransaction-title-400").text("Status: 400 - " + responseTransaction400_description);
+                              } else {
+                                $("#examples-Transaction-getTransaction-title-400").text("Status: 400 - " + responseTransaction400_description.substring(0, responseTransaction400_description_break));
+                                $("#examples-Transaction-getTransaction-description-400").html(responseTransaction400_description.substring(responseTransaction400_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-Transaction-getTransaction-400" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-Transaction-getTransaction-400-wrapper" style='margin-bottom: 10px;'>
+                            </div>
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Transaction-updateTransaction">
+                      <article id="api-Transaction-updateTransaction-0" data-group="User" data-name="updateTransaction" data-version="0">
+                        <div class="pull-left">
+                          <h1>updateTransaction</h1>
+                          <p>Update the transaction information</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="put"><code><span class="pln">/transaction/{transactionId}</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Transaction-updateTransaction-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Transaction-updateTransaction-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Transaction-updateTransaction-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Transaction-updateTransaction-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Transaction-updateTransaction-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Transaction-updateTransaction-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Transaction-updateTransaction-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Transaction-updateTransaction-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Transaction-updateTransaction-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Transaction-updateTransaction-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Transaction-updateTransaction-0-python">Python</a></li>
+                          <li class=""><a href="#examples-Transaction-updateTransaction-0-rust">Rust</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Transaction-updateTransaction-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X PUT \
+ -H "Authorization: Bearer [[accessToken]]" \
+ -H "Accept: application/json" \
+ -H "Content-Type: application/json" \
+ "http://localhost:8080/api/transaction/{transactionId}" \
+ -d '{
+  &quot;amountInCents&quot; : 0,
+  &quot;date&quot; : &quot;2000-01-23&quot;
+}'
+</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Transaction-updateTransaction-0-java">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.model.*;
+import org.openapitools.client.api.TransactionApi;
+
+import java.io.File;
+import java.util.*;
+
+public class TransactionApiExample {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure Bearer (JWT) access token for authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
+
+        // Create an instance of the API class
+        TransactionApi apiInstance = new TransactionApi();
+        Integer transactionId = 56; // Integer | 
+        TransactionUpdateRequest transactionUpdateRequest = ; // TransactionUpdateRequest | 
+
+        try {
+            TransactionDTO result = apiInstance.updateTransaction(transactionId, transactionUpdateRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TransactionApi#updateTransaction");
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Transaction-updateTransaction-0-android">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.TransactionApi;
+
+public class TransactionApiExample {
+    public static void main(String[] args) {
+        TransactionApi apiInstance = new TransactionApi();
+        Integer transactionId = 56; // Integer | 
+        TransactionUpdateRequest transactionUpdateRequest = ; // TransactionUpdateRequest | 
+
+        try {
+            TransactionDTO result = apiInstance.updateTransaction(transactionId, transactionUpdateRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TransactionApi#updateTransaction");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Transaction-updateTransaction-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Transaction-updateTransaction-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+// Create an instance of the API class
+TransactionApi *apiInstance = [[TransactionApi alloc] init];
+Integer *transactionId = 56; //  (default to null)
+TransactionUpdateRequest *transactionUpdateRequest = ; // 
+
+// Update the transaction information
+[apiInstance updateTransactionWith:transactionId
+    transactionUpdateRequest:transactionUpdateRequest
+              completionHandler: ^(TransactionDTO output, NSError* error) {
+    if (output) {
+        NSLog(@"%@", output);
+    }
+    if (error) {
+        NSLog(@"Error: %@", error);
+    }
+}];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Transaction-updateTransaction-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.accessToken = "YOUR ACCESS TOKEN";
+
+// Create an instance of the API class
+var api = new BankWizApi.TransactionApi()
+var transactionId = 56; // {Integer} 
+var transactionUpdateRequest = ; // {TransactionUpdateRequest} 
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.updateTransaction(transactionId, transactionUpdateRequest, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Transaction-updateTransaction-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Transaction-updateTransaction-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class updateTransactionExample
+    {
+        public void main()
+        {
+            // Configure Bearer (JWT) access token for authorization: bearerAuth
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            // Create an instance of the API class
+            var apiInstance = new TransactionApi();
+            var transactionId = 56;  // Integer |  (default to null)
+            var transactionUpdateRequest = new TransactionUpdateRequest(); // TransactionUpdateRequest | 
+
+            try {
+                // Update the transaction information
+                TransactionDTO result = apiInstance.updateTransaction(transactionId, transactionUpdateRequest);
+                Debug.WriteLine(result);
+            } catch (Exception e) {
+                Debug.Print("Exception when calling TransactionApi.updateTransaction: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Transaction-updateTransaction-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure Bearer (JWT) access token for authorization: bearerAuth
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
+
+// Create an instance of the API class
+$api_instance = new OpenAPITools\Client\Api\TransactionApi();
+$transactionId = 56; // Integer | 
+$transactionUpdateRequest = ; // TransactionUpdateRequest | 
+
+try {
+    $result = $api_instance->updateTransaction($transactionId, $transactionUpdateRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TransactionApi->updateTransaction: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Transaction-updateTransaction-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::OPenAPIClient::Configuration;
+use WWW::OPenAPIClient::TransactionApi;
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+# Create an instance of the API class
+my $api_instance = WWW::OPenAPIClient::TransactionApi->new();
+my $transactionId = 56; # Integer | 
+my $transactionUpdateRequest = WWW::OPenAPIClient::Object::TransactionUpdateRequest->new(); # TransactionUpdateRequest | 
+
+eval {
+    my $result = $api_instance->updateTransaction(transactionId => $transactionId, transactionUpdateRequest => $transactionUpdateRequest);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling TransactionApi->updateTransaction: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Transaction-updateTransaction-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import openapi_client
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Configure Bearer (JWT) access token for authorization: bearerAuth
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Create an instance of the API class
+api_instance = openapi_client.TransactionApi()
+transactionId = 56 # Integer |  (default to null)
+transactionUpdateRequest =  # TransactionUpdateRequest | 
+
+try:
+    # Update the transaction information
+    api_response = api_instance.update_transaction(transactionId, transactionUpdateRequest)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TransactionApi->updateTransaction: %s\n" % e)</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Transaction-updateTransaction-0-rust">
+                              <pre class="prettyprint"><code class="language-rust">extern crate TransactionApi;
+
+pub fn main() {
+    let transactionId = 56; // Integer
+    let transactionUpdateRequest = ; // TransactionUpdateRequest
+
+    let mut context = TransactionApi::Context::default();
+    let result = client.updateTransaction(transactionId, transactionUpdateRequest, &context).wait();
+
+    println!("{:?}", result);
+}
+</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Scopes</h2>
+                          <table>
+                            
+                          </table>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">transactionId*</td>
+<td>
+
+
+    <div id="d2e199_updateTransaction_transactionId">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    Integer
+                </span>
+
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">transactionUpdateRequest <span style="color:red;">*</span></td>
+<td>
+<p class="marked"></p>
+<script>
+$(document).ready(function() {
+  var schemaWrapper = {
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/TransactionUpdateRequest"
+      }
+    }
+  },
+  "required" : true
+};
+
+  var schema = findNode('schema',schemaWrapper).schema;
+  if (!schema) {
+    schema = schemaWrapper.schema;
+  }
+  if (schema.$ref != null) {
+    schema = defsParser.$refs.get(schema.$ref);
+  } else {
+    schemaWrapper.definitions = Object.assign({}, defs);
+    $RefParser.dereference(schemaWrapper).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+  var result = $('#d2e199_updateTransaction_transactionUpdateRequest');
+  result.empty();
+  result.append(view.render());
+});
+</script>
+<div id="d2e199_updateTransaction_transactionUpdateRequest"></div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+                          <h2>Responses</h2>
+                            <h3 id="examples-Transaction-updateTransaction-title-200"></h3>
+                            <p id="examples-Transaction-updateTransaction-description-200" class="marked"></p>
+                            <script>
+                              var responseTransaction200_description = `Transaction information updated successfully`;
+                              var responseTransaction200_description_break = responseTransaction200_description.indexOf('\n');
+                              if (responseTransaction200_description_break == -1) {
+                                $("#examples-Transaction-updateTransaction-title-200").text("Status: 200 - " + responseTransaction200_description);
+                              } else {
+                                $("#examples-Transaction-updateTransaction-title-200").text("Status: 200 - " + responseTransaction200_description.substring(0, responseTransaction200_description_break));
+                                $("#examples-Transaction-updateTransaction-description-200").html(responseTransaction200_description.substring(responseTransaction200_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-Transaction-updateTransaction-200" class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-Transaction-updateTransaction-200-schema">Schema</a>
+                                </li>
+
+
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-Transaction-updateTransaction-200-wrapper" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-Transaction-updateTransaction-200-schema">
+                                  <div id="responses-Transaction-updateTransaction-schema-200" class="exampleStyle">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = ;
+                                        var schema = findNode('schema',schemaWrapper).schema;
+                                        if (!schema) {
+                                          schema = schemaWrapper.schema;
+                                        }
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                          Object.keys(schema.properties).forEach( (item) => {
+                                            if (schema.properties[item].$ref != null) {
+                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
+                                            }
+                                          });
+                                        } else if (schema.items != null && schema.items.$ref != null) {
+                                            schema.items = defsParser.$refs.get(schema.items.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-Transaction-updateTransaction-200-schema-data').val(JSON.stringify(schema));
+                                        var result = $('#responses-Transaction-updateTransaction-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-Transaction-updateTransaction-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+                            <h3 id="examples-Transaction-updateTransaction-title-400"></h3>
+                            <p id="examples-Transaction-updateTransaction-description-400" class="marked"></p>
+                            <script>
+                              var responseTransaction400_description = `Invalid request. Please check the provided data.`;
+                              var responseTransaction400_description_break = responseTransaction400_description.indexOf('\n');
+                              if (responseTransaction400_description_break == -1) {
+                                $("#examples-Transaction-updateTransaction-title-400").text("Status: 400 - " + responseTransaction400_description);
+                              } else {
+                                $("#examples-Transaction-updateTransaction-title-400").text("Status: 400 - " + responseTransaction400_description.substring(0, responseTransaction400_description_break));
+                                $("#examples-Transaction-updateTransaction-description-400").html(responseTransaction400_description.substring(responseTransaction400_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-Transaction-updateTransaction-400" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-Transaction-updateTransaction-400-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
