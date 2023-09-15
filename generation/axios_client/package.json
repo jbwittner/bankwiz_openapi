@@ -1,7 +1,7 @@
 {
-  "name": "@jbwittner/bankwiz_openapi-client",
+  "name": "@jbwittner/bankwiz_openapi-client-axios",
   "version": "0.2.7",
-  "description": "OpenAPI client for @jbwittner/bankwiz_openapi-client",
+  "description": "OpenAPI client for @jbwittner/bankwiz_openapi-client-axios",
   "author": "OpenAPI-Generator Contributors",
   "repository": {
     "type": "git",
@@ -12,7 +12,7 @@
     "typescript",
     "openapi-client",
     "openapi-generator",
-    "@jbwittner/bankwiz_openapi-client"
+    "@jbwittner/bankwiz_openapi-client-axios"
   ],
   "license": "Unlicense",
   "main": "./dist/index.js",
