@@ -33,7 +33,7 @@ generate-axios: clean-axios
 	  -i /local/{{OPENAPI_SPEC}} \
 	  -g typescript-axios \
 	  -o /local/{{GENERATED_DIR_AXIOS}} \
-	  --additional-properties=npmName=@jbwittner/bankwiz_openapi-client \
+	  --additional-properties=npmName=@jbwittner/bankwiz_openapi-client-axios \
 	  --additional-properties=npmRepository=https://github.com/jbwittner/bankwiz_openapi \
 	  --additional-properties=withSeparateModelsAndApi=true \
 	  --additional-properties=apiPackage=api \
@@ -48,9 +48,9 @@ generate-fetch: clean-fetch
 	  --user $(id -u):$(id -g) \
 	  {{DOCKER_IMAGE}} generate \
 	  -i /local/{{OPENAPI_SPEC}} \
-	  -g typescript-axios \
+	  -g typescript-fetch \
 	  -o /local/{{GENERATED_DIR_FETCH}} \
-	  --additional-properties=npmName=@jbwittner/bankwiz_openapi-client \
+	  --additional-properties=npmName=@jbwittner/bankwiz_openapi-client-fetch \
 	  --additional-properties=npmRepository=https://github.com/jbwittner/bankwiz_openapi \
 	  --additional-properties=withSeparateModelsAndApi=true \
 	  --additional-properties=apiPackage=api \
