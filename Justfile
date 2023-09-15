@@ -102,6 +102,10 @@ build-java:
 publish-axios: build-axios
 	cd "$(pwd)/{{GENERATED_DIR_AXIOS}}" && npm publish
 
+# Builds and publishes the Fetch package
+publish-fetch: build-fetch
+	cd "$(pwd)/{{GENERATED_DIR_FETCH}}" && npm publish
+
 # Builds and publishes the Java package
 publish-java: build-java
 	cd "$(pwd)/{{GENERATED_DIR_JAVA}}" && mvn deploy -DaltDeploymentRepository=github::default::{{GITHUB_MAVEN_REPO}}
