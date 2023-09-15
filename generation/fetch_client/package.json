@@ -1,20 +1,12 @@
 {
-  "name": "@jbwittner/bankwiz_openapi-client-axios",
+  "name": "@jbwittner/bankwiz_openapi-client-fetch",
   "version": "0.2.7",
-  "description": "OpenAPI client for @jbwittner/bankwiz_openapi-client-axios",
-  "author": "OpenAPI-Generator Contributors",
+  "description": "OpenAPI client for @jbwittner/bankwiz_openapi-client-fetch",
+  "author": "OpenAPI-Generator",
   "repository": {
     "type": "git",
     "url": "https://github.com/GIT_USER_ID/GIT_REPO_ID.git"
   },
-  "keywords": [
-    "axios",
-    "typescript",
-    "openapi-client",
-    "openapi-generator",
-    "@jbwittner/bankwiz_openapi-client-axios"
-  ],
-  "license": "Unlicense",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "module": "./dist/esm/index.js",
@@ -23,11 +15,7 @@
     "build": "tsc && tsc -p tsconfig.esm.json",
     "prepare": "npm run build"
   },
-  "dependencies": {
-    "axios": "^0.27.2"
-  },
   "devDependencies": {
-    "@types/node": "^12.11.5",
     "typescript": "^4.0"
   },
   "publishConfig": {
