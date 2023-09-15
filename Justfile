@@ -1,6 +1,7 @@
 # Variables defining the paths and information needed for the code generation
 DOCKER_IMAGE := "openapitools/openapi-generator-cli"
 GENERATED_DIR_AXIOS := "generation/axios_client"
+GENERATED_DIR_FETCH := "generation/fetch_client"
 GENERATED_DIR_JAVA := "generation/java_server"
 GENERATED_DIR_DOCS := "docs"
 OPENAPI_SPEC := "openapi.yaml"
@@ -18,6 +19,11 @@ clean-docs:
 clean-axios:
 	rm -rf {{GENERATED_DIR_AXIOS}}
 
+# Removes the generated Axios directory
+clean-fetch:
+	rm -rf {{GENERATED_DIR_FETCH}}
+
+
 # Generates TypeScript Axios Client
 generate-axios: clean-axios
 	docker run --rm \
@@ -27,6 +33,23 @@ generate-axios: clean-axios
 	  -i /local/{{OPENAPI_SPEC}} \
 	  -g typescript-axios \
 	  -o /local/{{GENERATED_DIR_AXIOS}} \
+	  --additional-properties=npmName=@jbwittner/bankwiz_openapi-client \
+	  --additional-properties=npmRepository=https://github.com/jbwittner/bankwiz_openapi \
+	  --additional-properties=withSeparateModelsAndApi=true \
+	  --additional-properties=apiPackage=api \
+	  --additional-properties=modelPackage=model \
+	  --additional-properties=supportsES6=true \
+	  --additional-properties=withInterfaces=true
+
+# Generates TypeScript Fetch Client
+generate-fetch: clean-fetch
+	docker run --rm \
+	  -v $(pwd):/local \
+	  --user $(id -u):$(id -g) \
+	  {{DOCKER_IMAGE}} generate \
+	  -i /local/{{OPENAPI_SPEC}} \
+	  -g typescript-axios \
+	  -o /local/{{GENERATED_DIR_FETCH}} \
 	  --additional-properties=npmName=@jbwittner/bankwiz_openapi-client \
 	  --additional-properties=npmRepository=https://github.com/jbwittner/bankwiz_openapi \
 	  --additional-properties=withSeparateModelsAndApi=true \
@@ -66,6 +89,10 @@ generate-docs: clean-docs
 # Runs npm install in the Axios generated directory
 build-axios:
 	npm install --prefix {{GENERATED_DIR_AXIOS}}
+
+# Runs npm install in the Fetch generated directory
+build-fetch:
+	npm install --prefix {{GENERATED_DIR_FETCH}}
 
 # Runs mvn clean package in the Java generated directory
 build-java:
