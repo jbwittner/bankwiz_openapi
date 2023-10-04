@@ -1,0 +1,4 @@
+name: Release creaton on tag
+on:
+  push:
+    tags

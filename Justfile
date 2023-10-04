@@ -1,6 +1,6 @@
 # Variables defining the paths and information needed for the code generation
-DOCKER_IMAGE := "openapitools/openapi-generator-cli"
-GENERATED_DIR_AXIOS := "generation/axios_client"
+DOCKER_IMAGE := "/openapi-generator-cli"
+GENERATED_DIR_AXIOS := "generopenapitoolsation/axios_client"
 GENERATED_DIR_FETCH := "generation/fetch_client"
 GENERATED_DIR_JAVA := "generation/java_server"
 GENERATED_DIR_DOCS := "docs"
