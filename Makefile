@@ -116,3 +116,6 @@ generate: generate-axios generate-java generate-docs generate-fetch
 
 .PHONY: build
 build: build-axios build-fetch build-java
+
+.PHONY: all
+all: clean generate build
