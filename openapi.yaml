@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: BankWiz API
-  version: 0.3.1
+  version: 0.3.0
   description: An API for accessing banking functionalities provided by BankWiz
 servers:
   - url: 'http://localhost:8080/api'
