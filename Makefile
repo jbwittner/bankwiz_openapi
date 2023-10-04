@@ -96,9 +96,17 @@ build-fetch:
 build-java:
 	mvn clean package -f $(GENERATED_DIR_JAVA)/pom.xml
 
+.PHONY: publish-fetch
+publish-fetch:
+	cd "$$PWD/$(GENERATED_DIR_FETCH)" && npm publish
+
 .PHONY: publish-axios
 publish-axios:
-	make build-axios && cd "$(PWD)/$(GENERATED_DIR_AXIOS)" && npm publish
+	cd "$$PWD/$(GENERATED_DIR_AXIOS)" && npm publish
+
+.PHONY: publish-java
+publish-java:
+	cd "$$PWD/$(GENERATED_DIR_JAVA)" && mvn deploy -DaltDeploymentRepository=github::default::$(GITHUB_MAVEN_REPO)
 
 .PHONY: clean
 clean: clean-java clean-docs clean-axios clean-fetch
