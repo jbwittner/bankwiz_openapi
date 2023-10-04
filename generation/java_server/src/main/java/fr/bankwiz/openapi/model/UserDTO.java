@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.UUID;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import jakarta.validation.Valid;
@@ -21,7 +22,7 @@ import jakarta.annotation.Generated;
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 public class UserDTO {
 
-  private Integer userId;
+  private UUID id;
 
   private String firstName;
 
@@ -36,31 +37,31 @@ public class UserDTO {
   /**
    * Constructor with only required parameters
    */
-  public UserDTO(Integer userId, String firstName, String lastName, String email) {
-    this.userId = userId;
+  public UserDTO(UUID id, String firstName, String lastName, String email) {
+    this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
   }
 
-  public UserDTO userId(Integer userId) {
-    this.userId = userId;
+  public UserDTO id(UUID id) {
+    this.id = id;
     return this;
   }
 
   /**
-   * Get userId
-   * @return userId
+   * Get id
+   * @return id
   */
-  @NotNull 
-  @Schema(name = "userId", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("userId")
-  public Integer getUserId() {
-    return userId;
+  @NotNull @Valid 
+  @Schema(name = "id", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("id")
+  public UUID getId() {
+    return id;
   }
 
-  public void setUserId(Integer userId) {
-    this.userId = userId;
+  public void setId(UUID id) {
+    this.id = id;
   }
 
   public UserDTO firstName(String firstName) {
@@ -132,7 +133,7 @@ public class UserDTO {
       return false;
     }
     UserDTO userDTO = (UserDTO) o;
-    return Objects.equals(this.userId, userDTO.userId) &&
+    return Objects.equals(this.id, userDTO.id) &&
         Objects.equals(this.firstName, userDTO.firstName) &&
         Objects.equals(this.lastName, userDTO.lastName) &&
         Objects.equals(this.email, userDTO.email);
@@ -140,14 +141,14 @@ public class UserDTO {
 
   @Override
   public int hashCode() {
-    return Objects.hash(userId, firstName, lastName, email);
+    return Objects.hash(id, firstName, lastName, email);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserDTO {\n");
-    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
