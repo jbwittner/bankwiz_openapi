@@ -6,26 +6,24 @@ GENERATED_DIR_DOCS = "docs"
 OPENAPI_SPEC = "openapi.yaml"
 GITHUB_MAVEN_REPO = "https://maven.pkg.github.com/jbwittner/bankwiz_openapi"
 
-# Removes the generated Java directory
+.PHONY: clean-java
 clean-java:
 	rm -rf $(GENERATED_DIR_JAVA)
 
-# Removes the generated documentation directory
+.PHONY: clean-docs
 clean-docs:
 	rm -rf $(GENERATED_DIR_DOCS)
 
-# Removes the generated Axios directory
+.PHONY: clean-axios
 clean-axios:
 	rm -rf $(GENERATED_DIR_AXIOS)
 
-# Removes the generated Axios directory
+.PHONY: clean-fetch
 clean-fetch:
 	rm -rf $(GENERATED_DIR_FETCH)
 
-clean-all: clean-java clean-docs clean-axios clean-fetch
-
-# Generates TypeScript Axios Client
-generate-axios: clean-axios
+.PHONY: generate-axios
+generate-axios:
 	docker run --rm \
 	  -v $$PWD:/local \
 	  --user $$(id -u):$$(id -g) \
@@ -41,8 +39,8 @@ generate-axios: clean-axios
 	  --additional-properties=supportsES6=true \
 	  --additional-properties=withInterfaces=true
 
-# Generates TypeScript Fetch Client
-generate-fetch: clean-fetch
+.PHONY: generate-fetch
+generate-fetch:
 	docker run --rm \
 	  -v $$PWD:/local \
 	  --user $$(id -u):$$(id -g) \
@@ -58,8 +56,8 @@ generate-fetch: clean-fetch
 	  --additional-properties=supportsES6=true \
 	  --additional-properties=withInterfaces=true
 
-# Generates Java Spring Server
-generate-java: clean-java
+.PHONY: generate-java
+generate-java:
 	docker run --rm \
 	  -v $$PWD:/local \
 	  --user $$(id -u):$$(id -g) \
@@ -76,8 +74,8 @@ generate-java: clean-java
 	  --additional-properties=dateLibrary=java8 \
 	  --additional-properties=hideGenerationTimestamp=true
 
-# Generates HTML documentation
-generate-docs: clean-docs
+.PHONY: generate-docs
+generate-docs:
 	docker run --rm \
 	  -v $$PWD:/local \
 	  --user $$(id -u):$$(id -g) \
@@ -86,4 +84,23 @@ generate-docs: clean-docs
 	  -g html2 \
 	  -o /local/$(GENERATED_DIR_DOCS)
 
-generate-all: generate-axios generate-fetch generate-java generate-docs
+.PHONY: build-axios
+build-axios:
+	npm install --prefix $(GENERATED_DIR_AXIOS)
+
+.PHONY: build-java
+build-java:
+	mvn clean package -f $(GENERATED_DIR_JAVA)/pom.xml
+
+.PHONY: publish-axios
+publish-axios:
+	make build-axios && cd "$(PWD)/$(GENERATED_DIR_AXIOS)" && npm publish
+
+.PHONY: clean
+clean: clean-java clean-docs clean-axios clean-fetch
+
+.PHONY: generate
+generate: generate-axios generate-java generate-docs generate-fetch
+
+.PHONY: build
+build: build-axios build-fetch build-java
