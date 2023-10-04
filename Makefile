@@ -106,7 +106,7 @@ publish-axios:
 
 .PHONY: publish-java
 publish-java:
-	cd "$$PWD/$(GENERATED_DIR_JAVA)" && mvn deploy -DaltDeploymentRepository=github::default::$(GITHUB_MAVEN_REPO)
+	cd "$$PWD/$(GENERATED_DIR_JAVA)" && mvn deploy -DaltDeploymentRepository=github::$(GITHUB_MAVEN_REPO)
 
 .PHONY: clean
 clean: clean-java clean-docs clean-axios clean-fetch
