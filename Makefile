@@ -86,7 +86,11 @@ generate-docs:
 
 .PHONY: build-axios
 build-axios:
-	npm install --prefix $(GENERATED_DIR_AXIOS)
+	npm install --prefix $(GENERATED_DIR_AXIOS) && npm run build --prefix $(GENERATED_DIR_AXIOS)
+
+.PHONY: build-fetch
+build-fetch:
+	npm install --prefix $(GENERATED_DIR_FETCH) && npm run build --prefix $(GENERATED_DIR_FETCH)
 
 .PHONY: build-java
 build-java:
