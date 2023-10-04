@@ -27,8 +27,8 @@ clean-all: clean-java clean-docs clean-axios clean-fetch
 # Generates TypeScript Axios Client
 generate-axios: clean-axios
 	docker run --rm \
-	  -v $(pwd):/local \
-	  --user $(id -u):$(id -g) \
+	  -v $$PWD:/local \
+	  --user $$(id -u):$$(id -g) \
 	  $(DOCKER_IMAGE) generate \
 	  -i /local/$(OPENAPI_SPEC) \
 	  -g typescript-axios \
@@ -44,10 +44,10 @@ generate-axios: clean-axios
 # Generates TypeScript Fetch Client
 generate-fetch: clean-fetch
 	docker run --rm \
-	  -v $(pwd):/local \
-	  --user $(id -u):$(id -g) \
+	  -v $$PWD:/local \
+	  --user $$(id -u):$$(id -g) \
 	  $(DOCKER_IMAGE) generate \
-	  -i /local/$(OPENAPI_SPEC \
+	  -i /local/$(OPENAPI_SPEC) \
 	  -g typescript-fetch \
 	  -o /local/$(GENERATED_DIR_FETCH) \
 	  --additional-properties=npmName=@jbwittner/bankwiz_openapi-client-fetch \
@@ -61,8 +61,8 @@ generate-fetch: clean-fetch
 # Generates Java Spring Server
 generate-java: clean-java
 	docker run --rm \
-	  -v $(pwd):/local \
-	  --user $(id -u):$(id -g) \
+	  -v $$PWD:/local \
+	  --user $$(id -u):$$(id -g) \
 	  $(DOCKER_IMAGE) generate \
 	  -i /local/$(OPENAPI_SPEC) \
 	  -g spring \
@@ -79,8 +79,8 @@ generate-java: clean-java
 # Generates HTML documentation
 generate-docs: clean-docs
 	docker run --rm \
-	  -v $(pwd):/local \
-	  --user $(id -u):$(id -g) \
+	  -v $$PWD:/local \
+	  --user $$(id -u):$$(id -g) \
 	  $(DOCKER_IMAGE) generate \
 	  -i /local/$(OPENAPI_SPEC) \
 	  -g html2 \

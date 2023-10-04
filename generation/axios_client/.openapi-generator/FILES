@@ -1,0 +1,16 @@
+.gitignore
+.npmignore
+.openapi-generator-ignore
+README.md
+api.ts
+api/user-api.ts
+base.ts
+common.ts
+configuration.ts
+git_push.sh
+index.ts
+model/index.ts
+model/user-dto.ts
+package.json
+tsconfig.esm.json
+tsconfig.json
