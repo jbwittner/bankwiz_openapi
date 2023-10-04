@@ -24,10 +24,6 @@ public class UserDTO {
 
   private UUID id;
 
-  private String firstName;
-
-  private String lastName;
-
   private String email;
 
   public UserDTO() {
@@ -37,10 +33,8 @@ public class UserDTO {
   /**
    * Constructor with only required parameters
    */
-  public UserDTO(UUID id, String firstName, String lastName, String email) {
+  public UserDTO(UUID id, String email) {
     this.id = id;
-    this.firstName = firstName;
-    this.lastName = lastName;
     this.email = email;
   }
 
@@ -62,46 +56,6 @@ public class UserDTO {
 
   public void setId(UUID id) {
     this.id = id;
-  }
-
-  public UserDTO firstName(String firstName) {
-    this.firstName = firstName;
-    return this;
-  }
-
-  /**
-   * Get firstName
-   * @return firstName
-  */
-  @NotNull 
-  @Schema(name = "firstName", example = "John", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("firstName")
-  public String getFirstName() {
-    return firstName;
-  }
-
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
-  }
-
-  public UserDTO lastName(String lastName) {
-    this.lastName = lastName;
-    return this;
-  }
-
-  /**
-   * Get lastName
-   * @return lastName
-  */
-  @NotNull 
-  @Schema(name = "lastName", example = "Doe", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("lastName")
-  public String getLastName() {
-    return lastName;
-  }
-
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
   }
 
   public UserDTO email(String email) {
@@ -134,14 +88,12 @@ public class UserDTO {
     }
     UserDTO userDTO = (UserDTO) o;
     return Objects.equals(this.id, userDTO.id) &&
-        Objects.equals(this.firstName, userDTO.firstName) &&
-        Objects.equals(this.lastName, userDTO.lastName) &&
         Objects.equals(this.email, userDTO.email);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, firstName, lastName, email);
+    return Objects.hash(id, email);
   }
 
   @Override
@@ -149,8 +101,6 @@ public class UserDTO {
     StringBuilder sb = new StringBuilder();
     sb.append("class UserDTO {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
-    sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("}");
     return sb.toString();

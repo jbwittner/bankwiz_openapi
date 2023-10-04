@@ -9,7 +9,9 @@ common.ts
 configuration.ts
 git_push.sh
 index.ts
+model/functional-exception-dto.ts
 model/index.ts
+model/method-argument-not-valid-exception-dto.ts
 model/user-dto.ts
 package.json
 tsconfig.esm.json

@@ -6,6 +6,8 @@ package.json
 src/apis/UserApi.ts
 src/apis/index.ts
 src/index.ts
+src/models/FunctionalExceptionDTO.ts
+src/models/MethodArgumentNotValidExceptionDTO.ts
 src/models/UserDTO.ts
 src/models/index.ts
 src/runtime.ts

@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: BankWiz API
-  version: 0.3.0
+  version: 0.3.1
   description: An API for accessing banking functionalities provided by BankWiz
 servers:
   - url: 'http://localhost:8080/api'
@@ -48,24 +48,62 @@ components:
       scheme: bearer
       bearerFormat: JWT
   schemas:
+    FunctionalExceptionDTO:
+      type: object
+      properties:
+        status:
+          type: integer
+        details:
+          type: string
+        exception:
+          type: string
+        message:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+      required:
+        - status
+        - details
+        - exception
+        - message
+        - timestamp
+    MethodArgumentNotValidExceptionDTO:
+      type: object
+      properties:
+        status:
+          type: integer
+        details:
+          type: string
+        exception:
+          type: string
+        message:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        field:
+          type: string
+        objectName:
+          type: string
+      required:
+        - status
+        - details
+        - exception
+        - message
+        - timestamp
+        - field
+        - objectName
     UserDTO:
       type: object
       properties:
         id:
           type: string
           format: uuid
-        firstName:
-          type: string
-          example: John
-        lastName:
-          type: string
-          example: Doe
         email:
           type: string
           format: email
           example: johndoe@example.com
       required:
         - id
-        - firstName
-        - lastName
         - email
