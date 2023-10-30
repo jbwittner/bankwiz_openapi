@@ -1,20 +1,26 @@
 openapi: 3.0.0
 info:
   title: BankWiz API
-  version: 0.3.1
+  version: 0.3.2
   description: An API for accessing banking functionalities provided by BankWiz
 servers:
-  - url: 'http://localhost:8080/api'
+  - url: http://localhost:8080
+    description: Local developpement (server)
+  - url: http://localhost:9080
+    description: Local developpement (frontend)
 tags:
-  - name: User
+  - name: UserService
     description: API endpoints for managing user information
 security:
-  - bearerAuth: []         # use the same name as above
+  - oauth2:
+    - openid
+    - profile
+    - email
 paths:
   /user:
     get:
       tags:
-        - User
+        - UserService
       summary: Get the current user information
       operationId: getCurrentUserInfo
       responses:
@@ -29,7 +35,7 @@ paths:
   /user/checkregistration:
     get:
       tags:
-        - User
+        - UserService
       summary: Checks if the user is registered, and registers her if not.
       operationId: checkRegistration
       responses:
@@ -43,10 +49,16 @@ paths:
           description: Invalid request. Please check the provided data.
 components:
   securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
+    oauth2:   # <--- Arbitrary name for the security scheme. Used to refer to it from elsewhere.
+      type: oauth2
+      description: For more information, see https://api.slack.com/docs/oauth
+      flows: 
+        implicit:
+          authorizationUrl: https://bankwiz-dev.eu.auth0.com/authorize?audience=Bankwiz_server
+          scopes:
+            openid: openid
+            profile: profile
+            email: email
   schemas:
     FunctionalExceptionDTO:
       type: object

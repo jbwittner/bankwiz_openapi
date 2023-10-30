@@ -34,7 +34,7 @@ import jakarta.annotation.Generated;
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
 @Validated
-@Tag(name = "User", description = "API endpoints for managing user information")
+@Tag(name = "UserService", description = "API endpoints for managing user information")
 public interface UserApi {
 
     default Optional<NativeWebRequest> getRequest() {
@@ -50,7 +50,7 @@ public interface UserApi {
     @Operation(
         operationId = "checkRegistration",
         summary = "Checks if the user is registered, and registers her if not.",
-        tags = { "User" },
+        tags = { "UserService" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Successfully retrieved user information", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = UserDTO.class))
@@ -58,7 +58,7 @@ public interface UserApi {
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
         },
         security = {
-            @SecurityRequirement(name = "bearerAuth")
+            @SecurityRequirement(name = "oauth2", scopes={ "openid", "profile", "email" })
         }
     )
     @RequestMapping(
@@ -92,7 +92,7 @@ public interface UserApi {
     @Operation(
         operationId = "getCurrentUserInfo",
         summary = "Get the current user information",
-        tags = { "User" },
+        tags = { "UserService" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Successfully retrieved user information", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = UserDTO.class))
@@ -100,7 +100,7 @@ public interface UserApi {
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
         },
         security = {
-            @SecurityRequirement(name = "bearerAuth")
+            @SecurityRequirement(name = "oauth2", scopes={ "openid", "profile", "email" })
         }
     )
     @RequestMapping(

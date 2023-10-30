@@ -3,7 +3,7 @@
 .openapi-generator-ignore
 README.md
 api.ts
-api/user-api.ts
+api/user-service-api.ts
 base.ts
 common.ts
 configuration.ts

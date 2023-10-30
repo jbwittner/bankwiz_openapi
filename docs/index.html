@@ -929,12 +929,12 @@ ul.nav-tabs {
             -->
             <li class="nav-fixed nav-header active" data-group="_"><a href="#api-_">API Summary</a></li>
 
-                  <li class="nav-header" data-group="User"><a href="#api-User">API Methods - User</a></li>
-                    <li data-group="User" data-name="checkRegistration" class="">
-                      <a href="#api-User-checkRegistration">checkRegistration</a>
+                  <li class="nav-header" data-group="UserService"><a href="#api-UserService">API Methods - UserService</a></li>
+                    <li data-group="UserService" data-name="checkRegistration" class="">
+                      <a href="#api-UserService-checkRegistration">checkRegistration</a>
                     </li>
-                    <li data-group="User" data-name="getCurrentUserInfo" class="">
-                      <a href="#api-User-getCurrentUserInfo">getCurrentUserInfo</a>
+                    <li data-group="UserService" data-name="getCurrentUserInfo" class="">
+                      <a href="#api-UserService-getCurrentUserInfo">getCurrentUserInfo</a>
                     </li>
           </ul>
         </nav>
@@ -949,7 +949,7 @@ ul.nav-tabs {
         <div id="header">
           <div id="api-_">
             <h2 id="welcome-to-apidoc">API and SDK Documentation</h2>
-              <div class="app-desc">Version: 0.3.1</div>
+              <div class="app-desc">Version: 0.3.2</div>
             <hr>
             <div id="app-description" class="app-desc">
                 An API for accessing banking functionalities provided by BankWiz
@@ -957,10 +957,10 @@ ul.nav-tabs {
           </div>
         </div>
         <div id="sections">
-                <section id="api-User">
-                  <h1>User</h1>
-                    <div id="api-User-checkRegistration">
-                      <article id="api-User-checkRegistration-0" data-group="User" data-name="checkRegistration" data-version="0">
+                <section id="api-UserService">
+                  <h1>UserService</h1>
+                    <div id="api-UserService-checkRegistration">
+                      <article id="api-UserService-checkRegistration-0" data-group="User" data-name="checkRegistration" data-version="0">
                         <div class="pull-left">
                           <h1>checkRegistration</h1>
                           <p>Checks if the user is registered, and registers her if not.</p>
@@ -976,54 +976,54 @@ ul.nav-tabs {
                           <h3>Usage and SDK Samples</h3>
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-User-checkRegistration-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-User-checkRegistration-0-java">Java</a></li>
-                          <li class=""><a href="#examples-User-checkRegistration-0-dart">Dart</a></li>
-                          <li class=""><a href="#examples-User-checkRegistration-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-User-checkRegistration-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-User-checkRegistration-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-User-checkRegistration-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-User-checkRegistration-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-User-checkRegistration-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-User-checkRegistration-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-User-checkRegistration-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-User-checkRegistration-0-python">Python</a></li>
-                          <li class=""><a href="#examples-User-checkRegistration-0-rust">Rust</a></li>
+                          <li class="active"><a href="#examples-UserService-checkRegistration-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-UserService-checkRegistration-0-java">Java</a></li>
+                          <li class=""><a href="#examples-UserService-checkRegistration-0-dart">Dart</a></li>
+                          <li class=""><a href="#examples-UserService-checkRegistration-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-UserService-checkRegistration-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-UserService-checkRegistration-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-UserService-checkRegistration-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-UserService-checkRegistration-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-UserService-checkRegistration-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-UserService-checkRegistration-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-UserService-checkRegistration-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-UserService-checkRegistration-0-python">Python</a></li>
+                          <li class=""><a href="#examples-UserService-checkRegistration-0-rust">Rust</a></li>
                         </ul>
 
                         <div class="tab-content">
-                          <div class="tab-pane active" id="examples-User-checkRegistration-0-curl">
+                          <div class="tab-pane active" id="examples-UserService-checkRegistration-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X GET \
- -H "Authorization: Bearer [[accessToken]]" \
+ \
  -H "Accept: application/json" \
- "http://localhost:8080/api/user/checkregistration"
+ "http://localhost:8080/user/checkregistration"
 </code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-User-checkRegistration-0-java">
+                          <div class="tab-pane" id="examples-UserService-checkRegistration-0-java">
                             <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
 import org.openapitools.client.auth.*;
 import org.openapitools.client.model.*;
-import org.openapitools.client.api.UserApi;
+import org.openapitools.client.api.UserServiceApi;
 
 import java.io.File;
 import java.util.*;
 
-public class UserApiExample {
+public class UserServiceApiExample {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-        // Configure Bearer (JWT) access token for authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         // Create an instance of the API class
-        UserApi apiInstance = new UserApi();
+        UserServiceApi apiInstance = new UserServiceApi();
 
         try {
             UserDTO result = apiInstance.checkRegistration();
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#checkRegistration");
+            System.err.println("Exception when calling UserServiceApi#checkRegistration");
             e.printStackTrace();
         }
     }
@@ -1031,7 +1031,7 @@ public class UserApiExample {
 </code></pre>
                           </div>
 
-                          <div class="tab-pane" id="examples-User-checkRegistration-0-dart">
+                          <div class="tab-pane" id="examples-UserService-checkRegistration-0-dart">
                             <pre class="prettyprint"><code class="language-dart">import 'package:openapi/api.dart';
 
 final api_instance = DefaultApi();
@@ -1047,35 +1047,36 @@ try {
 </code></pre>
                           </div>
 
-                          <div class="tab-pane" id="examples-User-checkRegistration-0-android">
-                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.UserApi;
+                          <div class="tab-pane" id="examples-UserService-checkRegistration-0-android">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.UserServiceApi;
 
-public class UserApiExample {
+public class UserServiceApiExample {
     public static void main(String[] args) {
-        UserApi apiInstance = new UserApi();
+        UserServiceApi apiInstance = new UserServiceApi();
 
         try {
             UserDTO result = apiInstance.checkRegistration();
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#checkRegistration");
+            System.err.println("Exception when calling UserServiceApi#checkRegistration");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
   <!--
-  <div class="tab-pane" id="examples-User-checkRegistration-0-groovy">
+  <div class="tab-pane" id="examples-UserService-checkRegistration-0-groovy">
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
-                            <div class="tab-pane" id="examples-User-checkRegistration-0-objc">
+                            <div class="tab-pane" id="examples-UserService-checkRegistration-0-objc">
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
-// Configure Bearer (JWT) access token for authorization: bearerAuth
+// Configure OAuth2 access token for authorization: (authentication scheme: oauth2)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
+
 // Create an instance of the API class
-UserApi *apiInstance = [[UserApi alloc] init];
+UserServiceApi *apiInstance = [[UserServiceApi alloc] init];
 
 // Checks if the user is registered, and registers her if not.
 [apiInstance checkRegistrationWithCompletionHandler: 
@@ -1090,16 +1091,16 @@ UserApi *apiInstance = [[UserApi alloc] init];
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-User-checkRegistration-0-javascript">
+                            <div class="tab-pane" id="examples-UserService-checkRegistration-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
 var defaultClient = BankWizApi.ApiClient.instance;
 
-// Configure Bearer (JWT) access token for authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
-bearerAuth.accessToken = "YOUR ACCESS TOKEN";
+// Configure OAuth2 access token for authorization: oauth2
+var oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
-var api = new BankWizApi.UserApi()
+var api = new BankWizApi.UserServiceApi()
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -1111,10 +1112,10 @@ api.checkRegistration(callback);
 </code></pre>
                             </div>
 
-                            <!--<div class="tab-pane" id="examples-User-checkRegistration-0-angular">
+                            <!--<div class="tab-pane" id="examples-UserService-checkRegistration-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-User-checkRegistration-0-csharp">
+                            <div class="tab-pane" id="examples-UserService-checkRegistration-0-csharp">
                               <pre class="prettyprint"><code class="language-cs">using System;
 using System.Diagnostics;
 using Org.OpenAPITools.Api;
@@ -1127,18 +1128,18 @@ namespace Example
     {
         public void main()
         {
-            // Configure Bearer (JWT) access token for authorization: bearerAuth
+            // Configure OAuth2 access token for authorization: oauth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             // Create an instance of the API class
-            var apiInstance = new UserApi();
+            var apiInstance = new UserServiceApi();
 
             try {
                 // Checks if the user is registered, and registers her if not.
                 UserDTO result = apiInstance.checkRegistration();
                 Debug.WriteLine(result);
             } catch (Exception e) {
-                Debug.Print("Exception when calling UserApi.checkRegistration: " + e.Message );
+                Debug.Print("Exception when calling UserServiceApi.checkRegistration: " + e.Message );
             }
         }
     }
@@ -1146,72 +1147,72 @@ namespace Example
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-User-checkRegistration-0-php">
+                            <div class="tab-pane" id="examples-UserService-checkRegistration-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure Bearer (JWT) access token for authorization: bearerAuth
-OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
+// Configure OAuth2 access token for authorization: oauth2
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Create an instance of the API class
-$api_instance = new OpenAPITools\Client\Api\UserApi();
+$api_instance = new OpenAPITools\Client\Api\UserServiceApi();
 
 try {
     $result = $api_instance->checkRegistration();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling UserApi->checkRegistration: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling UserServiceApi->checkRegistration: ', $e->getMessage(), PHP_EOL;
 }
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-User-checkRegistration-0-perl">
+                            <div class="tab-pane" id="examples-UserService-checkRegistration-0-perl">
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::OPenAPIClient::Configuration;
-use WWW::OPenAPIClient::UserApi;
+use WWW::OPenAPIClient::UserServiceApi;
 
-# Configure Bearer (JWT) access token for authorization: bearerAuth
+# Configure OAuth2 access token for authorization: oauth2
 $WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
-my $api_instance = WWW::OPenAPIClient::UserApi->new();
+my $api_instance = WWW::OPenAPIClient::UserServiceApi->new();
 
 eval {
     my $result = $api_instance->checkRegistration();
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling UserApi->checkRegistration: $@\n";
+    warn "Exception when calling UserServiceApi->checkRegistration: $@\n";
 }</code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-User-checkRegistration-0-python">
+                            <div class="tab-pane" id="examples-UserService-checkRegistration-0-python">
                               <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
 import time
 import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
 
-# Configure Bearer (JWT) access token for authorization: bearerAuth
+# Configure OAuth2 access token for authorization: oauth2
 openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
-api_instance = openapi_client.UserApi()
+api_instance = openapi_client.UserServiceApi()
 
 try:
     # Checks if the user is registered, and registers her if not.
     api_response = api_instance.check_registration()
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling UserApi->checkRegistration: %s\n" % e)</code></pre>
+    print("Exception when calling UserServiceApi->checkRegistration: %s\n" % e)</code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-User-checkRegistration-0-rust">
-                              <pre class="prettyprint"><code class="language-rust">extern crate UserApi;
+                            <div class="tab-pane" id="examples-UserService-checkRegistration-0-rust">
+                              <pre class="prettyprint"><code class="language-rust">extern crate UserServiceApi;
 
 pub fn main() {
 
-    let mut context = UserApi::Context::default();
+    let mut context = UserServiceApi::Context::default();
     let result = client.checkRegistration(&context).wait();
 
     println!("{:?}", result);
@@ -1223,6 +1224,21 @@ pub fn main() {
                           <h2>Scopes</h2>
                           <table>
                             
+                              <tr>
+                                <td>openid</td>
+                                <td>openid</td>
+                              </tr>
+                            
+                              <tr>
+                                <td>profile</td>
+                                <td>profile</td>
+                              </tr>
+                            
+                              <tr>
+                                <td>email</td>
+                                <td>email</td>
+                              </tr>
+                            
                           </table>
 
                           <h2>Parameters</h2>
@@ -1233,23 +1249,23 @@ pub fn main() {
 
 
                           <h2>Responses</h2>
-                            <h3 id="examples-User-checkRegistration-title-200"></h3>
-                            <p id="examples-User-checkRegistration-description-200" class="marked"></p>
+                            <h3 id="examples-UserService-checkRegistration-title-200"></h3>
+                            <p id="examples-UserService-checkRegistration-description-200" class="marked"></p>
                             <script>
-                              var responseUser200_description = `Successfully retrieved user information`;
-                              var responseUser200_description_break = responseUser200_description.indexOf('\n');
-                              if (responseUser200_description_break == -1) {
-                                $("#examples-User-checkRegistration-title-200").text("Status: 200 - " + responseUser200_description);
+                              var responseUserService200_description = `Successfully retrieved user information`;
+                              var responseUserService200_description_break = responseUserService200_description.indexOf('\n');
+                              if (responseUserService200_description_break == -1) {
+                                $("#examples-UserService-checkRegistration-title-200").text("Status: 200 - " + responseUserService200_description);
                               } else {
-                                $("#examples-User-checkRegistration-title-200").text("Status: 200 - " + responseUser200_description.substring(0, responseUser200_description_break));
-                                $("#examples-User-checkRegistration-description-200").html(responseUser200_description.substring(responseUser200_description_break));
+                                $("#examples-UserService-checkRegistration-title-200").text("Status: 200 - " + responseUserService200_description.substring(0, responseUserService200_description_break));
+                                $("#examples-UserService-checkRegistration-description-200").html(responseUserService200_description.substring(responseUserService200_description_break));
                               }
                             </script>
 
 
-                            <ul id="responses-detail-User-checkRegistration-200" class="nav nav-tabs nav-tabs-examples" >
+                            <ul id="responses-detail-UserService-checkRegistration-200" class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
-                                  <a data-toggle="tab" href="#responses-User-checkRegistration-200-schema">Schema</a>
+                                  <a data-toggle="tab" href="#responses-UserService-checkRegistration-200-schema">Schema</a>
                                 </li>
 
 
@@ -1258,9 +1274,9 @@ pub fn main() {
                             </ul>
 
 
-                            <div class="tab-content" id="responses-User-checkRegistration-200-wrapper" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-User-checkRegistration-200-schema">
-                                  <div id="responses-User-checkRegistration-schema-200" class="exampleStyle">
+                            <div class="tab-content" id="responses-UserService-checkRegistration-200-wrapper" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-UserService-checkRegistration-200-schema">
+                                  <div id="responses-UserService-checkRegistration-schema-200" class="exampleStyle">
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = ;
@@ -1285,43 +1301,43 @@ pub fn main() {
                                         }
 
                                         var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-User-checkRegistration-200-schema-data').val(JSON.stringify(schema));
-                                        var result = $('#responses-User-checkRegistration-schema-200');
+                                        $('#responses-UserService-checkRegistration-200-schema-data').val(JSON.stringify(schema));
+                                        var result = $('#responses-UserService-checkRegistration-schema-200');
                                         result.empty();
                                         result.append(view.render());
                                       });
                                     </script>
                                   </div>
-                                  <input id='responses-User-checkRegistration-200-schema-data' type='hidden' value=''></input>
+                                  <input id='responses-UserService-checkRegistration-200-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
-                            <h3 id="examples-User-checkRegistration-title-400"></h3>
-                            <p id="examples-User-checkRegistration-description-400" class="marked"></p>
+                            <h3 id="examples-UserService-checkRegistration-title-400"></h3>
+                            <p id="examples-UserService-checkRegistration-description-400" class="marked"></p>
                             <script>
-                              var responseUser400_description = `Invalid request. Please check the provided data.`;
-                              var responseUser400_description_break = responseUser400_description.indexOf('\n');
-                              if (responseUser400_description_break == -1) {
-                                $("#examples-User-checkRegistration-title-400").text("Status: 400 - " + responseUser400_description);
+                              var responseUserService400_description = `Invalid request. Please check the provided data.`;
+                              var responseUserService400_description_break = responseUserService400_description.indexOf('\n');
+                              if (responseUserService400_description_break == -1) {
+                                $("#examples-UserService-checkRegistration-title-400").text("Status: 400 - " + responseUserService400_description);
                               } else {
-                                $("#examples-User-checkRegistration-title-400").text("Status: 400 - " + responseUser400_description.substring(0, responseUser400_description_break));
-                                $("#examples-User-checkRegistration-description-400").html(responseUser400_description.substring(responseUser400_description_break));
+                                $("#examples-UserService-checkRegistration-title-400").text("Status: 400 - " + responseUserService400_description.substring(0, responseUserService400_description_break));
+                                $("#examples-UserService-checkRegistration-description-400").html(responseUserService400_description.substring(responseUserService400_description_break));
                               }
                             </script>
 
 
-                            <ul id="responses-detail-User-checkRegistration-400" class="nav nav-tabs nav-tabs-examples" >
+                            <ul id="responses-detail-UserService-checkRegistration-400" class="nav nav-tabs nav-tabs-examples" >
 
 
                             </ul>
 
 
-                            <div class="tab-content" id="responses-User-checkRegistration-400-wrapper" style='margin-bottom: 10px;'>
+                            <div class="tab-content" id="responses-UserService-checkRegistration-400-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
                       <hr>
-                    <div id="api-User-getCurrentUserInfo">
-                      <article id="api-User-getCurrentUserInfo-0" data-group="User" data-name="getCurrentUserInfo" data-version="0">
+                    <div id="api-UserService-getCurrentUserInfo">
+                      <article id="api-UserService-getCurrentUserInfo-0" data-group="User" data-name="getCurrentUserInfo" data-version="0">
                         <div class="pull-left">
                           <h1>getCurrentUserInfo</h1>
                           <p>Get the current user information</p>
@@ -1337,54 +1353,54 @@ pub fn main() {
                           <h3>Usage and SDK Samples</h3>
                         </p>
                         <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-User-getCurrentUserInfo-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-User-getCurrentUserInfo-0-java">Java</a></li>
-                          <li class=""><a href="#examples-User-getCurrentUserInfo-0-dart">Dart</a></li>
-                          <li class=""><a href="#examples-User-getCurrentUserInfo-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-User-getCurrentUserInfo-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-User-getCurrentUserInfo-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-User-getCurrentUserInfo-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-User-getCurrentUserInfo-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-User-getCurrentUserInfo-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-User-getCurrentUserInfo-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-User-getCurrentUserInfo-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-User-getCurrentUserInfo-0-python">Python</a></li>
-                          <li class=""><a href="#examples-User-getCurrentUserInfo-0-rust">Rust</a></li>
+                          <li class="active"><a href="#examples-UserService-getCurrentUserInfo-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-UserService-getCurrentUserInfo-0-java">Java</a></li>
+                          <li class=""><a href="#examples-UserService-getCurrentUserInfo-0-dart">Dart</a></li>
+                          <li class=""><a href="#examples-UserService-getCurrentUserInfo-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-UserService-getCurrentUserInfo-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-UserService-getCurrentUserInfo-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-UserService-getCurrentUserInfo-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-UserService-getCurrentUserInfo-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-UserService-getCurrentUserInfo-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-UserService-getCurrentUserInfo-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-UserService-getCurrentUserInfo-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-UserService-getCurrentUserInfo-0-python">Python</a></li>
+                          <li class=""><a href="#examples-UserService-getCurrentUserInfo-0-rust">Rust</a></li>
                         </ul>
 
                         <div class="tab-content">
-                          <div class="tab-pane active" id="examples-User-getCurrentUserInfo-0-curl">
+                          <div class="tab-pane active" id="examples-UserService-getCurrentUserInfo-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X GET \
- -H "Authorization: Bearer [[accessToken]]" \
+ \
  -H "Accept: application/json" \
- "http://localhost:8080/api/user"
+ "http://localhost:8080/user"
 </code></pre>
                           </div>
-                          <div class="tab-pane" id="examples-User-getCurrentUserInfo-0-java">
+                          <div class="tab-pane" id="examples-UserService-getCurrentUserInfo-0-java">
                             <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
 import org.openapitools.client.auth.*;
 import org.openapitools.client.model.*;
-import org.openapitools.client.api.UserApi;
+import org.openapitools.client.api.UserServiceApi;
 
 import java.io.File;
 import java.util.*;
 
-public class UserApiExample {
+public class UserServiceApiExample {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
 
-        // Configure Bearer (JWT) access token for authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         // Create an instance of the API class
-        UserApi apiInstance = new UserApi();
+        UserServiceApi apiInstance = new UserServiceApi();
 
         try {
             UserDTO result = apiInstance.getCurrentUserInfo();
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#getCurrentUserInfo");
+            System.err.println("Exception when calling UserServiceApi#getCurrentUserInfo");
             e.printStackTrace();
         }
     }
@@ -1392,7 +1408,7 @@ public class UserApiExample {
 </code></pre>
                           </div>
 
-                          <div class="tab-pane" id="examples-User-getCurrentUserInfo-0-dart">
+                          <div class="tab-pane" id="examples-UserService-getCurrentUserInfo-0-dart">
                             <pre class="prettyprint"><code class="language-dart">import 'package:openapi/api.dart';
 
 final api_instance = DefaultApi();
@@ -1408,35 +1424,36 @@ try {
 </code></pre>
                           </div>
 
-                          <div class="tab-pane" id="examples-User-getCurrentUserInfo-0-android">
-                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.UserApi;
+                          <div class="tab-pane" id="examples-UserService-getCurrentUserInfo-0-android">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.UserServiceApi;
 
-public class UserApiExample {
+public class UserServiceApiExample {
     public static void main(String[] args) {
-        UserApi apiInstance = new UserApi();
+        UserServiceApi apiInstance = new UserServiceApi();
 
         try {
             UserDTO result = apiInstance.getCurrentUserInfo();
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling UserApi#getCurrentUserInfo");
+            System.err.println("Exception when calling UserServiceApi#getCurrentUserInfo");
             e.printStackTrace();
         }
     }
 }</code></pre>
                           </div>
   <!--
-  <div class="tab-pane" id="examples-User-getCurrentUserInfo-0-groovy">
+  <div class="tab-pane" id="examples-UserService-getCurrentUserInfo-0-groovy">
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
-                            <div class="tab-pane" id="examples-User-getCurrentUserInfo-0-objc">
+                            <div class="tab-pane" id="examples-UserService-getCurrentUserInfo-0-objc">
                               <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
 
-// Configure Bearer (JWT) access token for authorization: bearerAuth
+// Configure OAuth2 access token for authorization: (authentication scheme: oauth2)
 [apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
 
+
 // Create an instance of the API class
-UserApi *apiInstance = [[UserApi alloc] init];
+UserServiceApi *apiInstance = [[UserServiceApi alloc] init];
 
 // Get the current user information
 [apiInstance getCurrentUserInfoWithCompletionHandler: 
@@ -1451,16 +1468,16 @@ UserApi *apiInstance = [[UserApi alloc] init];
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-User-getCurrentUserInfo-0-javascript">
+                            <div class="tab-pane" id="examples-UserService-getCurrentUserInfo-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
 var defaultClient = BankWizApi.ApiClient.instance;
 
-// Configure Bearer (JWT) access token for authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
-bearerAuth.accessToken = "YOUR ACCESS TOKEN";
+// Configure OAuth2 access token for authorization: oauth2
+var oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
-var api = new BankWizApi.UserApi()
+var api = new BankWizApi.UserServiceApi()
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -1472,10 +1489,10 @@ api.getCurrentUserInfo(callback);
 </code></pre>
                             </div>
 
-                            <!--<div class="tab-pane" id="examples-User-getCurrentUserInfo-0-angular">
+                            <!--<div class="tab-pane" id="examples-UserService-getCurrentUserInfo-0-angular">
               <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
             </div>-->
-                            <div class="tab-pane" id="examples-User-getCurrentUserInfo-0-csharp">
+                            <div class="tab-pane" id="examples-UserService-getCurrentUserInfo-0-csharp">
                               <pre class="prettyprint"><code class="language-cs">using System;
 using System.Diagnostics;
 using Org.OpenAPITools.Api;
@@ -1488,18 +1505,18 @@ namespace Example
     {
         public void main()
         {
-            // Configure Bearer (JWT) access token for authorization: bearerAuth
+            // Configure OAuth2 access token for authorization: oauth2
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             // Create an instance of the API class
-            var apiInstance = new UserApi();
+            var apiInstance = new UserServiceApi();
 
             try {
                 // Get the current user information
                 UserDTO result = apiInstance.getCurrentUserInfo();
                 Debug.WriteLine(result);
             } catch (Exception e) {
-                Debug.Print("Exception when calling UserApi.getCurrentUserInfo: " + e.Message );
+                Debug.Print("Exception when calling UserServiceApi.getCurrentUserInfo: " + e.Message );
             }
         }
     }
@@ -1507,72 +1524,72 @@ namespace Example
 </code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-User-getCurrentUserInfo-0-php">
+                            <div class="tab-pane" id="examples-UserService-getCurrentUserInfo-0-php">
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure Bearer (JWT) access token for authorization: bearerAuth
-OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
+// Configure OAuth2 access token for authorization: oauth2
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Create an instance of the API class
-$api_instance = new OpenAPITools\Client\Api\UserApi();
+$api_instance = new OpenAPITools\Client\Api\UserServiceApi();
 
 try {
     $result = $api_instance->getCurrentUserInfo();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling UserApi->getCurrentUserInfo: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling UserServiceApi->getCurrentUserInfo: ', $e->getMessage(), PHP_EOL;
 }
 ?></code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-User-getCurrentUserInfo-0-perl">
+                            <div class="tab-pane" id="examples-UserService-getCurrentUserInfo-0-perl">
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::OPenAPIClient::Configuration;
-use WWW::OPenAPIClient::UserApi;
+use WWW::OPenAPIClient::UserServiceApi;
 
-# Configure Bearer (JWT) access token for authorization: bearerAuth
+# Configure OAuth2 access token for authorization: oauth2
 $WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
-my $api_instance = WWW::OPenAPIClient::UserApi->new();
+my $api_instance = WWW::OPenAPIClient::UserServiceApi->new();
 
 eval {
     my $result = $api_instance->getCurrentUserInfo();
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling UserApi->getCurrentUserInfo: $@\n";
+    warn "Exception when calling UserServiceApi->getCurrentUserInfo: $@\n";
 }</code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-User-getCurrentUserInfo-0-python">
+                            <div class="tab-pane" id="examples-UserService-getCurrentUserInfo-0-python">
                               <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
 import time
 import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
 
-# Configure Bearer (JWT) access token for authorization: bearerAuth
+# Configure OAuth2 access token for authorization: oauth2
 openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
-api_instance = openapi_client.UserApi()
+api_instance = openapi_client.UserServiceApi()
 
 try:
     # Get the current user information
     api_response = api_instance.get_current_user_info()
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling UserApi->getCurrentUserInfo: %s\n" % e)</code></pre>
+    print("Exception when calling UserServiceApi->getCurrentUserInfo: %s\n" % e)</code></pre>
                             </div>
 
-                            <div class="tab-pane" id="examples-User-getCurrentUserInfo-0-rust">
-                              <pre class="prettyprint"><code class="language-rust">extern crate UserApi;
+                            <div class="tab-pane" id="examples-UserService-getCurrentUserInfo-0-rust">
+                              <pre class="prettyprint"><code class="language-rust">extern crate UserServiceApi;
 
 pub fn main() {
 
-    let mut context = UserApi::Context::default();
+    let mut context = UserServiceApi::Context::default();
     let result = client.getCurrentUserInfo(&context).wait();
 
     println!("{:?}", result);
@@ -1584,6 +1601,21 @@ pub fn main() {
                           <h2>Scopes</h2>
                           <table>
                             
+                              <tr>
+                                <td>openid</td>
+                                <td>openid</td>
+                              </tr>
+                            
+                              <tr>
+                                <td>profile</td>
+                                <td>profile</td>
+                              </tr>
+                            
+                              <tr>
+                                <td>email</td>
+                                <td>email</td>
+                              </tr>
+                            
                           </table>
 
                           <h2>Parameters</h2>
@@ -1594,23 +1626,23 @@ pub fn main() {
 
 
                           <h2>Responses</h2>
-                            <h3 id="examples-User-getCurrentUserInfo-title-200"></h3>
-                            <p id="examples-User-getCurrentUserInfo-description-200" class="marked"></p>
+                            <h3 id="examples-UserService-getCurrentUserInfo-title-200"></h3>
+                            <p id="examples-UserService-getCurrentUserInfo-description-200" class="marked"></p>
                             <script>
-                              var responseUser200_description = `Successfully retrieved user information`;
-                              var responseUser200_description_break = responseUser200_description.indexOf('\n');
-                              if (responseUser200_description_break == -1) {
-                                $("#examples-User-getCurrentUserInfo-title-200").text("Status: 200 - " + responseUser200_description);
+                              var responseUserService200_description = `Successfully retrieved user information`;
+                              var responseUserService200_description_break = responseUserService200_description.indexOf('\n');
+                              if (responseUserService200_description_break == -1) {
+                                $("#examples-UserService-getCurrentUserInfo-title-200").text("Status: 200 - " + responseUserService200_description);
                               } else {
-                                $("#examples-User-getCurrentUserInfo-title-200").text("Status: 200 - " + responseUser200_description.substring(0, responseUser200_description_break));
-                                $("#examples-User-getCurrentUserInfo-description-200").html(responseUser200_description.substring(responseUser200_description_break));
+                                $("#examples-UserService-getCurrentUserInfo-title-200").text("Status: 200 - " + responseUserService200_description.substring(0, responseUserService200_description_break));
+                                $("#examples-UserService-getCurrentUserInfo-description-200").html(responseUserService200_description.substring(responseUserService200_description_break));
                               }
                             </script>
 
 
-                            <ul id="responses-detail-User-getCurrentUserInfo-200" class="nav nav-tabs nav-tabs-examples" >
+                            <ul id="responses-detail-UserService-getCurrentUserInfo-200" class="nav nav-tabs nav-tabs-examples" >
                                 <li class="active">
-                                  <a data-toggle="tab" href="#responses-User-getCurrentUserInfo-200-schema">Schema</a>
+                                  <a data-toggle="tab" href="#responses-UserService-getCurrentUserInfo-200-schema">Schema</a>
                                 </li>
 
 
@@ -1619,9 +1651,9 @@ pub fn main() {
                             </ul>
 
 
-                            <div class="tab-content" id="responses-User-getCurrentUserInfo-200-wrapper" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-User-getCurrentUserInfo-200-schema">
-                                  <div id="responses-User-getCurrentUserInfo-schema-200" class="exampleStyle">
+                            <div class="tab-content" id="responses-UserService-getCurrentUserInfo-200-wrapper" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-UserService-getCurrentUserInfo-200-schema">
+                                  <div id="responses-UserService-getCurrentUserInfo-schema-200" class="exampleStyle">
                                     <script>
                                       $(document).ready(function() {
                                         var schemaWrapper = ;
@@ -1646,37 +1678,37 @@ pub fn main() {
                                         }
 
                                         var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-User-getCurrentUserInfo-200-schema-data').val(JSON.stringify(schema));
-                                        var result = $('#responses-User-getCurrentUserInfo-schema-200');
+                                        $('#responses-UserService-getCurrentUserInfo-200-schema-data').val(JSON.stringify(schema));
+                                        var result = $('#responses-UserService-getCurrentUserInfo-schema-200');
                                         result.empty();
                                         result.append(view.render());
                                       });
                                     </script>
                                   </div>
-                                  <input id='responses-User-getCurrentUserInfo-200-schema-data' type='hidden' value=''></input>
+                                  <input id='responses-UserService-getCurrentUserInfo-200-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
-                            <h3 id="examples-User-getCurrentUserInfo-title-400"></h3>
-                            <p id="examples-User-getCurrentUserInfo-description-400" class="marked"></p>
+                            <h3 id="examples-UserService-getCurrentUserInfo-title-400"></h3>
+                            <p id="examples-UserService-getCurrentUserInfo-description-400" class="marked"></p>
                             <script>
-                              var responseUser400_description = `Invalid request. Please check the provided data.`;
-                              var responseUser400_description_break = responseUser400_description.indexOf('\n');
-                              if (responseUser400_description_break == -1) {
-                                $("#examples-User-getCurrentUserInfo-title-400").text("Status: 400 - " + responseUser400_description);
+                              var responseUserService400_description = `Invalid request. Please check the provided data.`;
+                              var responseUserService400_description_break = responseUserService400_description.indexOf('\n');
+                              if (responseUserService400_description_break == -1) {
+                                $("#examples-UserService-getCurrentUserInfo-title-400").text("Status: 400 - " + responseUserService400_description);
                               } else {
-                                $("#examples-User-getCurrentUserInfo-title-400").text("Status: 400 - " + responseUser400_description.substring(0, responseUser400_description_break));
-                                $("#examples-User-getCurrentUserInfo-description-400").html(responseUser400_description.substring(responseUser400_description_break));
+                                $("#examples-UserService-getCurrentUserInfo-title-400").text("Status: 400 - " + responseUserService400_description.substring(0, responseUserService400_description_break));
+                                $("#examples-UserService-getCurrentUserInfo-description-400").html(responseUserService400_description.substring(responseUserService400_description_break));
                               }
                             </script>
 
 
-                            <ul id="responses-detail-User-getCurrentUserInfo-400" class="nav nav-tabs nav-tabs-examples" >
+                            <ul id="responses-detail-UserService-getCurrentUserInfo-400" class="nav nav-tabs nav-tabs-examples" >
 
 
                             </ul>
 
 
-                            <div class="tab-content" id="responses-User-getCurrentUserInfo-400-wrapper" style='margin-bottom: 10px;'>
+                            <div class="tab-content" id="responses-UserService-getCurrentUserInfo-400-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
