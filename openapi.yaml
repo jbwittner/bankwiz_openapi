@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.0.0
 info:
   title: BankWiz API
   version: 0.3.1
@@ -9,7 +9,10 @@ tags:
   - name: UserService
     description: API endpoints for managing user information
 security:
-  - bearerAuth: []         # use the same name as above
+  - openId: 
+    - openid
+    - profile
+    - email
 paths:
   /user:
     get:
@@ -43,10 +46,9 @@ paths:
           description: Invalid request. Please check the provided data.
 components:
   securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
+    openId:   # <--- Arbitrary name for the security scheme. Used to refer to it from elsewhere.
+      type: openIdConnect
+      openIdConnectUrl: https://bankwiz-dev.eu.auth0.com/.well-known/openid-configuration
   schemas:
     FunctionalExceptionDTO:
       type: object
