@@ -994,9 +994,8 @@ ul.nav-tabs {
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-User-checkRegistration-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X GET \
- -H "Authorization: Bearer [[accessToken]]" \
  -H "Accept: application/json" \
- "http://localhost:8080/api/user/checkregistration"
+ "http://localhost:8080/user/checkregistration"
 </code></pre>
                           </div>
                           <div class="tab-pane" id="examples-User-checkRegistration-0-java">
@@ -1010,11 +1009,6 @@ import java.util.*;
 
 public class UserApiExample {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-        // Configure Bearer (JWT) access token for authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
 
         // Create an instance of the API class
         UserApi apiInstance = new UserApi();
@@ -1069,10 +1063,7 @@ public class UserApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-User-checkRegistration-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-
-// Configure Bearer (JWT) access token for authorization: bearerAuth
-[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+                              <pre class="prettyprint"><code class="language-cpp">
 
 // Create an instance of the API class
 UserApi *apiInstance = [[UserApi alloc] init];
@@ -1092,11 +1083,6 @@ UserApi *apiInstance = [[UserApi alloc] init];
 
                             <div class="tab-pane" id="examples-User-checkRegistration-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
-var defaultClient = BankWizApi.ApiClient.instance;
-
-// Configure Bearer (JWT) access token for authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
-bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.UserApi()
@@ -1127,8 +1113,6 @@ namespace Example
     {
         public void main()
         {
-            // Configure Bearer (JWT) access token for authorization: bearerAuth
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             // Create an instance of the API class
             var apiInstance = new UserApi();
@@ -1150,9 +1134,6 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure Bearer (JWT) access token for authorization: bearerAuth
-OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
-
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\UserApi();
 
@@ -1169,9 +1150,6 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::OPenAPIClient::Configuration;
 use WWW::OPenAPIClient::UserApi;
-
-# Configure Bearer (JWT) access token for authorization: bearerAuth
-$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::UserApi->new();
@@ -1191,9 +1169,6 @@ import time
 import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
-
-# Configure Bearer (JWT) access token for authorization: bearerAuth
-openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.UserApi()
@@ -1355,9 +1330,8 @@ pub fn main() {
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-User-getCurrentUserInfo-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X GET \
- -H "Authorization: Bearer [[accessToken]]" \
  -H "Accept: application/json" \
- "http://localhost:8080/api/user"
+ "http://localhost:8080/user"
 </code></pre>
                           </div>
                           <div class="tab-pane" id="examples-User-getCurrentUserInfo-0-java">
@@ -1371,11 +1345,6 @@ import java.util.*;
 
 public class UserApiExample {
     public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-        // Configure Bearer (JWT) access token for authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
 
         // Create an instance of the API class
         UserApi apiInstance = new UserApi();
@@ -1430,10 +1399,7 @@ public class UserApiExample {
   <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
   </div> -->
                             <div class="tab-pane" id="examples-User-getCurrentUserInfo-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-
-// Configure Bearer (JWT) access token for authorization: bearerAuth
-[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+                              <pre class="prettyprint"><code class="language-cpp">
 
 // Create an instance of the API class
 UserApi *apiInstance = [[UserApi alloc] init];
@@ -1453,11 +1419,6 @@ UserApi *apiInstance = [[UserApi alloc] init];
 
                             <div class="tab-pane" id="examples-User-getCurrentUserInfo-0-javascript">
                               <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
-var defaultClient = BankWizApi.ApiClient.instance;
-
-// Configure Bearer (JWT) access token for authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
-bearerAuth.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.UserApi()
@@ -1488,8 +1449,6 @@ namespace Example
     {
         public void main()
         {
-            // Configure Bearer (JWT) access token for authorization: bearerAuth
-            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             // Create an instance of the API class
             var apiInstance = new UserApi();
@@ -1511,9 +1470,6 @@ namespace Example
                               <pre class="prettyprint"><code class="language-php"><&#63;php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-// Configure Bearer (JWT) access token for authorization: bearerAuth
-OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('', 'YOUR_ACCESS_TOKEN');
-
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\UserApi();
 
@@ -1530,9 +1486,6 @@ try {
                               <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
 use WWW::OPenAPIClient::Configuration;
 use WWW::OPenAPIClient::UserApi;
-
-# Configure Bearer (JWT) access token for authorization: bearerAuth
-$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::UserApi->new();
@@ -1552,9 +1505,6 @@ import time
 import openapi_client
 from openapi_client.rest import ApiException
 from pprint import pprint
-
-# Configure Bearer (JWT) access token for authorization: bearerAuth
-openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.UserApi()

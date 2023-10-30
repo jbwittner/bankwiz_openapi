@@ -56,9 +56,6 @@ public interface UserApi {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = UserDTO.class))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
-        },
-        security = {
-            @SecurityRequirement(name = "bearerAuth")
         }
     )
     @RequestMapping(
@@ -98,9 +95,6 @@ public interface UserApi {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = UserDTO.class))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
-        },
-        security = {
-            @SecurityRequirement(name = "bearerAuth")
         }
     )
     @RequestMapping(
