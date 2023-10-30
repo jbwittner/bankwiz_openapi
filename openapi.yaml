@@ -4,15 +4,12 @@ info:
   version: 0.3.1
   description: An API for accessing banking functionalities provided by BankWiz
 servers:
-  - url: 'http://localhost:8080/api'
+  - url: 'http://localhost:8080'
 tags:
   - name: UserService
     description: API endpoints for managing user information
 security:
-  - openId: 
-    - openid
-    - profile
-    - email
+  - oauth2: []
 paths:
   /user:
     get:
@@ -46,9 +43,15 @@ paths:
           description: Invalid request. Please check the provided data.
 components:
   securitySchemes:
-    openId:   # <--- Arbitrary name for the security scheme. Used to refer to it from elsewhere.
-      type: openIdConnect
-      openIdConnectUrl: https://bankwiz-dev.eu.auth0.com/.well-known/openid-configuration
+    oauth2:   # <--- Arbitrary name for the security scheme. Used to refer to it from elsewhere.
+      type: oauth2
+      description: For more information, see https://api.slack.com/docs/oauth
+      flows: 
+        authorizationCode:
+          authorizationUrl: https://bankwiz-dev.eu.auth0.com/authorize?audience=Bankwiz_server
+          tokenUrl: https://bankwiz-dev.eu.auth0.com/oauth/token
+          scopes:
+            users:read: Read user information
   schemas:
     FunctionalExceptionDTO:
       type: object
