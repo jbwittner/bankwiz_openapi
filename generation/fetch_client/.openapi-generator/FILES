@@ -3,7 +3,7 @@
 .openapi-generator-ignore
 README.md
 package.json
-src/apis/UserApi.ts
+src/apis/UserServiceApi.ts
 src/apis/index.ts
 src/index.ts
 src/models/FunctionalExceptionDTO.ts
