@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.1.0
 info:
   title: BankWiz API
   version: 0.3.1
@@ -6,7 +6,7 @@ info:
 servers:
   - url: 'http://localhost:8080/api'
 tags:
-  - name: User
+  - name: UserService
     description: API endpoints for managing user information
 security:
   - bearerAuth: []         # use the same name as above
@@ -14,7 +14,7 @@ paths:
   /user:
     get:
       tags:
-        - User
+        - UserService
       summary: Get the current user information
       operationId: getCurrentUserInfo
       responses:
@@ -29,7 +29,7 @@ paths:
   /user/checkregistration:
     get:
       tags:
-        - User
+        - UserService
       summary: Checks if the user is registered, and registers her if not.
       operationId: checkRegistration
       responses:
