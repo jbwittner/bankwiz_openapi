@@ -4,9 +4,12 @@ info:
   version: 0.3.1
   description: An API for accessing banking functionalities provided by BankWiz
 servers:
-  - url: 'http://localhost:8080'
+  - url: http://localhost:8080
+    description: Local developpement (server)
+  - url: http://localhost:9080
+    description: Local developpement (frontend)
 tags:
-  - name: User
+  - name: UserService
     description: API endpoints for managing user information
 security:
   - oauth2:
@@ -17,7 +20,7 @@ paths:
   /user:
     get:
       tags:
-        - User
+        - UserService
       summary: Get the current user information
       operationId: getCurrentUserInfo
       responses:
@@ -32,7 +35,7 @@ paths:
   /user/checkregistration:
     get:
       tags:
-        - User
+        - UserService
       summary: Checks if the user is registered, and registers her if not.
       operationId: checkRegistration
       responses:
