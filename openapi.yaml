@@ -50,7 +50,7 @@ paths:
   /group:
     post:
       tags:
-        - Group
+        - GroupService
       summary: Create a group
       operationId: createGroup
       requestBody:

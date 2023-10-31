@@ -868,6 +868,38 @@ ul.nav-tabs {
     }
   }
 };
+    defs["GroupAuthorizationEnum"] = {
+  "type" : "string",
+  "enum" : [ "READ", "WRITE", "ADMIN" ]
+};
+    defs["GroupCreationRequest"] = {
+  "required" : [ "groupName" ],
+  "type" : "object",
+  "properties" : {
+    "groupName" : {
+      "type" : "string"
+    }
+  }
+};
+    defs["GroupDTO"] = {
+  "required" : [ "groupId", "groupName", "users" ],
+  "type" : "object",
+  "properties" : {
+    "groupId" : {
+      "type" : "string",
+      "format" : "uuid"
+    },
+    "groupName" : {
+      "type" : "string"
+    },
+    "users" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/components/schemas/UserGroupDTO"
+      }
+    }
+  }
+};
     defs["MethodArgumentNotValidExceptionDTO"] = {
   "required" : [ "details", "exception", "field", "message", "objectName", "status", "timestamp" ],
   "type" : "object",
@@ -911,6 +943,18 @@ ul.nav-tabs {
     }
   }
 };
+    defs["UserGroupDTO"] = {
+  "required" : [ "authorization", "user" ],
+  "type" : "object",
+  "properties" : {
+    "user" : {
+      "$ref" : "#/components/schemas/UserDTO"
+    },
+    "authorization" : {
+      "$ref" : "#/components/schemas/GroupAuthorizationEnum"
+    }
+  }
+};
 
     var errs = {};
   </script>
@@ -929,6 +973,10 @@ ul.nav-tabs {
             -->
             <li class="nav-fixed nav-header active" data-group="_"><a href="#api-_">API Summary</a></li>
 
+                  <li class="nav-header" data-group="GroupService"><a href="#api-GroupService">API Methods - GroupService</a></li>
+                    <li data-group="GroupService" data-name="createGroup" class="">
+                      <a href="#api-GroupService-createGroup">createGroup</a>
+                    </li>
                   <li class="nav-header" data-group="UserService"><a href="#api-UserService">API Methods - UserService</a></li>
                     <li data-group="UserService" data-name="checkRegistration" class="">
                       <a href="#api-UserService-checkRegistration">checkRegistration</a>
@@ -957,6 +1005,447 @@ ul.nav-tabs {
           </div>
         </div>
         <div id="sections">
+                <section id="api-GroupService">
+                  <h1>GroupService</h1>
+                    <div id="api-GroupService-createGroup">
+                      <article id="api-GroupService-createGroup-0" data-group="User" data-name="createGroup" data-version="0">
+                        <div class="pull-left">
+                          <h1>createGroup</h1>
+                          <p>Create a group</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/group</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-GroupService-createGroup-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-GroupService-createGroup-0-java">Java</a></li>
+                          <li class=""><a href="#examples-GroupService-createGroup-0-dart">Dart</a></li>
+                          <li class=""><a href="#examples-GroupService-createGroup-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-GroupService-createGroup-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-GroupService-createGroup-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-GroupService-createGroup-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-GroupService-createGroup-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-GroupService-createGroup-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-GroupService-createGroup-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-GroupService-createGroup-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-GroupService-createGroup-0-python">Python</a></li>
+                          <li class=""><a href="#examples-GroupService-createGroup-0-rust">Rust</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-GroupService-createGroup-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST \
+ \
+ -H "Accept: application/json" \
+ -H "Content-Type: application/json" \
+ "http://localhost:8080/group" \
+ -d '{
+  &quot;groupName&quot; : &quot;groupName&quot;
+}'
+</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-GroupService-createGroup-0-java">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.model.*;
+import org.openapitools.client.api.GroupServiceApi;
+
+import java.io.File;
+import java.util.*;
+
+public class GroupServiceApiExample {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Create an instance of the API class
+        GroupServiceApi apiInstance = new GroupServiceApi();
+        GroupCreationRequest groupCreationRequest = ; // GroupCreationRequest | 
+
+        try {
+            GroupDTO result = apiInstance.createGroup(groupCreationRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling GroupServiceApi#createGroup");
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-GroupService-createGroup-0-dart">
+                            <pre class="prettyprint"><code class="language-dart">import 'package:openapi/api.dart';
+
+final api_instance = DefaultApi();
+
+final GroupCreationRequest groupCreationRequest = new GroupCreationRequest(); // GroupCreationRequest | 
+
+try {
+    final result = await api_instance.createGroup(groupCreationRequest);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->createGroup: $e\n');
+}
+
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-GroupService-createGroup-0-android">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.GroupServiceApi;
+
+public class GroupServiceApiExample {
+    public static void main(String[] args) {
+        GroupServiceApi apiInstance = new GroupServiceApi();
+        GroupCreationRequest groupCreationRequest = ; // GroupCreationRequest | 
+
+        try {
+            GroupDTO result = apiInstance.createGroup(groupCreationRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling GroupServiceApi#createGroup");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-GroupService-createGroup-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-GroupService-createGroup-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: oauth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+
+// Create an instance of the API class
+GroupServiceApi *apiInstance = [[GroupServiceApi alloc] init];
+GroupCreationRequest *groupCreationRequest = ; // 
+
+// Create a group
+[apiInstance createGroupWith:groupCreationRequest
+              completionHandler: ^(GroupDTO output, NSError* error) {
+    if (output) {
+        NSLog(@"%@", output);
+    }
+    if (error) {
+        NSLog(@"Error: %@", error);
+    }
+}];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-GroupService-createGroup-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: oauth2
+var oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = "YOUR ACCESS TOKEN";
+
+// Create an instance of the API class
+var api = new BankWizApi.GroupServiceApi()
+var groupCreationRequest = ; // {GroupCreationRequest} 
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.createGroup(groupCreationRequest, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-GroupService-createGroup-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-GroupService-createGroup-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class createGroupExample
+    {
+        public void main()
+        {
+            // Configure OAuth2 access token for authorization: oauth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            // Create an instance of the API class
+            var apiInstance = new GroupServiceApi();
+            var groupCreationRequest = new GroupCreationRequest(); // GroupCreationRequest | 
+
+            try {
+                // Create a group
+                GroupDTO result = apiInstance.createGroup(groupCreationRequest);
+                Debug.WriteLine(result);
+            } catch (Exception e) {
+                Debug.Print("Exception when calling GroupServiceApi.createGroup: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-GroupService-createGroup-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: oauth2
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Create an instance of the API class
+$api_instance = new OpenAPITools\Client\Api\GroupServiceApi();
+$groupCreationRequest = ; // GroupCreationRequest | 
+
+try {
+    $result = $api_instance->createGroup($groupCreationRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling GroupServiceApi->createGroup: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-GroupService-createGroup-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::OPenAPIClient::Configuration;
+use WWW::OPenAPIClient::GroupServiceApi;
+
+# Configure OAuth2 access token for authorization: oauth2
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+# Create an instance of the API class
+my $api_instance = WWW::OPenAPIClient::GroupServiceApi->new();
+my $groupCreationRequest = WWW::OPenAPIClient::Object::GroupCreationRequest->new(); # GroupCreationRequest | 
+
+eval {
+    my $result = $api_instance->createGroup(groupCreationRequest => $groupCreationRequest);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling GroupServiceApi->createGroup: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-GroupService-createGroup-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import openapi_client
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: oauth2
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Create an instance of the API class
+api_instance = openapi_client.GroupServiceApi()
+groupCreationRequest =  # GroupCreationRequest | 
+
+try:
+    # Create a group
+    api_response = api_instance.create_group(groupCreationRequest)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling GroupServiceApi->createGroup: %s\n" % e)</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-GroupService-createGroup-0-rust">
+                              <pre class="prettyprint"><code class="language-rust">extern crate GroupServiceApi;
+
+pub fn main() {
+    let groupCreationRequest = ; // GroupCreationRequest
+
+    let mut context = GroupServiceApi::Context::default();
+    let result = client.createGroup(groupCreationRequest, &context).wait();
+
+    println!("{:?}", result);
+}
+</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Scopes</h2>
+                          <table>
+                            
+                              <tr>
+                                <td>openid</td>
+                                <td>openid</td>
+                              </tr>
+                            
+                              <tr>
+                                <td>profile</td>
+                                <td>profile</td>
+                              </tr>
+                            
+                              <tr>
+                                <td>email</td>
+                                <td>email</td>
+                              </tr>
+                            
+                          </table>
+
+                          <h2>Parameters</h2>
+
+
+
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">groupCreationRequest <span style="color:red;">*</span></td>
+<td>
+<p class="marked"></p>
+<script>
+$(document).ready(function() {
+  var schemaWrapper = {
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/GroupCreationRequest"
+      }
+    }
+  },
+  "required" : true
+};
+
+  var schema = findNode('schema',schemaWrapper).schema;
+  if (!schema) {
+    schema = schemaWrapper.schema;
+  }
+  if (schema.$ref != null) {
+    schema = defsParser.$refs.get(schema.$ref);
+  } else {
+    schemaWrapper.definitions = Object.assign({}, defs);
+    $RefParser.dereference(schemaWrapper).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+  var result = $('#d2e199_createGroup_groupCreationRequest');
+  result.empty();
+  result.append(view.render());
+});
+</script>
+<div id="d2e199_createGroup_groupCreationRequest"></div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+                          <h2>Responses</h2>
+                            <h3 id="examples-GroupService-createGroup-title-201"></h3>
+                            <p id="examples-GroupService-createGroup-description-201" class="marked"></p>
+                            <script>
+                              var responseGroupService201_description = `Group created successfully`;
+                              var responseGroupService201_description_break = responseGroupService201_description.indexOf('\n');
+                              if (responseGroupService201_description_break == -1) {
+                                $("#examples-GroupService-createGroup-title-201").text("Status: 201 - " + responseGroupService201_description);
+                              } else {
+                                $("#examples-GroupService-createGroup-title-201").text("Status: 201 - " + responseGroupService201_description.substring(0, responseGroupService201_description_break));
+                                $("#examples-GroupService-createGroup-description-201").html(responseGroupService201_description.substring(responseGroupService201_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-GroupService-createGroup-201" class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-GroupService-createGroup-201-schema">Schema</a>
+                                </li>
+
+
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-GroupService-createGroup-201-wrapper" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-GroupService-createGroup-201-schema">
+                                  <div id="responses-GroupService-createGroup-schema-201" class="exampleStyle">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = ;
+                                        var schema = findNode('schema',schemaWrapper).schema;
+                                        if (!schema) {
+                                          schema = schemaWrapper.schema;
+                                        }
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                          Object.keys(schema.properties).forEach( (item) => {
+                                            if (schema.properties[item].$ref != null) {
+                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
+                                            }
+                                          });
+                                        } else if (schema.items != null && schema.items.$ref != null) {
+                                            schema.items = defsParser.$refs.get(schema.items.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-GroupService-createGroup-201-schema-data').val(JSON.stringify(schema));
+                                        var result = $('#responses-GroupService-createGroup-schema-201');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-GroupService-createGroup-201-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+                            <h3 id="examples-GroupService-createGroup-title-400"></h3>
+                            <p id="examples-GroupService-createGroup-description-400" class="marked"></p>
+                            <script>
+                              var responseGroupService400_description = `Invalid request. Please check the provided data.`;
+                              var responseGroupService400_description_break = responseGroupService400_description.indexOf('\n');
+                              if (responseGroupService400_description_break == -1) {
+                                $("#examples-GroupService-createGroup-title-400").text("Status: 400 - " + responseGroupService400_description);
+                              } else {
+                                $("#examples-GroupService-createGroup-title-400").text("Status: 400 - " + responseGroupService400_description.substring(0, responseGroupService400_description_break));
+                                $("#examples-GroupService-createGroup-description-400").html(responseGroupService400_description.substring(responseGroupService400_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-GroupService-createGroup-400" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-GroupService-createGroup-400-wrapper" style='margin-bottom: 10px;'>
+                            </div>
+                        </article>
+                      </div>
+                      <hr>
+                  </section>
                 <section id="api-UserService">
                   <h1>UserService</h1>
                     <div id="api-UserService-checkRegistration">

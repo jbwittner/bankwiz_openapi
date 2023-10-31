@@ -3,12 +3,17 @@
 .openapi-generator-ignore
 README.md
 package.json
+src/apis/GroupServiceApi.ts
 src/apis/UserServiceApi.ts
 src/apis/index.ts
 src/index.ts
 src/models/FunctionalExceptionDTO.ts
+src/models/GroupAuthorizationEnum.ts
+src/models/GroupCreationRequest.ts
+src/models/GroupDTO.ts
 src/models/MethodArgumentNotValidExceptionDTO.ts
 src/models/UserDTO.ts
+src/models/UserGroupDTO.ts
 src/models/index.ts
 src/runtime.ts
 tsconfig.esm.json
