@@ -6,8 +6,6 @@ info:
 servers:
   - url: http://localhost:8080
     description: Local developpement (server)
-  - url: http://localhost:9080
-    description: Local developpement (frontend)
 tags:
   - name: UserService
     description: API endpoints for managing user information
