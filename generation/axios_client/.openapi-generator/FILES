@@ -3,6 +3,7 @@
 .openapi-generator-ignore
 README.md
 api.ts
+api/group-service-api.ts
 api/user-service-api.ts
 base.ts
 common.ts
@@ -10,9 +11,13 @@ configuration.ts
 git_push.sh
 index.ts
 model/functional-exception-dto.ts
+model/group-authorization-enum.ts
+model/group-creation-request.ts
+model/group-dto.ts
 model/index.ts
 model/method-argument-not-valid-exception-dto.ts
 model/user-dto.ts
+model/user-group-dto.ts
 package.json
 tsconfig.esm.json
 tsconfig.json

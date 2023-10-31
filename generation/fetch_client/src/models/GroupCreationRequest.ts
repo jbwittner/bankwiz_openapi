@@ -16,50 +16,42 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface UserDTO
+ * @interface GroupCreationRequest
  */
-export interface UserDTO {
+export interface GroupCreationRequest {
     /**
      * 
      * @type {string}
-     * @memberof UserDTO
+     * @memberof GroupCreationRequest
      */
-    id: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserDTO
-     */
-    email: string;
+    groupName: string;
 }
 
 /**
- * Check if a given object implements the UserDTO interface.
+ * Check if a given object implements the GroupCreationRequest interface.
  */
-export function instanceOfUserDTO(value: object): boolean {
+export function instanceOfGroupCreationRequest(value: object): boolean {
     let isInstance = true;
-    isInstance = isInstance && "id" in value;
-    isInstance = isInstance && "email" in value;
+    isInstance = isInstance && "groupName" in value;
 
     return isInstance;
 }
 
-export function UserDTOFromJSON(json: any): UserDTO {
-    return UserDTOFromJSONTyped(json, false);
+export function GroupCreationRequestFromJSON(json: any): GroupCreationRequest {
+    return GroupCreationRequestFromJSONTyped(json, false);
 }
 
-export function UserDTOFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserDTO {
+export function GroupCreationRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): GroupCreationRequest {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'id': json['id'],
-        'email': json['email'],
+        'groupName': json['groupName'],
     };
 }
 
-export function UserDTOToJSON(value?: UserDTO | null): any {
+export function GroupCreationRequestToJSON(value?: GroupCreationRequest | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -68,8 +60,7 @@ export function UserDTOToJSON(value?: UserDTO | null): any {
     }
     return {
         
-        'id': value.id,
-        'email': value.email,
+        'groupName': value.groupName,
     };
 }
 

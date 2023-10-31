@@ -14,6 +14,19 @@
 
 
 
-export * from './api/group-service-api';
-export * from './api/user-service-api';
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const GroupAuthorizationEnum = {
+    Read: 'READ',
+    Write: 'WRITE',
+    Admin: 'ADMIN'
+} as const;
+
+export type GroupAuthorizationEnum = typeof GroupAuthorizationEnum[keyof typeof GroupAuthorizationEnum];
+
+
 

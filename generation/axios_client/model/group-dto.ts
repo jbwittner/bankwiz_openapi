@@ -13,24 +13,33 @@
  */
 
 
+// May contain unused imports in some cases
+// @ts-ignore
+import { UserGroupDTO } from './user-group-dto';
 
 /**
  * 
  * @export
- * @interface UserDTO
+ * @interface GroupDTO
  */
-export interface UserDTO {
+export interface GroupDTO {
     /**
      * 
      * @type {string}
-     * @memberof UserDTO
+     * @memberof GroupDTO
      */
-    'id': string;
+    'groupId': string;
     /**
      * 
      * @type {string}
-     * @memberof UserDTO
+     * @memberof GroupDTO
      */
-    'email': string;
+    'groupName': string;
+    /**
+     * 
+     * @type {Array<UserGroupDTO>}
+     * @memberof GroupDTO
+     */
+    'users': Array<UserGroupDTO>;
 }
 

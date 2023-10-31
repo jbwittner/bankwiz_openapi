@@ -14,6 +14,17 @@
 
 
 
-export * from './api/group-service-api';
-export * from './api/user-service-api';
+/**
+ * 
+ * @export
+ * @interface GroupCreationRequest
+ */
+export interface GroupCreationRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof GroupCreationRequest
+     */
+    'groupName': string;
+}
 
