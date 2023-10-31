@@ -9,6 +9,8 @@ servers:
 tags:
   - name: UserService
     description: API endpoints for managing user information
+  - name: GroupService
+    description: API endpoints for managing group information
 security:
   - oauth2:
     - openid
@@ -43,6 +45,27 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserDTO'
+        '400':
+          description: Invalid request. Please check the provided data.
+  /group:
+    post:
+      tags:
+        - Group
+      summary: Create a group
+      operationId: createGroup
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupCreationRequest'
+      responses:
+        '201':
+          description: Group created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupDTO'
         '400':
           description: Invalid request. Please check the provided data.
 components:
@@ -104,6 +127,13 @@ components:
         - timestamp
         - field
         - objectName
+    GroupCreationRequest:
+      type: object
+      properties:
+        groupName:
+          type: string
+      required:
+        - groupName
     UserDTO:
       type: object
       properties:
@@ -117,3 +147,35 @@ components:
       required:
         - id
         - email
+    UserGroupDTO:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/UserDTO'
+        authorization:
+          $ref: '#/components/schemas/GroupAuthorizationEnum'
+      required:
+        - user
+        - authorization
+    GroupDTO:
+      type: object
+      properties:
+        groupId:
+          type: string
+          format: uuid
+        groupName:
+          type: string
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserGroupDTO'
+      required:
+        - groupId
+        - groupName
+        - users
+    GroupAuthorizationEnum:
+      type: string
+      enum:
+        - READ
+        - WRITE
+        - ADMIN
