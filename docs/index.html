@@ -881,8 +881,8 @@ ul.nav-tabs {
     }
   }
 };
-    defs["GroupDTO"] = {
-  "required" : [ "groupId", "groupName", "users" ],
+    defs["GroupIndexDTO"] = {
+  "required" : [ "groupId", "groupName" ],
   "type" : "object",
   "properties" : {
     "groupId" : {
@@ -891,12 +891,6 @@ ul.nav-tabs {
     },
     "groupName" : {
       "type" : "string"
-    },
-    "users" : {
-      "type" : "array",
-      "items" : {
-        "$ref" : "#/components/schemas/UserGroupDTO"
-      }
     }
   }
 };
@@ -997,7 +991,7 @@ ul.nav-tabs {
         <div id="header">
           <div id="api-_">
             <h2 id="welcome-to-apidoc">API and SDK Documentation</h2>
-              <div class="app-desc">Version: 0.4.0</div>
+              <div class="app-desc">Version: 0.4.1</div>
             <hr>
             <div id="app-description" class="app-desc">
                 An API for accessing banking functionalities provided by BankWiz
@@ -1073,7 +1067,7 @@ public class GroupServiceApiExample {
         GroupCreationRequest groupCreationRequest = ; // GroupCreationRequest | 
 
         try {
-            GroupDTO result = apiInstance.createGroup(groupCreationRequest);
+            GroupIndexDTO result = apiInstance.createGroup(groupCreationRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling GroupServiceApi#createGroup");
@@ -1110,7 +1104,7 @@ public class GroupServiceApiExample {
         GroupCreationRequest groupCreationRequest = ; // GroupCreationRequest | 
 
         try {
-            GroupDTO result = apiInstance.createGroup(groupCreationRequest);
+            GroupIndexDTO result = apiInstance.createGroup(groupCreationRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling GroupServiceApi#createGroup");
@@ -1136,7 +1130,7 @@ GroupCreationRequest *groupCreationRequest = ; //
 
 // Create a group
 [apiInstance createGroupWith:groupCreationRequest
-              completionHandler: ^(GroupDTO output, NSError* error) {
+              completionHandler: ^(GroupIndexDTO output, NSError* error) {
     if (output) {
         NSLog(@"%@", output);
     }
@@ -1195,7 +1189,7 @@ namespace Example
 
             try {
                 // Create a group
-                GroupDTO result = apiInstance.createGroup(groupCreationRequest);
+                GroupIndexDTO result = apiInstance.createGroup(groupCreationRequest);
                 Debug.WriteLine(result);
             } catch (Exception e) {
                 Debug.Print("Exception when calling GroupServiceApi.createGroup: " + e.Message );

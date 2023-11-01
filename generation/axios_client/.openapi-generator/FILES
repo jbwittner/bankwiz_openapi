@@ -13,7 +13,7 @@ index.ts
 model/functional-exception-dto.ts
 model/group-authorization-enum.ts
 model/group-creation-request.ts
-model/group-dto.ts
+model/group-index-dto.ts
 model/index.ts
 model/method-argument-not-valid-exception-dto.ts
 model/user-dto.ts

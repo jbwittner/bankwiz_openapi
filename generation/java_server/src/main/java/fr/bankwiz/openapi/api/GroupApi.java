@@ -6,7 +6,7 @@
 package fr.bankwiz.openapi.api;
 
 import fr.bankwiz.openapi.model.GroupCreationRequest;
-import fr.bankwiz.openapi.model.GroupDTO;
+import fr.bankwiz.openapi.model.GroupIndexDTO;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -55,7 +55,7 @@ public interface GroupApi {
         tags = { "GroupService" },
         responses = {
             @ApiResponse(responseCode = "201", description = "Group created successfully", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = GroupDTO.class))
+                @Content(mediaType = "application/json", schema = @Schema(implementation = GroupIndexDTO.class))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
         },
@@ -69,13 +69,13 @@ public interface GroupApi {
         produces = { "application/json" },
         consumes = { "application/json" }
     )
-    default ResponseEntity<GroupDTO> createGroup(
+    default ResponseEntity<GroupIndexDTO> createGroup(
         @Parameter(name = "GroupCreationRequest", description = "", required = true) @Valid @RequestBody GroupCreationRequest groupCreationRequest
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"groupName\" : \"groupName\", \"groupId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"users\" : [ { \"user\" : { \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"email\" : \"johndoe@example.com\" } }, { \"user\" : { \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"email\" : \"johndoe@example.com\" } } ] }";
+                    String exampleString = "{ \"groupName\" : \"groupName\", \"groupId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

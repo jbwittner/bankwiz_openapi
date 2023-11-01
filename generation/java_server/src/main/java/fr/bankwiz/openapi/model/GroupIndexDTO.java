@@ -4,10 +4,6 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import fr.bankwiz.openapi.model.UserGroupDTO;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.UUID;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
@@ -20,33 +16,29 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * GroupDTO
+ * GroupIndexDTO
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
-public class GroupDTO {
+public class GroupIndexDTO {
 
   private UUID groupId;
 
   private String groupName;
 
-  @Valid
-  private List<@Valid UserGroupDTO> users = new ArrayList<>();
-
-  public GroupDTO() {
+  public GroupIndexDTO() {
     super();
   }
 
   /**
    * Constructor with only required parameters
    */
-  public GroupDTO(UUID groupId, String groupName, List<@Valid UserGroupDTO> users) {
+  public GroupIndexDTO(UUID groupId, String groupName) {
     this.groupId = groupId;
     this.groupName = groupName;
-    this.users = users;
   }
 
-  public GroupDTO groupId(UUID groupId) {
+  public GroupIndexDTO groupId(UUID groupId) {
     this.groupId = groupId;
     return this;
   }
@@ -66,7 +58,7 @@ public class GroupDTO {
     this.groupId = groupId;
   }
 
-  public GroupDTO groupName(String groupName) {
+  public GroupIndexDTO groupName(String groupName) {
     this.groupName = groupName;
     return this;
   }
@@ -86,34 +78,6 @@ public class GroupDTO {
     this.groupName = groupName;
   }
 
-  public GroupDTO users(List<@Valid UserGroupDTO> users) {
-    this.users = users;
-    return this;
-  }
-
-  public GroupDTO addUsersItem(UserGroupDTO usersItem) {
-    if (this.users == null) {
-      this.users = new ArrayList<>();
-    }
-    this.users.add(usersItem);
-    return this;
-  }
-
-  /**
-   * Get users
-   * @return users
-  */
-  @NotNull @Valid 
-  @Schema(name = "users", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("users")
-  public List<@Valid UserGroupDTO> getUsers() {
-    return users;
-  }
-
-  public void setUsers(List<@Valid UserGroupDTO> users) {
-    this.users = users;
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -122,24 +86,22 @@ public class GroupDTO {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    GroupDTO groupDTO = (GroupDTO) o;
-    return Objects.equals(this.groupId, groupDTO.groupId) &&
-        Objects.equals(this.groupName, groupDTO.groupName) &&
-        Objects.equals(this.users, groupDTO.users);
+    GroupIndexDTO groupIndexDTO = (GroupIndexDTO) o;
+    return Objects.equals(this.groupId, groupIndexDTO.groupId) &&
+        Objects.equals(this.groupName, groupIndexDTO.groupName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(groupId, groupName, users);
+    return Objects.hash(groupId, groupName);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class GroupDTO {\n");
+    sb.append("class GroupIndexDTO {\n");
     sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
     sb.append("    groupName: ").append(toIndentedString(groupName)).append("\n");
-    sb.append("    users: ").append(toIndentedString(users)).append("\n");
     sb.append("}");
     return sb.toString();
   }
