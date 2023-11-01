@@ -65,7 +65,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GroupDTO'
+                $ref: '#/components/schemas/GroupIndexDTO'
         '400':
           description: Invalid request. Please check the provided data.
 components:
@@ -157,7 +157,7 @@ components:
       required:
         - user
         - authorization
-    GroupDTO:
+    GroupIndexDTO:
       type: object
       properties:
         groupId:
@@ -165,14 +165,9 @@ components:
           format: uuid
         groupName:
           type: string
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserGroupDTO'
       required:
         - groupId
         - groupName
-        - users
     GroupAuthorizationEnum:
       type: string
       enum:
