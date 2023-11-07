@@ -69,17 +69,11 @@ paths:
         '400':
           description: Invalid request. Please check the provided data.
   /group/groups:
-    post:
+    get:
       tags:
         - GroupService
       summary: Get all groups of user
       operationId: getUserGroups
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/GroupCreationRequest'
       responses:
         '200':
           description: Get all groups of user

@@ -87,9 +87,8 @@ public interface GroupApi {
 
 
     /**
-     * POST /group/groups : Get all groups of user
+     * GET /group/groups : Get all groups of user
      *
-     * @param groupCreationRequest  (required)
      * @return Get all groups of user (status code 200)
      *         or Invalid request. Please check the provided data. (status code 400)
      */
@@ -108,13 +107,12 @@ public interface GroupApi {
         }
     )
     @RequestMapping(
-        method = RequestMethod.POST,
+        method = RequestMethod.GET,
         value = "/group/groups",
-        produces = { "application/json" },
-        consumes = { "application/json" }
+        produces = { "application/json" }
     )
     default ResponseEntity<List<GroupIndexDTO>> getUserGroups(
-        @Parameter(name = "GroupCreationRequest", description = "", required = true) @Valid @RequestBody GroupCreationRequest groupCreationRequest
+        
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {

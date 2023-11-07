@@ -29,10 +29,6 @@ export interface CreateGroupRequest {
     groupCreationRequest: GroupCreationRequest;
 }
 
-export interface GetUserGroupsRequest {
-    groupCreationRequest: GroupCreationRequest;
-}
-
 /**
  * GroupServiceApi - interface
  * 
@@ -58,17 +54,16 @@ export interface GroupServiceApiInterface {
     /**
      * 
      * @summary Get all groups of user
-     * @param {GroupCreationRequest} groupCreationRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof GroupServiceApiInterface
      */
-    getUserGroupsRaw(requestParameters: GetUserGroupsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<GroupIndexDTO>>>;
+    getUserGroupsRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<GroupIndexDTO>>>;
 
     /**
      * Get all groups of user
      */
-    getUserGroups(requestParameters: GetUserGroupsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<GroupIndexDTO>>;
+    getUserGroups(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<GroupIndexDTO>>;
 
 }
 
@@ -118,16 +113,10 @@ export class GroupServiceApi extends runtime.BaseAPI implements GroupServiceApiI
     /**
      * Get all groups of user
      */
-    async getUserGroupsRaw(requestParameters: GetUserGroupsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<GroupIndexDTO>>> {
-        if (requestParameters.groupCreationRequest === null || requestParameters.groupCreationRequest === undefined) {
-            throw new runtime.RequiredError('groupCreationRequest','Required parameter requestParameters.groupCreationRequest was null or undefined when calling getUserGroups.');
-        }
-
+    async getUserGroupsRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<GroupIndexDTO>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.accessToken) {
             // oauth required
@@ -136,10 +125,9 @@ export class GroupServiceApi extends runtime.BaseAPI implements GroupServiceApiI
 
         const response = await this.request({
             path: `/group/groups`,
-            method: 'POST',
+            method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-            body: GroupCreationRequestToJSON(requestParameters.groupCreationRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(GroupIndexDTOFromJSON));
@@ -148,8 +136,8 @@ export class GroupServiceApi extends runtime.BaseAPI implements GroupServiceApiI
     /**
      * Get all groups of user
      */
-    async getUserGroups(requestParameters: GetUserGroupsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<GroupIndexDTO>> {
-        const response = await this.getUserGroupsRaw(requestParameters, initOverrides);
+    async getUserGroups(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<GroupIndexDTO>> {
+        const response = await this.getUserGroupsRaw(initOverrides);
         return await response.value();
     }
 

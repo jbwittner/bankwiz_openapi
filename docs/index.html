@@ -1438,7 +1438,7 @@ $(document).ready(function() {
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/group/groups</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/group/groups</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -1460,14 +1460,10 @@ $(document).ready(function() {
 
                         <div class="tab-content">
                           <div class="tab-pane active" id="examples-GroupService-getUserGroups-0-curl">
-                            <pre class="prettyprint"><code class="language-bsh">curl -X POST \
+                            <pre class="prettyprint"><code class="language-bsh">curl -X GET \
  \
  -H "Accept: application/json" \
- -H "Content-Type: application/json" \
- "http://localhost:8080/group/groups" \
- -d '{
-  &quot;groupName&quot; : &quot;groupName&quot;
-}'
+ "http://localhost:8080/group/groups"
 </code></pre>
                           </div>
                           <div class="tab-pane" id="examples-GroupService-getUserGroups-0-java">
@@ -1489,10 +1485,9 @@ public class GroupServiceApiExample {
 
         // Create an instance of the API class
         GroupServiceApi apiInstance = new GroupServiceApi();
-        GroupCreationRequest groupCreationRequest = ; // GroupCreationRequest | 
 
         try {
-            array[GroupIndexDTO] result = apiInstance.getUserGroups(groupCreationRequest);
+            array[GroupIndexDTO] result = apiInstance.getUserGroups();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling GroupServiceApi#getUserGroups");
@@ -1508,10 +1503,9 @@ public class GroupServiceApiExample {
 
 final api_instance = DefaultApi();
 
-final GroupCreationRequest groupCreationRequest = new GroupCreationRequest(); // GroupCreationRequest | 
 
 try {
-    final result = await api_instance.getUserGroups(groupCreationRequest);
+    final result = await api_instance.getUserGroups();
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->getUserGroups: $e\n');
@@ -1526,10 +1520,9 @@ try {
 public class GroupServiceApiExample {
     public static void main(String[] args) {
         GroupServiceApi apiInstance = new GroupServiceApi();
-        GroupCreationRequest groupCreationRequest = ; // GroupCreationRequest | 
 
         try {
-            array[GroupIndexDTO] result = apiInstance.getUserGroups(groupCreationRequest);
+            array[GroupIndexDTO] result = apiInstance.getUserGroups();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling GroupServiceApi#getUserGroups");
@@ -1551,11 +1544,10 @@ public class GroupServiceApiExample {
 
 // Create an instance of the API class
 GroupServiceApi *apiInstance = [[GroupServiceApi alloc] init];
-GroupCreationRequest *groupCreationRequest = ; // 
 
 // Get all groups of user
-[apiInstance getUserGroupsWith:groupCreationRequest
-              completionHandler: ^(array[GroupIndexDTO] output, NSError* error) {
+[apiInstance getUserGroupsWithCompletionHandler: 
+              ^(array[GroupIndexDTO] output, NSError* error) {
     if (output) {
         NSLog(@"%@", output);
     }
@@ -1576,8 +1568,6 @@ oauth2.accessToken = "YOUR ACCESS TOKEN";
 
 // Create an instance of the API class
 var api = new BankWizApi.GroupServiceApi()
-var groupCreationRequest = ; // {GroupCreationRequest} 
-
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -1585,7 +1575,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.getUserGroups(groupCreationRequest, callback);
+api.getUserGroups(callback);
 </code></pre>
                             </div>
 
@@ -1610,11 +1600,10 @@ namespace Example
 
             // Create an instance of the API class
             var apiInstance = new GroupServiceApi();
-            var groupCreationRequest = new GroupCreationRequest(); // GroupCreationRequest | 
 
             try {
                 // Get all groups of user
-                array[GroupIndexDTO] result = apiInstance.getUserGroups(groupCreationRequest);
+                array[GroupIndexDTO] result = apiInstance.getUserGroups();
                 Debug.WriteLine(result);
             } catch (Exception e) {
                 Debug.Print("Exception when calling GroupServiceApi.getUserGroups: " + e.Message );
@@ -1634,10 +1623,9 @@ OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YO
 
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\GroupServiceApi();
-$groupCreationRequest = ; // GroupCreationRequest | 
 
 try {
-    $result = $api_instance->getUserGroups($groupCreationRequest);
+    $result = $api_instance->getUserGroups();
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling GroupServiceApi->getUserGroups: ', $e->getMessage(), PHP_EOL;
@@ -1655,10 +1643,9 @@ $WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::GroupServiceApi->new();
-my $groupCreationRequest = WWW::OPenAPIClient::Object::GroupCreationRequest->new(); # GroupCreationRequest | 
 
 eval {
-    my $result = $api_instance->getUserGroups(groupCreationRequest => $groupCreationRequest);
+    my $result = $api_instance->getUserGroups();
     print Dumper($result);
 };
 if ($@) {
@@ -1678,11 +1665,10 @@ openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Create an instance of the API class
 api_instance = openapi_client.GroupServiceApi()
-groupCreationRequest =  # GroupCreationRequest | 
 
 try:
     # Get all groups of user
-    api_response = api_instance.get_user_groups(groupCreationRequest)
+    api_response = api_instance.get_user_groups()
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling GroupServiceApi->getUserGroups: %s\n" % e)</code></pre>
@@ -1692,10 +1678,9 @@ except ApiException as e:
                               <pre class="prettyprint"><code class="language-rust">extern crate GroupServiceApi;
 
 pub fn main() {
-    let groupCreationRequest = ; // GroupCreationRequest
 
     let mut context = GroupServiceApi::Context::default();
-    let result = client.getUserGroups(groupCreationRequest, &context).wait();
+    let result = client.getUserGroups(&context).wait();
 
     println!("{:?}", result);
 }
@@ -1727,52 +1712,6 @@ pub fn main() {
 
 
 
-                            <div class="methodsubtabletitle">Body parameters</div>
-                            <table id="methodsubtable">
-                              <tr>
-                                <th width="150px">Name</th>
-                                <th>Description</th>
-                              </tr>
-                                <tr><td style="width:150px;">groupCreationRequest <span style="color:red;">*</span></td>
-<td>
-<p class="marked"></p>
-<script>
-$(document).ready(function() {
-  var schemaWrapper = {
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/GroupCreationRequest"
-      }
-    }
-  },
-  "required" : true
-};
-
-  var schema = findNode('schema',schemaWrapper).schema;
-  if (!schema) {
-    schema = schemaWrapper.schema;
-  }
-  if (schema.$ref != null) {
-    schema = defsParser.$refs.get(schema.$ref);
-  } else {
-    schemaWrapper.definitions = Object.assign({}, defs);
-    $RefParser.dereference(schemaWrapper).catch(function(err) {
-      console.log(err);
-    });
-  }
-
-  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
-  var result = $('#d2e199_getUserGroups_groupCreationRequest');
-  result.empty();
-  result.append(view.render());
-});
-</script>
-<div id="d2e199_getUserGroups_groupCreationRequest"></div>
-</td>
-</tr>
-
-                            </table>
 
 
 

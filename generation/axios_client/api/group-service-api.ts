@@ -74,13 +74,10 @@ export const GroupServiceApiAxiosParamCreator = function (configuration?: Config
         /**
          * 
          * @summary Get all groups of user
-         * @param {GroupCreationRequest} groupCreationRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserGroups: async (groupCreationRequest: GroupCreationRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'groupCreationRequest' is not null or undefined
-            assertParamExists('getUserGroups', 'groupCreationRequest', groupCreationRequest)
+        getUserGroups: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/group/groups`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -89,7 +86,7 @@ export const GroupServiceApiAxiosParamCreator = function (configuration?: Config
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -99,12 +96,9 @@ export const GroupServiceApiAxiosParamCreator = function (configuration?: Config
 
 
     
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(groupCreationRequest, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -135,12 +129,11 @@ export const GroupServiceApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get all groups of user
-         * @param {GroupCreationRequest} groupCreationRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUserGroups(groupCreationRequest: GroupCreationRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GroupIndexDTO>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserGroups(groupCreationRequest, options);
+        async getUserGroups(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<GroupIndexDTO>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getUserGroups(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -166,12 +159,11 @@ export const GroupServiceApiFactory = function (configuration?: Configuration, b
         /**
          * 
          * @summary Get all groups of user
-         * @param {GroupCreationRequest} groupCreationRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getUserGroups(groupCreationRequest: GroupCreationRequest, options?: any): AxiosPromise<Array<GroupIndexDTO>> {
-            return localVarFp.getUserGroups(groupCreationRequest, options).then((request) => request(axios, basePath));
+        getUserGroups(options?: any): AxiosPromise<Array<GroupIndexDTO>> {
+            return localVarFp.getUserGroups(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -195,12 +187,11 @@ export interface GroupServiceApiInterface {
     /**
      * 
      * @summary Get all groups of user
-     * @param {GroupCreationRequest} groupCreationRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof GroupServiceApiInterface
      */
-    getUserGroups(groupCreationRequest: GroupCreationRequest, options?: AxiosRequestConfig): AxiosPromise<Array<GroupIndexDTO>>;
+    getUserGroups(options?: AxiosRequestConfig): AxiosPromise<Array<GroupIndexDTO>>;
 
 }
 
@@ -226,13 +217,12 @@ export class GroupServiceApi extends BaseAPI implements GroupServiceApiInterface
     /**
      * 
      * @summary Get all groups of user
-     * @param {GroupCreationRequest} groupCreationRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof GroupServiceApi
      */
-    public getUserGroups(groupCreationRequest: GroupCreationRequest, options?: AxiosRequestConfig) {
-        return GroupServiceApiFp(this.configuration).getUserGroups(groupCreationRequest, options).then((request) => request(this.axios, this.basePath));
+    public getUserGroups(options?: AxiosRequestConfig) {
+        return GroupServiceApiFp(this.configuration).getUserGroups(options).then((request) => request(this.axios, this.basePath));
     }
 }
 
