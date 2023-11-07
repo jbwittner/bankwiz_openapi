@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: BankWiz API
-  version: 0.4.1
+  version: 0.4.2
   description: An API for accessing banking functionalities provided by BankWiz
 servers:
   - url: http://localhost:8080
@@ -66,6 +66,29 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GroupIndexDTO'
+        '400':
+          description: Invalid request. Please check the provided data.
+  /group/groups:
+    post:
+      tags:
+        - GroupService
+      summary: Get all groups of user
+      operationId: getUserGroups
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupCreationRequest'
+      responses:
+        '200':
+          description: Get all groups of user
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: '#/components/schemas/GroupIndexDTO'
         '400':
           description: Invalid request. Please check the provided data.
 components:
@@ -147,16 +170,6 @@ components:
       required:
         - id
         - email
-    UserGroupDTO:
-      type: object
-      properties:
-        user:
-          $ref: '#/components/schemas/UserDTO'
-        authorization:
-          $ref: '#/components/schemas/GroupAuthorizationEnum'
-      required:
-        - user
-        - authorization
     GroupIndexDTO:
       type: object
       properties:
@@ -168,9 +181,3 @@ components:
       required:
         - groupId
         - groupName
-    GroupAuthorizationEnum:
-      type: string
-      enum:
-        - READ
-        - WRITE
-        - ADMIN
