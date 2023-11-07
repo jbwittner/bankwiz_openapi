@@ -11,13 +11,11 @@ configuration.ts
 git_push.sh
 index.ts
 model/functional-exception-dto.ts
-model/group-authorization-enum.ts
 model/group-creation-request.ts
 model/group-index-dto.ts
 model/index.ts
 model/method-argument-not-valid-exception-dto.ts
 model/user-dto.ts
-model/user-group-dto.ts
 package.json
 tsconfig.esm.json
 tsconfig.json
