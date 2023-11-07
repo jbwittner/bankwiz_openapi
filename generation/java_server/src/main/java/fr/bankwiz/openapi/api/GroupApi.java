@@ -85,4 +85,48 @@ public interface GroupApi {
 
     }
 
+
+    /**
+     * POST /group/groups : Get all groups of user
+     *
+     * @param groupCreationRequest  (required)
+     * @return Get all groups of user (status code 200)
+     *         or Invalid request. Please check the provided data. (status code 400)
+     */
+    @Operation(
+        operationId = "getUserGroups",
+        summary = "Get all groups of user",
+        tags = { "GroupService" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Get all groups of user", content = {
+                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = GroupIndexDTO.class)))
+            }),
+            @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "oauth2", scopes={ "openid", "profile", "email" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.POST,
+        value = "/group/groups",
+        produces = { "application/json" },
+        consumes = { "application/json" }
+    )
+    default ResponseEntity<List<GroupIndexDTO>> getUserGroups(
+        @Parameter(name = "GroupCreationRequest", description = "", required = true) @Valid @RequestBody GroupCreationRequest groupCreationRequest
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "[ { \"groupName\" : \"groupName\", \"groupId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" }, { \"groupName\" : \"groupName\", \"groupId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" } ]";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
 }
