@@ -6,7 +6,9 @@
 package fr.bankwiz.openapi.api;
 
 import fr.bankwiz.openapi.model.GroupCreationRequest;
+import fr.bankwiz.openapi.model.GroupDetailsDTO;
 import fr.bankwiz.openapi.model.GroupIndexDTO;
+import java.util.UUID;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -76,6 +78,49 @@ public interface GroupApi {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                     String exampleString = "{ \"groupName\" : \"groupName\", \"groupId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    /**
+     * GET /group/{id} : Get a group details
+     *
+     * @param id Group ID (required)
+     * @return Get group (status code 200)
+     *         or Invalid request. Please check the provided data. (status code 400)
+     */
+    @Operation(
+        operationId = "getGroupDetails",
+        summary = "Get a group details",
+        tags = { "GroupService" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Get group", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = GroupDetailsDTO.class))
+            }),
+            @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "oauth2", scopes={ "openid", "profile", "email" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.GET,
+        value = "/group/{id}",
+        produces = { "application/json" }
+    )
+    default ResponseEntity<GroupDetailsDTO> getGroupDetails(
+        @Parameter(name = "id", description = "Group ID", required = true, in = ParameterIn.PATH) @PathVariable("id") UUID id
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"groupName\" : \"groupName\", \"usersRights\" : [ { \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"user\" : { \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"email\" : \"johndoe@example.com\" } }, { \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"user\" : { \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"email\" : \"johndoe@example.com\" } } ], \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

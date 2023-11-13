@@ -17,20 +17,16 @@
 /**
  * 
  * @export
- * @interface GroupIndexDTO
+ * @enum {string}
  */
-export interface GroupIndexDTO {
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupIndexDTO
-     */
-    'groupId': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GroupIndexDTO
-     */
-    'groupName': string;
-}
+
+export const UserGroupRightEnum = {
+    Read: 'READ',
+    Write: 'WRITE',
+    Admin: 'ADMIN'
+} as const;
+
+export type UserGroupRightEnum = typeof UserGroupRightEnum[keyof typeof UserGroupRightEnum];
+
+
 

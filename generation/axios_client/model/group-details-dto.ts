@@ -13,24 +13,33 @@
  */
 
 
+// May contain unused imports in some cases
+// @ts-ignore
+import { UserGroupRightDTO } from './user-group-right-dto';
 
 /**
  * 
  * @export
- * @interface GroupIndexDTO
+ * @interface GroupDetailsDTO
  */
-export interface GroupIndexDTO {
+export interface GroupDetailsDTO {
     /**
      * 
      * @type {string}
-     * @memberof GroupIndexDTO
+     * @memberof GroupDetailsDTO
      */
-    'groupId': string;
+    'id': string;
     /**
      * 
      * @type {string}
-     * @memberof GroupIndexDTO
+     * @memberof GroupDetailsDTO
      */
     'groupName': string;
+    /**
+     * 
+     * @type {Array<UserGroupRightDTO>}
+     * @memberof GroupDetailsDTO
+     */
+    'usersRights': Array<UserGroupRightDTO>;
 }
 
