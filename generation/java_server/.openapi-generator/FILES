@@ -6,6 +6,9 @@ src/main/java/fr/bankwiz/openapi/api/GroupApi.java
 src/main/java/fr/bankwiz/openapi/api/UserApi.java
 src/main/java/fr/bankwiz/openapi/model/FunctionalExceptionDTO.java
 src/main/java/fr/bankwiz/openapi/model/GroupCreationRequest.java
+src/main/java/fr/bankwiz/openapi/model/GroupDetailsDTO.java
 src/main/java/fr/bankwiz/openapi/model/GroupIndexDTO.java
 src/main/java/fr/bankwiz/openapi/model/MethodArgumentNotValidExceptionDTO.java
 src/main/java/fr/bankwiz/openapi/model/UserDTO.java
+src/main/java/fr/bankwiz/openapi/model/UserGroupRightDTO.java
+src/main/java/fr/bankwiz/openapi/model/UserGroupRightEnum.java
