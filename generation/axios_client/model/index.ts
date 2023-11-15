@@ -1,3 +1,4 @@
+export * from './add-user-group-request';
 export * from './functional-exception-dto';
 export * from './group-creation-request';
 export * from './group-details-dto';

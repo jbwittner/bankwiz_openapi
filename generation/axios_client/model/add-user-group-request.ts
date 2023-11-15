@@ -15,31 +15,27 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { UserGroupRightDTO } from './user-group-right-dto';
+import { UserGroupRightEnum } from './user-group-right-enum';
 
 /**
  * 
  * @export
- * @interface GroupDetailsDTO
+ * @interface AddUserGroupRequest
  */
-export interface GroupDetailsDTO {
+export interface AddUserGroupRequest {
     /**
      * 
      * @type {string}
-     * @memberof GroupDetailsDTO
+     * @memberof AddUserGroupRequest
      */
-    'id': string;
+    'userId': string;
     /**
      * 
-     * @type {string}
-     * @memberof GroupDetailsDTO
+     * @type {UserGroupRightEnum}
+     * @memberof AddUserGroupRequest
      */
-    'groupName': string;
-    /**
-     * 
-     * @type {Array<UserGroupRightDTO>}
-     * @memberof GroupDetailsDTO
-     */
-    'usersRights': Array<UserGroupRightDTO>;
+    'right': UserGroupRightEnum;
 }
+
+
 

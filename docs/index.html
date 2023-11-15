@@ -846,6 +846,19 @@ ul.nav-tabs {
   <script>
     // Script section to load models into a JS Var
     var defs = {}
+    defs["AddUserGroupRequest"] = {
+  "required" : [ "right", "userId" ],
+  "type" : "object",
+  "properties" : {
+    "userId" : {
+      "type" : "string",
+      "format" : "uuid"
+    },
+    "right" : {
+      "$ref" : "#/components/schemas/UserGroupRightEnum"
+    }
+  }
+};
     defs["FunctionalExceptionDTO"] = {
   "required" : [ "details", "exception", "message", "status", "timestamp" ],
   "type" : "object",
@@ -953,7 +966,7 @@ ul.nav-tabs {
   }
 };
     defs["UserGroupRightDTO"] = {
-  "required" : [ "id", "user" ],
+  "required" : [ "id", "right", "user" ],
   "type" : "object",
   "properties" : {
     "id" : {
@@ -1023,7 +1036,7 @@ ul.nav-tabs {
         <div id="header">
           <div id="api-_">
             <h2 id="welcome-to-apidoc">API and SDK Documentation</h2>
-              <div class="app-desc">Version: 0.6.0</div>
+              <div class="app-desc">Version: 0.6.1</div>
             <hr>
             <div id="app-description" class="app-desc">
                 An API for accessing banking functionalities provided by BankWiz
@@ -1045,7 +1058,7 @@ ul.nav-tabs {
                         <p class="marked"></p>
                         <p></p>
                         <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/group/user/{id}</span></code></pre>
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/group/{id}/user</span></code></pre>
                         <p>
                           <h3>Usage and SDK Samples</h3>
                         </p>
@@ -1070,7 +1083,11 @@ ul.nav-tabs {
                             <pre class="prettyprint"><code class="language-bsh">curl -X POST \
  \
  -H "Accept: application/json" \
- "http://localhost:8080/group/user/{id}"
+ -H "Content-Type: application/json" \
+ "http://localhost:8080/group/{id}/user" \
+ -d '{
+  &quot;userId&quot; : &quot;046b6c7f-0b8a-43b9-b35d-6489e6daee91&quot;
+}'
 </code></pre>
                           </div>
                           <div class="tab-pane" id="examples-GroupService-addUserGroup-0-java">
@@ -1093,9 +1110,10 @@ public class GroupServiceApiExample {
         // Create an instance of the API class
         GroupServiceApi apiInstance = new GroupServiceApi();
         UUID id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // UUID | User ID
+        AddUserGroupRequest addUserGroupRequest = ; // AddUserGroupRequest | 
 
         try {
-            UserGroupRightDTO result = apiInstance.addUserGroup(id);
+            UserGroupRightDTO result = apiInstance.addUserGroup(id, addUserGroupRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling GroupServiceApi#addUserGroup");
@@ -1112,9 +1130,10 @@ public class GroupServiceApiExample {
 final api_instance = DefaultApi();
 
 final UUID id = new UUID(); // UUID | User ID
+final AddUserGroupRequest addUserGroupRequest = new AddUserGroupRequest(); // AddUserGroupRequest | 
 
 try {
-    final result = await api_instance.addUserGroup(id);
+    final result = await api_instance.addUserGroup(id, addUserGroupRequest);
     print(result);
 } catch (e) {
     print('Exception when calling DefaultApi->addUserGroup: $e\n');
@@ -1130,9 +1149,10 @@ public class GroupServiceApiExample {
     public static void main(String[] args) {
         GroupServiceApi apiInstance = new GroupServiceApi();
         UUID id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // UUID | User ID
+        AddUserGroupRequest addUserGroupRequest = ; // AddUserGroupRequest | 
 
         try {
-            UserGroupRightDTO result = apiInstance.addUserGroup(id);
+            UserGroupRightDTO result = apiInstance.addUserGroup(id, addUserGroupRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling GroupServiceApi#addUserGroup");
@@ -1155,9 +1175,11 @@ public class GroupServiceApiExample {
 // Create an instance of the API class
 GroupServiceApi *apiInstance = [[GroupServiceApi alloc] init];
 UUID *id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // User ID (default to null)
+AddUserGroupRequest *addUserGroupRequest = ; // 
 
 // Add user to group
 [apiInstance addUserGroupWith:id
+    addUserGroupRequest:addUserGroupRequest
               completionHandler: ^(UserGroupRightDTO output, NSError* error) {
     if (output) {
         NSLog(@"%@", output);
@@ -1180,6 +1202,7 @@ oauth2.accessToken = "YOUR ACCESS TOKEN";
 // Create an instance of the API class
 var api = new BankWizApi.GroupServiceApi()
 var id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // {UUID} User ID
+var addUserGroupRequest = ; // {AddUserGroupRequest} 
 
 var callback = function(error, data, response) {
   if (error) {
@@ -1188,7 +1211,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.addUserGroup(id, callback);
+api.addUserGroup(id, addUserGroupRequest, callback);
 </code></pre>
                             </div>
 
@@ -1214,10 +1237,11 @@ namespace Example
             // Create an instance of the API class
             var apiInstance = new GroupServiceApi();
             var id = 38400000-8cf0-11bd-b23e-10b96e4ef00d;  // UUID | User ID (default to null)
+            var addUserGroupRequest = new AddUserGroupRequest(); // AddUserGroupRequest | 
 
             try {
                 // Add user to group
-                UserGroupRightDTO result = apiInstance.addUserGroup(id);
+                UserGroupRightDTO result = apiInstance.addUserGroup(id, addUserGroupRequest);
                 Debug.WriteLine(result);
             } catch (Exception e) {
                 Debug.Print("Exception when calling GroupServiceApi.addUserGroup: " + e.Message );
@@ -1238,9 +1262,10 @@ OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YO
 // Create an instance of the API class
 $api_instance = new OpenAPITools\Client\Api\GroupServiceApi();
 $id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // UUID | User ID
+$addUserGroupRequest = ; // AddUserGroupRequest | 
 
 try {
-    $result = $api_instance->addUserGroup($id);
+    $result = $api_instance->addUserGroup($id, $addUserGroupRequest);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling GroupServiceApi->addUserGroup: ', $e->getMessage(), PHP_EOL;
@@ -1259,9 +1284,10 @@ $WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
 # Create an instance of the API class
 my $api_instance = WWW::OPenAPIClient::GroupServiceApi->new();
 my $id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; # UUID | User ID
+my $addUserGroupRequest = WWW::OPenAPIClient::Object::AddUserGroupRequest->new(); # AddUserGroupRequest | 
 
 eval {
-    my $result = $api_instance->addUserGroup(id => $id);
+    my $result = $api_instance->addUserGroup(id => $id, addUserGroupRequest => $addUserGroupRequest);
     print Dumper($result);
 };
 if ($@) {
@@ -1282,10 +1308,11 @@ openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
 # Create an instance of the API class
 api_instance = openapi_client.GroupServiceApi()
 id = 38400000-8cf0-11bd-b23e-10b96e4ef00d # UUID | User ID (default to null)
+addUserGroupRequest =  # AddUserGroupRequest | 
 
 try:
     # Add user to group
-    api_response = api_instance.add_user_group(id)
+    api_response = api_instance.add_user_group(id, addUserGroupRequest)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling GroupServiceApi->addUserGroup: %s\n" % e)</code></pre>
@@ -1296,9 +1323,10 @@ except ApiException as e:
 
 pub fn main() {
     let id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // UUID
+    let addUserGroupRequest = ; // AddUserGroupRequest
 
     let mut context = GroupServiceApi::Context::default();
-    let result = client.addUserGroup(id, &context).wait();
+    let result = client.addUserGroup(id, addUserGroupRequest, &context).wait();
 
     println!("{:?}", result);
 }
@@ -1363,6 +1391,52 @@ User ID
                             </table>
 
 
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">addUserGroupRequest <span style="color:red;">*</span></td>
+<td>
+<p class="marked"></p>
+<script>
+$(document).ready(function() {
+  var schemaWrapper = {
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/AddUserGroupRequest"
+      }
+    }
+  },
+  "required" : true
+};
+
+  var schema = findNode('schema',schemaWrapper).schema;
+  if (!schema) {
+    schema = schemaWrapper.schema;
+  }
+  if (schema.$ref != null) {
+    schema = defsParser.$refs.get(schema.$ref);
+  } else {
+    schemaWrapper.definitions = Object.assign({}, defs);
+    $RefParser.dereference(schemaWrapper).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+  var result = $('#d2e199_addUserGroup_addUserGroupRequest');
+  result.empty();
+  result.append(view.render());
+});
+</script>
+<div id="d2e199_addUserGroup_addUserGroupRequest"></div>
+</td>
+</tr>
+
+                            </table>
 
 
 

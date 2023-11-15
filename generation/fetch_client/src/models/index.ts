@@ -1,5 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
+export * from './AddUserGroupRequest';
 export * from './FunctionalExceptionDTO';
 export * from './GroupCreationRequest';
 export * from './GroupDetailsDTO';

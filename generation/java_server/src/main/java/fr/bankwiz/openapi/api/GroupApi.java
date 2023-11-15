@@ -5,6 +5,7 @@
  */
 package fr.bankwiz.openapi.api;
 
+import fr.bankwiz.openapi.model.AddUserGroupRequest;
 import fr.bankwiz.openapi.model.GroupCreationRequest;
 import fr.bankwiz.openapi.model.GroupDetailsDTO;
 import fr.bankwiz.openapi.model.GroupIndexDTO;
@@ -46,9 +47,10 @@ public interface GroupApi {
     }
 
     /**
-     * POST /group/user/{id} : Add user to group
+     * POST /group/{id}/user : Add user to group
      *
      * @param id User ID (required)
+     * @param addUserGroupRequest  (required)
      * @return User added (status code 200)
      *         or Invalid request. Please check the provided data. (status code 400)
      */
@@ -68,11 +70,13 @@ public interface GroupApi {
     )
     @RequestMapping(
         method = RequestMethod.POST,
-        value = "/group/user/{id}",
-        produces = { "application/json" }
+        value = "/group/{id}/user",
+        produces = { "application/json" },
+        consumes = { "application/json" }
     )
     default ResponseEntity<UserGroupRightDTO> addUserGroup(
-        @Parameter(name = "id", description = "User ID", required = true, in = ParameterIn.PATH) @PathVariable("id") UUID id
+        @Parameter(name = "id", description = "User ID", required = true, in = ParameterIn.PATH) @PathVariable("id") UUID id,
+        @Parameter(name = "AddUserGroupRequest", description = "", required = true) @Valid @RequestBody AddUserGroupRequest addUserGroupRequest
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
