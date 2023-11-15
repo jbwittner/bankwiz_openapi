@@ -9,6 +9,7 @@ import fr.bankwiz.openapi.model.GroupCreationRequest;
 import fr.bankwiz.openapi.model.GroupDetailsDTO;
 import fr.bankwiz.openapi.model.GroupIndexDTO;
 import java.util.UUID;
+import fr.bankwiz.openapi.model.UserGroupRightDTO;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -43,6 +44,49 @@ public interface GroupApi {
     default Optional<NativeWebRequest> getRequest() {
         return Optional.empty();
     }
+
+    /**
+     * POST /group/user/{id} : Add user to group
+     *
+     * @param id User ID (required)
+     * @return User added (status code 200)
+     *         or Invalid request. Please check the provided data. (status code 400)
+     */
+    @Operation(
+        operationId = "addUserGroup",
+        summary = "Add user to group",
+        tags = { "GroupService" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "User added", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = UserGroupRightDTO.class))
+            }),
+            @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "oauth2", scopes={ "openid", "profile", "email" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.POST,
+        value = "/group/user/{id}",
+        produces = { "application/json" }
+    )
+    default ResponseEntity<UserGroupRightDTO> addUserGroup(
+        @Parameter(name = "id", description = "User ID", required = true, in = ParameterIn.PATH) @PathVariable("id") UUID id
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"user\" : { \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"email\" : \"johndoe@example.com\" } }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
 
     /**
      * POST /group : Create a group
@@ -143,7 +187,7 @@ public interface GroupApi {
         tags = { "GroupService" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Get all groups of user", content = {
-                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = GroupIndexDTO.class)))
+                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = UserGroupRightDTO.class)))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
         },
@@ -156,13 +200,13 @@ public interface GroupApi {
         value = "/group/groups",
         produces = { "application/json" }
     )
-    default ResponseEntity<List<GroupIndexDTO>> getUserGroups(
+    default ResponseEntity<List<UserGroupRightDTO>> getUserGroups(
         
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "[ { \"groupName\" : \"groupName\", \"groupId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" }, { \"groupName\" : \"groupName\", \"groupId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" } ]";
+                    String exampleString = "[ { \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"user\" : { \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"email\" : \"johndoe@example.com\" } }, { \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"user\" : { \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"email\" : \"johndoe@example.com\" } } ]";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
