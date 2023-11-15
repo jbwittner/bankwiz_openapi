@@ -10,6 +10,7 @@ common.ts
 configuration.ts
 git_push.sh
 index.ts
+model/add-user-group-request.ts
 model/functional-exception-dto.ts
 model/group-creation-request.ts
 model/group-details-dto.ts

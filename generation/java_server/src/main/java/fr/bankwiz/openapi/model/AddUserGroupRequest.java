@@ -5,7 +5,6 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import fr.bankwiz.openapi.model.UserDTO;
 import fr.bankwiz.openapi.model.UserGroupRightEnum;
 import java.util.UUID;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -19,72 +18,49 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * UserGroupRightDTO
+ * AddUserGroupRequest
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
-public class UserGroupRightDTO {
+public class AddUserGroupRequest {
 
-  private UUID id;
-
-  private UserDTO user;
+  private UUID userId;
 
   private UserGroupRightEnum right;
 
-  public UserGroupRightDTO() {
+  public AddUserGroupRequest() {
     super();
   }
 
   /**
    * Constructor with only required parameters
    */
-  public UserGroupRightDTO(UUID id, UserDTO user, UserGroupRightEnum right) {
-    this.id = id;
-    this.user = user;
+  public AddUserGroupRequest(UUID userId, UserGroupRightEnum right) {
+    this.userId = userId;
     this.right = right;
   }
 
-  public UserGroupRightDTO id(UUID id) {
-    this.id = id;
+  public AddUserGroupRequest userId(UUID userId) {
+    this.userId = userId;
     return this;
   }
 
   /**
-   * Get id
-   * @return id
+   * Get userId
+   * @return userId
   */
   @NotNull @Valid 
-  @Schema(name = "id", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("id")
-  public UUID getId() {
-    return id;
+  @Schema(name = "userId", requiredMode = Schema.RequiredMode.REQUIRED)
+  @JsonProperty("userId")
+  public UUID getUserId() {
+    return userId;
   }
 
-  public void setId(UUID id) {
-    this.id = id;
+  public void setUserId(UUID userId) {
+    this.userId = userId;
   }
 
-  public UserGroupRightDTO user(UserDTO user) {
-    this.user = user;
-    return this;
-  }
-
-  /**
-   * Get user
-   * @return user
-  */
-  @NotNull @Valid 
-  @Schema(name = "user", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("user")
-  public UserDTO getUser() {
-    return user;
-  }
-
-  public void setUser(UserDTO user) {
-    this.user = user;
-  }
-
-  public UserGroupRightDTO right(UserGroupRightEnum right) {
+  public AddUserGroupRequest right(UserGroupRightEnum right) {
     this.right = right;
     return this;
   }
@@ -112,23 +88,21 @@ public class UserGroupRightDTO {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UserGroupRightDTO userGroupRightDTO = (UserGroupRightDTO) o;
-    return Objects.equals(this.id, userGroupRightDTO.id) &&
-        Objects.equals(this.user, userGroupRightDTO.user) &&
-        Objects.equals(this.right, userGroupRightDTO.right);
+    AddUserGroupRequest addUserGroupRequest = (AddUserGroupRequest) o;
+    return Objects.equals(this.userId, addUserGroupRequest.userId) &&
+        Objects.equals(this.right, addUserGroupRequest.right);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, user, right);
+    return Objects.hash(userId, right);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UserGroupRightDTO {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    user: ").append(toIndentedString(user)).append("\n");
+    sb.append("class AddUserGroupRequest {\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
     sb.append("    right: ").append(toIndentedString(right)).append("\n");
     sb.append("}");
     return sb.toString();

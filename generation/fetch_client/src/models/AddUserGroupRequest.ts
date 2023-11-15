@@ -13,12 +13,6 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { UserDTO } from './UserDTO';
-import {
-    UserDTOFromJSON,
-    UserDTOFromJSONTyped,
-    UserDTOToJSON,
-} from './UserDTO';
 import type { UserGroupRightEnum } from './UserGroupRightEnum';
 import {
     UserGroupRightEnumFromJSON,
@@ -29,58 +23,50 @@ import {
 /**
  * 
  * @export
- * @interface UserGroupRightDTO
+ * @interface AddUserGroupRequest
  */
-export interface UserGroupRightDTO {
+export interface AddUserGroupRequest {
     /**
      * 
      * @type {string}
-     * @memberof UserGroupRightDTO
+     * @memberof AddUserGroupRequest
      */
-    id: string;
-    /**
-     * 
-     * @type {UserDTO}
-     * @memberof UserGroupRightDTO
-     */
-    user: UserDTO;
+    userId: string;
     /**
      * 
      * @type {UserGroupRightEnum}
-     * @memberof UserGroupRightDTO
+     * @memberof AddUserGroupRequest
      */
     right: UserGroupRightEnum;
 }
 
 /**
- * Check if a given object implements the UserGroupRightDTO interface.
+ * Check if a given object implements the AddUserGroupRequest interface.
  */
-export function instanceOfUserGroupRightDTO(value: object): boolean {
+export function instanceOfAddUserGroupRequest(value: object): boolean {
     let isInstance = true;
-    isInstance = isInstance && "id" in value;
-    isInstance = isInstance && "user" in value;
+    isInstance = isInstance && "userId" in value;
     isInstance = isInstance && "right" in value;
 
     return isInstance;
 }
 
-export function UserGroupRightDTOFromJSON(json: any): UserGroupRightDTO {
-    return UserGroupRightDTOFromJSONTyped(json, false);
+export function AddUserGroupRequestFromJSON(json: any): AddUserGroupRequest {
+    return AddUserGroupRequestFromJSONTyped(json, false);
 }
 
-export function UserGroupRightDTOFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserGroupRightDTO {
+export function AddUserGroupRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): AddUserGroupRequest {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'id': json['id'],
-        'user': UserDTOFromJSON(json['user']),
+        'userId': json['userId'],
         'right': UserGroupRightEnumFromJSON(json['right']),
     };
 }
 
-export function UserGroupRightDTOToJSON(value?: UserGroupRightDTO | null): any {
+export function AddUserGroupRequestToJSON(value?: AddUserGroupRequest | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -89,8 +75,7 @@ export function UserGroupRightDTOToJSON(value?: UserGroupRightDTO | null): any {
     }
     return {
         
-        'id': value.id,
-        'user': UserDTOToJSON(value.user),
+        'userId': value.userId,
         'right': UserGroupRightEnumToJSON(value.right),
     };
 }
