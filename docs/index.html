@@ -991,6 +991,9 @@ ul.nav-tabs {
             <li class="nav-fixed nav-header active" data-group="_"><a href="#api-_">API Summary</a></li>
 
                   <li class="nav-header" data-group="GroupService"><a href="#api-GroupService">API Methods - GroupService</a></li>
+                    <li data-group="GroupService" data-name="addUserGroup" class="">
+                      <a href="#api-GroupService-addUserGroup">addUserGroup</a>
+                    </li>
                     <li data-group="GroupService" data-name="createGroup" class="">
                       <a href="#api-GroupService-createGroup">createGroup</a>
                     </li>
@@ -1020,7 +1023,7 @@ ul.nav-tabs {
         <div id="header">
           <div id="api-_">
             <h2 id="welcome-to-apidoc">API and SDK Documentation</h2>
-              <div class="app-desc">Version: 0.5.0</div>
+              <div class="app-desc">Version: 0.6.0</div>
             <hr>
             <div id="app-description" class="app-desc">
                 An API for accessing banking functionalities provided by BankWiz
@@ -1030,6 +1033,427 @@ ul.nav-tabs {
         <div id="sections">
                 <section id="api-GroupService">
                   <h1>GroupService</h1>
+                    <div id="api-GroupService-addUserGroup">
+                      <article id="api-GroupService-addUserGroup-0" data-group="User" data-name="addUserGroup" data-version="0">
+                        <div class="pull-left">
+                          <h1>addUserGroup</h1>
+                          <p>Add user to group</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/group/user/{id}</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-GroupService-addUserGroup-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-GroupService-addUserGroup-0-java">Java</a></li>
+                          <li class=""><a href="#examples-GroupService-addUserGroup-0-dart">Dart</a></li>
+                          <li class=""><a href="#examples-GroupService-addUserGroup-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-GroupService-addUserGroup-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-GroupService-addUserGroup-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-GroupService-addUserGroup-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-GroupService-addUserGroup-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-GroupService-addUserGroup-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-GroupService-addUserGroup-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-GroupService-addUserGroup-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-GroupService-addUserGroup-0-python">Python</a></li>
+                          <li class=""><a href="#examples-GroupService-addUserGroup-0-rust">Rust</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-GroupService-addUserGroup-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST \
+ \
+ -H "Accept: application/json" \
+ "http://localhost:8080/group/user/{id}"
+</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-GroupService-addUserGroup-0-java">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.model.*;
+import org.openapitools.client.api.GroupServiceApi;
+
+import java.io.File;
+import java.util.*;
+
+public class GroupServiceApiExample {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Create an instance of the API class
+        GroupServiceApi apiInstance = new GroupServiceApi();
+        UUID id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // UUID | User ID
+
+        try {
+            UserGroupRightDTO result = apiInstance.addUserGroup(id);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling GroupServiceApi#addUserGroup");
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-GroupService-addUserGroup-0-dart">
+                            <pre class="prettyprint"><code class="language-dart">import 'package:openapi/api.dart';
+
+final api_instance = DefaultApi();
+
+final UUID id = new UUID(); // UUID | User ID
+
+try {
+    final result = await api_instance.addUserGroup(id);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->addUserGroup: $e\n');
+}
+
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-GroupService-addUserGroup-0-android">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.GroupServiceApi;
+
+public class GroupServiceApiExample {
+    public static void main(String[] args) {
+        GroupServiceApi apiInstance = new GroupServiceApi();
+        UUID id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // UUID | User ID
+
+        try {
+            UserGroupRightDTO result = apiInstance.addUserGroup(id);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling GroupServiceApi#addUserGroup");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-GroupService-addUserGroup-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-GroupService-addUserGroup-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: oauth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+
+// Create an instance of the API class
+GroupServiceApi *apiInstance = [[GroupServiceApi alloc] init];
+UUID *id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // User ID (default to null)
+
+// Add user to group
+[apiInstance addUserGroupWith:id
+              completionHandler: ^(UserGroupRightDTO output, NSError* error) {
+    if (output) {
+        NSLog(@"%@", output);
+    }
+    if (error) {
+        NSLog(@"Error: %@", error);
+    }
+}];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-GroupService-addUserGroup-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: oauth2
+var oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = "YOUR ACCESS TOKEN";
+
+// Create an instance of the API class
+var api = new BankWizApi.GroupServiceApi()
+var id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // {UUID} User ID
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.addUserGroup(id, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-GroupService-addUserGroup-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-GroupService-addUserGroup-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class addUserGroupExample
+    {
+        public void main()
+        {
+            // Configure OAuth2 access token for authorization: oauth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            // Create an instance of the API class
+            var apiInstance = new GroupServiceApi();
+            var id = 38400000-8cf0-11bd-b23e-10b96e4ef00d;  // UUID | User ID (default to null)
+
+            try {
+                // Add user to group
+                UserGroupRightDTO result = apiInstance.addUserGroup(id);
+                Debug.WriteLine(result);
+            } catch (Exception e) {
+                Debug.Print("Exception when calling GroupServiceApi.addUserGroup: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-GroupService-addUserGroup-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: oauth2
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Create an instance of the API class
+$api_instance = new OpenAPITools\Client\Api\GroupServiceApi();
+$id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // UUID | User ID
+
+try {
+    $result = $api_instance->addUserGroup($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling GroupServiceApi->addUserGroup: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-GroupService-addUserGroup-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::OPenAPIClient::Configuration;
+use WWW::OPenAPIClient::GroupServiceApi;
+
+# Configure OAuth2 access token for authorization: oauth2
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+# Create an instance of the API class
+my $api_instance = WWW::OPenAPIClient::GroupServiceApi->new();
+my $id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; # UUID | User ID
+
+eval {
+    my $result = $api_instance->addUserGroup(id => $id);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling GroupServiceApi->addUserGroup: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-GroupService-addUserGroup-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import openapi_client
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: oauth2
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Create an instance of the API class
+api_instance = openapi_client.GroupServiceApi()
+id = 38400000-8cf0-11bd-b23e-10b96e4ef00d # UUID | User ID (default to null)
+
+try:
+    # Add user to group
+    api_response = api_instance.add_user_group(id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling GroupServiceApi->addUserGroup: %s\n" % e)</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-GroupService-addUserGroup-0-rust">
+                              <pre class="prettyprint"><code class="language-rust">extern crate GroupServiceApi;
+
+pub fn main() {
+    let id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // UUID
+
+    let mut context = GroupServiceApi::Context::default();
+    let result = client.addUserGroup(id, &context).wait();
+
+    println!("{:?}", result);
+}
+</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Scopes</h2>
+                          <table>
+                            
+                              <tr>
+                                <td>openid</td>
+                                <td>openid</td>
+                              </tr>
+                            
+                              <tr>
+                                <td>profile</td>
+                                <td>profile</td>
+                              </tr>
+                            
+                              <tr>
+                                <td>email</td>
+                                <td>email</td>
+                              </tr>
+                            
+                          </table>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">id*</td>
+<td>
+
+
+    <div id="d2e199_addUserGroup_id">
+        <div class="json-schema-view">
+            <div class="primitive">
+                <span class="type">
+                    UUID
+                </span>
+                    <span class="format">
+                        (uuid)
+                    </span>
+
+                    <div class="inner description marked">
+User ID
+                    </div>
+            </div>
+                <div class="inner required">
+                    Required
+                </div>
+        </div>
+    </div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3 id="examples-GroupService-addUserGroup-title-200"></h3>
+                            <p id="examples-GroupService-addUserGroup-description-200" class="marked"></p>
+                            <script>
+                              var responseGroupService200_description = `User added`;
+                              var responseGroupService200_description_break = responseGroupService200_description.indexOf('\n');
+                              if (responseGroupService200_description_break == -1) {
+                                $("#examples-GroupService-addUserGroup-title-200").text("Status: 200 - " + responseGroupService200_description);
+                              } else {
+                                $("#examples-GroupService-addUserGroup-title-200").text("Status: 200 - " + responseGroupService200_description.substring(0, responseGroupService200_description_break));
+                                $("#examples-GroupService-addUserGroup-description-200").html(responseGroupService200_description.substring(responseGroupService200_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-GroupService-addUserGroup-200" class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-GroupService-addUserGroup-200-schema">Schema</a>
+                                </li>
+
+
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-GroupService-addUserGroup-200-wrapper" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-GroupService-addUserGroup-200-schema">
+                                  <div id="responses-GroupService-addUserGroup-schema-200" class="exampleStyle">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = ;
+                                        var schema = findNode('schema',schemaWrapper).schema;
+                                        if (!schema) {
+                                          schema = schemaWrapper.schema;
+                                        }
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                          Object.keys(schema.properties).forEach( (item) => {
+                                            if (schema.properties[item].$ref != null) {
+                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
+                                            }
+                                          });
+                                        } else if (schema.items != null && schema.items.$ref != null) {
+                                            schema.items = defsParser.$refs.get(schema.items.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-GroupService-addUserGroup-200-schema-data').val(JSON.stringify(schema));
+                                        var result = $('#responses-GroupService-addUserGroup-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-GroupService-addUserGroup-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+                            <h3 id="examples-GroupService-addUserGroup-title-400"></h3>
+                            <p id="examples-GroupService-addUserGroup-description-400" class="marked"></p>
+                            <script>
+                              var responseGroupService400_description = `Invalid request. Please check the provided data.`;
+                              var responseGroupService400_description_break = responseGroupService400_description.indexOf('\n');
+                              if (responseGroupService400_description_break == -1) {
+                                $("#examples-GroupService-addUserGroup-title-400").text("Status: 400 - " + responseGroupService400_description);
+                              } else {
+                                $("#examples-GroupService-addUserGroup-title-400").text("Status: 400 - " + responseGroupService400_description.substring(0, responseGroupService400_description_break));
+                                $("#examples-GroupService-addUserGroup-description-400").html(responseGroupService400_description.substring(responseGroupService400_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-GroupService-addUserGroup-400" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-GroupService-addUserGroup-400-wrapper" style='margin-bottom: 10px;'>
+                            </div>
+                        </article>
+                      </div>
+                      <hr>
                     <div id="api-GroupService-createGroup">
                       <article id="api-GroupService-createGroup-0" data-group="User" data-name="createGroup" data-version="0">
                         <div class="pull-left">
@@ -1950,7 +2374,7 @@ public class GroupServiceApiExample {
         GroupServiceApi apiInstance = new GroupServiceApi();
 
         try {
-            array[GroupIndexDTO] result = apiInstance.getUserGroups();
+            array[UserGroupRightDTO] result = apiInstance.getUserGroups();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling GroupServiceApi#getUserGroups");
@@ -1985,7 +2409,7 @@ public class GroupServiceApiExample {
         GroupServiceApi apiInstance = new GroupServiceApi();
 
         try {
-            array[GroupIndexDTO] result = apiInstance.getUserGroups();
+            array[UserGroupRightDTO] result = apiInstance.getUserGroups();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling GroupServiceApi#getUserGroups");
@@ -2010,7 +2434,7 @@ GroupServiceApi *apiInstance = [[GroupServiceApi alloc] init];
 
 // Get all groups of user
 [apiInstance getUserGroupsWithCompletionHandler: 
-              ^(array[GroupIndexDTO] output, NSError* error) {
+              ^(array[UserGroupRightDTO] output, NSError* error) {
     if (output) {
         NSLog(@"%@", output);
     }
@@ -2066,7 +2490,7 @@ namespace Example
 
             try {
                 // Get all groups of user
-                array[GroupIndexDTO] result = apiInstance.getUserGroups();
+                array[UserGroupRightDTO] result = apiInstance.getUserGroups();
                 Debug.WriteLine(result);
             } catch (Exception e) {
                 Debug.Print("Exception when calling GroupServiceApi.getUserGroups: " + e.Message );
