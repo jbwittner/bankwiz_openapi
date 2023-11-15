@@ -129,4 +129,4 @@ pr_create:
 	gh pr create --title "$(BRANCH_NAME)" --body "$(BRANCH_NAME)"
 
 .PHONY: pr_merge
-pr_create: gh pr merge -d -s
+pr_merge: gh pr merge -d -s
