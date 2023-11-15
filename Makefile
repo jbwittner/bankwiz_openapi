@@ -122,3 +122,8 @@ publish: publish-axios publish-fetch publish-java
 
 .PHONY: all
 all: clean generate build
+
+.PHONY: pr_create
+pr_create:
+	$(eval BRANCH_NAME=$(shell git rev-parse --abbrev-ref HEAD | sed 's/_/ /g'))
+	gh pr create --title "$(BRANCH_NAME)" --body "$(BRANCH_NAME)"
