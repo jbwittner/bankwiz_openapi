@@ -1036,7 +1036,7 @@ ul.nav-tabs {
         <div id="header">
           <div id="api-_">
             <h2 id="welcome-to-apidoc">API and SDK Documentation</h2>
-              <div class="app-desc">Version: 0.6.1</div>
+              <div class="app-desc">Version: 0.6.2</div>
             <hr>
             <div id="app-description" class="app-desc">
                 An API for accessing banking functionalities provided by BankWiz
@@ -2448,7 +2448,7 @@ public class GroupServiceApiExample {
         GroupServiceApi apiInstance = new GroupServiceApi();
 
         try {
-            array[UserGroupRightDTO] result = apiInstance.getUserGroups();
+            array[GroupIndexDTO] result = apiInstance.getUserGroups();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling GroupServiceApi#getUserGroups");
@@ -2483,7 +2483,7 @@ public class GroupServiceApiExample {
         GroupServiceApi apiInstance = new GroupServiceApi();
 
         try {
-            array[UserGroupRightDTO] result = apiInstance.getUserGroups();
+            array[GroupIndexDTO] result = apiInstance.getUserGroups();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling GroupServiceApi#getUserGroups");
@@ -2508,7 +2508,7 @@ GroupServiceApi *apiInstance = [[GroupServiceApi alloc] init];
 
 // Get all groups of user
 [apiInstance getUserGroupsWithCompletionHandler: 
-              ^(array[UserGroupRightDTO] output, NSError* error) {
+              ^(array[GroupIndexDTO] output, NSError* error) {
     if (output) {
         NSLog(@"%@", output);
     }
@@ -2564,7 +2564,7 @@ namespace Example
 
             try {
                 // Get all groups of user
-                array[UserGroupRightDTO] result = apiInstance.getUserGroups();
+                array[GroupIndexDTO] result = apiInstance.getUserGroups();
                 Debug.WriteLine(result);
             } catch (Exception e) {
                 Debug.Print("Exception when calling GroupServiceApi.getUserGroups: " + e.Message );

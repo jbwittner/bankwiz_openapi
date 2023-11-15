@@ -191,7 +191,7 @@ public interface GroupApi {
         tags = { "GroupService" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Get all groups of user", content = {
-                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = UserGroupRightDTO.class)))
+                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = GroupIndexDTO.class)))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
         },
@@ -204,13 +204,13 @@ public interface GroupApi {
         value = "/group/groups",
         produces = { "application/json" }
     )
-    default ResponseEntity<List<UserGroupRightDTO>> getUserGroups(
+    default ResponseEntity<List<GroupIndexDTO>> getUserGroups(
         
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "[ { \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"user\" : { \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"email\" : \"johndoe@example.com\" } }, { \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"user\" : { \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"email\" : \"johndoe@example.com\" } } ]";
+                    String exampleString = "[ { \"groupName\" : \"groupName\", \"groupId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" }, { \"groupName\" : \"groupName\", \"groupId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" } ]";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
