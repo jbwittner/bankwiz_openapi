@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: BankWiz API
-  version: 0.6.2
+  version: 0.7.0
   description: An API for accessing banking functionalities provided by BankWiz
 servers:
   - url: http://localhost:8080
@@ -91,16 +91,16 @@ paths:
                 $ref: '#/components/schemas/GroupDetailsDTO'
         '400':
           description: Invalid request. Please check the provided data.
-  /group/{id}/user:
+  /group/{groupId}/user:
     post:
       tags:
         - GroupService
       summary: Add user to group
       operationId: addUserGroup
       parameters:
-        - name: id
+        - name: groupId
           in: path
-          description: User ID
+          description: Group ID
           required: true
           schema:
             type: string
@@ -118,6 +118,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserGroupRightDTO'
+        '400':
+          description: Invalid request. Please check the provided data.
+  /group/{groupId}/user/{userId}:
+    delete:
+      tags:
+        - GroupService
+      summary: Delete user from a group
+      operationId: deleteUserFromGroup
+      parameters:
+        - name: groupId
+          in: path
+          description: Group ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: userId
+          in: path
+          description: User ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: User deleted
         '400':
           description: Invalid request. Please check the provided data.
   /group/groups:
