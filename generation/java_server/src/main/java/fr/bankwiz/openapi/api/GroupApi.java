@@ -47,9 +47,9 @@ public interface GroupApi {
     }
 
     /**
-     * POST /group/{id}/user : Add user to group
+     * POST /group/{groupId}/user : Add user to group
      *
-     * @param id User ID (required)
+     * @param groupId Group ID (required)
      * @param addUserGroupRequest  (required)
      * @return User added (status code 200)
      *         or Invalid request. Please check the provided data. (status code 400)
@@ -70,12 +70,12 @@ public interface GroupApi {
     )
     @RequestMapping(
         method = RequestMethod.POST,
-        value = "/group/{id}/user",
+        value = "/group/{groupId}/user",
         produces = { "application/json" },
         consumes = { "application/json" }
     )
     default ResponseEntity<UserGroupRightDTO> addUserGroup(
-        @Parameter(name = "id", description = "User ID", required = true, in = ParameterIn.PATH) @PathVariable("id") UUID id,
+        @Parameter(name = "groupId", description = "Group ID", required = true, in = ParameterIn.PATH) @PathVariable("groupId") UUID groupId,
         @Parameter(name = "AddUserGroupRequest", description = "", required = true) @Valid @RequestBody AddUserGroupRequest addUserGroupRequest
     ) {
         getRequest().ifPresent(request -> {
@@ -131,6 +131,39 @@ public interface GroupApi {
                 }
             }
         });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    /**
+     * DELETE /group/{groupId}/user/{userId} : Delete user from a group
+     *
+     * @param groupId Group ID (required)
+     * @param userId User ID (required)
+     * @return User deleted (status code 200)
+     *         or Invalid request. Please check the provided data. (status code 400)
+     */
+    @Operation(
+        operationId = "deleteUserFromGroup",
+        summary = "Delete user from a group",
+        tags = { "GroupService" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "User deleted"),
+            @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "oauth2", scopes={ "openid", "profile", "email" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.DELETE,
+        value = "/group/{groupId}/user/{userId}"
+    )
+    default ResponseEntity<Void> deleteUserFromGroup(
+        @Parameter(name = "groupId", description = "Group ID", required = true, in = ParameterIn.PATH) @PathVariable("groupId") UUID groupId,
+        @Parameter(name = "userId", description = "User ID", required = true, in = ParameterIn.PATH) @PathVariable("userId") UUID userId
+    ) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
