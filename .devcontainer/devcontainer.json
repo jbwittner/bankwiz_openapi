@@ -1,0 +1,38 @@
+{
+	"name": "Devcontainer-bankwizz-openapi",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/base:jammy",
+    "features": {
+        "ghcr.io/devcontainers/features/github-cli:1": {},
+        "ghcr.io/devcontainers/features/java:1": {
+            "version": "17",
+            "jdkDistro": "ms",
+            "installMaven": "true",
+            "mavenVersion": "3.8.6"
+        },
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "lts"
+        },
+        "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {
+            "plugins" : "common-aliases gh git git-flow git-prompt sdk zsh-autosuggestions zsh-syntax-highlighting",
+            "omzPlugins" : "https://github.com/zsh-users/zsh-autosuggestions https://github.com/zsh-users/zsh-syntax-highlighting.git"
+        }
+    },
+    "remoteUser": "vscode",
+    "containerEnv": { 
+        "USER_GITHUB_LOGIN": "${localEnv:USER_GITHUB_LOGIN}", 
+        "USER_GITHUB_KEY": "${localEnv:USER_GITHUB_KEY}",
+        "GH_TOKEN": "${localEnv:USER_GITHUB_KEY}"
+    }, 
+    "onCreateCommand" : "mkdir /home/vscode/.m2 && sudo chown -R vscode: /home/vscode/.m2 && cp tools/maven/settings.xml /home/vscode/.m2/settings.xml && cp tools/npm/.npmrc /home/vscode/.npmrc",
+    "mounts": ["source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"],
+    "runArgs": ["--add-host=host.docker.internal:host-gateway"],
+    "customizations": {
+        // Configure properties specific to VS Code.
+        "vscode": {
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "zsh"
+            }
+        }
+      }
+}
