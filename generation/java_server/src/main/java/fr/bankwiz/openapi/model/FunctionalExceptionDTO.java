@@ -43,10 +43,11 @@ public class FunctionalExceptionDTO {
   /**
    * Constructor with only required parameters
    */
-  public FunctionalExceptionDTO(Integer status, String details, String exception, String message, OffsetDateTime timestamp) {
+  public FunctionalExceptionDTO(Integer status, String details, String exception, Object attributes, String message, OffsetDateTime timestamp) {
     this.status = status;
     this.details = details;
     this.exception = exception;
+    this.attributes = attributes;
     this.message = message;
     this.timestamp = timestamp;
   }
@@ -120,8 +121,8 @@ public class FunctionalExceptionDTO {
    * Get attributes
    * @return attributes
   */
-  
-  @Schema(name = "attributes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @NotNull 
+  @Schema(name = "attributes", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("attributes")
   public Object getAttributes() {
     return attributes;
