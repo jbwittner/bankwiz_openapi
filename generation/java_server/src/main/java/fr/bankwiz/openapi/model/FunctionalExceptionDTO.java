@@ -29,6 +29,8 @@ public class FunctionalExceptionDTO {
 
   private String exception;
 
+  private Object attributes;
+
   private String message;
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
@@ -109,6 +111,26 @@ public class FunctionalExceptionDTO {
     this.exception = exception;
   }
 
+  public FunctionalExceptionDTO attributes(Object attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  /**
+   * Get attributes
+   * @return attributes
+  */
+  
+  @Schema(name = "attributes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("attributes")
+  public Object getAttributes() {
+    return attributes;
+  }
+
+  public void setAttributes(Object attributes) {
+    this.attributes = attributes;
+  }
+
   public FunctionalExceptionDTO message(String message) {
     this.message = message;
     return this;
@@ -161,13 +183,14 @@ public class FunctionalExceptionDTO {
     return Objects.equals(this.status, functionalExceptionDTO.status) &&
         Objects.equals(this.details, functionalExceptionDTO.details) &&
         Objects.equals(this.exception, functionalExceptionDTO.exception) &&
+        Objects.equals(this.attributes, functionalExceptionDTO.attributes) &&
         Objects.equals(this.message, functionalExceptionDTO.message) &&
         Objects.equals(this.timestamp, functionalExceptionDTO.timestamp);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, details, exception, message, timestamp);
+    return Objects.hash(status, details, exception, attributes, message, timestamp);
   }
 
   @Override
@@ -177,6 +200,7 @@ public class FunctionalExceptionDTO {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("    exception: ").append(toIndentedString(exception)).append("\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
     sb.append("}");

@@ -39,6 +39,12 @@ export interface FunctionalExceptionDTO {
     exception: string;
     /**
      * 
+     * @type {object}
+     * @memberof FunctionalExceptionDTO
+     */
+    attributes?: object;
+    /**
+     * 
      * @type {string}
      * @memberof FunctionalExceptionDTO
      */
@@ -78,6 +84,7 @@ export function FunctionalExceptionDTOFromJSONTyped(json: any, ignoreDiscriminat
         'status': json['status'],
         'details': json['details'],
         'exception': json['exception'],
+        'attributes': !exists(json, 'attributes') ? undefined : json['attributes'],
         'message': json['message'],
         'timestamp': (new Date(json['timestamp'])),
     };
@@ -95,6 +102,7 @@ export function FunctionalExceptionDTOToJSON(value?: FunctionalExceptionDTO | nu
         'status': value.status,
         'details': value.details,
         'exception': value.exception,
+        'attributes': value.attributes,
         'message': value.message,
         'timestamp': (value.timestamp.toISOString()),
     };

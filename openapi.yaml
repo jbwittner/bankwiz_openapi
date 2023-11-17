@@ -185,6 +185,8 @@ components:
           type: string
         exception:
           type: string
+        attributes:
+          type: object
         message:
           type: string
         timestamp:

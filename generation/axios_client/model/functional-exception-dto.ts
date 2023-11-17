@@ -40,6 +40,12 @@ export interface FunctionalExceptionDTO {
     'exception': string;
     /**
      * 
+     * @type {object}
+     * @memberof FunctionalExceptionDTO
+     */
+    'attributes'?: object;
+    /**
+     * 
      * @type {string}
      * @memberof FunctionalExceptionDTO
      */
