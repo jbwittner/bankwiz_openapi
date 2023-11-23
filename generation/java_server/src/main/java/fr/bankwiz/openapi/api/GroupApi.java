@@ -137,6 +137,37 @@ public interface GroupApi {
 
 
     /**
+     * DELETE /group/{id} : Delete a group
+     *
+     * @param id Group ID (required)
+     * @return Group deleted (status code 200)
+     *         or Invalid request. Please check the provided data. (status code 400)
+     */
+    @Operation(
+        operationId = "deleteGroup",
+        summary = "Delete a group",
+        tags = { "GroupService" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Group deleted"),
+            @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "oauth2", scopes={ "openid", "profile", "email" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.DELETE,
+        value = "/group/{id}"
+    )
+    default ResponseEntity<Void> deleteGroup(
+        @Parameter(name = "id", description = "Group ID", required = true, in = ParameterIn.PATH) @PathVariable("id") UUID id
+    ) {
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    /**
      * DELETE /group/{groupId}/user/{userId} : Delete user from a group
      *
      * @param groupId Group ID (required)
