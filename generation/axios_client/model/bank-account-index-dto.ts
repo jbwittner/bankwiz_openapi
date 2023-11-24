@@ -13,33 +13,24 @@
  */
 
 
-// May contain unused imports in some cases
-// @ts-ignore
-import { UserGroupRightDTO } from './user-group-right-dto';
 
 /**
  * 
  * @export
- * @interface GroupDetailsDTO
+ * @interface BankAccountIndexDTO
  */
-export interface GroupDetailsDTO {
+export interface BankAccountIndexDTO {
     /**
      * 
      * @type {string}
-     * @memberof GroupDetailsDTO
+     * @memberof BankAccountIndexDTO
      */
-    'id': string;
+    'bankAccountName': string;
     /**
      * 
      * @type {string}
-     * @memberof GroupDetailsDTO
+     * @memberof BankAccountIndexDTO
      */
-    'groupName': string;
-    /**
-     * 
-     * @type {Array<UserGroupRightDTO>}
-     * @memberof GroupDetailsDTO
-     */
-    'usersRights': Array<UserGroupRightDTO>;
+    'bankAccountId': string;
 }
 

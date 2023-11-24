@@ -1,6 +1,8 @@
 /* tslint:disable */
 /* eslint-disable */
 export * from './AddUserGroupRequest';
+export * from './BankAccountCreationRequest';
+export * from './BankAccountIndexDTO';
 export * from './FunctionalExceptionDTO';
 export * from './GroupCreationRequest';
 export * from './GroupDetailsDTO';

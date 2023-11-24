@@ -3,11 +3,14 @@
 .openapi-generator-ignore
 README.md
 package.json
+src/apis/BankAccountServiceApi.ts
 src/apis/GroupServiceApi.ts
 src/apis/UserServiceApi.ts
 src/apis/index.ts
 src/index.ts
 src/models/AddUserGroupRequest.ts
+src/models/BankAccountCreationRequest.ts
+src/models/BankAccountIndexDTO.ts
 src/models/FunctionalExceptionDTO.ts
 src/models/GroupCreationRequest.ts
 src/models/GroupDetailsDTO.ts
