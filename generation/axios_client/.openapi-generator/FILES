@@ -3,6 +3,7 @@
 .openapi-generator-ignore
 README.md
 api.ts
+api/bank-account-service-api.ts
 api/group-service-api.ts
 api/user-service-api.ts
 base.ts
@@ -11,6 +12,8 @@ configuration.ts
 git_push.sh
 index.ts
 model/add-user-group-request.ts
+model/bank-account-creation-request.ts
+model/bank-account-index-dto.ts
 model/functional-exception-dto.ts
 model/group-creation-request.ts
 model/group-details-dto.ts

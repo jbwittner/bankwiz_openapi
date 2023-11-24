@@ -11,6 +11,8 @@ tags:
     description: API endpoints for managing user information
   - name: GroupService
     description: API endpoints for managing group information
+  - name: BankAccountService
+    description: API endpoints for managing bank account
 security:
   - oauth2:
     - openid
@@ -181,6 +183,27 @@ paths:
                   $ref: '#/components/schemas/GroupIndexDTO'
         '400':
           description: Invalid request. Please check the provided data.
+  /bankaccount:
+    post:
+      tags:
+        - BankAccountService
+      summary: Create a bank account
+      operationId: createBankAccount
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BankAccountCreationRequest'
+      responses:
+        '201':
+          description: Bank account created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BankAccountIndexDTO'
+        '400':
+          description: Invalid request. Please check the provided data.
 components:
   securitySchemes:
     oauth2:   # <--- Arbitrary name for the security scheme. Used to refer to it from elsewhere.
@@ -250,6 +273,21 @@ components:
           type: string
       required:
         - groupName
+    BankAccountCreationRequest:
+      type: object
+      properties:
+        bankAccountName:
+          type: string
+        groupId:
+          type: string
+          format: uuid
+        decimalBaseAmount:
+          type: integer
+          format: int32
+      required:
+        - bankAccountName
+        - groupId
+        - decimalBaseAmount
     UserDTO:
       type: object
       properties:
@@ -321,3 +359,14 @@ components:
         - id
         - groupName
         - usersRights
+    BankAccountIndexDTO:
+      type: object
+      properties:
+        bankAccountName:
+          type: string
+        bankAccountId:
+          type: string
+          format: uuid
+      required:
+        - bankAccountName
+        - bankAccountId

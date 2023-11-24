@@ -14,7 +14,23 @@
 
 
 
-export * from './api/bank-account-service-api';
-export * from './api/group-service-api';
-export * from './api/user-service-api';
+/**
+ * 
+ * @export
+ * @interface BankAccountIndexDTO
+ */
+export interface BankAccountIndexDTO {
+    /**
+     * 
+     * @type {string}
+     * @memberof BankAccountIndexDTO
+     */
+    'bankAccountName': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BankAccountIndexDTO
+     */
+    'bankAccountId': string;
+}
 

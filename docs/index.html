@@ -859,6 +859,36 @@ ul.nav-tabs {
     }
   }
 };
+    defs["BankAccountCreationRequest"] = {
+  "required" : [ "bankAccountName", "decimalBaseAmount", "groupId" ],
+  "type" : "object",
+  "properties" : {
+    "bankAccountName" : {
+      "type" : "string"
+    },
+    "groupId" : {
+      "type" : "string",
+      "format" : "uuid"
+    },
+    "decimalBaseAmount" : {
+      "type" : "integer",
+      "format" : "int32"
+    }
+  }
+};
+    defs["BankAccountIndexDTO"] = {
+  "required" : [ "bankAccountId", "bankAccountName" ],
+  "type" : "object",
+  "properties" : {
+    "bankAccountName" : {
+      "type" : "string"
+    },
+    "bankAccountId" : {
+      "type" : "string",
+      "format" : "uuid"
+    }
+  }
+};
     defs["FunctionalExceptionDTO"] = {
   "required" : [ "attributes", "details", "exception", "message", "status", "timestamp" ],
   "type" : "object",
@@ -1006,6 +1036,10 @@ ul.nav-tabs {
             -->
             <li class="nav-fixed nav-header active" data-group="_"><a href="#api-_">API Summary</a></li>
 
+                  <li class="nav-header" data-group="BankAccountService"><a href="#api-BankAccountService">API Methods - BankAccountService</a></li>
+                    <li data-group="BankAccountService" data-name="createBankAccount" class="">
+                      <a href="#api-BankAccountService-createBankAccount">createBankAccount</a>
+                    </li>
                   <li class="nav-header" data-group="GroupService"><a href="#api-GroupService">API Methods - GroupService</a></li>
                     <li data-group="GroupService" data-name="addUserGroup" class="">
                       <a href="#api-GroupService-addUserGroup">addUserGroup</a>
@@ -1053,6 +1087,449 @@ ul.nav-tabs {
           </div>
         </div>
         <div id="sections">
+                <section id="api-BankAccountService">
+                  <h1>BankAccountService</h1>
+                    <div id="api-BankAccountService-createBankAccount">
+                      <article id="api-BankAccountService-createBankAccount-0" data-group="User" data-name="createBankAccount" data-version="0">
+                        <div class="pull-left">
+                          <h1>createBankAccount</h1>
+                          <p>Create a bank account</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/bankaccount</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-BankAccountService-createBankAccount-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-BankAccountService-createBankAccount-0-java">Java</a></li>
+                          <li class=""><a href="#examples-BankAccountService-createBankAccount-0-dart">Dart</a></li>
+                          <li class=""><a href="#examples-BankAccountService-createBankAccount-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-BankAccountService-createBankAccount-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-BankAccountService-createBankAccount-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-BankAccountService-createBankAccount-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-BankAccountService-createBankAccount-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-BankAccountService-createBankAccount-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-BankAccountService-createBankAccount-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-BankAccountService-createBankAccount-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-BankAccountService-createBankAccount-0-python">Python</a></li>
+                          <li class=""><a href="#examples-BankAccountService-createBankAccount-0-rust">Rust</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-BankAccountService-createBankAccount-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X POST \
+ \
+ -H "Accept: application/json" \
+ -H "Content-Type: application/json" \
+ "http://localhost:8080/bankaccount" \
+ -d '{
+  &quot;bankAccountName&quot; : &quot;bankAccountName&quot;,
+  &quot;groupId&quot; : &quot;046b6c7f-0b8a-43b9-b35d-6489e6daee91&quot;,
+  &quot;decimalBaseAmount&quot; : 0
+}'
+</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-BankAccountService-createBankAccount-0-java">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.model.*;
+import org.openapitools.client.api.BankAccountServiceApi;
+
+import java.io.File;
+import java.util.*;
+
+public class BankAccountServiceApiExample {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Create an instance of the API class
+        BankAccountServiceApi apiInstance = new BankAccountServiceApi();
+        BankAccountCreationRequest bankAccountCreationRequest = ; // BankAccountCreationRequest | 
+
+        try {
+            BankAccountIndexDTO result = apiInstance.createBankAccount(bankAccountCreationRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling BankAccountServiceApi#createBankAccount");
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-BankAccountService-createBankAccount-0-dart">
+                            <pre class="prettyprint"><code class="language-dart">import 'package:openapi/api.dart';
+
+final api_instance = DefaultApi();
+
+final BankAccountCreationRequest bankAccountCreationRequest = new BankAccountCreationRequest(); // BankAccountCreationRequest | 
+
+try {
+    final result = await api_instance.createBankAccount(bankAccountCreationRequest);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->createBankAccount: $e\n');
+}
+
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-BankAccountService-createBankAccount-0-android">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.BankAccountServiceApi;
+
+public class BankAccountServiceApiExample {
+    public static void main(String[] args) {
+        BankAccountServiceApi apiInstance = new BankAccountServiceApi();
+        BankAccountCreationRequest bankAccountCreationRequest = ; // BankAccountCreationRequest | 
+
+        try {
+            BankAccountIndexDTO result = apiInstance.createBankAccount(bankAccountCreationRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling BankAccountServiceApi#createBankAccount");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-BankAccountService-createBankAccount-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-BankAccountService-createBankAccount-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: oauth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+
+// Create an instance of the API class
+BankAccountServiceApi *apiInstance = [[BankAccountServiceApi alloc] init];
+BankAccountCreationRequest *bankAccountCreationRequest = ; // 
+
+// Create a bank account
+[apiInstance createBankAccountWith:bankAccountCreationRequest
+              completionHandler: ^(BankAccountIndexDTO output, NSError* error) {
+    if (output) {
+        NSLog(@"%@", output);
+    }
+    if (error) {
+        NSLog(@"Error: %@", error);
+    }
+}];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-BankAccountService-createBankAccount-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: oauth2
+var oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = "YOUR ACCESS TOKEN";
+
+// Create an instance of the API class
+var api = new BankWizApi.BankAccountServiceApi()
+var bankAccountCreationRequest = ; // {BankAccountCreationRequest} 
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.createBankAccount(bankAccountCreationRequest, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-BankAccountService-createBankAccount-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-BankAccountService-createBankAccount-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class createBankAccountExample
+    {
+        public void main()
+        {
+            // Configure OAuth2 access token for authorization: oauth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            // Create an instance of the API class
+            var apiInstance = new BankAccountServiceApi();
+            var bankAccountCreationRequest = new BankAccountCreationRequest(); // BankAccountCreationRequest | 
+
+            try {
+                // Create a bank account
+                BankAccountIndexDTO result = apiInstance.createBankAccount(bankAccountCreationRequest);
+                Debug.WriteLine(result);
+            } catch (Exception e) {
+                Debug.Print("Exception when calling BankAccountServiceApi.createBankAccount: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-BankAccountService-createBankAccount-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: oauth2
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Create an instance of the API class
+$api_instance = new OpenAPITools\Client\Api\BankAccountServiceApi();
+$bankAccountCreationRequest = ; // BankAccountCreationRequest | 
+
+try {
+    $result = $api_instance->createBankAccount($bankAccountCreationRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BankAccountServiceApi->createBankAccount: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-BankAccountService-createBankAccount-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::OPenAPIClient::Configuration;
+use WWW::OPenAPIClient::BankAccountServiceApi;
+
+# Configure OAuth2 access token for authorization: oauth2
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+# Create an instance of the API class
+my $api_instance = WWW::OPenAPIClient::BankAccountServiceApi->new();
+my $bankAccountCreationRequest = WWW::OPenAPIClient::Object::BankAccountCreationRequest->new(); # BankAccountCreationRequest | 
+
+eval {
+    my $result = $api_instance->createBankAccount(bankAccountCreationRequest => $bankAccountCreationRequest);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling BankAccountServiceApi->createBankAccount: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-BankAccountService-createBankAccount-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import openapi_client
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: oauth2
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Create an instance of the API class
+api_instance = openapi_client.BankAccountServiceApi()
+bankAccountCreationRequest =  # BankAccountCreationRequest | 
+
+try:
+    # Create a bank account
+    api_response = api_instance.create_bank_account(bankAccountCreationRequest)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling BankAccountServiceApi->createBankAccount: %s\n" % e)</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-BankAccountService-createBankAccount-0-rust">
+                              <pre class="prettyprint"><code class="language-rust">extern crate BankAccountServiceApi;
+
+pub fn main() {
+    let bankAccountCreationRequest = ; // BankAccountCreationRequest
+
+    let mut context = BankAccountServiceApi::Context::default();
+    let result = client.createBankAccount(bankAccountCreationRequest, &context).wait();
+
+    println!("{:?}", result);
+}
+</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Scopes</h2>
+                          <table>
+                            
+                              <tr>
+                                <td>openid</td>
+                                <td>openid</td>
+                              </tr>
+                            
+                              <tr>
+                                <td>profile</td>
+                                <td>profile</td>
+                              </tr>
+                            
+                              <tr>
+                                <td>email</td>
+                                <td>email</td>
+                              </tr>
+                            
+                          </table>
+
+                          <h2>Parameters</h2>
+
+
+
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">bankAccountCreationRequest <span style="color:red;">*</span></td>
+<td>
+<p class="marked"></p>
+<script>
+$(document).ready(function() {
+  var schemaWrapper = {
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/BankAccountCreationRequest"
+      }
+    }
+  },
+  "required" : true
+};
+
+  var schema = findNode('schema',schemaWrapper).schema;
+  if (!schema) {
+    schema = schemaWrapper.schema;
+  }
+  if (schema.$ref != null) {
+    schema = defsParser.$refs.get(schema.$ref);
+  } else {
+    schemaWrapper.definitions = Object.assign({}, defs);
+    $RefParser.dereference(schemaWrapper).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+  var result = $('#d2e199_createBankAccount_bankAccountCreationRequest');
+  result.empty();
+  result.append(view.render());
+});
+</script>
+<div id="d2e199_createBankAccount_bankAccountCreationRequest"></div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+                          <h2>Responses</h2>
+                            <h3 id="examples-BankAccountService-createBankAccount-title-201"></h3>
+                            <p id="examples-BankAccountService-createBankAccount-description-201" class="marked"></p>
+                            <script>
+                              var responseBankAccountService201_description = `Bank account created successfully`;
+                              var responseBankAccountService201_description_break = responseBankAccountService201_description.indexOf('\n');
+                              if (responseBankAccountService201_description_break == -1) {
+                                $("#examples-BankAccountService-createBankAccount-title-201").text("Status: 201 - " + responseBankAccountService201_description);
+                              } else {
+                                $("#examples-BankAccountService-createBankAccount-title-201").text("Status: 201 - " + responseBankAccountService201_description.substring(0, responseBankAccountService201_description_break));
+                                $("#examples-BankAccountService-createBankAccount-description-201").html(responseBankAccountService201_description.substring(responseBankAccountService201_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-BankAccountService-createBankAccount-201" class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-BankAccountService-createBankAccount-201-schema">Schema</a>
+                                </li>
+
+
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-BankAccountService-createBankAccount-201-wrapper" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-BankAccountService-createBankAccount-201-schema">
+                                  <div id="responses-BankAccountService-createBankAccount-schema-201" class="exampleStyle">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = ;
+                                        var schema = findNode('schema',schemaWrapper).schema;
+                                        if (!schema) {
+                                          schema = schemaWrapper.schema;
+                                        }
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                          Object.keys(schema.properties).forEach( (item) => {
+                                            if (schema.properties[item].$ref != null) {
+                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
+                                            }
+                                          });
+                                        } else if (schema.items != null && schema.items.$ref != null) {
+                                            schema.items = defsParser.$refs.get(schema.items.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-BankAccountService-createBankAccount-201-schema-data').val(JSON.stringify(schema));
+                                        var result = $('#responses-BankAccountService-createBankAccount-schema-201');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-BankAccountService-createBankAccount-201-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+                            <h3 id="examples-BankAccountService-createBankAccount-title-400"></h3>
+                            <p id="examples-BankAccountService-createBankAccount-description-400" class="marked"></p>
+                            <script>
+                              var responseBankAccountService400_description = `Invalid request. Please check the provided data.`;
+                              var responseBankAccountService400_description_break = responseBankAccountService400_description.indexOf('\n');
+                              if (responseBankAccountService400_description_break == -1) {
+                                $("#examples-BankAccountService-createBankAccount-title-400").text("Status: 400 - " + responseBankAccountService400_description);
+                              } else {
+                                $("#examples-BankAccountService-createBankAccount-title-400").text("Status: 400 - " + responseBankAccountService400_description.substring(0, responseBankAccountService400_description_break));
+                                $("#examples-BankAccountService-createBankAccount-description-400").html(responseBankAccountService400_description.substring(responseBankAccountService400_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-BankAccountService-createBankAccount-400" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-BankAccountService-createBankAccount-400-wrapper" style='margin-bottom: 10px;'>
+                            </div>
+                        </article>
+                      </div>
+                      <hr>
+                  </section>
                 <section id="api-GroupService">
                   <h1>GroupService</h1>
                     <div id="api-GroupService-addUserGroup">
