@@ -15,36 +15,28 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { UserDTO } from './user-dto';
+import { BankAccountIndexDTO } from './bank-account-index-dto';
 // May contain unused imports in some cases
 // @ts-ignore
-import { UserGroupRightEnum } from './user-group-right-enum';
+import { GroupIndexDTO } from './group-index-dto';
 
 /**
  * 
  * @export
- * @interface UserGroupRightDTO
+ * @interface GroupBankAcccountIndexDTO
  */
-export interface UserGroupRightDTO {
+export interface GroupBankAcccountIndexDTO {
     /**
      * 
-     * @type {string}
-     * @memberof UserGroupRightDTO
+     * @type {GroupIndexDTO}
+     * @memberof GroupBankAcccountIndexDTO
      */
-    'id': string;
+    'groupeIndex': GroupIndexDTO;
     /**
      * 
-     * @type {UserDTO}
-     * @memberof UserGroupRightDTO
+     * @type {Array<BankAccountIndexDTO>}
+     * @memberof GroupBankAcccountIndexDTO
      */
-    'user': UserDTO;
-    /**
-     * 
-     * @type {UserGroupRightEnum}
-     * @memberof UserGroupRightDTO
-     */
-    'right': UserGroupRightEnum;
+    'bankAccountIndexList': Array<BankAccountIndexDTO>;
 }
-
-
 

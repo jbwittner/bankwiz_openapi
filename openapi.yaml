@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: BankWiz API
-  version: 0.10.0
+  version: 0.11.0
   description: An API for accessing banking functionalities provided by BankWiz
 servers:
   - url: http://localhost:8080
@@ -197,11 +197,28 @@ paths:
               $ref: '#/components/schemas/BankAccountCreationRequest'
       responses:
         '201':
-          description: Bank account created successfully
+          description: List of all bank account
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/BankAccountIndexDTO'
+        '400':
+          description: Invalid request. Please check the provided data.
+  /bankaccount/bankaccounts:
+    get:
+      tags:
+        - BankAccountService
+      summary: Get all bank account
+      operationId: getAllBankAccount
+      responses:
+        '200':
+          description: Bank account created successfully
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: '#/components/schemas/GroupBankAcccountIndexDTO'
         '400':
           description: Invalid request. Please check the provided data.
 components:
@@ -370,3 +387,15 @@ components:
       required:
         - bankAccountName
         - bankAccountId
+    GroupBankAcccountIndexDTO:
+      type: object
+      properties:
+        groupeIndex:
+          $ref: '#/components/schemas/GroupIndexDTO'
+        bankAccountIndexList:
+          type: "array"
+          items:
+            $ref: '#/components/schemas/BankAccountIndexDTO'
+      required:
+        - groupeIndex
+        - bankAccountIndexList
