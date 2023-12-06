@@ -7,6 +7,7 @@ package fr.bankwiz.openapi.api;
 
 import fr.bankwiz.openapi.model.BankAccountCreationRequest;
 import fr.bankwiz.openapi.model.BankAccountIndexDTO;
+import fr.bankwiz.openapi.model.GroupBankAcccountIndexDTO;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -46,7 +47,7 @@ public interface BankaccountApi {
      * POST /bankaccount : Create a bank account
      *
      * @param bankAccountCreationRequest  (required)
-     * @return Bank account created successfully (status code 201)
+     * @return List of all bank account (status code 201)
      *         or Invalid request. Please check the provided data. (status code 400)
      */
     @Operation(
@@ -54,7 +55,7 @@ public interface BankaccountApi {
         summary = "Create a bank account",
         tags = { "BankAccountService" },
         responses = {
-            @ApiResponse(responseCode = "201", description = "Bank account created successfully", content = {
+            @ApiResponse(responseCode = "201", description = "List of all bank account", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = BankAccountIndexDTO.class))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
@@ -76,6 +77,48 @@ public interface BankaccountApi {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                     String exampleString = "{ \"bankAccountName\" : \"bankAccountName\", \"bankAccountId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    /**
+     * GET /bankaccount/bankaccounts : Get all bank account
+     *
+     * @return Bank account created successfully (status code 200)
+     *         or Invalid request. Please check the provided data. (status code 400)
+     */
+    @Operation(
+        operationId = "getAllBankAccount",
+        summary = "Get all bank account",
+        tags = { "BankAccountService" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Bank account created successfully", content = {
+                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = GroupBankAcccountIndexDTO.class)))
+            }),
+            @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "oauth2", scopes={ "openid", "profile", "email" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.GET,
+        value = "/bankaccount/bankaccounts",
+        produces = { "application/json" }
+    )
+    default ResponseEntity<List<GroupBankAcccountIndexDTO>> getAllBankAccount(
+        
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "[ { \"groupeIndex\" : { \"groupName\" : \"groupName\", \"groupId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" }, \"bankAccountIndexList\" : [ { \"bankAccountName\" : \"bankAccountName\", \"bankAccountId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" }, { \"bankAccountName\" : \"bankAccountName\", \"bankAccountId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" } ] }, { \"groupeIndex\" : { \"groupName\" : \"groupName\", \"groupId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" }, \"bankAccountIndexList\" : [ { \"bankAccountName\" : \"bankAccountName\", \"bankAccountId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" }, { \"bankAccountName\" : \"bankAccountName\", \"bankAccountId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" } ] } ]";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
