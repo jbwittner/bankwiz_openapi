@@ -218,7 +218,7 @@ paths:
               schema:
                 type: "array"
                 items:
-                  $ref: '#/components/schemas/GroupBankAcccountIndexDTO'
+                  $ref: '#/components/schemas/GroupBankAccountIndexDTO'
         '400':
           description: Invalid request. Please check the provided data.
 components:
@@ -387,7 +387,7 @@ components:
       required:
         - bankAccountName
         - bankAccountId
-    GroupBankAcccountIndexDTO:
+    GroupBankAccountIndexDTO:
       type: object
       properties:
         groupeIndex:
