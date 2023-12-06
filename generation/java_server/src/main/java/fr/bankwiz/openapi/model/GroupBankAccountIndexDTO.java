@@ -20,30 +20,30 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * GroupBankAcccountIndexDTO
+ * GroupBankAccountIndexDTO
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
-public class GroupBankAcccountIndexDTO {
+public class GroupBankAccountIndexDTO {
 
   private GroupIndexDTO groupeIndex;
 
   @Valid
   private List<@Valid BankAccountIndexDTO> bankAccountIndexList = new ArrayList<>();
 
-  public GroupBankAcccountIndexDTO() {
+  public GroupBankAccountIndexDTO() {
     super();
   }
 
   /**
    * Constructor with only required parameters
    */
-  public GroupBankAcccountIndexDTO(GroupIndexDTO groupeIndex, List<@Valid BankAccountIndexDTO> bankAccountIndexList) {
+  public GroupBankAccountIndexDTO(GroupIndexDTO groupeIndex, List<@Valid BankAccountIndexDTO> bankAccountIndexList) {
     this.groupeIndex = groupeIndex;
     this.bankAccountIndexList = bankAccountIndexList;
   }
 
-  public GroupBankAcccountIndexDTO groupeIndex(GroupIndexDTO groupeIndex) {
+  public GroupBankAccountIndexDTO groupeIndex(GroupIndexDTO groupeIndex) {
     this.groupeIndex = groupeIndex;
     return this;
   }
@@ -63,12 +63,12 @@ public class GroupBankAcccountIndexDTO {
     this.groupeIndex = groupeIndex;
   }
 
-  public GroupBankAcccountIndexDTO bankAccountIndexList(List<@Valid BankAccountIndexDTO> bankAccountIndexList) {
+  public GroupBankAccountIndexDTO bankAccountIndexList(List<@Valid BankAccountIndexDTO> bankAccountIndexList) {
     this.bankAccountIndexList = bankAccountIndexList;
     return this;
   }
 
-  public GroupBankAcccountIndexDTO addBankAccountIndexListItem(BankAccountIndexDTO bankAccountIndexListItem) {
+  public GroupBankAccountIndexDTO addBankAccountIndexListItem(BankAccountIndexDTO bankAccountIndexListItem) {
     if (this.bankAccountIndexList == null) {
       this.bankAccountIndexList = new ArrayList<>();
     }
@@ -99,9 +99,9 @@ public class GroupBankAcccountIndexDTO {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    GroupBankAcccountIndexDTO groupBankAcccountIndexDTO = (GroupBankAcccountIndexDTO) o;
-    return Objects.equals(this.groupeIndex, groupBankAcccountIndexDTO.groupeIndex) &&
-        Objects.equals(this.bankAccountIndexList, groupBankAcccountIndexDTO.bankAccountIndexList);
+    GroupBankAccountIndexDTO groupBankAccountIndexDTO = (GroupBankAccountIndexDTO) o;
+    return Objects.equals(this.groupeIndex, groupBankAccountIndexDTO.groupeIndex) &&
+        Objects.equals(this.bankAccountIndexList, groupBankAccountIndexDTO.bankAccountIndexList);
   }
 
   @Override
@@ -112,7 +112,7 @@ public class GroupBankAcccountIndexDTO {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class GroupBankAcccountIndexDTO {\n");
+    sb.append("class GroupBankAccountIndexDTO {\n");
     sb.append("    groupeIndex: ").append(toIndentedString(groupeIndex)).append("\n");
     sb.append("    bankAccountIndexList: ").append(toIndentedString(bankAccountIndexList)).append("\n");
     sb.append("}");

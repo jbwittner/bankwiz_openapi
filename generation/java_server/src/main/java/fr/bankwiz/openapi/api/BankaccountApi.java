@@ -7,7 +7,7 @@ package fr.bankwiz.openapi.api;
 
 import fr.bankwiz.openapi.model.BankAccountCreationRequest;
 import fr.bankwiz.openapi.model.BankAccountIndexDTO;
-import fr.bankwiz.openapi.model.GroupBankAcccountIndexDTO;
+import fr.bankwiz.openapi.model.GroupBankAccountIndexDTO;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -99,7 +99,7 @@ public interface BankaccountApi {
         tags = { "BankAccountService" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Bank account created successfully", content = {
-                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = GroupBankAcccountIndexDTO.class)))
+                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = GroupBankAccountIndexDTO.class)))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
         },
@@ -112,7 +112,7 @@ public interface BankaccountApi {
         value = "/bankaccount/bankaccounts",
         produces = { "application/json" }
     )
-    default ResponseEntity<List<GroupBankAcccountIndexDTO>> getAllBankAccount(
+    default ResponseEntity<List<GroupBankAccountIndexDTO>> getAllBankAccount(
         
     ) {
         getRequest().ifPresent(request -> {

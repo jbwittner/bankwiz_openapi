@@ -12,7 +12,7 @@ src/models/AddUserGroupRequest.ts
 src/models/BankAccountCreationRequest.ts
 src/models/BankAccountIndexDTO.ts
 src/models/FunctionalExceptionDTO.ts
-src/models/GroupBankAcccountIndexDTO.ts
+src/models/GroupBankAccountIndexDTO.ts
 src/models/GroupCreationRequest.ts
 src/models/GroupDetailsDTO.ts
 src/models/GroupIndexDTO.ts

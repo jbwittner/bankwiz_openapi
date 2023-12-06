@@ -2,7 +2,7 @@ export * from './add-user-group-request';
 export * from './bank-account-creation-request';
 export * from './bank-account-index-dto';
 export * from './functional-exception-dto';
-export * from './group-bank-acccount-index-dto';
+export * from './group-bank-account-index-dto';
 export * from './group-creation-request';
 export * from './group-details-dto';
 export * from './group-index-dto';

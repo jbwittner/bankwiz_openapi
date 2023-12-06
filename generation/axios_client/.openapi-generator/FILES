@@ -15,7 +15,7 @@ model/add-user-group-request.ts
 model/bank-account-creation-request.ts
 model/bank-account-index-dto.ts
 model/functional-exception-dto.ts
-model/group-bank-acccount-index-dto.ts
+model/group-bank-account-index-dto.ts
 model/group-creation-request.ts
 model/group-details-dto.ts
 model/group-index-dto.ts
