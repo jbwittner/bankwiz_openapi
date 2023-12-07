@@ -1,0 +1,22 @@
+name: Setup action
+jobs:
+  setup_openapi_action:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Git repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+          cache: 'maven'
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'npm'
+      - name: Instal dependencies
+        run: npm ci

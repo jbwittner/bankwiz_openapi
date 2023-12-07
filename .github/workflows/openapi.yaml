@@ -1,0 +1,14 @@
+name: Generate package
+on:
+  push:
+    branches:
+      - *
+env:
+  USER_GITHUB_KEY: ${{ secrets.GITHUB_TOKEN }}
+  CI: true
+jobs:
+  check-openapi-spec:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Git repository
+        uses: ./.github/workflows/setup_action.yaml

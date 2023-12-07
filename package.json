@@ -1,0 +1,13 @@
+{
+  "name": "bankwiz_openapi",
+  "version": "1.0.0",
+  "scripts": {
+    "validate": "openapi-generator-cli validate -i openapi.yaml",
+    "generate:axios": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@openapitools/openapi-generator-cli": "^2.7.0"
+  }
+}
