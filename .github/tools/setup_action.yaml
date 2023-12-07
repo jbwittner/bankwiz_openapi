@@ -1,18 +1,17 @@
 name: Setup action
-jobs:
-  setup_openapi_action:
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Setup Java
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'zulu'
-          java-version: '17'
-          cache: 'maven'
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20
-          cache: 'npm'
-      - name: Instal dependencies
-        run: npm ci
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Java
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'zulu'
+        java-version: '17'
+        cache: 'maven'
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 20
+        cache: 'npm'
+    - name: Instal dependencies
+      run: npm ci
