@@ -13,4 +13,4 @@ jobs:
       - name: Checkout Git repository
         uses: actions/checkout@v4
       - name: Checkout Git repository
-        uses: ./.github/tools/setup_action.yaml
+        uses: ./.github/actions/setup_action.yaml
