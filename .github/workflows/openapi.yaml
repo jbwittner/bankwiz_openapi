@@ -11,4 +11,8 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout Git repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
+      - name: Checkout Git repository
         uses: ./.github/workflows/setup_action.yaml
