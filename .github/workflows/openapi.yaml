@@ -13,4 +13,4 @@ jobs:
       - name: Checkout Git repository
         uses: actions/checkout@v4
       - name: Checkout Git repository
-        uses: ./.github/actions/setup-env
+        uses: ./.github/actions/setup_action
