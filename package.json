@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "scripts": {
     "validate": "openapi-generator-cli validate -i openapi.yaml",
-    "generate:axios": "echo \"Error: no test specified\" && exit 1",
+    "generate:fetch-client": "openapi-generator-cli generate -i openapi.yaml -g typescript-fetch -o ./generation/fetch_client --additional-properties=npmName=@jbwittner/bankwiz_openapi-client-fetch --additional-properties=npmRepository=https://github.com/jbwittner/bankwiz_openapi --additional-properties=withSeparateModelsAndApi=true --additional-properties=apiPackage=api --additional-properties=modelPackage=model --additional-properties=supportsES6=true --additional-properties=withInterfaces=true",
     "generate:java-server": "openapi-generator-cli generate -i openapi.yaml -g spring -o ./generation/java_server --api-package=fr.bankwiz.openapi.api --additional-properties=useSpringBoot3=true --additional-properties=groupId=fr.bankwiz --additional-properties=artifactId=openapi --model-package=fr.bankwiz.openapi.model --additional-properties=interfaceOnly=true --additional-properties=dateLibrary=java8 --additional-properties=hideGenerationTimestamp=true",
     "clean:java-server": "rimraf generation/java_server",
-    "clean:axios-client": "rimraf generation/axios_client",
     "clean:fetch-client": "rimraf generation/fetch_client",
-    "clean": "npm run clean:java-server && npm run clean:axios-client && npm run clean:fetch-client"
+    "build:java-server": "mvn clean package -f ./generation/java_server/pom.xml",
+    "build:fetch-client": "npm install --prefix ./generation/fetch_client && npm run build --prefix ./generation/fetch_client"
   },
   "author": "",
   "license": "ISC",
