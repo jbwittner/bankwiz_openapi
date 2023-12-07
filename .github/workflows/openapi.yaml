@@ -7,10 +7,12 @@ env:
   USER_GITHUB_KEY: ${{ secrets.GITHUB_TOKEN }}
   CI: true
 jobs:
-  check-openapi-spec:
+  validate-openapi-spec:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout Git repository
         uses: actions/checkout@v4
-      - name: Checkout Git repository
+      - name: Setup action
         uses: ./.github/actions/setup-env
+      - name: Validate spec
+        run: npm run validate
