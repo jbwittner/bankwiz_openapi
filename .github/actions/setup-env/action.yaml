@@ -1,5 +1,6 @@
 name: Setup action
 runs:
+  using: "composite"
   steps:
     - name: Setup Java
       uses: actions/setup-java@v3
