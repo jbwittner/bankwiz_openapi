@@ -1,4 +1,8 @@
 name: Generate package
+on:
+  push:
+    branches:
+      - '*'
 env:
   USER_GITHUB_KEY: ${{ secrets.GITHUB_TOKEN }}
   CI: true
@@ -11,4 +15,4 @@ jobs:
         with:
           fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
       - name: Checkout Git repository
-        uses: ./.github/workflows/setup_action.yaml
+        uses: ./.github/tools/setup_action.yaml
