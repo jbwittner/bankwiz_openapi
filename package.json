@@ -3,11 +3,17 @@
   "version": "1.0.0",
   "scripts": {
     "validate": "openapi-generator-cli validate -i openapi.yaml",
-    "generate:axios": "echo \"Error: no test specified\" && exit 1"
+    "generate:axios": "echo \"Error: no test specified\" && exit 1",
+    "generate:java-server": "openapi-generator-cli generate -i openapi.yaml -g spring -o ./generation/java_server --api-package=fr.bankwiz.openapi.api--additional-properties=useSpringBoot3=true --additional-properties=groupId=fr.bankwiz --additional-properties=artifactId=openapi --model-package=fr.bankwiz.openapi.model --additional-properties=interfaceOnly=true --additional-properties=dateLibrary=java8 --additional-properties=hideGenerationTimestamp=true",
+    "clean:java-server": "rimraf generation/java_server",
+    "clean:axios-client": "rimraf generation/axios_client",
+    "clean:fetch-client": "rimraf generation/fetch_client",
+    "clean": "npm run clean:java-server && npm run clean:axios-client && npm run clean:fetch-client"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@openapitools/openapi-generator-cli": "^2.7.0"
+    "@openapitools/openapi-generator-cli": "^2.7.0",
+    "rimraf": "^5.0.5"
   }
 }

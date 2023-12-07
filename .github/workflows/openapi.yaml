@@ -16,3 +16,12 @@ jobs:
         uses: ./.github/actions/setup-env
       - name: Validate spec
         run: npm run validate
+  generate-java-server:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Git repository
+        uses: actions/checkout@v4
+      - name: Setup action
+        uses: ./.github/actions/setup-env
+      - name: generate
+        run: npm run generate:java-server
