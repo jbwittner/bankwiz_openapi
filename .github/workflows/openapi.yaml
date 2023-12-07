@@ -14,4 +14,3 @@ jobs:
         uses: actions/checkout@v4
       - name: Checkout Git repository
         uses: ./.github/actions/setup-env
-        shell: bash
