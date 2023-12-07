@@ -17,6 +17,8 @@ jobs:
       - name: Validate spec
         run: npm run validate
   generate-java-server:
+    needs:
+      - validate-openapi-spec
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout Git repository
