@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * BankWiz API
- * An API for accessing banking functionalities provided by BankWiz s
+ * An API for accessing banking functionalities provided by BankWiz
  *
  * The version of the OpenAPI document: 0.11.1
  * 
