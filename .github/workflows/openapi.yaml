@@ -99,6 +99,7 @@ jobs:
         with:
           name: archive-build-java-server
           path: generation/java_server
-      - name: Display structure of downloaded files
-        run: ls -R
-
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
