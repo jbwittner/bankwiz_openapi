@@ -89,12 +89,12 @@ jobs:
         with:
           name: archive-doc
           path: docs
-      - name: Download docs artifact
+      - name: Download fetch-client artifact
         uses: actions/download-artifact@v3
         with:
           name: archive-build-fetch-client
           path: generation/fetch_client
-      - name: Download docs artifact
+      - name: Download java-server artifact
         uses: actions/download-artifact@v3
         with:
           name: archive-build-java-server
