@@ -1,8 +1,9 @@
 name: Generate package
 on:
   push:
-    paths:
-      - 'openapi.yaml'
+    paths-ignore:
+      - 'generation/**'
+      - 'docs/**'
 env:
   USER_GITHUB_KEY: ${{ secrets.GITHUB_TOKEN }}
   CI: true
@@ -74,4 +75,30 @@ jobs:
         with:
           name: archive-doc
           path: docs
+  fusion-commit:
+    needs:
+      - generate-build-java-server
+      - generate-build-fetch-client
+      - generate-doc
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Git repository
+        uses: actions/checkout@v4
+      - name: Download docs artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: archive-doc
+          path: docs
+      - name: Download docs artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: archive-build-fetch-client
+          path: generation/fetch_client
+      - name: Download docs artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: archive-build-java-server
+          path: generation/java_server
+      - name: Display structure of downloaded files
+        run: ls -R
 
