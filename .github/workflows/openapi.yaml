@@ -3,7 +3,6 @@ on:
   push:
     paths:
       - 'openapi.yaml'
-      - '*'
 env:
   USER_GITHUB_KEY: ${{ secrets.GITHUB_TOKEN }}
   CI: true
