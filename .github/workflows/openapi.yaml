@@ -99,7 +99,11 @@ jobs:
         with:
           name: archive-build-java-server
           path: generation/java_server
+      - name: Get branch names.
+        id: branch-names
+        uses: tj-actions/branch-names@v8
       - name: Commit & Push changes
         uses: actions-js/push@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ steps.branch-names.outputs.current_branch }}
