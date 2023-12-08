@@ -1,8 +1,8 @@
 name: Generate package
 on:
   push:
-    branches:
-      - '*'
+    paths:
+      - 'openapi.yaml'
 env:
   USER_GITHUB_KEY: ${{ secrets.GITHUB_TOKEN }}
   CI: true
@@ -16,7 +16,7 @@ jobs:
         uses: ./.github/actions/setup-env
       - name: Validate spec
         run: npm run validate
-  generate-java-server:
+  generate-build-java-server:
     needs:
       - validate-openapi-spec
     runs-on: ubuntu-22.04
@@ -31,7 +31,12 @@ jobs:
         run: npm run generate:java-server
       - name: build
         run: npm run build:java-server
-  generate-fetch-client:
+      - name: archive build java server
+        uses: actions/upload-artifact@v3
+        with:
+          name: archive-build-java-server
+          path: generation/java_server
+  generate-build-fetch-client:
     needs:
       - validate-openapi-spec
     runs-on: ubuntu-22.04
@@ -46,6 +51,11 @@ jobs:
         run: npm run generate:fetch-client
       - name: build
         run: npm run build:fetch-client
+      - name: archive build fetch client
+        uses: actions/upload-artifact@v3
+        with:
+          name: archive-build-fetch-client
+          path: generation/fetch_client
   generate-doc:
     needs:
       - validate-openapi-spec
@@ -59,3 +69,9 @@ jobs:
         run: npm run clean:doc
       - name: generate
         run: npm run generate:doc
+      - name: archive doc
+        uses: actions/upload-artifact@v3
+        with:
+          name: archive-doc
+          path: docs
+
