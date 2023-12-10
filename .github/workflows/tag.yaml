@@ -35,7 +35,7 @@ jobs:
           cache: 'npm'
           registry-url: 'https://npm.pkg.github.com'
           # Defaults to the user or organization that owns the workflow file
-          scope: '@octocat'
+          scope: '@jbwittner'
       - name: Instal dependencies
         working-directory: generation/fetch_client
         run: npm ci
