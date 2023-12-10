@@ -914,7 +914,7 @@ ul.nav-tabs {
     }
   }
 };
-    defs["GroupBankAcccountIndexDTO"] = {
+    defs["GroupBankAccountIndexDTO"] = {
   "required" : [ "bankAccountIndexList", "groupeIndex" ],
   "type" : "object",
   "properties" : {
@@ -1097,7 +1097,7 @@ ul.nav-tabs {
         <div id="header">
           <div id="api-_">
             <h2 id="welcome-to-apidoc">API and SDK Documentation</h2>
-              <div class="app-desc">Version: 0.11.0</div>
+              <div class="app-desc">Version: 0.11.1</div>
             <hr>
             <div id="app-description" class="app-desc">
                 An API for accessing banking functionalities provided by BankWiz
@@ -1608,7 +1608,7 @@ public class BankAccountServiceApiExample {
         BankAccountServiceApi apiInstance = new BankAccountServiceApi();
 
         try {
-            array[GroupBankAcccountIndexDTO] result = apiInstance.getAllBankAccount();
+            array[GroupBankAccountIndexDTO] result = apiInstance.getAllBankAccount();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling BankAccountServiceApi#getAllBankAccount");
@@ -1643,7 +1643,7 @@ public class BankAccountServiceApiExample {
         BankAccountServiceApi apiInstance = new BankAccountServiceApi();
 
         try {
-            array[GroupBankAcccountIndexDTO] result = apiInstance.getAllBankAccount();
+            array[GroupBankAccountIndexDTO] result = apiInstance.getAllBankAccount();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling BankAccountServiceApi#getAllBankAccount");
@@ -1668,7 +1668,7 @@ BankAccountServiceApi *apiInstance = [[BankAccountServiceApi alloc] init];
 
 // Get all bank account
 [apiInstance getAllBankAccountWithCompletionHandler: 
-              ^(array[GroupBankAcccountIndexDTO] output, NSError* error) {
+              ^(array[GroupBankAccountIndexDTO] output, NSError* error) {
     if (output) {
         NSLog(@"%@", output);
     }
@@ -1724,7 +1724,7 @@ namespace Example
 
             try {
                 // Get all bank account
-                array[GroupBankAcccountIndexDTO] result = apiInstance.getAllBankAccount();
+                array[GroupBankAccountIndexDTO] result = apiInstance.getAllBankAccount();
                 Debug.WriteLine(result);
             } catch (Exception e) {
                 Debug.Print("Exception when calling BankAccountServiceApi.getAllBankAccount: " + e.Message );

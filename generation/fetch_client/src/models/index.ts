@@ -4,7 +4,7 @@ export * from './AddUserGroupRequest';
 export * from './BankAccountCreationRequest';
 export * from './BankAccountIndexDTO';
 export * from './FunctionalExceptionDTO';
-export * from './GroupBankAcccountIndexDTO';
+export * from './GroupBankAccountIndexDTO';
 export * from './GroupCreationRequest';
 export * from './GroupDetailsDTO';
 export * from './GroupIndexDTO';

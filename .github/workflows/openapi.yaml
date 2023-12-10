@@ -1,0 +1,109 @@
+name: Generate package
+on:
+  push:
+    paths-ignore:
+      - 'generation/**'
+      - 'docs/**'
+env:
+  USER_GITHUB_KEY: ${{ secrets.GITHUB_TOKEN }}
+  CI: true
+jobs:
+  validate-openapi-spec:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Git repository
+        uses: actions/checkout@v4
+      - name: Setup action
+        uses: ./.github/actions/setup-env
+      - name: Validate spec
+        run: npm run validate
+  generate-build-java-server:
+    needs:
+      - validate-openapi-spec
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Git repository
+        uses: actions/checkout@v4
+      - name: Setup action
+        uses: ./.github/actions/setup-env
+      - name: clean
+        run: npm run clean:java-server
+      - name: generate
+        run: npm run generate:java-server
+      - name: build
+        run: npm run build:java-server
+      - name: archive build java server
+        uses: actions/upload-artifact@v3
+        with:
+          name: archive-build-java-server
+          path: generation/java_server
+  generate-build-fetch-client:
+    needs:
+      - validate-openapi-spec
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Git repository
+        uses: actions/checkout@v4
+      - name: Setup action
+        uses: ./.github/actions/setup-env
+      - name: clean
+        run: npm run clean:fetch-client
+      - name: generate
+        run: npm run generate:fetch-client
+      - name: build
+        run: npm run build:fetch-client
+      - name: archive build fetch client
+        uses: actions/upload-artifact@v3
+        with:
+          name: archive-build-fetch-client
+          path: generation/fetch_client
+  generate-doc:
+    needs:
+      - validate-openapi-spec
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Git repository
+        uses: actions/checkout@v4
+      - name: Setup action
+        uses: ./.github/actions/setup-env
+      - name: clean
+        run: npm run clean:doc
+      - name: generate
+        run: npm run generate:doc
+      - name: archive doc
+        uses: actions/upload-artifact@v3
+        with:
+          name: archive-doc
+          path: docs
+  fusion-commit:
+    needs:
+      - generate-build-java-server
+      - generate-build-fetch-client
+      - generate-doc
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Git repository
+        uses: actions/checkout@v4
+      - name: Download docs artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: archive-doc
+          path: docs
+      - name: Download fetch-client artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: archive-build-fetch-client
+          path: generation/fetch_client
+      - name: Download java-server artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: archive-build-java-server
+          path: generation/java_server
+      - name: Get branch names.
+        id: branch-names
+        uses: tj-actions/branch-names@v8
+      - name: Commit & Push changes
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ steps.branch-names.outputs.current_branch }}

@@ -1,0 +1,42 @@
+name: Publish package
+on:
+  push:
+    tags:
+      - '*'
+env:
+  CI: true
+jobs:
+  publish-java-server:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Git repository
+        uses: actions/checkout@v4
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+          cache: 'maven'
+      - name: Publish to GitHub Packages Apache Maven
+        run: mvn deploy -DaltDeploymentRepository=github::$(GITHUB_MAVEN_REPO)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_MAVEN_REPO: https://maven.pkg.github.com/jbwittner/bankwiz_openapi
+  publish-fetch-client:
+    needs:
+      - validate-openapi-spec
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Git repository
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'npm'
+      - name: Instal dependencies
+        run: npm ci
+      - name: Publish to GitHub Packages
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
