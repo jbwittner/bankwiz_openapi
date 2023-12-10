@@ -1,12 +1,17 @@
 name: Generate package
 on:
   push:
+    tags-ignore:
+      - '*'
     paths-ignore:
       - 'generation/**'
       - 'docs/**'
 env:
   USER_GITHUB_KEY: ${{ secrets.GITHUB_TOKEN }}
   CI: true
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
 jobs:
   validate-openapi-spec:
     runs-on: ubuntu-22.04
