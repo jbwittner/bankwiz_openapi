@@ -1,6 +1,8 @@
 name: Generate package
 on:
   push:
+    branches:
+      - '*'
     tags-ignore:
       - '*'
     paths-ignore:

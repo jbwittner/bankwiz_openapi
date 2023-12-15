@@ -8,6 +8,7 @@ package fr.bankwiz.openapi.api;
 import fr.bankwiz.openapi.model.BankAccountCreationRequest;
 import fr.bankwiz.openapi.model.BankAccountIndexDTO;
 import fr.bankwiz.openapi.model.GroupBankAccountIndexDTO;
+import java.util.UUID;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -83,6 +84,38 @@ public interface BankaccountApi {
                 }
             }
         });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    /**
+     * DELETE /bankaccount/{id} : Delete a bank account
+     *
+     * @param id Bank account ID (required)
+     * @return Bank account deleted (status code 200)
+     *         or Invalid request. Please check the provided data. (status code 400)
+     */
+    @Operation(
+        operationId = "deleteBankAccount",
+        summary = "Delete a bank account",
+        tags = { "BankAccountService" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Bank account deleted"),
+            @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "oauth2", scopes={ "openid", "profile", "email" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.DELETE,
+        value = "/bankaccount/{id}"
+    )
+    
+    default ResponseEntity<Void> deleteBankAccount(
+        @Parameter(name = "id", description = "Bank account ID", required = true, in = ParameterIn.PATH) @PathVariable("id") UUID id
+    ) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
