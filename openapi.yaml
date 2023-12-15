@@ -204,6 +204,25 @@ paths:
                 $ref: '#/components/schemas/BankAccountIndexDTO'
         '400':
           description: Invalid request. Please check the provided data.
+  /bankaccount/{id}:
+    delete:
+      tags:
+        - BankAccountService
+      summary: Delete a bank account
+      operationId: deleteBankAccount
+      parameters:
+        - name: id
+          in: path
+          description: Bank account ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Bank account deleted
+        '400':
+          description: Invalid request. Please check the provided data.
   /bankaccount/bankaccounts:
     get:
       tags:
