@@ -11,6 +11,7 @@ src/index.ts
 src/models/AddUserGroupRequest.ts
 src/models/BankAccountCreationRequest.ts
 src/models/BankAccountIndexDTO.ts
+src/models/BankAccountUpdateRequest.ts
 src/models/FunctionalExceptionDTO.ts
 src/models/GroupBankAccountIndexDTO.ts
 src/models/GroupCreationRequest.ts

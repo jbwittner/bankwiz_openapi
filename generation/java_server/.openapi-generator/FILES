@@ -8,6 +8,7 @@ src/main/java/fr/bankwiz/openapi/api/UserApi.java
 src/main/java/fr/bankwiz/openapi/model/AddUserGroupRequest.java
 src/main/java/fr/bankwiz/openapi/model/BankAccountCreationRequest.java
 src/main/java/fr/bankwiz/openapi/model/BankAccountIndexDTO.java
+src/main/java/fr/bankwiz/openapi/model/BankAccountUpdateRequest.java
 src/main/java/fr/bankwiz/openapi/model/FunctionalExceptionDTO.java
 src/main/java/fr/bankwiz/openapi/model/GroupBankAccountIndexDTO.java
 src/main/java/fr/bankwiz/openapi/model/GroupCreationRequest.java

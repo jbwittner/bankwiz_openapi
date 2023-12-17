@@ -3,6 +3,7 @@
 export * from './AddUserGroupRequest';
 export * from './BankAccountCreationRequest';
 export * from './BankAccountIndexDTO';
+export * from './BankAccountUpdateRequest';
 export * from './FunctionalExceptionDTO';
 export * from './GroupBankAccountIndexDTO';
 export * from './GroupCreationRequest';
