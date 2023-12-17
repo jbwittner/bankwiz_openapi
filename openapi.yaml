@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: BankWiz API
-  version: 0.13.0
+  version: 0.13.1
   description: An API for accessing banking functionalities provided by BankWiz
 servers:
   - url: http://localhost:8080
@@ -197,7 +197,7 @@ paths:
               $ref: '#/components/schemas/BankAccountCreationRequest'
       responses:
         '201':
-          description: List of all bank account
+          description: Bank account created
           content:
             application/json:
               schema:
@@ -245,6 +245,10 @@ paths:
       responses:
         '200':
           description: Bank account updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BankAccountIndexDTO'
         '400':
           description: Invalid request. Please check the provided data.
   /bankaccount/bankaccounts:
