@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: BankWiz API
-  version: 0.12.0
+  version: 0.13.0
   description: An API for accessing banking functionalities provided by BankWiz
 servers:
   - url: http://localhost:8080
@@ -223,6 +223,30 @@ paths:
           description: Bank account deleted
         '400':
           description: Invalid request. Please check the provided data.
+    put:
+      tags:
+        - BankAccountService
+      summary: Update a bank account
+      operationId: updateBankAccount
+      parameters:
+        - name: id
+          in: path
+          description: Bank account ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BankAccountUpdateRequest'
+      responses:
+        '200':
+          description: Bank account updated
+        '400':
+          description: Invalid request. Please check the provided data.
   /bankaccount/bankaccounts:
     get:
       tags:
@@ -324,6 +348,17 @@ components:
         - bankAccountName
         - groupId
         - decimalBaseAmount
+    BankAccountUpdateRequest:
+      type: object
+      properties:
+        bankAccountName:
+          type: string
+        groupId:
+          type: string
+          format: uuid
+        decimalBaseAmount:
+          type: integer
+          format: int32
     UserDTO:
       type: object
       properties:
@@ -403,9 +438,13 @@ components:
         bankAccountId:
           type: string
           format: uuid
+        decimalBaseAmount:
+          type: integer
+          format: int32
       required:
         - bankAccountName
         - bankAccountId
+        - decimalBaseAmount
     GroupBankAccountIndexDTO:
       type: object
       properties:
