@@ -16,32 +16,19 @@ import java.util.*;
 import jakarta.annotation.Generated;
 
 /**
- * BankAccountIndexDTO
+ * BankAccountUpdateRequest
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen")
-public class BankAccountIndexDTO {
+public class BankAccountUpdateRequest {
 
   private String bankAccountName;
 
-  private UUID bankAccountId;
+  private UUID groupId;
 
   private Integer decimalBaseAmount;
 
-  public BankAccountIndexDTO() {
-    super();
-  }
-
-  /**
-   * Constructor with only required parameters
-   */
-  public BankAccountIndexDTO(String bankAccountName, UUID bankAccountId, Integer decimalBaseAmount) {
-    this.bankAccountName = bankAccountName;
-    this.bankAccountId = bankAccountId;
-    this.decimalBaseAmount = decimalBaseAmount;
-  }
-
-  public BankAccountIndexDTO bankAccountName(String bankAccountName) {
+  public BankAccountUpdateRequest bankAccountName(String bankAccountName) {
     this.bankAccountName = bankAccountName;
     return this;
   }
@@ -50,8 +37,8 @@ public class BankAccountIndexDTO {
    * Get bankAccountName
    * @return bankAccountName
   */
-  @NotNull 
-  @Schema(name = "bankAccountName", requiredMode = Schema.RequiredMode.REQUIRED)
+  
+  @Schema(name = "bankAccountName", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("bankAccountName")
   public String getBankAccountName() {
     return bankAccountName;
@@ -61,27 +48,27 @@ public class BankAccountIndexDTO {
     this.bankAccountName = bankAccountName;
   }
 
-  public BankAccountIndexDTO bankAccountId(UUID bankAccountId) {
-    this.bankAccountId = bankAccountId;
+  public BankAccountUpdateRequest groupId(UUID groupId) {
+    this.groupId = groupId;
     return this;
   }
 
   /**
-   * Get bankAccountId
-   * @return bankAccountId
+   * Get groupId
+   * @return groupId
   */
-  @NotNull @Valid 
-  @Schema(name = "bankAccountId", requiredMode = Schema.RequiredMode.REQUIRED)
-  @JsonProperty("bankAccountId")
-  public UUID getBankAccountId() {
-    return bankAccountId;
+  @Valid 
+  @Schema(name = "groupId", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("groupId")
+  public UUID getGroupId() {
+    return groupId;
   }
 
-  public void setBankAccountId(UUID bankAccountId) {
-    this.bankAccountId = bankAccountId;
+  public void setGroupId(UUID groupId) {
+    this.groupId = groupId;
   }
 
-  public BankAccountIndexDTO decimalBaseAmount(Integer decimalBaseAmount) {
+  public BankAccountUpdateRequest decimalBaseAmount(Integer decimalBaseAmount) {
     this.decimalBaseAmount = decimalBaseAmount;
     return this;
   }
@@ -90,8 +77,8 @@ public class BankAccountIndexDTO {
    * Get decimalBaseAmount
    * @return decimalBaseAmount
   */
-  @NotNull 
-  @Schema(name = "decimalBaseAmount", requiredMode = Schema.RequiredMode.REQUIRED)
+  
+  @Schema(name = "decimalBaseAmount", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("decimalBaseAmount")
   public Integer getDecimalBaseAmount() {
     return decimalBaseAmount;
@@ -109,23 +96,23 @@ public class BankAccountIndexDTO {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    BankAccountIndexDTO bankAccountIndexDTO = (BankAccountIndexDTO) o;
-    return Objects.equals(this.bankAccountName, bankAccountIndexDTO.bankAccountName) &&
-        Objects.equals(this.bankAccountId, bankAccountIndexDTO.bankAccountId) &&
-        Objects.equals(this.decimalBaseAmount, bankAccountIndexDTO.decimalBaseAmount);
+    BankAccountUpdateRequest bankAccountUpdateRequest = (BankAccountUpdateRequest) o;
+    return Objects.equals(this.bankAccountName, bankAccountUpdateRequest.bankAccountName) &&
+        Objects.equals(this.groupId, bankAccountUpdateRequest.groupId) &&
+        Objects.equals(this.decimalBaseAmount, bankAccountUpdateRequest.decimalBaseAmount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bankAccountName, bankAccountId, decimalBaseAmount);
+    return Objects.hash(bankAccountName, groupId, decimalBaseAmount);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class BankAccountIndexDTO {\n");
+    sb.append("class BankAccountUpdateRequest {\n");
     sb.append("    bankAccountName: ").append(toIndentedString(bankAccountName)).append("\n");
-    sb.append("    bankAccountId: ").append(toIndentedString(bankAccountId)).append("\n");
+    sb.append("    groupId: ").append(toIndentedString(groupId)).append("\n");
     sb.append("    decimalBaseAmount: ").append(toIndentedString(decimalBaseAmount)).append("\n");
     sb.append("}");
     return sb.toString();
