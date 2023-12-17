@@ -1123,7 +1123,7 @@ ul.nav-tabs {
         <div id="header">
           <div id="api-_">
             <h2 id="welcome-to-apidoc">API and SDK Documentation</h2>
-              <div class="app-desc">Version: 0.13.0</div>
+              <div class="app-desc">Version: 0.13.1</div>
             <hr>
             <div id="app-description" class="app-desc">
                 An API for accessing banking functionalities provided by BankWiz
@@ -1489,7 +1489,7 @@ $(document).ready(function() {
                             <h3 id="examples-BankAccountService-createBankAccount-title-201"></h3>
                             <p id="examples-BankAccountService-createBankAccount-description-201" class="marked"></p>
                             <script>
-                              var responseBankAccountService201_description = `List of all bank account`;
+                              var responseBankAccountService201_description = `Bank account created`;
                               var responseBankAccountService201_description_break = responseBankAccountService201_description.indexOf('\n');
                               if (responseBankAccountService201_description_break == -1) {
                                 $("#examples-BankAccountService-createBankAccount-title-201").text("Status: 201 - " + responseBankAccountService201_description);
@@ -2357,6 +2357,7 @@ pub fn main() {
                           <div class="tab-pane active" id="examples-BankAccountService-updateBankAccount-0-curl">
                             <pre class="prettyprint"><code class="language-bsh">curl -X PUT \
  \
+ -H "Accept: application/json" \
  -H "Content-Type: application/json" \
  "http://localhost:8080/bankaccount/{id}" \
  -d '{
@@ -2389,7 +2390,8 @@ public class BankAccountServiceApiExample {
         BankAccountUpdateRequest bankAccountUpdateRequest = ; // BankAccountUpdateRequest | 
 
         try {
-            apiInstance.updateBankAccount(id, bankAccountUpdateRequest);
+            BankAccountIndexDTO result = apiInstance.updateBankAccount(id, bankAccountUpdateRequest);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling BankAccountServiceApi#updateBankAccount");
             e.printStackTrace();
@@ -2427,7 +2429,8 @@ public class BankAccountServiceApiExample {
         BankAccountUpdateRequest bankAccountUpdateRequest = ; // BankAccountUpdateRequest | 
 
         try {
-            apiInstance.updateBankAccount(id, bankAccountUpdateRequest);
+            BankAccountIndexDTO result = apiInstance.updateBankAccount(id, bankAccountUpdateRequest);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling BankAccountServiceApi#updateBankAccount");
             e.printStackTrace();
@@ -2454,7 +2457,10 @@ BankAccountUpdateRequest *bankAccountUpdateRequest = ; //
 // Update a bank account
 [apiInstance updateBankAccountWith:id
     bankAccountUpdateRequest:bankAccountUpdateRequest
-              completionHandler: ^(NSError* error) {
+              completionHandler: ^(BankAccountIndexDTO output, NSError* error) {
+    if (output) {
+        NSLog(@"%@", output);
+    }
     if (error) {
         NSLog(@"Error: %@", error);
     }
@@ -2479,7 +2485,7 @@ var callback = function(error, data, response) {
   if (error) {
     console.error(error);
   } else {
-    console.log('API called successfully.');
+    console.log('API called successfully. Returned data: ' + data);
   }
 };
 api.updateBankAccount(id, bankAccountUpdateRequest, callback);
@@ -2512,7 +2518,8 @@ namespace Example
 
             try {
                 // Update a bank account
-                apiInstance.updateBankAccount(id, bankAccountUpdateRequest);
+                BankAccountIndexDTO result = apiInstance.updateBankAccount(id, bankAccountUpdateRequest);
+                Debug.WriteLine(result);
             } catch (Exception e) {
                 Debug.Print("Exception when calling BankAccountServiceApi.updateBankAccount: " + e.Message );
             }
@@ -2535,7 +2542,8 @@ $id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; // UUID | Bank account ID
 $bankAccountUpdateRequest = ; // BankAccountUpdateRequest | 
 
 try {
-    $api_instance->updateBankAccount($id, $bankAccountUpdateRequest);
+    $result = $api_instance->updateBankAccount($id, $bankAccountUpdateRequest);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BankAccountServiceApi->updateBankAccount: ', $e->getMessage(), PHP_EOL;
 }
@@ -2556,7 +2564,8 @@ my $id = 38400000-8cf0-11bd-b23e-10b96e4ef00d; # UUID | Bank account ID
 my $bankAccountUpdateRequest = WWW::OPenAPIClient::Object::BankAccountUpdateRequest->new(); # BankAccountUpdateRequest | 
 
 eval {
-    $api_instance->updateBankAccount(id => $id, bankAccountUpdateRequest => $bankAccountUpdateRequest);
+    my $result = $api_instance->updateBankAccount(id => $id, bankAccountUpdateRequest => $bankAccountUpdateRequest);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling BankAccountServiceApi->updateBankAccount: $@\n";
@@ -2580,7 +2589,8 @@ bankAccountUpdateRequest =  # BankAccountUpdateRequest |
 
 try:
     # Update a bank account
-    api_instance.update_bank_account(id, bankAccountUpdateRequest)
+    api_response = api_instance.update_bank_account(id, bankAccountUpdateRequest)
+    pprint(api_response)
 except ApiException as e:
     print("Exception when calling BankAccountServiceApi->updateBankAccount: %s\n" % e)</code></pre>
                             </div>
@@ -2723,12 +2733,52 @@ $(document).ready(function() {
 
 
                             <ul id="responses-detail-BankAccountService-updateBankAccount-200" class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-BankAccountService-updateBankAccount-200-schema">Schema</a>
+                                </li>
+
+
 
 
                             </ul>
 
 
                             <div class="tab-content" id="responses-BankAccountService-updateBankAccount-200-wrapper" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-BankAccountService-updateBankAccount-200-schema">
+                                  <div id="responses-BankAccountService-updateBankAccount-schema-200" class="exampleStyle">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = ;
+                                        var schema = findNode('schema',schemaWrapper).schema;
+                                        if (!schema) {
+                                          schema = schemaWrapper.schema;
+                                        }
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                          Object.keys(schema.properties).forEach( (item) => {
+                                            if (schema.properties[item].$ref != null) {
+                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
+                                            }
+                                          });
+                                        } else if (schema.items != null && schema.items.$ref != null) {
+                                            schema.items = defsParser.$refs.get(schema.items.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-BankAccountService-updateBankAccount-200-schema-data').val(JSON.stringify(schema));
+                                        var result = $('#responses-BankAccountService-updateBankAccount-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-BankAccountService-updateBankAccount-200-schema-data' type='hidden' value=''></input>
+                                </div>
                             </div>
                             <h3 id="examples-BankAccountService-updateBankAccount-title-400"></h3>
                             <p id="examples-BankAccountService-updateBankAccount-description-400" class="marked"></p>

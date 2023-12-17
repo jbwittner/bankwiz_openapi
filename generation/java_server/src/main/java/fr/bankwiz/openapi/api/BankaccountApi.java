@@ -49,7 +49,7 @@ public interface BankaccountApi {
      * POST /bankaccount : Create a bank account
      *
      * @param bankAccountCreationRequest  (required)
-     * @return List of all bank account (status code 201)
+     * @return Bank account created (status code 201)
      *         or Invalid request. Please check the provided data. (status code 400)
      */
     @Operation(
@@ -57,7 +57,7 @@ public interface BankaccountApi {
         summary = "Create a bank account",
         tags = { "BankAccountService" },
         responses = {
-            @ApiResponse(responseCode = "201", description = "List of all bank account", content = {
+            @ApiResponse(responseCode = "201", description = "Bank account created", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = BankAccountIndexDTO.class))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
@@ -178,7 +178,9 @@ public interface BankaccountApi {
         summary = "Update a bank account",
         tags = { "BankAccountService" },
         responses = {
-            @ApiResponse(responseCode = "200", description = "Bank account updated"),
+            @ApiResponse(responseCode = "200", description = "Bank account updated", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = BankAccountIndexDTO.class))
+            }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
         },
         security = {
@@ -188,13 +190,23 @@ public interface BankaccountApi {
     @RequestMapping(
         method = RequestMethod.PUT,
         value = "/bankaccount/{id}",
+        produces = { "application/json" },
         consumes = { "application/json" }
     )
     
-    default ResponseEntity<Void> updateBankAccount(
+    default ResponseEntity<BankAccountIndexDTO> updateBankAccount(
         @Parameter(name = "id", description = "Bank account ID", required = true, in = ParameterIn.PATH) @PathVariable("id") UUID id,
         @Parameter(name = "BankAccountUpdateRequest", description = "", required = true) @Valid @RequestBody BankAccountUpdateRequest bankAccountUpdateRequest
     ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"bankAccountName\" : \"bankAccountName\", \"bankAccountId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"decimalBaseAmount\" : 0 }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
