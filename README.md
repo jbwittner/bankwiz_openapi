@@ -5,6 +5,8 @@ Welcome to the Bankwiz Openapi repository, a tool designed to manage the OpenAPI
 
 You can view the OpenAPI specification on the GitHub Pages site: [Bankwiz OpenAPI Specification](https://jbwittner.github.io/bankwiz_openapi/).
 
+**Everything is done via GitHub Action, just modify the openapi spec and push for the action to generate the code, commit and push.**
+
 ## Prerequisites
 * `Docker`: Required for running the OpenAPI Generator in a containerized environment.
 * `npm`: Necessary for managing packages and running JavaScript clients.
