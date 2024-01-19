@@ -909,6 +909,23 @@ ul.nav-tabs {
     }
   }
 };
+    defs["CreateTransactionRequest"] = {
+  "required" : [ "BankAccountId", "DecimalAmount" ],
+  "type" : "object",
+  "properties" : {
+    "BankAccountId" : {
+      "type" : "string",
+      "format" : "uuid"
+    },
+    "DecimalAmount" : {
+      "type" : "integer",
+      "format" : "int32"
+    },
+    "Comment" : {
+      "type" : "string"
+    }
+  }
+};
     defs["FunctionalExceptionDTO"] = {
   "required" : [ "attributes", "details", "exception", "message", "status", "timestamp" ],
   "type" : "object",
@@ -1018,6 +1035,27 @@ ul.nav-tabs {
     }
   }
 };
+    defs["TransactionDTO"] = {
+  "required" : [ "BankAccountId", "DecimalAmount", "TransactionId" ],
+  "type" : "object",
+  "properties" : {
+    "TransactionId" : {
+      "type" : "string",
+      "format" : "uuid"
+    },
+    "BankAccountId" : {
+      "type" : "string",
+      "format" : "uuid"
+    },
+    "DecimalAmount" : {
+      "type" : "integer",
+      "format" : "int32"
+    },
+    "Comment" : {
+      "type" : "string"
+    }
+  }
+};
     defs["UserDTO"] = {
   "required" : [ "email", "id" ],
   "type" : "object",
@@ -1103,6 +1141,10 @@ ul.nav-tabs {
                     <li data-group="GroupService" data-name="getUserGroups" class="">
                       <a href="#api-GroupService-getUserGroups">getUserGroups</a>
                     </li>
+                  <li class="nav-header" data-group="TransactionService"><a href="#api-TransactionService">API Methods - TransactionService</a></li>
+                    <li data-group="TransactionService" data-name="createTransaction" class="">
+                      <a href="#api-TransactionService-createTransaction">createTransaction</a>
+                    </li>
                   <li class="nav-header" data-group="UserService"><a href="#api-UserService">API Methods - UserService</a></li>
                     <li data-group="UserService" data-name="checkRegistration" class="">
                       <a href="#api-UserService-checkRegistration">checkRegistration</a>
@@ -1123,7 +1165,7 @@ ul.nav-tabs {
         <div id="header">
           <div id="api-_">
             <h2 id="welcome-to-apidoc">API and SDK Documentation</h2>
-              <div class="app-desc">Version: 0.13.1</div>
+              <div class="app-desc">Version: 0.14.0</div>
             <hr>
             <div id="app-description" class="app-desc">
                 An API for accessing banking functionalities provided by BankWiz
@@ -5301,6 +5343,449 @@ pub fn main() {
 
 
                             <div class="tab-content" id="responses-GroupService-getUserGroups-400-wrapper" style='margin-bottom: 10px;'>
+                            </div>
+                        </article>
+                      </div>
+                      <hr>
+                  </section>
+                <section id="api-TransactionService">
+                  <h1>TransactionService</h1>
+                    <div id="api-TransactionService-createTransaction">
+                      <article id="api-TransactionService-createTransaction-0" data-group="User" data-name="createTransaction" data-version="0">
+                        <div class="pull-left">
+                          <h1>createTransaction</h1>
+                          <p>Create a new transaction</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked"></p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="put"><code><span class="pln">/transactions</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-TransactionService-createTransaction-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-TransactionService-createTransaction-0-java">Java</a></li>
+                          <li class=""><a href="#examples-TransactionService-createTransaction-0-dart">Dart</a></li>
+                          <li class=""><a href="#examples-TransactionService-createTransaction-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-TransactionService-createTransaction-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-TransactionService-createTransaction-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-TransactionService-createTransaction-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-TransactionService-createTransaction-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-TransactionService-createTransaction-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-TransactionService-createTransaction-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-TransactionService-createTransaction-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-TransactionService-createTransaction-0-python">Python</a></li>
+                          <li class=""><a href="#examples-TransactionService-createTransaction-0-rust">Rust</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-TransactionService-createTransaction-0-curl">
+                            <pre class="prettyprint"><code class="language-bsh">curl -X PUT \
+ \
+ -H "Accept: application/json" \
+ -H "Content-Type: application/json" \
+ "http://localhost:8080/transactions" \
+ -d '{
+  &quot;DecimalAmount&quot; : 0,
+  &quot;Comment&quot; : &quot;Comment&quot;,
+  &quot;BankAccountId&quot; : &quot;046b6c7f-0b8a-43b9-b35d-6489e6daee91&quot;
+}'
+</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-TransactionService-createTransaction-0-java">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.*;
+import org.openapitools.client.auth.*;
+import org.openapitools.client.model.*;
+import org.openapitools.client.api.TransactionServiceApi;
+
+import java.io.File;
+import java.util.*;
+
+public class TransactionServiceApiExample {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure OAuth2 access token for authorization: oauth2
+        OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        // Create an instance of the API class
+        TransactionServiceApi apiInstance = new TransactionServiceApi();
+        CreateTransactionRequest createTransactionRequest = ; // CreateTransactionRequest | 
+
+        try {
+            TransactionDTO result = apiInstance.createTransaction(createTransactionRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TransactionServiceApi#createTransaction");
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-TransactionService-createTransaction-0-dart">
+                            <pre class="prettyprint"><code class="language-dart">import 'package:openapi/api.dart';
+
+final api_instance = DefaultApi();
+
+final CreateTransactionRequest createTransactionRequest = new CreateTransactionRequest(); // CreateTransactionRequest | 
+
+try {
+    final result = await api_instance.createTransaction(createTransactionRequest);
+    print(result);
+} catch (e) {
+    print('Exception when calling DefaultApi->createTransaction: $e\n');
+}
+
+</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-TransactionService-createTransaction-0-android">
+                            <pre class="prettyprint"><code class="language-java">import org.openapitools.client.api.TransactionServiceApi;
+
+public class TransactionServiceApiExample {
+    public static void main(String[] args) {
+        TransactionServiceApi apiInstance = new TransactionServiceApi();
+        CreateTransactionRequest createTransactionRequest = ; // CreateTransactionRequest | 
+
+        try {
+            TransactionDTO result = apiInstance.createTransaction(createTransactionRequest);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling TransactionServiceApi#createTransaction");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-TransactionService-createTransaction-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-TransactionService-createTransaction-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+
+// Configure OAuth2 access token for authorization: (authentication scheme: oauth2)
+[apiConfig setAccessToken:@"YOUR_ACCESS_TOKEN"];
+
+
+// Create an instance of the API class
+TransactionServiceApi *apiInstance = [[TransactionServiceApi alloc] init];
+CreateTransactionRequest *createTransactionRequest = ; // 
+
+// Create a new transaction
+[apiInstance createTransactionWith:createTransactionRequest
+              completionHandler: ^(TransactionDTO output, NSError* error) {
+    if (output) {
+        NSLog(@"%@", output);
+    }
+    if (error) {
+        NSLog(@"Error: %@", error);
+    }
+}];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-TransactionService-createTransaction-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var BankWizApi = require('bank_wiz_api');
+var defaultClient = BankWizApi.ApiClient.instance;
+
+// Configure OAuth2 access token for authorization: oauth2
+var oauth2 = defaultClient.authentications['oauth2'];
+oauth2.accessToken = "YOUR ACCESS TOKEN";
+
+// Create an instance of the API class
+var api = new BankWizApi.TransactionServiceApi()
+var createTransactionRequest = ; // {CreateTransactionRequest} 
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.createTransaction(createTransactionRequest, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-TransactionService-createTransaction-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-TransactionService-createTransaction-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+using Org.OpenAPITools.Model;
+
+namespace Example
+{
+    public class createTransactionExample
+    {
+        public void main()
+        {
+            // Configure OAuth2 access token for authorization: oauth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            // Create an instance of the API class
+            var apiInstance = new TransactionServiceApi();
+            var createTransactionRequest = new CreateTransactionRequest(); // CreateTransactionRequest | 
+
+            try {
+                // Create a new transaction
+                TransactionDTO result = apiInstance.createTransaction(createTransactionRequest);
+                Debug.WriteLine(result);
+            } catch (Exception e) {
+                Debug.Print("Exception when calling TransactionServiceApi.createTransaction: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-TransactionService-createTransaction-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: oauth2
+OpenAPITools\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Create an instance of the API class
+$api_instance = new OpenAPITools\Client\Api\TransactionServiceApi();
+$createTransactionRequest = ; // CreateTransactionRequest | 
+
+try {
+    $result = $api_instance->createTransaction($createTransactionRequest);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TransactionServiceApi->createTransaction: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-TransactionService-createTransaction-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::OPenAPIClient::Configuration;
+use WWW::OPenAPIClient::TransactionServiceApi;
+
+# Configure OAuth2 access token for authorization: oauth2
+$WWW::OPenAPIClient::Configuration::access_token = 'YOUR_ACCESS_TOKEN';
+
+# Create an instance of the API class
+my $api_instance = WWW::OPenAPIClient::TransactionServiceApi->new();
+my $createTransactionRequest = WWW::OPenAPIClient::Object::CreateTransactionRequest->new(); # CreateTransactionRequest | 
+
+eval {
+    my $result = $api_instance->createTransaction(createTransactionRequest => $createTransactionRequest);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling TransactionServiceApi->createTransaction: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-TransactionService-createTransaction-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import openapi_client
+from openapi_client.rest import ApiException
+from pprint import pprint
+
+# Configure OAuth2 access token for authorization: oauth2
+openapi_client.configuration.access_token = 'YOUR_ACCESS_TOKEN'
+
+# Create an instance of the API class
+api_instance = openapi_client.TransactionServiceApi()
+createTransactionRequest =  # CreateTransactionRequest | 
+
+try:
+    # Create a new transaction
+    api_response = api_instance.create_transaction(createTransactionRequest)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling TransactionServiceApi->createTransaction: %s\n" % e)</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-TransactionService-createTransaction-0-rust">
+                              <pre class="prettyprint"><code class="language-rust">extern crate TransactionServiceApi;
+
+pub fn main() {
+    let createTransactionRequest = ; // CreateTransactionRequest
+
+    let mut context = TransactionServiceApi::Context::default();
+    let result = client.createTransaction(createTransactionRequest, &context).wait();
+
+    println!("{:?}", result);
+}
+</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Scopes</h2>
+                          <table>
+                            
+                              <tr>
+                                <td>openid</td>
+                                <td>openid</td>
+                              </tr>
+                            
+                              <tr>
+                                <td>profile</td>
+                                <td>profile</td>
+                              </tr>
+                            
+                              <tr>
+                                <td>email</td>
+                                <td>email</td>
+                              </tr>
+                            
+                          </table>
+
+                          <h2>Parameters</h2>
+
+
+
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">createTransactionRequest <span style="color:red;">*</span></td>
+<td>
+<p class="marked"></p>
+<script>
+$(document).ready(function() {
+  var schemaWrapper = {
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/CreateTransactionRequest"
+      }
+    }
+  },
+  "required" : true
+};
+
+  var schema = findNode('schema',schemaWrapper).schema;
+  if (!schema) {
+    schema = schemaWrapper.schema;
+  }
+  if (schema.$ref != null) {
+    schema = defsParser.$refs.get(schema.$ref);
+  } else {
+    schemaWrapper.definitions = Object.assign({}, defs);
+    $RefParser.dereference(schemaWrapper).catch(function(err) {
+      console.log(err);
+    });
+  }
+
+  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+  var result = $('#d2e199_createTransaction_createTransactionRequest');
+  result.empty();
+  result.append(view.render());
+});
+</script>
+<div id="d2e199_createTransaction_createTransactionRequest"></div>
+</td>
+</tr>
+
+                            </table>
+
+
+
+                          <h2>Responses</h2>
+                            <h3 id="examples-TransactionService-createTransaction-title-200"></h3>
+                            <p id="examples-TransactionService-createTransaction-description-200" class="marked"></p>
+                            <script>
+                              var responseTransactionService200_description = `Bank account created successfully`;
+                              var responseTransactionService200_description_break = responseTransactionService200_description.indexOf('\n');
+                              if (responseTransactionService200_description_break == -1) {
+                                $("#examples-TransactionService-createTransaction-title-200").text("Status: 200 - " + responseTransactionService200_description);
+                              } else {
+                                $("#examples-TransactionService-createTransaction-title-200").text("Status: 200 - " + responseTransactionService200_description.substring(0, responseTransactionService200_description_break));
+                                $("#examples-TransactionService-createTransaction-description-200").html(responseTransactionService200_description.substring(responseTransactionService200_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-TransactionService-createTransaction-200" class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-TransactionService-createTransaction-200-schema">Schema</a>
+                                </li>
+
+
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-TransactionService-createTransaction-200-wrapper" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-TransactionService-createTransaction-200-schema">
+                                  <div id="responses-TransactionService-createTransaction-schema-200" class="exampleStyle">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = ;
+                                        var schema = findNode('schema',schemaWrapper).schema;
+                                        if (!schema) {
+                                          schema = schemaWrapper.schema;
+                                        }
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                          Object.keys(schema.properties).forEach( (item) => {
+                                            if (schema.properties[item].$ref != null) {
+                                              schema.properties[item] = defsParser.$refs.get(schema.properties[item].$ref);
+                                            }
+                                          });
+                                        } else if (schema.items != null && schema.items.$ref != null) {
+                                            schema.items = defsParser.$refs.get(schema.items.$ref);
+                                        } else {
+                                          schemaWrapper.definitions = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-TransactionService-createTransaction-200-schema-data').val(JSON.stringify(schema));
+                                        var result = $('#responses-TransactionService-createTransaction-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-TransactionService-createTransaction-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+                            <h3 id="examples-TransactionService-createTransaction-title-400"></h3>
+                            <p id="examples-TransactionService-createTransaction-description-400" class="marked"></p>
+                            <script>
+                              var responseTransactionService400_description = `Invalid request. Please check the provided data.`;
+                              var responseTransactionService400_description_break = responseTransactionService400_description.indexOf('\n');
+                              if (responseTransactionService400_description_break == -1) {
+                                $("#examples-TransactionService-createTransaction-title-400").text("Status: 400 - " + responseTransactionService400_description);
+                              } else {
+                                $("#examples-TransactionService-createTransaction-title-400").text("Status: 400 - " + responseTransactionService400_description.substring(0, responseTransactionService400_description_break));
+                                $("#examples-TransactionService-createTransaction-description-400").html(responseTransactionService400_description.substring(responseTransactionService400_description_break));
+                              }
+                            </script>
+
+
+                            <ul id="responses-detail-TransactionService-createTransaction-400" class="nav nav-tabs nav-tabs-examples" >
+
+
+                            </ul>
+
+
+                            <div class="tab-content" id="responses-TransactionService-createTransaction-400-wrapper" style='margin-bottom: 10px;'>
                             </div>
                         </article>
                       </div>
