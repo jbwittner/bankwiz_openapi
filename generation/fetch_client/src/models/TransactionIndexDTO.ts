@@ -16,57 +16,57 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface CreateTransactionRequest
+ * @interface TransactionIndexDTO
  */
-export interface CreateTransactionRequest {
+export interface TransactionIndexDTO {
     /**
      * 
      * @type {string}
-     * @memberof CreateTransactionRequest
+     * @memberof TransactionIndexDTO
      */
-    bankAccountId: string;
+    transactionId: string;
     /**
      * 
      * @type {number}
-     * @memberof CreateTransactionRequest
+     * @memberof TransactionIndexDTO
      */
     decimalAmount: number;
     /**
      * 
      * @type {string}
-     * @memberof CreateTransactionRequest
+     * @memberof TransactionIndexDTO
      */
     comment?: string;
 }
 
 /**
- * Check if a given object implements the CreateTransactionRequest interface.
+ * Check if a given object implements the TransactionIndexDTO interface.
  */
-export function instanceOfCreateTransactionRequest(value: object): boolean {
+export function instanceOfTransactionIndexDTO(value: object): boolean {
     let isInstance = true;
-    isInstance = isInstance && "bankAccountId" in value;
+    isInstance = isInstance && "transactionId" in value;
     isInstance = isInstance && "decimalAmount" in value;
 
     return isInstance;
 }
 
-export function CreateTransactionRequestFromJSON(json: any): CreateTransactionRequest {
-    return CreateTransactionRequestFromJSONTyped(json, false);
+export function TransactionIndexDTOFromJSON(json: any): TransactionIndexDTO {
+    return TransactionIndexDTOFromJSONTyped(json, false);
 }
 
-export function CreateTransactionRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): CreateTransactionRequest {
+export function TransactionIndexDTOFromJSONTyped(json: any, ignoreDiscriminator: boolean): TransactionIndexDTO {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'bankAccountId': json['BankAccountId'],
+        'transactionId': json['TransactionId'],
         'decimalAmount': json['DecimalAmount'],
         'comment': !exists(json, 'Comment') ? undefined : json['Comment'],
     };
 }
 
-export function CreateTransactionRequestToJSON(value?: CreateTransactionRequest | null): any {
+export function TransactionIndexDTOToJSON(value?: TransactionIndexDTO | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -75,7 +75,7 @@ export function CreateTransactionRequestToJSON(value?: CreateTransactionRequest 
     }
     return {
         
-        'BankAccountId': value.bankAccountId,
+        'TransactionId': value.transactionId,
         'DecimalAmount': value.decimalAmount,
         'Comment': value.comment,
     };
