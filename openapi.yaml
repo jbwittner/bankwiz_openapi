@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: BankWiz API
-  version: 0.14.0
+  version: 0.15.0
   description: An API for accessing banking functionalities provided by BankWiz
 servers:
   - url: http://localhost:8080
@@ -295,6 +295,31 @@ paths:
           content:
             application/json:
               schema:
+                  $ref: '#/components/schemas/TransactionDTO'
+        '400':
+          description: Invalid request. Please check the provided data.
+  /transactions/bankaccount/{bankaccountId}:
+    get:
+      tags:
+        - TransactionService
+      summary: Get all transaction of bank account
+      operationId: getAllTransactionOfBankAccount
+      parameters:
+        - name: bankaccountId
+          in: path
+          description: Bank account ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Bank account created successfully
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
                   $ref: '#/components/schemas/TransactionDTO'
         '400':
           description: Invalid request. Please check the provided data.
