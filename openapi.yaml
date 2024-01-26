@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: BankWiz API
-  version: 0.15.0
+  version: 0.15.1
   description: An API for accessing banking functionalities provided by BankWiz
 servers:
   - url: http://localhost:8080
@@ -295,7 +295,7 @@ paths:
           content:
             application/json:
               schema:
-                  $ref: '#/components/schemas/TransactionDTO'
+                $ref: '#/components/schemas/TransactionDTO'
         '400':
           description: Invalid request. Please check the provided data.
   /transactions/bankaccount/{bankaccountId}:
@@ -318,9 +318,7 @@ paths:
           content:
             application/json:
               schema:
-                type: "array"
-                items:
-                  $ref: '#/components/schemas/TransactionDTO'
+                $ref: '#/components/schemas/BankAccountTransactionsDTO'
         '400':
           description: Invalid request. Please check the provided data.
 #################################### TransactionService END ######################### 
@@ -551,5 +549,31 @@ components:
       required:
         - TransactionId
         - BankAccountId
+        - DecimalAmount
+    BankAccountTransactionsDTO:
+      type: object
+      properties:
+        BankAccountIndex:
+          $ref: '#/components/schemas/BankAccountIndexDTO'
+        Transactions:
+          type: "array"
+          items:
+            $ref: '#/components/schemas/TransactionIndexDTO'
+      required:
+        - BankAccountIndex
+        - Transactions
+    TransactionIndexDTO:
+      type: object
+      properties:
+        TransactionId:
+          type: string
+          format: uuid
+        DecimalAmount:
+          type: integer
+          format: int32
+        Comment:
+          type: string
+      required:
+        - TransactionId
         - DecimalAmount
 #################################### DTO END ######################################## 

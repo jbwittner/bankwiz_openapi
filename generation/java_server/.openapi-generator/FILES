@@ -9,6 +9,7 @@ src/main/java/fr/bankwiz/openapi/api/UserApi.java
 src/main/java/fr/bankwiz/openapi/model/AddUserGroupRequest.java
 src/main/java/fr/bankwiz/openapi/model/BankAccountCreationRequest.java
 src/main/java/fr/bankwiz/openapi/model/BankAccountIndexDTO.java
+src/main/java/fr/bankwiz/openapi/model/BankAccountTransactionsDTO.java
 src/main/java/fr/bankwiz/openapi/model/BankAccountUpdateRequest.java
 src/main/java/fr/bankwiz/openapi/model/CreateTransactionRequest.java
 src/main/java/fr/bankwiz/openapi/model/FunctionalExceptionDTO.java
@@ -18,6 +19,7 @@ src/main/java/fr/bankwiz/openapi/model/GroupDetailsDTO.java
 src/main/java/fr/bankwiz/openapi/model/GroupIndexDTO.java
 src/main/java/fr/bankwiz/openapi/model/MethodArgumentNotValidExceptionDTO.java
 src/main/java/fr/bankwiz/openapi/model/TransactionDTO.java
+src/main/java/fr/bankwiz/openapi/model/TransactionIndexDTO.java
 src/main/java/fr/bankwiz/openapi/model/UserDTO.java
 src/main/java/fr/bankwiz/openapi/model/UserGroupRightDTO.java
 src/main/java/fr/bankwiz/openapi/model/UserGroupRightEnum.java

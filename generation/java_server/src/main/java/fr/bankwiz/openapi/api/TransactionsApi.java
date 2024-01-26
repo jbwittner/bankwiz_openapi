@@ -5,6 +5,7 @@
  */
 package fr.bankwiz.openapi.api;
 
+import fr.bankwiz.openapi.model.BankAccountTransactionsDTO;
 import fr.bankwiz.openapi.model.CreateTransactionRequest;
 import fr.bankwiz.openapi.model.TransactionDTO;
 import java.util.UUID;
@@ -101,7 +102,7 @@ public interface TransactionsApi {
         tags = { "TransactionService" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Bank account created successfully", content = {
-                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = TransactionDTO.class)))
+                @Content(mediaType = "application/json", schema = @Schema(implementation = BankAccountTransactionsDTO.class))
             }),
             @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
         },
@@ -115,13 +116,13 @@ public interface TransactionsApi {
         produces = { "application/json" }
     )
     
-    default ResponseEntity<List<TransactionDTO>> getAllTransactionOfBankAccount(
+    default ResponseEntity<BankAccountTransactionsDTO> getAllTransactionOfBankAccount(
         @Parameter(name = "bankaccountId", description = "Bank account ID", required = true, in = ParameterIn.PATH) @PathVariable("bankaccountId") UUID bankaccountId
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "[ { \"DecimalAmount\" : 0, \"Comment\" : \"Comment\", \"BankAccountId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"TransactionId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" }, { \"DecimalAmount\" : 0, \"Comment\" : \"Comment\", \"BankAccountId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"TransactionId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" } ]";
+                    String exampleString = "{ \"Transactions\" : [ { \"DecimalAmount\" : 0, \"Comment\" : \"Comment\", \"TransactionId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" }, { \"DecimalAmount\" : 0, \"Comment\" : \"Comment\", \"TransactionId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" } ], \"BankAccountIndex\" : { \"bankAccountName\" : \"bankAccountName\", \"bankAccountId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"decimalBaseAmount\" : 0 } }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
