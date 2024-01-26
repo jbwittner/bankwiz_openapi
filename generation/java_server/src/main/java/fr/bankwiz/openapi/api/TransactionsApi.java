@@ -7,6 +7,7 @@ package fr.bankwiz.openapi.api;
 
 import fr.bankwiz.openapi.model.CreateTransactionRequest;
 import fr.bankwiz.openapi.model.TransactionDTO;
+import java.util.UUID;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -77,6 +78,50 @@ public interface TransactionsApi {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
                     String exampleString = "{ \"DecimalAmount\" : 0, \"Comment\" : \"Comment\", \"BankAccountId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"TransactionId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    /**
+     * GET /transactions/bankaccount/{bankaccountId} : Get all transaction of bank account
+     *
+     * @param bankaccountId Bank account ID (required)
+     * @return Bank account created successfully (status code 200)
+     *         or Invalid request. Please check the provided data. (status code 400)
+     */
+    @Operation(
+        operationId = "getAllTransactionOfBankAccount",
+        summary = "Get all transaction of bank account",
+        tags = { "TransactionService" },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Bank account created successfully", content = {
+                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = TransactionDTO.class)))
+            }),
+            @ApiResponse(responseCode = "400", description = "Invalid request. Please check the provided data.")
+        },
+        security = {
+            @SecurityRequirement(name = "oauth2", scopes={ "openid", "profile", "email" })
+        }
+    )
+    @RequestMapping(
+        method = RequestMethod.GET,
+        value = "/transactions/bankaccount/{bankaccountId}",
+        produces = { "application/json" }
+    )
+    
+    default ResponseEntity<List<TransactionDTO>> getAllTransactionOfBankAccount(
+        @Parameter(name = "bankaccountId", description = "Bank account ID", required = true, in = ParameterIn.PATH) @PathVariable("bankaccountId") UUID bankaccountId
+    ) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "[ { \"DecimalAmount\" : 0, \"Comment\" : \"Comment\", \"BankAccountId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"TransactionId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" }, { \"DecimalAmount\" : 0, \"Comment\" : \"Comment\", \"BankAccountId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"TransactionId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" } ]";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
